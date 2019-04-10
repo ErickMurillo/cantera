@@ -1,0 +1,7 @@
+/*	Send a comment
+	add a font awesome icon to a input field
+*/
+input[type="button"]{
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+}

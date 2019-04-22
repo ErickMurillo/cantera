@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap Min CSS -->
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<!-- Animate CSS -->
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<!-- IcoFont Min CSS -->
+	<link rel="stylesheet" href="/static/css/icofont.min.css">
+	<!-- Meanmenu Min CSS -->
+	<link rel="stylesheet" href="/static/css/meanmenu.css">
+	<!-- Magnific Popup Min CSS -->
+	<link rel="stylesheet" href="/static/css/magnific-popup.min.css">
+	<!-- Owl Carousel Min CSS -->
+	<link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+	<!-- NiceSelect Min CSS -->
+	<link rel="stylesheet" href="/static/css/nice-select.css">
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="/static/css/style.css">
+	<!-- Responsive CSS -->
+	<link rel="stylesheet" href="/static/css/responsive.css">
+
+	<title>Plataforma Regional Género y Metodologías</title>
+
+	<link rel="icon" type="image/png" href="/static/img/favicon.png">
+</head>
+
+<body>
+	<!-- Start Preloader Area -->
+	<div class="preloader-area">
+		<div class="lds-hourglass"></div>
+	</div>
+	<!-- End Preloader Area -->
+
+	<!-- Start Navbar Area -->
+	<header id="header">
+		<div class="crake-mobile-nav">
+			<div class="logo">
+				<img src="/static/img/logo.png" alt="">
+			</div>
+		</div>
+
+		<div class="crake-nav">
+			<div class="container">
+				<nav class="navbar navbar-expand-md navbar-light">
+					<a class="navbar-brand" href="index.html"><img src="/static/img/logo.png" alt="logo"></a>
+
+					<div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+						<ul class="navbar-nav nav ml-auto">
+							<li class="nav-item"><a href="#" class="nav-link">Inicio</a>
+								</li>
+								
+								<li class="nav-item"><a href="#" class="nav-link">¿Quienes somos?</a>
+								</li>
+
+								<li class="nav-item"><a href="#" class="nav-link">Alianzas y Colaboraciones</a>
+								</li>
+							</ul>
+						</div>
+						<div class="mr-auto others-option">
+							<ul class="navbar-nav">
+								<!-- <li class="nav-item cart-wrapper">
+									<a href="#">
+										<i class="icofont-shopping-cart cart-icon"></i>
+
+										<span>0</span>
+									</a>
+								</li> -->
+								<li class="header-search-box">
+									<a href="#header-search" title="Buscar">
+										<i class="icofont-search-2"></i>
+									</a>
+								</li>
+								<li data-toggle="modal" data-target="#myModal2">
+									<div class="side-menu">
+										<span class="bar-1"></span>
+										<span class="bar-2"></span>
+										<span class="bar-3"></span>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div> 
+			</div>
+		</header>
+		<!-- End Navbar Area -->
+
+		<!-- Start Sidebar Modal -->
+		<div class="sidebar-modal">  
+			<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icofont-close"></i></span></button>
+
+							<h2 class="modal-title" id="myModalLabel2"><a href="index.html"><img src="/static/img/logo.png" alt="logo"></a></h2>
+						</div>
+
+						<div class="modal-body">
+							<div class="sidebar-modal-widget">
+								<h3 class="title">Links Adicionales</h3>
+
+								<ul>
+									<li><a href="#">Login</a></li>
+									<li><a href="#">Registro</a></li>
+									<li><a href="#">FAQ</a></li>
+									<li><a href="#">Salir</a></li>
+								</ul>
+							</div>
+							
+							<div class="sidebar-modal-widget">
+								<h3 class="title">Contáctenos</h3>
+
+								<ul class="contact-info">
+									<li>
+										<i class="icofont-google-map"></i>
+										Dirección
+										<span>1660 Travis Street Miramar, FL 33025, California</span>
+									</li>
+									<li>
+										<i class="icofont-email"></i>
+										Email
+										<span>admin@crake.com</span>
+									</li>
+									<li>
+										<i class="icofont-phone"></i>
+										Teléfono
+										<span>+123 456 7890</span>
+									</li>
+								</ul>
+							</div>
+
+							<div class="sidebar-modal-widget">
+								<h3 class="title">Conéctate Con Nosotros</h3>
+
+								<ul class="social-list">
+									<li><a href="#"><i class="icofont-facebook"></i></a></li>
+									<li><a href="#"><i class="icofont-twitter"></i></a></li>
+									<li><a href="#"><i class="icofont-instagram"></i></a></li>
+									<li><a href="#"><i class="icofont-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div><!-- modal-content -->
+				</div><!-- modal-dialog -->
+			</div><!-- modal -->
+		</div>
+		<!-- End Sidebar Modal -->
+
+		<!-- Start Search Box -->
+		<div id="header-search" class="header-search">
+			<button type="button" class="close">×</button>
+			<form class="header-search-form">
+				<input type="search" value="" placeholder="Escribe aquí........" />
+				<button type="submit" class="btn btn-primary">Buscar</button>
+			</form>
+		</div>
+		<!-- End Search Box -->
+
+		<!-- Start Page Title Area -->
+		<section class="page-title-banner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<!-- <h2>Actualidad</h2> -->
+						
+							{% block bannertitle%} {% endblock bannertitle%}
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="shape1"><img src="/static/img/shape1.png" alt="img"></div>
+			<div class="shape2"><img src="/static/img/shape2.png" alt="img"></div>
+			<div class="shape3"><img src="/static/img/shape3.png" alt="img"></div>
+			<div class="shape6"><img src="/static/img/shape6.png" alt="img"></div>
+			<div class="shape8 rotateme"><img src="/static/img/shape8.svg" alt="shape"></div>
+			<div class="shape9"><img src="/static/img/shape9.svg" alt="shape"></div>
+
+			<!-- Bubble Animte -->
+			<div class="bubble-animate">
+				<div class="circle small square1"></div>
+				<div class="circle small square2"></div>
+				<div class="circle small square3"></div>
+				<div class="circle small square4"></div>
+				<div class="circle small square5"></div>
+				<div class="circle medium square1"></div>
+				<div class="circle medium square2"></div>
+				<div class="circle medium square3"></div>
+				<div class="circle medium square4"></div>
+				<div class="circle medium square5"></div>
+				<div class="circle large square1"></div>
+				<div class="circle large square2"></div>
+				<div class="circle large square3"></div>
+				<div class="circle large square4"></div>
+			</div>
+		</section>
+		<!-- End Page Title Area -->
+
+		{% block content %} {% endblock content %}
+		<!-- Start Footer Area -->
+		<footer class="footer-area ptb-100 pb-0 bg-image">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<div class="single-footer-widget">
+							<a href="#" class="logo"><img src="/static/img/logo.png" alt="logo2"></a>
+							<p align="justify">Somos una organización nicaragüense no gubernamental, de tipo humanitario, sin fines de lucro y con personalidad jurídica propia, fundada en el año 1988.</p>
+
+							<ul class="social-list">
+								<li><a href="#"><i class="icofont-facebook"></i></a></li>
+								<li><a href="#"><i class="icofont-twitter"></i></a></li>
+								<li><a href="#"><i class="icofont-instagram"></i></a></li>
+								<li><a href="#"><i class="icofont-linkedin"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6">
+						<div class="single-footer-widget pl-5">
+							<h3>Company</h3>
+
+							<ul class="list">
+								<li><a href="#">About</a></li>
+								<li><a href="#">Carrers</a></li>
+								<li><a href="#">Awards</a></li>
+								<li><a href="#">User Program</a></li>
+								<li><a href="#">Locations</a></li>
+								<li><a href="#">Login</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6">
+						<div class="single-footer-widget">
+							<h3>Products</h3>
+
+							<ul class="list">
+								<li><a href="#">Integrations</a></li>
+								<li><a href="#">API</a></li>
+								<li><a href="#">Pricing</a></li>
+								<li><a href="#">Documentation</a></li>
+								<li><a href="#">Sign Up</a></li>
+								<li><a href="#">Release Notes</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6">
+						<div class="single-footer-widget">
+							<h3>Soporte</h3>
+
+							<ul class="list">
+								<li><a href="#">Nosotros</a></li>
+								<li><a href="#">Contactenos</a></li>
+								<li><a href="#">FAQ</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="copyright-area">
+				<div class="container">
+					<div class="row h-100 justify-content-center align-items-center">
+						<div class="col-lg-6 col-md-6">
+							<p>Copyright @ 2019. All rights reserved</p>
+						</div>
+						
+						<div class="col-lg-6 col-md-6">
+							<ul>
+								<li><a href="#">Terms & Conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End Footer Area -->
+
+		<!-- Back Top top -->
+		<!-- 		<div class="back-to-top">Top</div>-->
+		<div class="back-to-top">Inicio</div>
+		<!-- End Back Top top -->
+
+
+
+		<!-- JScripts -->
+
+
+		<!-- Jquery Min JS -->
+		<script src="/static/js/jquery.min.js"></script>
+		<!-- Popper Min JS -->
+		<script src="/static/js/popper.min.js"></script>
+		<!-- Bootstrap Min JS -->
+		<script src="/static/js/bootstrap.min.js"></script>
+		<!-- Meanmenu Min JS -->
+		<script src="/static/js/jquery.meanmenu.min.js"></script>
+		<!-- WOW Min JS -->
+		<script src="/static/js/wow.min.js"></script>
+		<!-- Tilt Min JS -->
+		<script src="/static/js/tilt.jquery.min.js"></script>
+		<!-- Magnific Popup Min JS -->
+		<script src="/static/js/jquery.magnific-popup.min.js"></script>
+		<!-- Owl Carousel Min JS -->
+		<script src="/static/js/owl.carousel.min.js"></script>
+		<!-- Waypoints Min Js -->
+		<script src="/static/js/waypoints.min.js"></script>
+		<!-- Jquery CounterUp Min JS -->
+		<script src="/static/js/jquery.counterup.min.js"></script>
+		<!-- NiceSelect Min Js -->
+		<script src="/static/js/jquery.nice-select.min.js"></script>
+		<!-- ajaxChimp Min JS -->
+		<script src="/static/js/jquery.ajaxchimp.min.js"></script>
+		<!-- Form Validator Min JS -->
+		<script src="/static/js/form-validator.min.js"></script>
+		<!-- Contact Form Min JS -->
+		<script src="/static/js/contact-form-script.js"></script>
+		<!-- Main JS -->
+		<script src="/static/js/main.js"></script>
+	</body>
+	</html>

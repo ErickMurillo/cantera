@@ -7016,7 +7016,7 @@ Footer CSS
 }
 
 .footer-area.bg-image {
-  background-image: url(../../assets/img/footer-shape.png);
+  background-image: url(../../static/img/footer-shape.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

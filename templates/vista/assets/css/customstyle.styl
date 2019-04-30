@@ -1,0 +1,69 @@
+@import 'mixin.styl'
+/*=================================
+=            variables            =
+=================================*/
+
+
+
+/*============================
+=            menu            =
+============================*/
+.crake-nav nav .navbar-brand img
+	width 180px
+.dropup .dropdown-menu
+	display block
+	opacity 0
+	transition all 0.3s ease-in-out
+	box-shadow 0 0 30px 0 rgba(0, 0, 0, 0.25)
+	border-color transparent
+.dropup:hover >.dropdown-menu
+ 	display block
+	opacity 1
+.dropup:hover .rotate
+	transition 0.50s
+	transform rotate(180deg)
+
+/*===================================
+=            menu iconos            =
+===================================*/
+.menu-icons
+	display flex
+	flex-wrap wrap
+	li
+		flex 0 0 25%
+		text-align center
+		font-weight 700
+		font-size 18px
+		display inline-block
+		i.main
+			font-size 25px
+			display inline-block
+			width 60px
+			height 60px
+			line-height 60px
+			border-radius 50%
+			margin-bottom 15px
+			transition 0.5s
+			background-color #13c4a1
+			color white
+		i.circle
+			font-size 15px
+			border-radius 50%
+			color #13c4a1
+			width 20px
+			height 20px
+			line-height 18px
+			text-align center
+			padding-left 10px
+.arrow-down:before
+	bottom -7px
+	right 0px
+	z-index 99
+	border-top 7px solid white
+	border-left 15px solid transparent
+	border-right 0px solid transparent
+	border-top-color #fff
+	display inline-block
+	position absolute
+	content ''
+	

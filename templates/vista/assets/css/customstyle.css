@@ -1,6 +1,13 @@
 /*=================================
 =            variables            =
 =================================*/
+/*=================================
+=            Header            =
+=================================*/
+.hero-content h2 {
+  color: #fff;
+  font-size: 45px;
+}
 /*============================
 =            menu            =
 ============================*/
@@ -48,7 +55,7 @@ display block {
   display: inline-block;
 }
 .menu-icons li i.main {
-  font-size: 25px;
+  font-size: 30px;
   display: inline-block;
   width: 60px;
   height: 60px;
@@ -89,4 +96,8 @@ display block {
   display: inline-block;
   position: absolute;
   content: '';
+}
+.gallery-area .single-image {
+  max-height: 222px;
+  overflow: hidden;
 }

@@ -1,6 +1,14 @@
 /*=================================
 =            variables            =
 =================================*/
+/************color***************/
+a:hover,
+a:focus {
+  color: #cb4f24;
+}
+.bg-gray {
+  background-color: #f9fafc;
+}
 /*=================================
 =            Header            =
 =================================*/
@@ -8,9 +16,23 @@
   color: #fff;
   font-size: 45px;
 }
+.main-banner {
+  background-color: #0e96b4;
+}
+@media only screen and (min-width: 1910px) {
+  .main-banner {
+    height: 90vh;
+  }
+}
 /*============================
 =            menu            =
 ============================*/
+.crake-nav {
+  background-color: #a324cb;
+}
+.crake-nav.is-sticky {
+  background-color: #a324cb !important;
+}
 .crake-nav nav .navbar-brand img {
   width: 180px;
 }
@@ -30,6 +52,9 @@
 display block {
   opacity: 1;
 }
+.dropup:hover .visible_hover {
+  color: #cb4f24;
+}
 .dropup:hover .rotate {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -39,6 +64,9 @@ display block {
   -moz-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+.visible_hover:hover {
+  color: #cb4f24 !important;
 }
 /*===================================
 =            menu iconos            =
@@ -57,9 +85,9 @@ display block {
 .menu-icons li i.main {
   font-size: 30px;
   display: inline-block;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -o-border-radius: 50%;
@@ -69,7 +97,7 @@ display block {
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-  background-color: #13c4a1;
+  background-color: #cb4f24;
   color: #fff;
 }
 .menu-icons li i.circle {
@@ -78,7 +106,7 @@ display block {
   -moz-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  color: #13c4a1;
+  color: #cb4f24;
   width: 20px;
   height: 20px;
   line-height: 18px;
@@ -100,4 +128,7 @@ display block {
 .gallery-area .single-image {
   max-height: 222px;
   overflow: hidden;
+}
+.footer-area .single-footer-widget .logo img {
+  width: 200px;
 }

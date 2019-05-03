@@ -2,7 +2,29 @@
 /*=================================
 =            variables            =
 =================================*/
+/************color***************/
+rojo = #E40303
+naranja = #FF8C00
+amarillo = #FFED00
+verde = #008026
+azul = #004DFF
+purpura = #750787
+logo_color = #cb4f24
 
+t_azul = #24A0CB
+t_violeta = #A324CB
+t_verde = #4DCB24
+
+
+
+
+
+
+
+a:hover, a:focus
+	color logo_color
+.bg-gray
+	background-color #F9FAFC
 
 /*=================================
 =            Header            =
@@ -12,13 +34,23 @@
 	h2
 		color white
 		font-size 45px
-
+.main-banner
+	background-color #0E96B4
+	
+@media only screen and (min-width: 1910px)
+	.main-banner
+		height 90vh
 
 /*============================
 =            menu            =
 ============================*/
-.crake-nav nav .navbar-brand img
-	width 180px
+
+.crake-nav
+	background-color t_violeta
+	&.is-sticky
+		background-color t_violeta !important
+	nav .navbar-brand img
+		width 180px
 .dropup .dropdown-menu
 	display block
 	opacity 0
@@ -28,10 +60,14 @@
 .dropup:hover >.dropdown-menu
  	display block
 	opacity 1
-.dropup:hover .rotate
-	transition 0.50s
-	transform rotate(180deg)
-
+.dropup:hover
+	.visible_hover
+		color logo_color
+	.rotate
+		transition 0.50s
+		transform rotate(180deg)
+.visible_hover:hover
+	color logo_color !important
 /*===================================
 =            menu iconos            =
 ===================================*/
@@ -47,18 +83,18 @@
 		i.main
 			font-size 30px
 			display inline-block
-			width 60px
-			height 60px
-			line-height 60px
+			width 80px
+			height 80px
+			line-height 80px
 			border-radius 50%
 			margin-bottom 15px
 			transition 0.5s
-			background-color #13c4a1
+			background-color logo_color
 			color white
 		i.circle
 			font-size 15px
 			border-radius 50%
-			color #13c4a1
+			color logo_color
 			width 20px
 			height 20px
 			line-height 18px
@@ -82,4 +118,7 @@
 	.single-image
 		max-height 222px
 		overflow hidden
-	
+//footer
+
+.footer-area .single-footer-widget .logo img
+	width 200px

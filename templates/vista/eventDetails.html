@@ -23,6 +23,8 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 	<!-- Responsive CSS -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
+	<!-- Custom css -->
+	<link rel="stylesheet" href="assets/css/customstyle.css">
 
 	<title>Plataforma Regional Género y Metodologías</title>
 
@@ -30,7 +32,34 @@
 </head>
 
 <body>
+<style type="text/css">
+	.page-title-banner{
+		background: url("assets/img/index/evento.png");
+		background-position: center;
+  		background-repeat: no-repeat;
+  		height: 300px;
+  		padding: 100px 0px;
+  		position: relative;
+  		top:100px;
+  		margin-bottom: 20px;
+	}
+	.breadcrumb{
+		background: transparent;
+		padding: 0;
 
+	}
+	.breadcrumb-item{
+		font-size: 16px;
+		font-weight: 700;
+	}
+	.breadcrumb-item a{
+		color: white;
+	}
+	.breadcrumb-item.active{
+		color: #edf5ff;
+	}
+	
+</style>
 	<!-- Start Navbar Area -->
 	<header id="header">
 		<div class="crake-mobile-nav">
@@ -172,17 +201,18 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2>Detalles evento</h2>
+						<h2 class="text-left">Nombre evento</h2>
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
+								<li class="breadcrumb-item"><a href="#">Eventos</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Detalle evento</li>
+							</ol>
+						</nav>
 					</div>
 				</div>
 			</div>
 
-			<div class="shape1"><img src="assets/img/shape1.png" alt="img"></div>
-			<div class="shape2"><img src="assets/img/shape2.png" alt="img"></div>
-			<div class="shape3"><img src="assets/img/shape3.png" alt="img"></div>
-			<div class="shape6"><img src="assets/img/shape6.png" alt="img"></div>
-			<div class="shape8 rotateme"><img src="assets/img/shape8.svg" alt="shape"></div>
-			<div class="shape9"><img src="assets/img/shape9.svg" alt="shape"></div>
 
 			<!-- Bubble Animte -->
 			<div class="bubble-animate">
@@ -211,21 +241,22 @@
 						<div class="col-lg-4 col-md-12">
 							<div class="product-img-slides">
 								<div class="product-img">
-									<a href="#"><img src="assets/img/gevent.jpeg" alt="product-img"></a>
+									<a href="#"><img src="http://www.programas-gtz.org.ni/thumb/evento/600x600/1234657882_Grupos%20de%20trabajo.JPG" alt="product-img"></a>
 								</div>
 
 								<div class="product-img">
-									<a href="#"><img src="assets/img/googleevent.jpg" alt="product-img"></a>
+									<a href="#"><img src="http://www.programas-gtz.org.ni/thumb/evento/600x600/1234657882_Grupos%20de%20trabajo.JPG" alt="product-img"></a>
 								</div>
 							</div>
 						</div>
 
 						<div class="col-lg-8 col-md-12">
 							<div class="product-entry-summary">
-								<h3>Inauguración	</h3>
+								<h3>Elaboración estrategia de Género para CANTERA	</h3>
 								<!-- <h4><span>$44.00</span> $30.00</h4> -->
-
-								<p>TensorFlow Dev Summit</p>
+								<h4>Descripción</h4>
+								<p>Elaboración de la Estrategia de Género para cada uno de los componentes de CANTERA, incorporando así tema en las lineas de trabajo de cada uno de ellos</p>
+								<p>Autor: CANTERA</p>
 
 								<!-- <ul class="product-categories">
 									<li>Categories:</li>
@@ -242,8 +273,6 @@
                                 	<li>Compartir:</li>
                                 	<li><a href="#"><i class="icofont-facebook"></i></a></li>
                                 	<li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                	<li><a href="#"><i class="icofont-linkedin"></i></a></li>
-                                	<li><a href="#"><i class="icofont-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -253,17 +282,12 @@
                     	<div class="col-lg-12 col-md-12">
                     		<div class="shop-details-tabs">
                     			<ul id="tabs">
-                    				<li class="active" id="tab_1">Descripción</li>
-                    				<li class="inactive" id="tab_2">Detalles</li>
+                  
+                    				<li class="active" id="tab_2">Detalles</li>
                     			</ul>
-                    			<div class="content show" id="tab_1_content">
-                    				<div class="shop-description">
-                    					<h3>Descripción</h3>
-                    					<p>TensorFlow Dev Summit reúne a una mezcla diversa de usuarios de aprendizaje automático de todo el mundo durante dos días de charlas, demostraciones y conversaciones altamente técnicas con el equipo y la comunidad de TensorFlow.</p>
-                    				</div>
-                    			</div>
 
-                    			<div class="content" id="tab_2_content">
+
+                    			<div class="content show" id="tab_2_content">
                     				<div class="row">
                     					<div class="col-lg-8 col-md-12">
                     						<div class="row">

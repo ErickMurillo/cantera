@@ -2656,7 +2656,7 @@ Overview CSS
 }
 
 .overview-box .app-fetured-item .app-item.item-two {
-  background-image: -webkit-linear-gradient(40deg, #CB4F23 0, #ffc107 100%);
+  background-image: -webkit-linear-gradient(40deg, #13C4A1 0, #41CBB0 100%);
   -webkit-box-shadow: 0 20px 40px 0 rgba(19, 196, 161, 0.4);
           box-shadow: 0 20px 40px 0 rgba(19, 196, 161, 0.4);
   left: 60px;
@@ -2672,7 +2672,7 @@ Overview CSS
 }
 
 .overview-box .app-fetured-item .app-item.item-four {
-  background-image: -webkit-linear-gradient(40deg, #000000 0, #000000 100%);
+  background-image: -webkit-linear-gradient(40deg, #ff8a73 0, #F89B88 100%);
   -webkit-box-shadow: 0 20px 40px 0 rgba(27, 25, 25, 0.99);
           box-shadow: 0 20px 40px 0 rgba(27, 25, 25, 0.99);
   right: 35px;

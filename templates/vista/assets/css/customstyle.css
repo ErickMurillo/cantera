@@ -150,3 +150,6 @@ a.youtube:hover {
   background-color: #f00 !important;
   color: #fff !important;
 }
+.sidebar-area .widget.widget_recent_posts ul.foro-seguido li {
+  padding-left: 0px;
+}

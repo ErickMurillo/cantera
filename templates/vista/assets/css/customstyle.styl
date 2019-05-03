@@ -8,7 +8,7 @@ naranja = #FF8C00
 amarillo = #FFED00
 verde = #008026
 azul = #004DFF
-purpura = #750787
+purpura = #5a4bad
 logo_color = #cb4f24
 
 t_azul = #24A0CB
@@ -35,7 +35,9 @@ a:hover, a:focus
 		color white
 		font-size 45px
 .main-banner
-	background-color #0E96B4
+	background-color #442a776b
+	height 500px
+	margin-top 100px
 	
 @media only screen and (min-width: 1910px)
 	.main-banner
@@ -46,9 +48,10 @@ a:hover, a:focus
 ============================*/
 
 .crake-nav
-	background-color t_violeta
+	background-color purpura
+	padding-top 0
 	&.is-sticky
-		background-color t_violeta !important
+		background-color purpura !important
 	nav .navbar-brand img
 		width 180px
 .dropup .dropdown-menu
@@ -122,3 +125,19 @@ a:hover, a:focus
 
 .footer-area .single-footer-widget .logo img
 	width 200px
+
+.owl-carousel .owl-item img
+	padding-left 20px
+	padding-right 20px
+	padding-top 20px
+	padding-bottom 20px
+	max-height 300px
+	
+.single-team-member .team-content ul li a.youtube 
+	border-color #FF0000
+	color #FF0000
+	
+a.youtube:hover
+	background-color #FF0000 !important
+	color #ffffff !important
+

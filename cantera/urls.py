@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('actualidad/',include('actualidad.urls')),
     path('evento/',include('evento.urls')),
-    path('foro/',include('foro.urls'))
+    path('foro/',include('foro.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]

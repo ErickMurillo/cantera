@@ -37,6 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'actualidad',
+    'evento',
+
+    #aplicaciones de terceros
+    'sorl.thumbnail',
+    'taggit',
+    'ckeditor',
+    'ckeditor_uploader',
+    'location_field.apps.DefaultConfig',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +135,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
    os.path.join(BASE_DIR, "static_media"),
 )
+
+CKEDITOR_UPLOAD_PATH = "uploads/"

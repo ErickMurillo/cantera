@@ -1,2 +1,9 @@
 Django==2.1.7
+django-ckeditor==5.7.0
+django-js-asset==1.2.2
+django-location-field==2.1.0
+django-taggit==1.1.0
+Pillow==6.0.0
 pytz==2018.9
+six==1.12.0
+sorl-thumbnail==12.5.0

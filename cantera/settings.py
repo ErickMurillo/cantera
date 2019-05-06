@@ -34,6 +34,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    
+    'actualidad',
+    'evento',
+
+    #aplicaciones de terceros
+    'sorl.thumbnail',
+    'taggit',
+    'ckeditor',
+    'ckeditor_uploader',
+    'location_field.apps.DefaultConfig',
 ]
 
 SITE_ID = 1
@@ -160,3 +170,5 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+CKEDITOR_UPLOAD_PATH = "uploads/"

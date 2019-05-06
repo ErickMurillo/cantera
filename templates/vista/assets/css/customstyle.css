@@ -30,11 +30,11 @@ a:focus {
 =            menu            =
 ============================*/
 .crake-nav {
-  background-color: #5a4bad;
+  background-color: #6f9d33;
   padding-top: 0;
 }
 .crake-nav.is-sticky {
-  background-color: #5a4bad !important;
+  background-color: #6f9d33 !important;
 }
 .crake-nav nav .navbar-brand img {
   width: 180px;
@@ -88,20 +88,20 @@ display block {
 .menu-icons li i.main {
   font-size: 30px;
   display: inline-block;
-  width: 80px;
-  height: 80px;
+/*  width: 80px;
+  height: 80px;*/
   line-height: 80px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -o-border-radius: 50%;
-  border-radius: 50%;
+/*  border-radius: 50%;*/
   margin-bottom: 15px;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-  background-color: #cb4f24;
-  color: #fff;
+/*  background-color: #cb4f24;*/
+  color: #731313;
 }
 .menu-icons li i.circle {
   font-size: 15px;

@@ -2561,7 +2561,7 @@ Overview CSS
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #CB4F23;
+ /* background: #CB4F23;*/
 }
 
 .overview-box .overview-content ul li:last-child {

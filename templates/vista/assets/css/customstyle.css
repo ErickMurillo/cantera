@@ -4,7 +4,7 @@
 /************color***************/
 a:hover,
 a:focus {
-  color: #cb4f24;
+  color: #ca4f23;
 }
 .bg-gray {
   background-color: #f9fafc;
@@ -18,7 +18,7 @@ a:focus {
 }
 .main-banner {
   background-color: rgba(68,42,119,0.42);
-  height: 500px;
+  height: 300px;
   margin-top: 100px;
 }
 @media only screen and (min-width: 1910px) {
@@ -56,7 +56,7 @@ display block {
   opacity: 1;
 }
 .dropup:hover .visible_hover {
-  color: #cb4f24;
+  color: #71606f;
 }
 .dropup:hover .rotate {
   -webkit-transition: 0.5s;
@@ -69,7 +69,7 @@ display block {
   transform: rotate(180deg);
 }
 .visible_hover:hover {
-  color: #cb4f24 !important;
+  color: #71606f !important;
 }
 /*===================================
 =            menu iconos            =
@@ -77,6 +77,7 @@ display block {
 .menu-icons {
   display: flex;
   flex-wrap: wrap;
+  color: #473144;
 }
 .menu-icons li {
   flex: 0 0 25%;
@@ -86,22 +87,18 @@ display block {
   display: inline-block;
 }
 .menu-icons li i.main {
-  font-size: 30px;
+  font-size: 100px;
   display: inline-block;
-/*  width: 80px;
-  height: 80px;*/
   line-height: 80px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-/*  border-radius: 50%;*/
   margin-bottom: 15px;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-/*  background-color: #cb4f24;*/
-  color: #731313;
+  color: #1c0118;
+}
+.menu-icons li i.main:hover {
+  color: #71606f;
 }
 .menu-icons li i.circle {
   font-size: 15px;
@@ -152,4 +149,8 @@ a.youtube:hover {
 }
 .sidebar-area .widget.widget_recent_posts ul.foro-seguido li {
   padding-left: 0px;
+}
+.dropdown-item:hover {
+  color: #514550;
+  font-weight: 800;
 }

@@ -11,6 +11,8 @@ azul = #004DFF
 purpura = #5a4bad
 logo_color = #cb4f24
 
+icons_color=#1C0118
+
 t_azul = #24A0CB
 t_violeta = #A324CB
 t_verde = #4DCB24
@@ -22,7 +24,7 @@ t_verde = #4DCB24
 
 
 a:hover, a:focus
-	color logo_color
+	color #CA4F23
 .bg-gray
 	background-color #F9FAFC
 
@@ -36,7 +38,7 @@ a:hover, a:focus
 		font-size 45px
 .main-banner
 	background-color #442a776b
-	height 500px
+	height 300px
 	margin-top 100px
 	
 @media only screen and (min-width: 1910px)
@@ -65,12 +67,12 @@ a:hover, a:focus
 	opacity 1
 .dropup:hover
 	.visible_hover
-		color logo_color
+		color #71606F
 	.rotate
 		transition 0.50s
 		transform rotate(180deg)
 .visible_hover:hover
-	color logo_color !important
+	color #71606F !important
 /*===================================
 =            menu iconos            =
 ===================================*/
@@ -84,16 +86,17 @@ a:hover, a:focus
 		font-size 18px
 		display inline-block
 		i.main
-			font-size 30px
+			font-size 100px
 			display inline-block
-			width 80px
-			height 80px
+			// width 80px
+			// height 80px
 			line-height 80px
-			border-radius 50%
+			// border-radius 50%
 			margin-bottom 15px
 			transition 0.5s
-			background-color logo_color
-			color white
+			color icons_color
+		i.main:hover
+			color #71606F
 		i.circle
 			font-size 15px
 			border-radius 50%
@@ -103,6 +106,7 @@ a:hover, a:focus
 			line-height 18px
 			text-align center
 			padding-left 10px
+	color #473144
 .arrow-down:before
 	bottom -7px
 	right 0px
@@ -143,3 +147,7 @@ a.youtube:hover
 
 .sidebar-area .widget.widget_recent_posts ul.foro-seguido li
 	padding-left 0px
+
+.dropdown-item:hover
+	color #514550
+	font-weight 800

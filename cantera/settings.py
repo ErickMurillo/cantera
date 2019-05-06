@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     
     'actualidad',
     'evento',
+    'publicaciones',
+    'organizaciones',
 
     #aplicaciones de terceros
     'sorl.thumbnail',
@@ -44,6 +46,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'location_field.apps.DefaultConfig',
+    'embed_video',
 ]
 
 SITE_ID = 1
@@ -172,3 +175,69 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'extraPlugins': ','.join([
+            # 'image2',
+            'uploadimage', # the upload image feature
+            # your extra plugins here
+            'div',
+            'autolink',
+            'embed',
+            'autoembed',
+            
+            'autogrow',
+            # 'devtools',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath'
+        ]),
+        'toolbar': [
+            { 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ], 'items': [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
+            { 'name': 'clipboard', 'groups': [ 'clipboard', 'undo' ], 'items': [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+            { 'name': 'editing', 'groups': [ 'find', 'selection', 'spellchecker' ], 'items': [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+            #{ 'name': 'forms', 'items': [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
+            '/',
+            { 'name': 'basicstyles', 'groups': [ 'basicstyles', 'cleanup' ], 'items': [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+            { 'name': 'paragraph', 'groups': [ 'list', 'indent', 'blocks', 'align', 'bidi' ], 'items': [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+            { 'name': 'links', 'items': [ 'Link', 'Unlink', 'Anchor' ] },
+            { 'name': 'insert', 'items': [ 'Image', 'Youtube', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+            '/',
+            { 'name': 'styles', 'items': [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+            { 'name': 'colors', 'items': [ 'TextColor', 'BGColor' ] },
+            { 'name': 'tools', 'items': [ 'Maximize', 'ShowBlocks', ] },
+             {
+    }
+
+        ],
+        'height': '300px',
+        'width': 'auto',
+    },
+
+}
+
+LOCATION_FIELD_PATH = STATIC_URL + 'location_field'
+
+LOCATION_FIELD = {
+    'map.provider': 'openstreetmap',
+    'map.zoom': 15,
+
+    'search.provider': 'nominatim',
+    'search.suffix': '',
+
+    # OpenStreetMap
+    'provider.openstreetmap.max_zoom': 18,
+
+    # misc
+    'resources.root_path': LOCATION_FIELD_PATH,
+    'resources.media': {
+        'js': [
+            LOCATION_FIELD_PATH + '/js/jquery.livequery.js',
+            LOCATION_FIELD_PATH + '/js/form.js',
+        ],
+    },
+}

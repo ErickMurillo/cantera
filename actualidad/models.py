@@ -5,8 +5,17 @@ from sorl.thumbnail import ImageField
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 
-
 # Create your models here.
+
+class Temas(models.Model):
+	nombre = models.CharField(max_length=250)
+
+	class Meta: 
+		verbose_name_plural = 'Temas'
+		verbose_name = 'Tema'
+
+	def __str__(self):
+		return self.nombre
 
 Types_actualidad = (
 	(1,'Informemonos'),
@@ -22,6 +31,7 @@ class Actualidad(models.Model):
 	photo = ImageField('Foto',upload_to='actualidad/')
 	content = RichTextUploadingField()
 	created_on = models.DateField('Fecha de publicación', auto_now_add=True)
+	tematica = models.ManyToManyField(Temas)
 	tags = TaggableManager("Tags",help_text='Separar elementos con "," ', blank=True)
 	slug = models.SlugField(max_length=200, editable=False)
 
@@ -38,9 +48,6 @@ class Actualidad(models.Model):
 	def save(self,*args,**kwargs):
 		self.slug = slugify(self.tittle)
 		return super(Actualidad,self).save(*args,*kwargs)
-
-	# def get_absolute_url(self):
-	# 	return '/actualidad/%d/' % (self.id,)
 			
 
 		

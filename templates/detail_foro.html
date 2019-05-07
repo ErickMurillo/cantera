@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+	titulo: {{object.nombre}}
+
+	<h1>Aportes</h1>
+	{% for aporte in object.aportes_set.all %}
+		{{aporte.contenido|safe}}--{{aporte.usuario}}<br>
+		
+		comentarios
+		{% for coment in aporte.comentarios_set.all %}
+			{{coment.comentario|safe}}
+		{% endfor %}
+	{% endfor %}
+	
+	{% if request.user.is_authenticated %}
+	<h1>Agregar aportes</h1>
+	<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+		{{form.media}}
+		{{form.errors}}
+		{{form}}
+		<input type="submit" name="Agregar aporte" value="Agregar aporte">
+	</form>
+	{% endif %}
+{% endblock content %}

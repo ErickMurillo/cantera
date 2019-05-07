@@ -31,6 +31,7 @@ class Contraparte(models.Model):
     contacto = models.CharField(max_length=200,blank=True, null=True)
     correo = models.EmailField(blank=True, null=True)
     telefono = models.CharField(max_length=200, blank=True, null=True)
+    usuarios = models.ManyToManyField(User,blank=True)
     slug = models.SlugField(max_length=200,editable=False)
 
     class Meta:
@@ -55,3 +56,11 @@ class Redes(models.Model):
 	class Meta:
 		verbose_name = 'Red'
 		verbose_name_plural = 'Redes'
+
+class Avatars(models.Model):
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    avatar = ImageField(upload_to='usuario/avatar/')
+
+    class Meta:
+        verbose_name = 'Avatar usuario'
+        verbose_name_plural = 'Avatars usuarios'

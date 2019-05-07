@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'evento',
     'publicaciones',
     'organizaciones',
+    'foro',
+    'galerias',
 
     #aplicaciones de terceros
     'sorl.thumbnail',
@@ -135,7 +137,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
    os.path.join(BASE_DIR, "static_media"),
 )
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

@@ -15,5 +15,5 @@ class ComentarioForm(forms.ModelForm):
 	comentario = forms.CharField(widget=CKEditorUploadingWidget())
 	class Meta:
 		model = Comentarios
-		exclude = ('fecha','usuario',)
+		exclude = ('aporte','fecha','usuario',)
 		

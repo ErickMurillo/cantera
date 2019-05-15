@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
+from django.template.response import TemplateResponse
 
 # Create your views here.
 def list_foros(request, template='list_foros.html'):
@@ -51,8 +52,9 @@ def add_comentario(request,id,template = 'add_comentario.html'):
 		if form.is_valid(): 
 			comentario = form.save(commit=False)
 			comentario.usuario = request.user
-			#comentario.aporte 
-			#return redirect('detalle-foro', slug=object.slug)
+			comentario.aporte = object
+			comentario.save()
+			# return redirect('detalle-foro', slug=object.foro.slug)
 	else:
 		form = ComentarioForm()
 	return render(request,template,locals())

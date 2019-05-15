@@ -41,7 +41,7 @@ titulo: {{object.nombre}}
 
 comentarios
 <p>
-  <a data-fancybox data-touch="false" href="#modal" class="btn btn-primary" onclick="Openmodal({{aportes.id}})">Open demo</a>
+  <a data-fancybox data-touch="false" href="#modal" class="btn btn-primary" onclick="Openmodal({{aporte.id}})">Open demo</a>
 </p>
 
 {% for coment in aporte.comentarios_set.all %}
@@ -51,7 +51,7 @@ comentarios
 {% endfor %}
 
 <div id="modal">
-	<iframe name="modalcomentario"></iframe>
+	<iframe id="modalcomentario" target='_parent'></iframe>
 </div>
 
 {% if request.user.is_authenticated %}
@@ -78,8 +78,7 @@ comentarios
 	function Openmodal(id){
 		console.log(id);
 		var site = "/foros/comentario/agregar/" + id;
-		document.getElementByName("modalcomentario")[0].src = site;
-
+		document.getElementById("modalcomentario").src = site;
 	}
 </script>
 {% endblock extra_js %}

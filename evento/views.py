@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
-def index(request,template='Eventos.html'):
+def indexEventos(request,template='list_eventos.html'):
+	event_list = Evento.objects.order_by('inicio')
 	return render(request, template, locals())
 
-def detail(request,template='eventDetails.html'):
+def detailEventos(request,slug,template='detail_evento.html'):
+	object = Evento.objects.get(slug = slug)
 	return render(request, template,locals())

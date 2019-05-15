@@ -18,8 +18,8 @@ class Temas(models.Model):
 		return self.nombre
 
 Types_actualidad = (
-	(1,'Informemonos'),
-	(2,'Situación regional de genero'),
+	(1,'Informémonos'),
+	(2,'Situación regional de género'),
 	(3,'Reflexiones'),
 	(4,'Campañas'),
 	(5,'Concursos')

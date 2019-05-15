@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Evento(models.Model):
-	title = models.CharField('Título',max_length=200)
+	tittle = models.CharField('Título',max_length=200)
 	foto = ImageField('Foto',upload_to='eventos/')
 	descripcion = RichTextUploadingField()
 	inicio = models.DateField('Fecha de Inicio')

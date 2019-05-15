@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for obj in list_pub %}
+	<li><a href="{% url 'detail_publicacion' obj.slug %}">{{obj}}</a></li>
+{% endfor %}
+	
+{% endblock content %}

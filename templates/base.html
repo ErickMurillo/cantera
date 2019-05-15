@@ -6,6 +6,9 @@
 
 	<body>
 		<li><a href="/foros/">Foros</a></li>
+		<li><a href="/actualidad/">Actualidad</a></li>
+		<li><a href="/eventos/">Eventos</a></li>
+		<li><a href="/publicaciones/">Publicaciones</a></li>
 		{% if request.user.is_authenticated %}
 			<li><a href="/accounts/profile/">{{user.get_full_name|default:user.username}}</a></li>
 			<li><a href="/accounts/logout/">logout</a></li>

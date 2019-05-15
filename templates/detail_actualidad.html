@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<p>Detalles {{object.tittle}}</p>
+
+	<div><img src="{{object.photo.url}}"></div>
+
+	<div>contenido: {{object.content|safe}}</div>
+{% endblock content %}

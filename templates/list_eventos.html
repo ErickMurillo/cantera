@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% for obj in event_list  %}
+		<li><a href="{% url 'detailEventos' obj.slug %}">{{obj}}</a></li>
+		
+	{% endfor %}
+
+{% endblock content %}

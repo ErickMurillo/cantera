@@ -14,10 +14,11 @@ titulo: {{object.nombre}}
 {{aporte.contenido|safe}}--{{aporte.usuario}}<br>
 
 comentarios
-
-<a data-fancybox data-type="iframe" data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
+{% if request.user.is_authenticated %}
+<a data-fancybox data-type="iframe" data-fancybox data-options='{"iframe" : {"css" : {"height" : "600px"}}}'data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
 	Agregar comentario
 </a>
+{% endif %}
 
 
 {% for coment in aporte.comentarios_set.all %}

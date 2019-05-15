@@ -1,12 +1,11 @@
 <div class="content-header">
-	Agregar comentario
+	Modificar comentario
 </div>
 <div class="content-scroll">
 	<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
 		{{form.media}}
 		{{form.errors}}
 		{{form}}
-		<input type="submit" name="Agregar aporte" value="Agregar comentario">
+		<input type="submit" name="Modificar comentario" value="Modificar comentario">
 	</form>
 </div>
-

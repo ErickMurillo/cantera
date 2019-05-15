@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 
@@ -17,7 +17,7 @@ def detail_foro(request, slug, template = 'detail_foro.html'):
 			aporte.foro = object
 			aporte.usuario = request.user
 			aporte.save()
-			return redirect('detalle-foro', id=object.slug)
+			return redirect('detalle-foro', slug=object.slug)
 
 			# try:
 				# subject, from_email = 'Nuevo aporte al foro ' + discusion.nombre, 'cluster.nicaragua@gmail.com'
@@ -36,8 +36,24 @@ def detail_foro(request, slug, template = 'detail_foro.html'):
 				
 			# except:
 			# 	pass
+	
+
 
 	else:
 		form = AporteForm()
 
 	return render(request,template,locals())
+
+def add_comentario(request,id,template = 'add_comentario.html'):
+	object = Aportes.objects.get(id = id)
+	if request.method == 'POST':
+		form = ComentarioForm(request.POST)
+		if form.is_valid(): 
+			comentario = form.save(commit=False)
+			comentario.usuario = request.user
+			#comentario.aporte 
+			#return redirect('detalle-foro', slug=object.slug)
+	else:
+		form = ComentarioForm()
+	return render(request,template,locals())
+

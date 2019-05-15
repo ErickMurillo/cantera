@@ -1,0 +1,11 @@
+<div class="content-header">
+	<button class="btn" onclick="javascript:$('#more').toggle();;">Toggle content</button>
+</div>
+<div class="content-scroll">
+	<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+		{{form.media}}
+		{{form.errors}}
+		{{form}}
+		<input type="submit" name="Agregar aporte" value="Agregar comentario">
+	</form>
+</div>

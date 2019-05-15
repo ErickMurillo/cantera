@@ -1,25 +1,85 @@
+
 {% extends "base.html" %}
 
-{% block content %}
-	titulo: {{object.nombre}}
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
 
-	<h1>Aportes</h1>
-	{% for aporte in object.aportes_set.all %}
-		{{aporte.contenido|safe}}--{{aporte.usuario}}<br>
-		
-		comentarios
-		{% for coment in aporte.comentarios_set.all %}
-			{{coment.comentario|safe}}
-		{% endfor %}
-	{% endfor %}
-	
-	{% if request.user.is_authenticated %}
-	<h1>Agregar aportes</h1>
-	<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-		{{form.media}}
-		{{form.errors}}
-		{{form}}
-		<input type="submit" name="Agregar aporte" value="Agregar aporte">
-	</form>
-	{% endif %}
+<style type="text/css">
+	#modal {
+  display: none;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 0 40px 0;
+  text-align: justify;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+#modal .fancybox-close-small {
+  top: 15px;
+}
+
+#modal .content-header {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+}
+
+#modal .content-scroll {
+  max-height: calc(100vh - 200px);
+  overflow: auto;
+  padding: 40px 20px 0 20px;
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+titulo: {{object.nombre}}
+
+<h1>Aportes</h1>
+{% for aporte in object.aportes_set.all %}
+{{aporte.contenido|safe}}--{{aporte.usuario}}<br>
+
+comentarios
+<p>
+  <a data-fancybox data-touch="false" href="#modal" class="btn btn-primary" onclick="Openmodal({{aportes.id}})">Open demo</a>
+</p>
+
+{% for coment in aporte.comentarios_set.all %}
+{{coment.comentario|safe}}
+
+{% endfor %}
+{% endfor %}
+
+<div id="modal">
+	<iframe name="modalcomentario"></iframe>
+</div>
+
+{% if request.user.is_authenticated %}
+<h1>Agregar aportes</h1>
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+	{{form.media}}
+	{{form.errors}}
+	{{form}}
+	<input type="submit" name="Agregar aporte" value="Agregar aporte">
+</form>
+{% endif %}
 {% endblock content %}
+
+{% block extra_js %}
+<script src="/static/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript">
+	$('[data-fancybox]').fancybox({
+	toolbar  : false,
+	smallBtn : true,
+	iframe : {
+		preload : false
+	}
+});
+	function Openmodal(id){
+		console.log(id);
+		var site = "/foros/comentario/agregar/" + id;
+		document.getElementByName("modalcomentario")[0].src = site;
+
+	}
+</script>
+{% endblock extra_js %}

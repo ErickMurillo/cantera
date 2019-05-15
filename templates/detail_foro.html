@@ -15,15 +15,19 @@ titulo: {{object.nombre}}
 
 comentarios
 {% if request.user.is_authenticated %}
-<a data-fancybox data-type="iframe" data-fancybox data-options='{"iframe" : {"css" : {"height" : "600px"}}}'data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
-	Agregar comentario
+
+
+<a class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
+	Agregar
+
 </a>
 {% endif %}
 
-
 {% for coment in aporte.comentarios_set.all %}
 {{coment.comentario|safe}}
-
+<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_comentario' coment.id %}" href="javascript:;">
+	Modificar
+</a>
 {% endfor %}
 {% endfor %}
 
@@ -40,4 +44,15 @@ comentarios
 
 {% block extra_js %}
 <script src="/static/js/jquery.fancybox.min.js"></script>
+
+<script>
+$('.fancybox').fancybox({ 
+  afterShow: function(){     
+    $('.fancybox-iframe').contents().find('input').click(function(){
+         window.parent.location.reload();
+         window.parent.$.fancybox.close();
+     }); 
+   }
+ });
+</script>
 {% endblock extra_js %}

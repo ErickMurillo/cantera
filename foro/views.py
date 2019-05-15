@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
-from django.template.response import TemplateResponse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def list_foros(request, template='list_foros.html'):
@@ -12,7 +12,7 @@ def detail_foro(request, slug, template = 'detail_foro.html'):
 	object = Foros.objects.get(slug = slug)
 
 	if request.method == 'POST':
-		form = AporteForm(request.POST)
+		form = AporteForm(request.POST, request.FILES)
 		if form.is_valid():
 			aporte = form.save(commit=False)
 			aporte.foro = object
@@ -45,10 +45,11 @@ def detail_foro(request, slug, template = 'detail_foro.html'):
 
 	return render(request,template,locals())
 
+@login_required
 def add_comentario(request,id,template = 'add_comentario.html'):
 	object = Aportes.objects.get(id = id)
 	if request.method == 'POST':
-		form = ComentarioForm(request.POST)
+		form = ComentarioForm(request.POST, request.FILES)
 		if form.is_valid(): 
 			comentario = form.save(commit=False)
 			comentario.usuario = request.user
@@ -58,4 +59,21 @@ def add_comentario(request,id,template = 'add_comentario.html'):
 	else:
 		form = ComentarioForm()
 	return render(request,template,locals())
+
+@login_required
+def editar_comentario(request, id, template='editar_comentario.html'):
+	object = Comentarios.objects.get(id = id)
+	if request.method == 'POST':
+		form = ComentarioForm(request.POST, request.FILES,instance=object)
+		if form.is_valid():
+			form_uncommited = form.save()
+			form_uncommited.aporte = object.aporte
+			form_uncommited.usuario = request.user
+			form_uncommited.save()
+
+			# return redirect('detalle-foro', id=object.aporte.foro.id)
+	else:
+		form = ComentarioForm(instance=object)
+
+	return render(request, template, locals())
 

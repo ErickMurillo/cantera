@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.socialaccount_set.all.0.get_avatar_url %}
+	<img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />
+{% endif %}
+	
+{% endblock content %}

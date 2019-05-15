@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from .views import *
 
 urlpatterns = [
-	path('',views.index, name='foro'),
-	path('detalle/',views.detail, name='detalle'),
+	path('', list_foros, name='foro'),
+	path('<slug>/',detail_foro, name='detalle-foro'),
 ]

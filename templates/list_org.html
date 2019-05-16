@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p align="center">Index organizaciones</p>
+	<ol>
+	{% for obj in list_object %}
+	<li><a href="{% url 'detalles_organizaciones' obj.slug %}">{{obj}}</a></li>
+		
+	{% endfor %}
+	</ol>
+
+{% endblock content %}

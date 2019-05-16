@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+<!--{% load embed_video_tags %}-->
+
+{% block content %}
+<p>Detalles {{object.titulo}}</p>
+
+<!--{{object.imagen.url}} -->
+<p>Imagenes</p>
+
+{% for galeria in object.imagenes_set.all %}
+<div class="" style="display: inline-block;" data-bound="">
+	{% thumbnail galeria.imagen "800" crop="center" as im %}
+	<p>{{galeria.nombre}}</p>
+	<a class="" title="{{galeria.nombre}}" href="{{im.url}}">
+		{% endthumbnail %}
+		<!--<a class="gallery-item cboxElement" href="/media/{{galeria.imagen}}">-->
+			{% thumbnail galeria.imagen "380x250" crop="center" as im %}
+			<img class="gallery-item__photo lazy" src="{{im.url}}" style="display: inline; " >
+			{% endthumbnail %}
+			<div class="loader loder-hide"></div>
+		</a><!--/.portfolio-item-->
+
+	</div>
+	{% endfor %}
+
+	{% endblock content %}

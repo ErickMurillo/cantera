@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<p align="center">Galeria</p>
+
+	{% for obj in  list_galeria %}
+	<li><a href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a></li>
+		
+	{% endfor %}
+
+{% endblock content %}

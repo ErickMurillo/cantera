@@ -27,6 +27,7 @@ urlpatterns = [
     path('foros/',include('foro.urls')),
     path('galerias/',include('galerias.urls')),
     path('publicaciones/',include('publicaciones.urls')),
+    path('organizaciones/',include('organizaciones.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', perfil, name='perfil'),
     path('ckeditor/', include('ckeditor_uploader.urls')),

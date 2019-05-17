@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'organizaciones',
     'foro',
     'galerias',
+    'users.apps.UsersConfig',
 
     #aplicaciones de terceros
     'sorl.thumbnail',
@@ -50,6 +51,8 @@ INSTALLED_APPS = [
     'location_field.apps.DefaultConfig',
     'embed_video',
 ]
+
+AUTH_USER_MODEL = 'users.User'
 
 SITE_ID = 1
 

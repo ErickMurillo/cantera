@@ -3,7 +3,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from location_field.models.plain import PlainLocationField
 from sorl.thumbnail import ImageField
-from django.contrib.auth.models import User
+from users.models import User
 
 # Create your models here.
 

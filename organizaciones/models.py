@@ -1,6 +1,6 @@
 from django.db import models
 from sorl.thumbnail import ImageField
-from django.contrib.auth.models import User
+# from users.models import User
 from actualidad.models import * 
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
@@ -31,7 +31,7 @@ class Contraparte(models.Model):
     contacto = models.CharField(max_length=200,blank=True, null=True)
     correo = models.EmailField(blank=True, null=True)
     telefono = models.CharField(max_length=200, blank=True, null=True)
-    usuarios = models.ManyToManyField(User,blank=True)
+    # usuarios = models.ManyToManyField(User,blank=True)
     slug = models.SlugField(max_length=200,editable=False)
 
     class Meta:
@@ -57,10 +57,10 @@ class Redes(models.Model):
 		verbose_name = 'Red'
 		verbose_name_plural = 'Redes'
 
-class Avatars(models.Model):
-    user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
-    avatar = ImageField(upload_to='usuario/avatar/')
+# class Avatars(models.Model):
+#     user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+#     avatar = ImageField(upload_to='usuario/avatar/')
 
-    class Meta:
-        verbose_name = 'Avatar usuario'
-        verbose_name_plural = 'Avatars usuarios'
+#     class Meta:
+#         verbose_name = 'Avatar usuario'
+#         verbose_name_plural = 'Avatars usuarios'

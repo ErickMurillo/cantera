@@ -2,7 +2,7 @@ from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from sorl.thumbnail import ImageField
-from django.contrib.auth.models import User
+from users.models import User
 from actualidad.models import *
 
 # Create your models here.

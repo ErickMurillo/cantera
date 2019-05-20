@@ -1,9 +1,11 @@
-{% extends "base.html" %}
+{% extends "admin/base_admin.html" %}
 
 {% block content %}
 
-{% if user.socialaccount_set.all.0.get_avatar_url %}
+<!-- {% if user.socialaccount_set.all.0.get_avatar_url %}
 	<img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />
-{% endif %}
+{% endif %} -->
+
+<p>Admin Usuario organizacion</p> 
 	
 {% endblock content %}

@@ -1,0 +1,31 @@
+<html>
+<head>
+
+	{% block extra_css %}{% endblock extra_css %}
+</head>
+
+<body>
+	{% if request.user.is_authenticated %}
+	<ul>
+		<li><a href="/contrapartes">Organizaciones</a></li>
+		<li><a href="/contrapartes/actualidad">Actualidad</a></li>
+		<li><a href="/contrapartes/foros">Foros</a></li>
+		<li><a href="/contrapartes/iniciativas-destacadas">Iniciativas destacadas</a></li>
+		<li><a href="/contrapartes/recursos-metodologicos">Recursos metodológicos</a></li>	
+	</ul>
+	
+	
+	<li><a href="/accounts/profile/">{{user.get_full_name|default:user.username}}</a></li>
+	<li><a href="/accounts/logout/">logout</a></li>
+
+	{% else %}
+	<li><a href="/accounts/login/?next={{ request.path }}">login</a></li>
+	{% endif %}
+
+	{% block content %}{% endblock content %}
+
+	<script src="/static/js/jquery.min.js"></script>
+	{% block extra_js %}{% endblock extra_js %}
+
+</body>
+</html>

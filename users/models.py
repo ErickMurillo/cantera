@@ -8,5 +8,5 @@ class User(AbstractUser):
 	avatar = ImageField(upload_to='usuario/avatar/',null=True,blank=True)
 
 	def __str__(self):
-		return self.email
+		return self.username
 

@@ -2,4 +2,11 @@
 
 {% block content %}
 	<p>Lista dummy Foros organizaciones</p>
+	<button>crear foro</button>
+	<ul>
+	{% for obj in list_object_forum %}
+		<li><a href="">{{obj}}</a></li>
+		
+	{% endfor %}
+	</ul>
 {% endblock content %}

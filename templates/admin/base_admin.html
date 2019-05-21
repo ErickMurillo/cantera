@@ -10,12 +10,12 @@
 		<li><a href="/contrapartes">Organizaciones</a></li>
 		<li><a href="/contrapartes/actualidad">Actualidad</a></li>
 		<li><a href="/contrapartes/foros">Foros</a></li>
-		<li><a href="/contrapartes/iniciativas-destacadas">Iniciativas destacadas</a></li>
-		<li><a href="/contrapartes/recursos-metodologicos">Recursos metodológicos</a></li>	
+		<li><a href="/contrapartes/iniciativas-destacadas/eventos/">Eventos</a></li>
+		<li><a href="/contrapartes/recursos-metodologicos/galerias/imagenes">Imagenes</a></li>	
 	</ul>
 	
 	
-	<li><a href="/accounts/profile/">{{user.get_full_name|default:user.username}}</a></li>
+	<li><a href="/accounts/profile/">{{request.user.get_full_name|default:request.user.username}}</a></li>
 	<li><a href="/accounts/logout/">logout</a></li>
 
 	{% else %}

@@ -1,0 +1,16 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+	<p> Galeria</p>
+	<button>crear galeria de imagenes</button>
+
+	{% for obj in list_objects_imagenes %}
+	<li>{{obj}}</li>
+		
+	{% endfor %}
+
+	<p>Videos</p>
+	{% for video in list_objects_video %}
+		<li><a href="">{{video}}</a></li>
+	{% endfor %}
+{% endblock content %}

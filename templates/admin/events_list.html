@@ -1,0 +1,12 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+	<p>Lista dummy Iniciativas destacadas organizaciones</p>
+	<button>crear evento</button>
+
+	<ul>
+	{% for obj in list_object_events  %}
+	<li><a href="">{{obj}}</a></li>		
+	{% endfor %}
+	</ul>
+{% endblock content %}

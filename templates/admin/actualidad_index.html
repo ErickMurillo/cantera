@@ -2,11 +2,11 @@
 
 {% block content %}
 	<p>Lista dummy actualidad organizacion</p>
-	<button>Crear actualidad</button>
+	<a href="./agregar">Crear actualidad</a>
 	<br>
 	<ul>
 	{% for obj in list_object %}
-		<li><a href="">{{obj}}</a></li>
+		<li><a href="">{{obj}}</a> | <a href="#"> Editar </a>|<a href=""> Eliminar</a></li>
 	{% endfor %}
 	</ul>
 {% endblock content %}

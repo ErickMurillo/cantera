@@ -2,7 +2,7 @@
 
 {% block content %}
 	<p> Galeria</p>
-	<button>crear galeria de imagenes</button>
+	<a href="./imagenes/agregar">crear galeria de imagenes</a>
 
 	{% for obj in list_objects_imagenes %}
 	<li>{{obj}}</li>
@@ -10,6 +10,8 @@
 	{% endfor %}
 
 	<p>Videos</p>
+	<a href="./imagenes/agregar">crear galeria de videos</a>
+
 	{% for video in list_objects_video %}
 		<li><a href="">{{video}}</a></li>
 	{% endfor %}

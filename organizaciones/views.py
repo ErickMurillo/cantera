@@ -28,7 +28,7 @@ def actualidad_list(request, template = 'admin/actualidad_index.html'):
 @login_required
 def actualidad_crear(request,template = 'admin/new_actualidad.html'):
 	if request.method == 'POST':
-		form = ActualidadForms(request.POST, request.FILES)
+		form = ActualidadForms(request.POST,request.FILES)
 		if form.is_valid():
 			actualidad = form.save(commit=False)
 			actualidad.author = request.user
@@ -37,6 +37,7 @@ def actualidad_crear(request,template = 'admin/new_actualidad.html'):
 			return HttpResponseRedirect('/contrapartes/actualidad/')
 	else:
 		form = ActualidadForms()
+
 	return render(request, template, locals())
 
 @login_required

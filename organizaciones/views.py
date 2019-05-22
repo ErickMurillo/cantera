@@ -28,13 +28,14 @@ def actualidad_list(request, template = 'admin/actualidad_index.html'):
 @login_required
 def actualidad_crear(request,template = 'admin/new_actualidad.html'):
 	if request.method == 'POST':
+		print('method post')
 		form = ActualidadForms(request.POST, request.FILES)
 		if form.is_valid():
 			actualidad = form.save(commit=False)
 			actualidad.author = request.user
 			actualidad.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/contrapartes/actualidad/')
+			return HttpResponseRedirect('/contrapartes/iniciativas-destacadas/eventos/')
 	else:
 		form = ActualidadForms()
 	return render(request, template, locals())

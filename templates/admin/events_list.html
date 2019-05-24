@@ -2,11 +2,11 @@
 
 {% block content %}
 	<p>Lista dummy Iniciativas destacadas organizaciones</p>
-	<button>crear evento</button>
+	<a href="./agregar">Crear Evento</a>
 
 	<ul>
 	{% for obj in list_object_events  %}
-	<li><a href="">{{obj}}</a></li>		
+	<li><a href="">{{obj}}</a> | <a href="{% url 'events_editar' obj.slug %}">Editar</a> | <a href="{%url 'events_eliminar' obj.id %}">Eliminar</a></li>		
 	{% endfor %}
 	</ul>
 {% endblock content %}

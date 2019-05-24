@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from django.shortcuts import render,redirect,get_object_or_404
+=======
+from django.shortcuts import render,redirect, get_object_or_404
+>>>>>>> e26d18ae78d003ed3707be2592d60e41c71e63b6
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -7,6 +11,7 @@ from foro.models import *
 from evento.models import *
 from galerias.models import *
 from actualidad.forms import *
+from evento.forms import *
 
 # Create your views here.
 
@@ -75,8 +80,39 @@ def events_list(request,template = 'admin/events_list.html'):
 def edit_event(request, template = 'edit_event.html'):
 	return render(request,template,locals())
 
+@login_required
 def events_crear(request,template = 'admin/new_event.html'):
+	if request.method == 'POST':
+		form = EventsForms(request.POST, request.FILES)
+		if form.is_valid():
+			event = form.save(commit=False)
+			event.author = request.user
+			event.save()
+			form.save_m2m()
+			return HttpResponseRedirect('/contrapartes/iniciativas-destacadas/eventos/')
+	else:
+		form = EventsForms()
 	return render(request, template, locals())
+
+@login_required
+def events_editar(request, slug, template = 'admin/new_event.html'):
+	object = get_object_or_404(Evento, slug=slug)
+	if request.method == 'POST':
+		form = EventsForms(request.POST, request.FILES, instance=object)
+		if form.is_valid():
+			form_uncommited = form.save()
+			form_uncommited.author = request.user
+			form_uncommited.save()
+			return HttpResponseRedirect('/contrapartes/iniciativas-destacadas/eventos/')
+	else:
+		form = EventsForms(instance=object)
+
+	return render(request, template, locals())
+
+@login_required
+def events_eliminar(request, id):
+	nota = Evento.objects.get(id = id).delete()
+	return HttpResponseRedirect('/contrapartes/iniciativas-destacadas/eventos/')
 
 def galeria_list(request,template='admin/galeria_list.html'):
 	list_objects_imagenes = GaleriaImagenes.objects.filter(usuario = request.user.id)

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -28,16 +28,17 @@ def actualidad_list(request, template = 'admin/actualidad_index.html'):
 @login_required
 def actualidad_crear(request,template = 'admin/new_actualidad.html'):
 	if request.method == 'POST':
-		print('method post')
 		form = ActualidadForms(request.POST, request.FILES)
+
 		if form.is_valid():
 			actualidad = form.save(commit=False)
 			actualidad.author = request.user
 			actualidad.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/contrapartes/iniciativas-destacadas/eventos/')
+			return HttpResponseRedirect('/contrapartes/actualidad/')
 	else:
 		form = ActualidadForms()
+
 	return render(request, template, locals())
 
 @login_required
@@ -47,12 +48,18 @@ def actualidad_editar(request, slug, template = 'admin/edit_actualidad.html'):
 		form = ActualidadForms(request.POST, request.FILES, instance=object)
 		if form.is_valid():
 			form_uncommited = form.save()
-			form_uncommited.user = request.user
+			form_uncommited.author = request.user
 			form_uncommited.save()
 			return HttpResponseRedirect('/contrapartes/actualidad/')
 	else:
 		form = ActualidadForms(instance=object)
 	return render(request, template, locals())
+
+@login_required
+def eliminar_actualidad(request, slug):
+	actualidad = Actualidad.objects.get(slug = slug).delete()
+	return HttpResponseRedirect('/contrapartes/actualidad/')
+
 
 def foros_list(request, template = 'admin/foros_list.html'):
 	list_object_forum = Foros.objects.filter(usuario = request.user.id)
@@ -63,6 +70,9 @@ def foros_crear(request,template = 'admin/new_foro.html'):
 
 def events_list(request,template = 'admin/events_list.html'):
 	list_object_events = Evento.objects.filter(author = request.user.id)
+	return render(request,template,locals())
+
+def edit_event(request, template = 'edit_event.html'):
 	return render(request,template,locals())
 
 def events_crear(request,template = 'admin/new_event.html'):

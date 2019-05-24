@@ -5,14 +5,14 @@
 	<a href="./imagenes/agregar">crear galeria de imagenes</a>
 
 	{% for obj in list_objects_imagenes %}
-	<li>{{obj}}</li>
+	<li>{{obj}} | <a href="{% url 'galeria_img_editar' obj.id %}">Editar</a> | <a href="{% url 'galeria_img_eliminar' obj.id %}">Eliminar</a></li>
 		
 	{% endfor %}
 
 	<p>Videos</p>
-	<a href="./imagenes/agregar">crear galeria de videos</a>
+	<a href="./videos/agregar">crear galeria de videos</a>
 
 	{% for video in list_objects_video %}
-		<li><a href="">{{video}}</a></li>
+		<li><a href="">{{video}}</a> | <a href="{% url 'galeria_vid_editar' video.id %}">Editar</a> | <a href="{% url 'galeria_vid_eliminar' video.id %}">Eliminar</a></li>
 	{% endfor %}
 {% endblock content %}

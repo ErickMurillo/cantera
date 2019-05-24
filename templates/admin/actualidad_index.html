@@ -5,7 +5,7 @@
 	<br>
 	<ul>
 	{% for obj in list_object %}
-		<li><a href="">{{obj}}</a> | <a href="{% url 'actualidad_editar' obj.slug %}"> Editar </a>|<a href="{% url 'eliminar_actualidad' obj.slug %}"> Eliminar</a></li>
+		<li><a href="">{{obj}}</a> | <a href="{% url 'actualidad_editar' obj.id %}"> Editar </a>|<a href="{% url 'eliminar_actualidad' obj.id %}"> Eliminar</a></li>
 	{% endfor %}
 	</ul>
 {% endblock content %}

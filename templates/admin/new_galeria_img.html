@@ -1,0 +1,30 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<p>Galeria de imagenes</p>
+
+<form action="." method="POST" class="form-inline" enctype="multipart/form-data">{% csrf_token %}
+	{{form.media}}
+	{{form}}
+	<h4 class="blog-details__title">Imagenes</h4>
+	<hr>
+	<div class="row">
+		{{ formset.management_form }}
+
+		{% for img in formset %}
+		<div class="col-md-4">
+			{% if img.errors %}
+			{{img.errors}}
+			{% endif %}
+
+			{{img.id}}
+			{{img.nombre}}
+			{{img.imagen}}
+			Eliminar: {{img.DELETE}}
+		</div>
+		{% endfor %}
+	</div>
+	<input type="submit" name="Guardar" value="Guardar">
+</form>
+
+{% endblock content %}

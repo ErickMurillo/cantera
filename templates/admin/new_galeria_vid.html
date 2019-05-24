@@ -1,0 +1,11 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<p>Galeria Video</p>
+<form action="." method="POST" class="form-inline" enctype="multipart/form-data">{% csrf_token %}
+	{{form.media}}
+	{{form.errors}}
+	{{form}}
+	<input type="submit" name="Guardar" value="Guardar">
+</form>
+{% endblock content %}

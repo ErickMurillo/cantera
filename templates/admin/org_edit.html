@@ -1,0 +1,37 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<p>Modificar Org</p>
+
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+	{{form.media}}
+	{{form.errors}}
+	{{form}}
+
+	<div>
+
+		<h4 class="blog-details__title">Redes</h4>
+		<hr>
+		<div class="row">
+			{{ formset.management_form }}
+
+			{% for red in formset %}
+			<div class="col-md-4">
+				{% if red.errors %}
+				{{red.errors}}
+				{% endif %}
+
+				{{red.id}}
+				{{red.opcion}}
+				{{red.url}}
+				Eliminar: {{red.DELETE}}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+	<input type="submit" name="guardar" value="Guardar">	
+</form>
+
+{% endblock content %}

@@ -1,6 +1,7 @@
 {% extends "admin/base_admin.html" %}
 
 {% block content %}
-<p>Dummy data organizacion</p>
+<p>Data organizacion</p>
+	<a href="{% url 'org_editar' organizacion.id%}">Editar org</a>
 	{{organizacion}}
 {% endblock content %}

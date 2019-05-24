@@ -1,0 +1,11 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<p align="center">Crear Evento</p>
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+	{{form.media}}
+	{{form.errors}}
+	{{form}}
+	<input type="submit" name="Agregar" value="Agregar Evento">
+</form>
+{% endblock content %}

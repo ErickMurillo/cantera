@@ -26,31 +26,30 @@ def detalles_org(request, slug, template = 'detail_org.html'):
 #-- ADMIN
 @login_required
 def org_editar(request,id, template = 'admin/org_edit.html'):
-	id_org = Contraparte.objects.get(id = request.user.organizacion.id)
-	if id_org == id:
-		print(id_org)
+	#obtener la organizacion asociada al usuario
+	usr_org = Contraparte.objects.get(id = request.user.organizacion.id)
+	# Validar que la organizacion que se desea editar es la asignada al usuario
+	if str(usr_org.id) == id:
+		contra = get_object_or_404(Contraparte, id=id)
+		FormSetInit = inlineformset_factory(Contraparte, Redes, form=RedesFrom,extra=11,max_num=11)
+
+		if request.method == 'POST':
+			form = ContraparteForms(data=request.POST,instance=contra,files=request.FILES)
+			formset = FormSetInit(request.POST,request.FILES,instance=contra)
+
+			if form.is_valid() and formset.is_valid():
+				form_uncommited = form.save(commit=False)
+				form_uncommited.user = request.user
+				form_uncommited.save()
+
+				formset.save()
+				return HttpResponseRedirect('/accounts/profile/')
+		else:
+			form = ContraparteForms(instance=contra)
+			formset = FormSetInit(instance=contra)
+		return render(request, template, locals())
 	else:
-		print('No match') 
-
-	contra = get_object_or_404(Contraparte, id=id)
-	FormSetInit = inlineformset_factory(Contraparte, Redes, form=RedesFrom,extra=11,max_num=11)
-
-	if request.method == 'POST':
-		form = ContraparteForms(data=request.POST,instance=contra,files=request.FILES)
-		formset = FormSetInit(request.POST,request.FILES,instance=contra)
-
-		if form.is_valid() and formset.is_valid():
-			form_uncommited = form.save(commit=False)
-			form_uncommited.user = request.user
-			form_uncommited.save()
-
-			formset.save()
-			return HttpResponseRedirect('/accounts/profile/')
-	else:
-		form = ContraparteForms(instance=contra)
-		formset = FormSetInit(instance=contra)
-
-	return render(request, template, locals())
+		return HttpResponse('Bad request')
 
 def actualidad_list(request, template = 'admin/actualidad_index.html'):
 	list_object = Actualidad.objects.filter(author = request.user.id)

@@ -1,7 +1,165 @@
 {% extends "base.html" %}
+{% load el_pagination_tags %}
+{% load thumbnail %}
 
 {% block content %}
-	{% for obj in list_object %}
-		<li><a href="{% url 'detalle_actualidad' obj.slug %}">{{obj}}</a></li>
-	{% endfor %}
-{% endblock content %}
+
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="white-color">Actualidad</h2>
+				<ol class="breadcrumb">
+					<li class="white-color"> <a href="/">
+						Inicio
+					</a> </li>
+					<li class="active">Actualidad</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7 col-md-8 col-lg-8">
+				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
+					{% paginate 6 list_object %}
+					{% for obj in list_object %}
+					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">			
+						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+							<div class="item-media"> 
+								{% thumbnail obj.photo "333x229" crop="center" as im %}
+								    <img src="{{ im.url }}" alt="">
+								{% empty %}
+									<img src="http://via.placeholder.com/333x229" alt="">
+								{% endthumbnail %}
+								
+							</div>
+							<div class="item-content">
+								<header class="entry-header">
+									<div class="categories-links small-text highlightlinks"> <a href="#"> {{obj.get_category_display}}</a> 
+									</div>
+
+
+									<div class="entry-meta greylinks color4 inline-content"> 
+										<span>
+											<i class="fa fa-calendar highlight1 rightpadding_5" aria-hidden="true"></i>
+											<time datetime="2017-10-03T08:50:40+00:00">{{obj.created_on|date:"d N, Y"}}</time>
+										</span>
+									</div>
+
+
+
+									<h3 class="entry-title small bottommargin_0"> <a href="gallery-single.html" rel="bookmark">
+										{{obj.tittle}}
+									</a> </h3>
+								</header>
+								<p class="content-3lines-ellipsis">{{obj.content|safe|striptags|truncatechars:100}} ...<a href="{% url 'detalle_actualidad' obj.slug %}" class="more-link"> Leer más</a> </p>
+							</div>
+						</article>
+					</div>
+					{% endfor %}
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<div class="topmargin_20">
+							<!--<ul class="pagination">
+								<li><a href="#"><span class="sr-only">Prev</span><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#"><span class="sr-only">Next</span><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+							</ul>-->
+							{% show_pages %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--eof .col-sm-8 (main content)-->
+			<!-- sidebar -->
+			<aside class="col-sm-5 col-md-4 col-lg-4">
+				<div class="widget widget_search">
+					<form method="get" class="searchform" action="./">
+						<div class="form-group margin_0"> <label class="sr-only" for="widget-search">Search for:</label> <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Buscar..."> </div> <button type="submit" class="theme_button color1">Search</button>									</form>
+					</div>
+
+					<!-- categorias -->
+					<div class="widget">
+						<h4 class="widget-title">Categorías</h4>
+						<div class="">
+							<ul>
+								<li><a href="">Informémonos</a>	</li>									
+								<li><a href="">Situación regional de género</a></li>
+								<li><a href="">Reflexiones</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- tags -->
+					<div class="widget">
+						<h4 class="widget-title">Tags</h4>
+						<div class="tagcloud">
+							<a href="">Igualdad</a>
+							<a href="">Género</a>
+							<a href="">Metodología</a>
+							<a href="">Nicaragua</a>
+							<a href="">Cultura</a>
+						</div>
+					</div>
+
+
+					<div class="widget widget_slider widget_recent_posts">
+						<h4 class="widget-title"> Próximos Eventos </h4>
+						<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+							<div class="vertical-item content-padding with_border">
+								<div class="item-media"> <img src="images/circulo_mujeres.jpg" alt="">
+									<div class="media-links"> <a class="abs-link" title="" href="blog-single-left.html"></a> </div>
+								</div>
+								<div class="item-content">
+									<h5 class="bottommargin_0"> <a href="blog-single-right.html">Cantera participará en mesa técnica de género</a> </h5> <span class="entry-meta greylinks">
+										<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+										<a href="blog-single-full.html">
+											<time datetime="2017-10-03T08:50:40+00:00">
+											17 jan, 2018</time>
+										</a>
+									</span> </div>
+								</div>
+								<div class="vertical-item content-padding with_border">
+									<div class="item-media bottommargin_15"> <img src="http://www.programas-gtz.org.ni/thumb/evento/600x600/1234657882_Grupos%20de%20trabajo.JPG" alt="">
+										<div class="media-links"> <a class="abs-link" title="" href="blog-single-left.html"></a> </div>
+									</div>
+									<div class="item-content">
+										<h5 class="bottommargin_0"> <a href="blog-single-right.html">Elaboración Estrategia De Género Para CANTERA</a> </h5> <span class="entry-meta greylinks">
+											<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+											<a href="blog-single-full.html">
+												<time datetime="2017-10-03T08:50:40+00:00">
+												17 jan, 2018</time>
+											</a>
+										</span> </div>
+									</div>
+									<div class="vertical-item content-padding with_border">
+										<div class="item-media bottommargin_15"> <img src="https://lavozdetarija.com/wp-content/uploads/2019/05/MG_0020-e1556894630498.jpg" alt="">
+											<div class="media-links"> <a class="abs-link" title="" href="blog-single-left.html"></a> </div>
+										</div>
+										<div class="item-content">
+											<h5 class="bottommargin_0"> <a href="blog-single-right.html">1º Congreso Internacional de equidad de género</a> </h5> <span class="entry-meta greylinks">
+												<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+												<a href="blog-single-full.html">
+													<time datetime="2017-10-03T08:50:40+00:00">
+													17 jan, 2018</time>
+												</a>
+											</span> </div>
+										</div>
+									</div>
+								</div>
+
+							</aside>
+							<!-- eof aside sidebar -->
+						</div>
+					</div>
+				</section>
+				{% endblock content %}

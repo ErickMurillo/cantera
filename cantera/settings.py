@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.flatpages',
     
     'actualidad',
     'evento',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'foro',
     'galerias',
     'users.apps.UsersConfig',
+    'configuracion',
 
     #aplicaciones de terceros
     'sorl.thumbnail',
@@ -50,11 +52,13 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'location_field.apps.DefaultConfig',
     'embed_video',
+    'solo',
+    'el_pagination',
 ]
 
 AUTH_USER_MODEL = 'users.User'
 
-SITE_ID = 2
+SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -73,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'cantera.urls'

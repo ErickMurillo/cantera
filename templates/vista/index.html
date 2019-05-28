@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+	<title>Plataforma Regional Género y Metodologías</title>
+	<meta charset="utf-8">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/icofont.min.css">
+	<link rel="stylesheet" href="css/main.css" class="color-switcher-link">
+	<link rel="stylesheet" href="css/shop.css" class="color-switcher-link">
+	<link rel="stylesheet" href="css/maincustom.css" class="color-switcher-link">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+	
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">
+			<i class="rt-icon2-cross2"></i>
+		</span>
+	</button>
+	<div class="widget widget_search">
+		<form method="get" class="searchform search-form form-inline" action="./">
+			<div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
+		</div>
+	</div>
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls with_padding">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+	-->
+</div>
+</div>
+<!-- eof .modal -->
+<!-- wrappers for visual page editor and boxed version of template -->
+<div id="canvas">
+	<div id="box_wrapper">
+		<!-- template sections -->
+		<section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6 text-center text-lg-left hidden-xs">
+						<div class="inline-content big-spacing">
+							<div class="page_social"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a>  <a class="social-icon socicon-youtube" href="#" title="Youtube"></a> </div> 
+								<!-- <span class="xs-block">
+									<i class="fa fa-clock-o highlight3 rightpadding_5" aria-hidden="true"></i>
+									Mon-Fri: 9:00-19:00; Sat: 10:00-17:00; Sun: Closed
+								</span>  -->
+							</div>
+						</div>
+						<div class="col-lg-6 text-center text-lg-right">
+							<div id="topline-animation-wrap">
+								<div id="topline-hide" class="inline-content big-spacing"> 
+								 	
+								<div class="xs-block">
+									<ul class="inline-list menu greylinks">
+
+										<li class="dropdown"> <a id="search-show" href="./">
+											<i class="fa fa-search"></i>
+										</a> </li>
+									</ul>
+								</div>
+							</div>
+							<div id="topline-show" class="widget widget_search">
+								<form method="get" class="searchform inline-form" action="./">
+									<div class="form-group-wrap">
+										<div class="form-group"> <label class="sr-only" for="topline-widget-search">Search for:</label> <input id="topline-widget-search" type="text" value="" name="search" class="form-control" placeholder="Enter Keyword..."> <a href="./" id="search-close">
+											<i class="fa fa-close"></i>
+										</a> </div> <button type="submit" class="theme_button no_bg_button color1">ok</button> </div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- end template sections -->
+
+			<header class="page_header header_white toggler_xs_right columns_margin_0">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-12 display_table">
+							<div class="header_left_logo display_table_cell"> <a href="./" class="logo logo_with_text">
+								<img src="images/logo.png" alt="">
+									<!-- <span class="logo_text">
+										Diversify
+										<small class="highlight4">lgbt comunidad center</small>
+									</span> -->
+								</a> </div>
+								<div class="header_mainmenu display_table_cell text-center">
+									<!-- main nav start -->
+									<nav class="mainmenu_wrapper">
+										<ul class="mainmenu nav sf-menu">
+											<li class="active"> <a href="index.html">Inicio</a>
+												<ul>
+													<li> <a href="index.html">Home</a> </li>
+													<li> <a href="index-static.html">Home static intro</a> </li>
+													<li> <a href="index-single.html">Home single page</a> </li>
+												</ul>
+											</li>
+
+											<li> <a href="about.html">¿Quienes Somos?</a>
+												<ul>
+													<!-- features -->
+													<li> <a href="shortcodes_teasers.html">Shortcodes &amp; Widgets</a>
+														<ul>
+															<li> <a href="shortcodes_typography.html">Typography</a> </li>
+															<li> <a href="shortcodes_buttons.html">Buttons</a> </li>
+															<li> <a href="shortcodes_teasers.html">Teasers</a> </li>
+															<li> <a href="shortcodes_progress.html">Progress</a> </li>
+															<li> <a href="shortcodes_tabs.html">Tabs &amp; Collapse</a> </li>
+															<li> <a href="shortcodes_bootstrap.html">Bootstrap Elements</a> </li>
+															<li> <a href="shortcodes_widgets.html">Widgets</a> </li>
+															<li> <a href="shortcodes_animation.html">Animation</a> </li>
+															<li> <a href="shortcodes_icons.html">Template Icons</a> </li>
+															<li> <a href="shortcodes_socialicons.html">Social Icons</a> </li>
+														</ul>
+													</li>
+													<!-- eof features -->
+													<li> <a href="about.html">About</a> </li>
+													<li> <a href="team.html">Team</a>
+														<ul>
+															<li> <a href="team.html">Leaders</a> </li>
+															<li> <a href="team-single.html">Team Member</a> </li>
+														</ul>
+													</li>
+													<li> <a href="donate.html">Donate</a> </li>
+													<li> <a href="timetable.html">Timetable</a> </li>
+													<!-- events -->
+													<li> <a href="events-left.html">Events</a>
+														<ul>
+															<li> <a href="events-left.html">Left Sidebar</a> </li>
+															<li> <a href="events-right.html">Right Sidebar</a> </li>
+															<li> <a href="events-full.html">Full Width</a> </li>
+															<li> <a href="event-single-left.html">Single Event</a>
+																<ul>
+																	<li> <a href="event-single-left.html">Left Sidebar</a> </li>
+																	<li> <a href="event-single-right.html">Right Sidebar</a> </li>
+																	<li> <a href="event-single-full.html">Full Width</a> </li>
+																</ul>
+															</li>
+														</ul>
+													</li>
+													<!-- eof events -->
+													<li> <a href="comingsoon1.html">Comingsoon</a>
+														<ul>
+															<li> <a href="comingsoon1.html">Comingsoon</a> </li>
+															<li> <a href="comingsoon2.html">Comingsoon 2</a> </li>
+														</ul>
+													</li>
+													<li> <a href="faq.html">FAQ</a>
+														<ul>
+															<li> <a href="faq.html">FAQ</a> </li>
+															<li> <a href="faq2.html">FAQ 2</a> </li>
+															<li> <a href="faq3.html">FAQ 3</a> </li>
+														</ul>
+													</li>
+													<li> <a href="404.html">404</a>
+														<ul>
+															<li> <a href="404.html">404</a> </li>
+															<li> <a href="404-2.html">404 2</a> </li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+
+											<!-- eof pages -->
+											<li> <a href="services.html">Alianzas y Colaboraciones</a>
+												<ul>
+													<li> <a href="services.html">Services</a> </li>
+													<li> <a href="service-single.html">Single Service</a> </li>
+												</ul>
+											</li>
+
+											
+											
+										</ul>
+									</nav>
+									<!-- eof main nav -->
+									<!-- header toggler --><span class="toggle_menu"><span></span></span>
+								</div>
+								<div class="header_right_buttons display_table_cell text-right hidden-xs"> <a href="donate.html" class="theme_button color2 margin_0">Iniciar Sesión</a> </div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<section class="intro_section page_mainslider ds all-scr-cover bottom-overlap-teasers">
+					<div class="flexslider" data-dots="true" data-nav="true">
+						<ul class="slides">
+							<li>
+								<div class="slide-image-wrap"> <img src="images/BELEN-1-Copy.JPG" alt="" /> </div>
+								<div class="container">
+									<div class="row">
+										<div class="col-sm-12 text-center">
+											<div class="slide_description_wrapper">
+												<div class="slide_description">
+													<div class="intro-layer" data-animation="fadeInRight"> Plataforma regional género y metodologías</div>
+													<div class="intro-layer" data-animation="fadeInLeft">
+														<h2> <span class="highlight3">“La igualdad de género</span><br>  ha de ser una realidad vivida”</h2>
+													</div>
+													<div class="intro-layer" data-animation="fadeInRight">
+														<p class="thin"><em>- Michelle Bachelet</em></p>
+													</div>
+													<div class="intro-layer" data-animation="fadeInUp">
+														<div class="slide_buttons"> <a href="contact.html" class="theme_button color1 min_width_button">Contáctanos</a> </div>
+													</div>
+												</div>
+												<!-- eof .slide_description -->
+											</div>
+											<!-- eof .slide_description_wrapper -->
+										</div>
+										<!-- eof .col-* -->
+									</div>
+									<!-- eof .row -->
+								</div>
+								<!-- eof .container -->
+							</li>
+							<li>
+								<div class="slide-image-wrap"> <img src="images/slide02.jpg" alt="" /> </div>
+								<div class="container">
+									<div class="row">
+										<div class="col-sm-12 text-center">
+											<div class="slide_description_wrapper">
+												<div class="slide_description">
+													<div class="intro-layer" data-animation="fadeInRight"> LGBT Comunidad Center </div>
+													<div class="intro-layer" data-animation="fadeInLeft">
+														<h2> <span class="highlight3">Become The Change</span><br> You Want To See </h2>
+													</div>
+													<div class="intro-layer" data-animation="fadeInRight">
+														<p class="thin"><em>Details on the huge Calvin Sandoval celebration coming to Hillcrest on February 27, 2018</em></p>
+													</div>
+													
+												</div>
+												<!-- eof .slide_description -->
+											</div>
+											<!-- eof .slide_description_wrapper -->
+										</div>
+										<!-- eof .col-* -->
+									</div>
+									<!-- eof .row -->
+								</div>
+								<!-- eof .container -->
+							</li>
+							<li>
+								<div class="slide-image-wrap"> <img src="images/slide03.jpg" alt="" /> </div>
+								<div class="container">
+									<div class="row">
+										<div class="col-sm-12 text-center">
+											<div class="slide_description_wrapper">
+												<div class="slide_description">
+													<div class="intro-layer" data-animation="fadeInRight"> LGBT Comunidad Center </div>
+													<div class="intro-layer" data-animation="fadeInLeft">
+														<h2> <span class="highlight3">Become The Change</span><br> You Want To See </h2>
+													</div>
+													<div class="intro-layer" data-animation="fadeInRight">
+														<p class="thin"><em>Details on the huge Calvin Sandoval celebration coming to Hillcrest on February 27, 2018</em></p>
+													</div>
+													<div class="intro-layer" data-animation="fadeInUp">
+														<div class="slide_buttons"> <a href="contact.html" class="theme_button color1 min_width_button">Be Proud!</a> </div>
+													</div>
+												</div>
+												<!-- eof .slide_description -->
+											</div>
+											<!-- eof .slide_description_wrapper -->
+										</div>
+										<!-- eof .col-* -->
+									</div>
+									<!-- eof .row -->
+								</div>
+								<!-- eof .container -->
+							</li>
+						</ul>
+					</div>
+					<!-- eof flexslider -->
+				</section>
+				<section id="services" class="ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0">
+					<div class="container-fluid">
+						<div class="row flex-wrap v-center-content">
+							<div class="col-lg-3 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+								<div class="teaser main_bg_color transp with_padding big-padding margin_0">
+									<div class="media xxs-media-left">
+										<div class="media-left media-middle">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-news highlight" aria-hidden="true"></i> </div>
+										</div>
+										<div class="media-body media-middle">
+											<h4><a href="#0">Actualidad <i class="icofont-caret-down"></i></a></h4>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+								<div class="teaser main_bg_color2 transp with_padding big-padding margin_0">
+									<div class="media xxs-media-left">
+										<div class="media-left media-middle">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-ui-chat highlight2" aria-hidden="true"></i> </div>
+										</div>
+										<div class="media-body media-middle">
+											<h4><a href="#0">Foros <i class="icofont-caret-down"></i></a></h4>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+								<div class="teaser main_bg_color3 transp with_padding big-padding margin_0">
+									<div class="media xxs-media-left">
+										<div class="media-left media-middle">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-favourite highlight3" aria-hidden="true"></i> </div>
+										</div>
+										<div class="media-body media-middle">
+											<h4><a href="#0">Iniciativas destacadas <i class="icofont-caret-down"></i></a></h4>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+								<div class="teaser main_bg_color4 transp with_padding big-padding margin_0">
+									<div class="media xxs-media-left">
+										<div class="media-left media-middle">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-read-book highlight4" aria-hidden="true"></i> </div>
+										</div>
+										<div class="media-body media-middle">
+											<h4><a href="#0">Recursos metodológicos <i class="icofont-caret-down"></i></a></h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="actualidad" class="ls section_padding_top_90">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
+								<h2 class="section_header color">Actualidad</h2>
+								<div class="owl-carousel loop-colors topmargin_40" data-dots="false" data-nav="true" data-responsive-lg="3">
+									<article class="vertical-item content-padding big-padding with_border bottom_color_border">
+										<div class="item-media"> <img src="img/trabajomujer.jpg" alt=""> </div>
+										<div class="item-content">
+											<header class="entry-header">
+												<h3 class="entry-title small bottommargin_0"> <a href=""><span class="small-text">La región necesita que mas mujeres trabajen pero que necesitan ellas</span></a>
+												</header>
+												<p>
+													<a href="" class="more-link">Leer más</a>
+												</p>
+
+
+												<div class="entry-meta greylinks inline-content">
+
+													<span>
+														<i class="icofont-comment highlight" aria-hidden="true"></i>
+														Admin
+													</span>
+
+													<span>
+														<i class="icofont-wall-clock highlight" aria-hidden="true"></i>
+														<time datetime="2017-10-03T08:50:40+00:00">17 Ene, 2019</time>
+													</span>  
+												</div>
+
+											</div>
+										</article>
+
+										<article class="vertical-item content-padding big-padding with_border bottom_color_border">
+											<div class="item-media"> <img src="img/espania_en_nicaragua.png" alt=""> </div>
+											<div class="item-content">
+												<header class="entry-header">
+													<h3 class="entry-title small bottommargin_0"> <a href=""><span class="small-text">Centro cultural de España en Nicaragua</span></a></header><p><a href="" class="more-link">Leer más</a></p>
+
+
+														<div class="entry-meta greylinks inline-content">
+
+															<span>
+																<i class="icofont-comment highlight" aria-hidden="true"></i>
+																Admin
+															</span>
+
+															<span>
+																<i class="icofont-wall-clock highlight" aria-hidden="true"></i>
+																<time datetime="2017-10-03T08:50:40+00:00">17 Ene, 2019</time>
+															</span>  </div>
+
+														</div>
+													</article>
+
+
+													<article class="vertical-item content-padding big-padding with_border bottom_color_border">
+														<div class="item-media"> 
+															<img src="img/turismonic.jpg" alt=""> 
+														</div>
+														<div class="item-content">
+															<header class="entry-header">
+																<h3 class="entry-title small bottommargin_0"> <a href="">
+																	<span class="small-text">Turismo Nicaraguense con rostro de mujer</span>
+																</a>
+															</header>
+															<p><a href="" class="more-link">Leer más</a></p>
+
+
+															<div class="entry-meta greylinks inline-content">
+
+																<span>
+																	<i class="icofont-comment highlight" aria-hidden="true"></i>
+																	Admin
+																</span>
+
+																<span>
+																	<i class="icofont-wall-clock highlight" aria-hidden="true"></i>
+																	<time datetime="2017-10-03T08:50:40+00:00">17 Ene, 2019</time>
+																</span>  </div>
+
+															</div>
+														</article>
+
+														<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+															<div class="item-media"> <img src="images/index/logoanf.jpg" alt=""> </div>
+															<div class="item-content">
+																<header class="entry-header">
+																	<h3 class="entry-title small bottommargin_0"> <a href="team-single.html"> ANF</a> </h3> <span class="small-text highlight">leader</span> </header>
+																	<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a> </p>
+																</div>
+															</article>
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+
+
+
+										<section class="ls section_padding_top_100 section_padding_bottom_110">
+											<div class="container">
+												<div class="row">															
+
+													<div class="flex-wrap v-center">
+														<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+															<h2 class="section_header">Próximos Eventos</h2>
+														</div>
+														<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="blog-full.html" class="view-more">Ver más</a> </div>
+													</div>
+
+
+													<div class="col-sm-10 col-sm-push-1 topmargin_30">
+
+														<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
+															<div class="row">
+																<div class="col-md-5">
+																	<div class="item-media"> <img src="https://www.tn8.tv/media/cache/74/b7/74b79a4658b5f47e0c02aacfb6b05261.jpg" alt="">
+																		<div class="media-links"> <a class="abs-link" title="" href="event-single-full.html"></a> </div>
+																	</div>
+																</div>
+																<div class="col-md-7">
+																	<div class="item-content">
+																		<header class="entry-header">
+																			<div class="entry-meta greylinks inline-content"> <span>
+																				<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+																				<time datetime="2017-10-03T08:50:40+00:00">17 En, 2019 - 01:00 pm</time>
+																			</span> <span>
+																				<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
+																				Plaza El Sol 2c. sur 1c. arriba.
+																			</span> </div>
+																			<h3 class="entry-title small"> <a href="event-single-full.html"> Evento especial OMI sobre empoderamiento</a> </h3>
+																		</header>
+																		<p>Nicaragua acogerá el evento especial OMI sobre empoderamiento</p>
+																	</div>
+																</div>
+															</div>
+														</article>
+														<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
+															<div class="row">
+																<div class="col-md-5">
+																	<div class="item-media"> <img src="https://lavozdetarija.com/wp-content/uploads/2019/05/MG_0020-e1556894630498.jpg" alt="">
+																		<div class="media-links"> <a class="abs-link" title="" href="event-single-full.html"></a> </div>
+																	</div>
+																</div>
+																<div class="col-md-7">
+																	<div class="item-content">
+																		<header class="entry-header">
+																			<div class="entry-meta greylinks inline-content"> <span>
+																				<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+																				<time datetime="2017-10-03T08:50:40+00:00">17 En, 2019 - 01:00 pm</time>
+																			</span> <span>
+																				<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
+																				Plaza El Sol 2c. sur 1c. arriba.
+																			</span> </div>
+																			<h3 class="entry-title small"> <a href="event-single-full.html">1º Congreso Internacional de equidad de género</a> </h3>
+																		</header>
+																		<p>1º Congreso Internacional de equidad de género con el lema "Género y Derechos Humanos", junto con RENIES la Red Nacional de Educación Superior para la Igualdad de Género Mexicana, ANUES la Asociación Nacional de Universidades e Instituciones de Educación Superior Mexicana, el Instituto Tecnológico de Sonora y el Proyecto Equidad de Género del Instituto Tecnológico de Sonora.</p>
+																	</div>
+																</div>
+															</div>
+														</article>
+														<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
+															<div class="row">
+																<div class="col-md-5">
+																	<div class="item-media"> <img src="http://www.programas-gtz.org.ni/thumb/evento/600x600/1234657882_Grupos%20de%20trabajo.JPG" alt="">
+																		<div class="media-links"> <a class="abs-link" title="" href="event-single-full.html"></a> </div>
+																	</div>
+																</div>
+																<div class="col-md-7">
+																	<div class="item-content">
+																		<header class="entry-header">
+																			<div class="entry-meta greylinks inline-content"> <span>
+																				<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+																				<time datetime="2017-10-03T08:50:40+00:00">17 En, 2019 - 01:00 pm</time>
+																			</span> <span>
+																				<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
+																				Plaza El Sol 2c. sur 1c. arriba.
+																			</span> </div>
+																			<h3 class="entry-title small"> <a href="event-single-full.html">Elaboración Estrategia De Género Para CANTERA</a> </h3>
+																		</header>
+																		<p>Dirigido principalmente a las y los Puntos Focales de Género o personas responsables del tema en las oficinas y supone una propuesta didáctica abierta para que cada oficina encuentre la mejor manera de llevar a cabo y/o fortalecer sus propio proceso de transversalidad de género.</p>
+																	</div>
+																</div>
+															</div>
+														</article>
+
+													</div>
+													<!--eof .col-sm-* (main content)-->
+												</div>
+											</div>
+										</section>
+
+										<section id="blog" class="ls section_padding_bottom_110">
+											<div class="container">
+												<div class="row flex-wrap v-center">
+													<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+														<h2 class="section_header">Foros destacados</h2>
+													</div>
+													<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="blog-full.html" class="view-more">Ver más</a> </div>
+
+													<!-- <div class="col-sm-12 topmargin_30">
+														<div class="loop-colors">
+															<article class="post format-small-image to_animate" data-animation="fadeInRight">
+																<div class="side-item side-md content-padding big-padding with_border bottom_color_border left">
+																	<div class="row">
+																		<div class="col-md-5 col-lg-4">
+																			<div class="entry-meta greylinks inline-content">
+																				<span>
+																					<i class="fa fa-calendar xx-large highlight" aria-hidden="true"></i>
+																					<a href="blog-single-full.html">
+																						<time datetime="2017-10-03T08:50:40+00:00">
+																						17 En, 2019</time>
+																					</a>
+																				</span>
+																				<span>
+																					<i class="fa fa-user xx-large highlight" aria-hidden="true"></i>
+																					<a href="blog-full.html">Admin</a>
+																				</span> 
+																				<span>
+																					<i class="fa fa-comment xx-large highlight" aria-hidden="true"></i>
+																					<a href="blog-single-full.html#comments">4 comentarios</a>
+																				</span> 
+																				<span class="categories-links">
+																					<i class="fa fa-tags xx-large highlight" aria-hidden="true"></i>
+																					<a href="blog-full.html">Comunidad</a>
+																				</span> 
+																			</div>
+																		</div>
+																		<div class="col-md-7 col-lg-8">
+																			<div class="item-content">
+																				<header class="entry-header">
+																					<h3 class="entry-title small"> 
+																						<a href="blog-single-right.html" rel="bookmark">FEMENINO/MASCULINO LA PÉRDIDA DE IDEALES
+																						</a>
+																					</h3>
+																			</header>
+																			<div class="entry-content md-content-3lines-ellipsis">
+																				<p>Los cambios sociales que se han producido en los últimos veinte o treinta años respecto a los lugares de hombres y mujeres en las sociedades occidentales, han provocado...</p>
+																			</div>
+																		</div>
+
+																	</div>
+																</div>
+															</div>
+														</article>
+
+														<article class="post format-small-image topmargin_30 to_animate" data-animation="fadeInLeft">
+															<div class="side-item side-md content-padding big-padding with_border bottom_color_border right">
+																<div class="row">
+																	<div class="col-md-5 col-lg-4">
+																		<div class="entry-meta greylinks inline-content"> <span>
+																			<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+																			<a href="blog-single-full.html">
+																				<time datetime="2017-10-03T08:50:40+00:00">
+																				17 En, 2019</time>
+																			</a>
+																		</span> <span>
+																			<i class="fa fa-user highlight" aria-hidden="true"></i>
+																			<a href="blog-full.html">Admin</a>
+																		</span> <span>
+																			<i class="fa fa-comment highlight" aria-hidden="true"></i>
+																			<a href="blog-single-full.html#comments">4 comentarios</a>
+																		</span> <span class="categories-links">
+																			<i class="fa fa-tags highlight" aria-hidden="true"></i>
+																			<a href="blog-full.html">Comunidad</a>
+																		</span> </div>
+																	</div>
+																	<div class="col-md-7 col-lg-8">
+																		<div class="item-content">
+																			<header class="entry-header">
+																				<h3 class="entry-title small"> <a href="blog-single-right.html" rel="bookmark">VIOLENCIA ENTRE LOS GÉNEROS. CUESTIONES NO PENSADAS O "IMPENSABLES"</a> </h3>
+																				<div class="entry-meta inline-content greylinks"> <span>
+																					<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+																					<a href="blog-single-right.html">
+																						<time datetime="2017-10-03T08:50:40+00:00">
+																						17 En, 2019</time>
+																					</a>
+																				</span> <span>
+																					<i class="fa fa-user highlight rightpadding_5" aria-hidden="true"></i>
+																					<a href="blog-right.html">Admin</a>
+																				</span> <span class="categories-links">
+																					<i class="fa fa-tags highlight rightpadding_5" aria-hidden="true"></i>
+																					<a href="blog-right.html">Services</a>
+																				</span> </div>
+																			</header>
+																			<div class="entry-content md-content-3lines-ellipsis">
+																				<p>Qui laboris ut, duis excepteur fatback boudin nostrud esse ea pork chop cupidatat cupim. Picanh landjaeger buffalo consequat jerky brisket, cupim ribeye magna beef occaecat. Venison salami pancetta t-bone ut, exercitation aliqua.</p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</article>
+														<article class="post format-small-image topmargin_30 to_animate" data-animation="fadeInRight">
+															<div class="side-item side-md content-padding big-padding with_border bottom_color_border left">
+																<div class="row">
+																	<div class="col-md-5 col-lg-4">
+																		<div class="entry-meta greylinks inline-content"> <span>
+																			<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+																			<a href="blog-single-full.html">
+																				<time datetime="2017-10-03T08:50:40+00:00">
+																				17 En, 2019</time>
+																			</a>
+																		</span> <span>
+																			<i class="fa fa-user highlight" aria-hidden="true"></i>
+																			<a href="blog-full.html">Admin</a>
+																		</span> <span>
+																			<i class="fa fa-comment highlight" aria-hidden="true"></i>
+																			<a href="blog-single-full.html#comments">4 comentarios</a>
+																		</span> <span class="categories-links">
+																			<i class="fa fa-tags highlight" aria-hidden="true"></i>
+																			<a href="blog-full.html">Comunidad</a>
+																		</span> </div>
+																	</div>
+																	<div class="col-md-7 col-lg-8">
+																		<div class="item-content">
+																			<header class="entry-header">
+																				<h3 class="entry-title small"> <a href="blog-single-right.html" rel="bookmark">LOS VOLUNTARIOS DE LAS ENTIDADES NO LUCRATIVAS</a> </h3>
+																				<div class="entry-meta inline-content greylinks"> <span>
+																					<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+																					<a href="blog-single-right.html">
+																						<time datetime="2017-10-03T08:50:40+00:00">
+																						17 En, 2019</time>
+																					</a>
+																				</span> <span>
+																					<i class="fa fa-user highlight rightpadding_5" aria-hidden="true"></i>
+																					<a href="blog-right.html">Admin</a>
+																				</span> <span class="categories-links">
+																					<i class="fa fa-tags highlight rightpadding_5" aria-hidden="true"></i>
+																					<a href="blog-right.html">Transgender</a>
+																				</span> </div>
+																			</header>
+																			<div class="entry-content md-content-3lines-ellipsis">
+																				<p>Nostrud ham hock fatback aute tri-tip sausage doner mollit quis laboris. Jerky meatball cupim filet mignon. Prosciutto rump eu fatback andouille eiusmod strip steak. Fugiat shoulder salami chuck in mollit. Minim nulla beef ribs adipisicing.
+																				</p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</article>
+													</div> -->
+
+													<!-- Contenido foro-->
+
+													<div class="col-sm-10 col-sm-push-1 topmargin_30">
+														<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-standard">
+
+															<div class="item-content">
+																<div class="entry-meta greylinks inline-content"> <span>
+																	<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+																	<a href="blog-single-full.html">
+																		<time datetime="2017-10-03T08:50:40+00:00">
+																		17 En, 2019</time>
+																	</a>
+																</span> <span>
+																	<i class="icofont-comment highlight" aria-hidden="true"></i>
+																	<a href="blog-full.html">Admin</a>
+																</span> <span>
+																	<i class="fa fa-comment highlight" aria-hidden="true"></i>
+																	<a href="blog-single-full.html#comments">4 comentarios</a>
+																</span> </div>
+																<div class="entry-content-wrap">
+																	<header class="entry-header">
+																		<h3 class="entry-title"> <a href="blog-single-full.html">FEMENINO/MASCULINO LA PÉRDIDA DE IDEALES</a> </h3>
+																	</header>
+																	<div class="entry-content">
+																		<p>Los cambios sociales que se han producido en los últimos veinte o treinta años respecto a los lugares de hombres y mujeres en las sociedades occidentales, han provocado...</p>
+																	</div>
+																</div>
+															</div>
+
+														</article>
+
+														<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-gallery">
+
+															<div class="item-content">
+																<div class="entry-meta greylinks inline-content"> <span>
+																	<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+																	<a href="blog-single-full.html">
+																		<time datetime="2017-10-03T08:50:40+00:00">
+																		17 En, 2019</time>
+																	</a>
+																</span> <span>
+																	<i class="icofont-comment highlight" aria-hidden="true"></i>
+																	<a href="blog-full.html">Admin</a>
+																</span> <span>
+																	<i class="fa fa-comment highlight" aria-hidden="true"></i>
+																	<a href="blog-single-full.html#comments">4 comentarios</a>
+																</span> </div>
+																<div class="entry-content-wrap">
+																	<header class="entry-header">
+																		<h3 class="entry-title"> <a href="blog-single-full.html">VIOLENCIA ENTRE LOS GÉNEROS. CUESTIONES NO PENSADAS O "IMPENSABLES"</a> </h3>
+																	</header>
+																	<div class="entry-content">
+																		<p>La violencia entre los géneros es un fenómeno marcadamente asimétrico, donde en la vida adulta, los hombres se ubican mayoritariamente del lado del agresor y las mujeres entre las víctimas...</p>
+																	</div>
+																</div>
+															</div>
+
+														</article>
+
+														<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-video">
+
+															<div class="item-content">
+																<div class="entry-meta greylinks inline-content"> <span>
+																	<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+																	<a href="blog-single-full.html">
+																		<time datetime="2017-10-03T08:50:40+00:00">
+																		17 En, 2019</time>
+																	</a>
+																</span> <span>
+																	<i class="icofont-comment highlight" aria-hidden="true"></i>
+																	<a href="blog-full.html">Admin</a>
+																</span> <span>
+																	<i class="fa fa-comment highlight" aria-hidden="true"></i>
+																	<a href="blog-single-full.html#comments">4 comentarios</a>
+																</span> </div>
+																<div class="entry-content-wrap">
+																	<header class="entry-header">
+																		<h3 class="entry-title"> <a href="blog-single-full.html">LOS VOLUNTARIOS DE LAS ENTIDADES NO LUCRATIVAS</a> </h3>
+																	</header>
+																	<div class="entry-content">
+																		<p>Las organizaciones no lucrativas deben de estar preparadas para acoger a los voluntarios y ofrecerles los medios adecuados para que éstos puedan dar lo mejor de sí mismos, haciendo posible ese intercambio entre la entidad no lucrativa y el voluntariado...</p>
+																	</div>
+																</div>
+															</div>
+
+														</article>
+
+
+													</div>
+												</div>
+											</div>
+										</section>
+
+										<section id="organizations" class="ls section_padding_top_90">
+											<div class="container">
+												<div class="row">
+													<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
+														<h2 class="section_header color">Organizaciones</h2>
+														<div class="owl-carousel loop-colors topmargin_40" data-dots="false" data-nav="true" data-responsive-lg="3">
+															<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+																<div class="item-media"> <img src="images/index/logosimas.png" alt=""> </div>
+																<div class="item-content">
+																	<header class="entry-header">
+																		<h3 class="entry-title small bottommargin_0"> <a href="team-single.html">SIMAS</a> </h3>
+																	</header>
+																	<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a>
+																	</p>
+																</div>
+															</article>
+															<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+																<div class="item-media"> <img src="images/index/juan.jpg" alt=""> </div>
+																<div class="item-content">
+																	<header class="entry-header">
+																		<h3 class="entry-title small bottommargin_0"> <a href="team-single.html">Caritas</a> </h3>
+																	</header>
+
+																	<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a>
+																	</p>
+																</div>
+															</article>
+
+															<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+																<div class="item-media"> <img src="images/index/logounag.jpg" alt=""> </div>
+																<div class="item-content">
+																	<header class="entry-header">
+																		<h3 class="entry-title small bottommargin_0"> <a href="team-single.html">UNAG</a> </h3> 
+																	</header>
+																	<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a> </p>
+																</div>
+															</article>
+
+															<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+																<div class="item-media"> <img src="images/index/logoanf.jpg" alt=""> </div>
+																<div class="item-content">
+																	<header class="entry-header">
+																		<h3 class="entry-title small bottommargin_0"> <a href="team-single.html"> ANF</a> 
+																		</h3> 
+																		<span class="small-text highlight">leader</span>
+																	</header>
+																	<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a> </p>
+																</div>
+															</article>
+															<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+																<div class="item-media"> <img src="images/team/05.jpg" alt=""> </div>
+																<div class="item-content">
+																	<header class="entry-header">
+																		<h3 class="entry-title small bottommargin_0"> <a href="team-single.html">Elnora Edwards</a> </h3> <span class="small-text highlight">leader</span> </header>
+																		<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a> </p>
+																	</div>
+																</article>
+																<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+																	<div class="item-media"> <img src="images/team/06.jpg" alt=""> </div>
+																	<div class="item-content">
+																		<header class="entry-header">
+																			<h3 class="entry-title small bottommargin_0"> <a href="team-single.html">Addie Mack</a> </h3> <span class="small-text highlight">assistant</span> </header>
+																			<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a> </p>
+																		</div>
+																	</article>
+																</div>
+															</div>
+														</div>
+													</div>
+												</section>
+
+												<footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">
+													<div class="container">
+														<div class="row">
+
+															<div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 text-center">
+																<div class="widget widget_text widget_about">
+																	<div class="logo logo_with_text bottommargin_10"> <img src="images/index/cantera-logo.png" alt=""> </div>
+																	<p>Somos una organización nicaragüense no gubernamental, de tipo humanitario, sin fines de lucro y con personalidad jurídica propia, fundada en el año 1988.</p>
+																	<p class="topmargin_25"> <a class="social-icon border-icon rounded-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon border-icon rounded-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon border-icon rounded-icon socicon-youtube" href="#" title="Youtube"></a> </p>
+																	</div>
+																</div>
+																<div class="col-md-4 col-sm-6 col-xs-12 col-md-pull-4 text-center">
+																	<div class="widget widget_text">
+																		<h3 class="widget-title">Contáctanos</h3>
+																		<ul class="list-unstyled greylinks">
+																			<li class="media"> <i class="fa fa-map-marker highlight rightpadding_5" aria-hidden="true"></i> Plaza El Sol 2c. sur 1c. arriba. Managua, Nicaragua.</li>
+																			<li class="media"> <i class="fa fa-phone highlight rightpadding_5" aria-hidden="true"></i> (505) 2278-0103 </li>
+																			<li class="media"> <i class="fa fa-envelope highlight rightpadding_5" aria-hidden="true"></i> <a href="mailto: comunicacionescantera@gmail.com"> comunicacionescantera@gmail.com</a> </li>
+
+																		</ul>
+																	</div>
+																</div>
+																<div class="col-md-4 col-sm-6 col-xs-12 hidden-xs hidden-sm text-center">
+																	<div class="widget widget_recent_posts">
+																		<h3 class="widget-title">Explorar </h3>
+
+																	</div>
+																	<div class="widget widget_text">
+																		<ul class="list1 no-bullets no-top-border no-bottom-border greylinks">
+																			<li> <a href="#">Actualidad</a> </li>
+																			<li> <a href="#">Foro</a> </li>
+																			<li> <a href="#">Iniciativas destacaas</a> </li>
+																			<li> <a href="#">Recursos Metodológicos</a> </li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</footer>
+
+													<section class="ds ms parallax page_copyright overlay_color section_padding_top_30 section_padding_bottom_30">
+														<div class="container">
+															<div class="row">
+																<div class="col-sm-12 text-center justify-content-center align-items-center">
+																	<p>&copy; Copyright @ 2019. Todos los derechos reservados</p>
+
+																</div>
+															</div>
+														</div>
+													</section>
+												</div>
+												<!-- eof #box_wrapper -->
+											</div>
+											<!-- eof #canvas -->
+											<script src="js/compressed.js"></script>
+											<script src="js/selectize.min.js"></script>
+											<script src="js/main.js"></script>
+										</body>
+
+										</html>

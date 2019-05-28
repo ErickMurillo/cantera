@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+	<title>Plataforma Regional Género y Metodologías</title>
+	<meta charset="utf-8"></title>
+	<meta charset="utf-8">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/icofont.min.css">
+	<link rel="stylesheet" href="css/main.css" class="color-switcher-link">
+	<link rel="stylesheet" href="css/shop.css" class="color-switcher-link">
+	<link rel="stylesheet" href="css/maincustom.css" class="color-switcher-link">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<style type="text/css">
+	.page_breadcrumbs.background_cover {
+		background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(./images/banner2.jpg);
+	}
+	</style>
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+	
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">
+			<i class="rt-icon2-cross2"></i>
+		</span>
+	</button>
+	<div class="widget widget_search">
+		<form method="get" class="searchform search-form form-inline" action="./">
+			<div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Buscar" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
+		</div>
+	</div>
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls with_padding">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+	-->
+</div>
+</div>
+<!-- eof .modal -->
+<!-- wrappers for visual page editor and boxed version of template -->
+<div id="canvas">
+	<div id="box_wrapper">
+		<!-- template sections -->
+		<section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6 text-center text-lg-left hidden-xs">
+						<div class="inline-content big-spacing">
+							<div class="page_social"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-youtube" href="#" title="Youtube"></a> </div> </div>
+						</div>
+						<div class="col-lg-6 text-center text-lg-right">
+							<div id="topline-animation-wrap">
+								<div id="topline-hide" class="inline-content big-spacing">
+									<div class="xs-block">
+										<ul class="inline-list menu greylinks">
+
+											<li class="dropdown"> <a id="search-show" href="./">
+												<i class="fa fa-search"></i>
+											</a> </li>
+										</ul>
+									</div>
+								</div>
+								<div id="topline-show" class="widget widget_search">
+									<form method="get" class="searchform inline-form" action="./">
+										<div class="form-group-wrap">
+											<div class="form-group"> <label class="sr-only" for="topline-widget-search">Search for:</label> <input id="topline-widget-search" type="text" value="" name="search" class="form-control" placeholder="Enter Keyword..."> <a href="./" id="search-close">
+												<i class="fa fa-close"></i>
+											</a> </div> <button type="submit" class="theme_button no_bg_button color1">ok</button> </div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<header class="page_header header_white toggler_xs_right columns_margin_0">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-12 display_table">
+								<div class="header_left_logo display_table_cell"> <a href="./" class="logo logo_with_text">
+									<img src="images/logo.png" alt="">
+
+								</a> </div>
+								<div class="header_mainmenu display_table_cell text-center">
+									<!-- main nav start -->
+									<nav class="mainmenu_wrapper">
+										<ul class="mainmenu nav sf-menu">
+											<li class="active"> <a href="index.html">Inicio</a>
+												<ul>
+													<li> <a href="index.html">Home</a> </li>
+													<li> <a href="index-static.html">Home static intro</a> </li>
+													<li> <a href="index-single.html">Home single page</a> </li>
+												</ul>
+											</li>
+
+											<li> <a href="about.html">¿Quienes Somos?</a>
+												<ul>
+													<!-- features -->
+													<li> <a href="shortcodes_teasers.html">Shortcodes &amp; Widgets</a>
+														<ul>
+															<li> <a href="shortcodes_typography.html">Typography</a> </li>
+															<li> <a href="shortcodes_buttons.html">Buttons</a> </li>
+														</ul>
+													</li>
+													<!-- eof features -->
+													<li> <a href="about.html">About</a> </li>
+													<li> <a href="team.html">Team</a>
+														<ul>
+															<li> <a href="team.html">Leaders</a> </li>
+															<li> <a href="team-single.html">Team Member</a> </li>
+														</ul>
+													</li>
+													<li> <a href="donate.html">Donate</a> </li>
+													<li> <a href="timetable.html">Timetable</a> </li>
+													<!-- events -->
+													<li> <a href="events-left.html">Events</a>
+														<ul>
+															<li> <a href="events-left.html">Left Sidebar</a> </li>
+															<li> <a href="event-single-left.html">Single Event</a>
+																<ul>
+																	<li> <a href="event-single-left.html">Left Sidebar</a> </li>
+																	<li> <a href="event-single-right.html">Right Sidebar</a> </li>
+																	<li> <a href="event-single-full.html">Full Width</a> </li>
+																</ul>
+															</li>
+														</ul>
+													</li>
+													<!-- eof events -->
+													<li> <a href="comingsoon1.html">Comingsoon</a>
+														<ul>
+															<li> <a href="comingsoon1.html">Comingsoon</a> </li>
+															<li> <a href="comingsoon2.html">Comingsoon 2</a> </li>
+														</ul>
+													</li>
+													<li> <a href="faq.html">FAQ</a>
+														<ul>
+															<li> <a href="faq.html">FAQ</a> </li>
+															<li> <a href="faq2.html">FAQ 2</a> </li>
+															<li> <a href="faq3.html">FAQ 3</a> </li>
+														</ul>
+													</li>
+													<li> <a href="404.html">404</a>
+														<ul>
+															<li> <a href="404.html">404</a> </li>
+															<li> <a href="404-2.html">404 2</a> </li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+
+											<!-- eof pages -->
+											<li> <a href="services.html">Alianzas y Colaboraciones</a>
+												<ul>
+													<li> <a href="services.html">Services</a> </li>
+													<li> <a href="service-single.html">Single Service</a> </li>
+												</ul>
+											</li>
+
+										</ul>
+									</nav>
+									<!-- eof main nav -->
+									<!-- header toggler --><span class="toggle_menu"><span></span></span>
+								</div>
+								<div class="header_right_buttons display_table_cell text-right hidden-xs"> <a href="donate.html" class="theme_button color2 margin_0">Iniciar Sesión</a> </div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<h2 class="white-color">Actualidad</h2>
+								<ol class="breadcrumb">
+									<li class="white-color"> <a href="./">
+										Inicio
+									</a> </li>
+									<li class="active">Actualidad</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-7 col-md-8 col-lg-8">
+								<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
+									<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">
+										<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+											<div class="item-media"> <img src="img/turismonic.jpg" alt="">
+												<div class="media-links">
+													<div class="links-wrap"> <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="img/turismonic.jpg"></a> </div>
+												</div>
+											</div>
+											<div class="item-content">
+												<header class="entry-header">
+													<div class="categories-links small-text highlightlinks"> <a href="#"> Situación regional de género</a> 
+													</div>
+
+
+													<div class="entry-meta greylinks color4 inline-content"> 
+														<span>
+															<i class="fa fa-calendar highlight1 rightpadding_5" aria-hidden="true"></i>
+															<time datetime="2017-10-03T08:50:40+00:00">17 Ene, 2018</time>
+														</span>
+													</div>
+
+
+
+													<h3 class="entry-title small bottommargin_0"> <a href="gallery-single.html" rel="bookmark">
+														Turismo Nicaraguense con rostro de mujer
+													</a> </h3>
+												</header>
+												<p class="content-3lines-ellipsis">Un estudio realizado por la Organización Mundial de Turismo y ONU Mujeres refleja que en el mundo hay..<a href="" class="more-link">Leer más</a> </p>
+											</div>
+										</article>
+									</div>
+									<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-2">
+										<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+											<div class="item-media"> <img src="img/espania_en_nicaragua.png" alt="">
+												<div class="media-links">
+													<div class="links-wrap"> <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="img/espania_en_nicaragua.png"></a> </div>
+												</div>
+											</div>
+											<div class="item-content">
+												<header class="entry-header">
+													<div class="categories-links small-text highlightlinks"> <a href="#"> Informémonos</a> </div>
+
+													<div class="entry-meta greylinks color4 inline-content"> 
+														<span>
+															<i class="fa fa-calendar highlight3	 rightpadding_5" aria-hidden="true"></i>
+															<time datetime="2017-10-03T08:50:40+00:00">17 Ene, 2018</time>
+														</span>
+													</div>
+
+
+													<h3 class="entry-title small bottommargin_0"> <a href="gallery-single.html" rel="bookmark">
+														Centro Cultural de España en Nicaragua” 
+													</a> </h3>
+												</header>
+												<p class="content-3lines-ellipsis">La Embajada de España/Centro Cultural de España en Nicaragua (CCEN), en conmemoración al Día Internac..<a href="" class="more-link">Leer más</a> </p>
+											</div>
+										</article>
+									</div>
+									<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-3">
+										<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+											<div class="item-media"> <img src="img/trabajomujer.jpg" alt="">
+												<div class="media-links">
+													<div class="links-wrap"> <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="img/trabajomujer.jpg"></a> </div>
+												</div>
+											</div>
+											<div class="item-content">
+												<header class="entry-header">
+													<div class="categories-links small-text highlightlinks"> <a href="#">Reflexiones</a> </div>
+
+													<div class="entry-meta greylinks color4 inline-content"> 
+														<span>
+															<i class="fa fa-calendar highlight4	rightpadding_5" aria-hidden="true"></i>
+															<time datetime="2017-10-03T08:50:40+00:00">17 Ene, 2018</time>
+														</span>
+													</div>
+
+													<h3 class="entry-title small bottommargin_0"> <a href="gallery-single.html" rel="bookmark">
+														La región necesita que mas mujeres trabajen, pero..
+													</a> </h3>
+												</header>
+												<p class="content-3lines-ellipsis">Una forma de definirlo es pensar cómo puedes integrar el análisis de género en el análisis financiero..<a href="" class="more-link">Leer más</a></p>
+											</div>
+										</article>
+									</div>
+									<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-4">
+										<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+											<div class="item-media"> <img src="img/igualdad-de-genero.jpg" alt="">
+												<div class="media-links">
+													<div class="links-wrap"> <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="img/igualdad-de-genero.jpg"></a> </div>
+												</div>
+											</div>
+											<div class="item-content">
+												<header class="entry-header">
+													<div class="categories-links small-text highlightlinks"> <a href="#">  Situación regional de género </a> </div>
+
+													<div class="entry-meta greylinks color4 inline-content"> 
+														<span>
+															<i class="fa fa-calendar highlight1	 rightpadding_5" aria-hidden="true"></i>
+															<time datetime="2017-10-03T08:50:40+00:00">17 Ene, 2018</time>
+														</span>
+													</div>
+
+													<h3 class="entry-title small bottommargin_0"> <a href="gallery-single.html" rel="bookmark">
+														La ONU pide cambios para impulsar la igualdad..
+													</a> </h3>
+												</header>
+												<p class="content-3lines-ellipsis">La ONU exigió este viernes cambios "rápidos y radicales" para impulsar la igualdad de género y dar .. <a href="" class="more-link">Leer más</a> </p>
+											</div>
+										</article>
+									</div>
+
+
+
+								</div>
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<div class="topmargin_20">
+											<ul class="pagination">
+												<li><a href="#"><span class="sr-only">Prev</span><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+												<li class="active"><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#">5</a></li>
+												<li><a href="#"><span class="sr-only">Next</span><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--eof .col-sm-8 (main content)-->
+							<!-- sidebar -->
+							<aside class="col-sm-5 col-md-4 col-lg-4">
+								<div class="widget widget_search">
+									<form method="get" class="searchform" action="./">
+										<div class="form-group margin_0"> <label class="sr-only" for="widget-search">Search for:</label> <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Buscar..."> </div> <button type="submit" class="theme_button color1">Search</button>									</form>
+									</div>
+
+									<!-- categorias -->
+									<div class="widget">
+										<h4 class="widget-title">Categorías</h4>
+										<div class="">
+											<ul>
+												<li><a href="">Informémonos</a>	</li>									
+												<li><a href="">Situación regional de género</a></li>
+												<li><a href="">Reflexiones</a></li>
+											</ul>
+										</div>
+									</div>
+
+									<!-- tags -->
+									<div class="widget">
+										<h4 class="widget-title">Tags</h4>
+										<div class="tagcloud">
+											<a href="">Igualdad</a>
+											<a href="">Género</a>
+											<a href="">Metodología</a>
+											<a href="">Nicaragua</a>
+											<a href="">Cultura</a>
+										</div>
+									</div>
+
+									
+									<div class="widget widget_slider widget_recent_posts">
+										<h4 class="widget-title"> Próximos Eventos </h4>
+										<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+											<div class="vertical-item content-padding with_border">
+												<div class="item-media"> <img src="images/circulo_mujeres.jpg" alt="">
+													<div class="media-links"> <a class="abs-link" title="" href="blog-single-left.html"></a> </div>
+												</div>
+												<div class="item-content">
+													<h5 class="bottommargin_0"> <a href="blog-single-right.html">Cantera participará en mesa técnica de género</a> </h5> <span class="entry-meta greylinks">
+														<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+														<a href="blog-single-full.html">
+															<time datetime="2017-10-03T08:50:40+00:00">
+															17 jan, 2018</time>
+														</a>
+													</span> </div>
+												</div>
+												<div class="vertical-item content-padding with_border">
+													<div class="item-media bottommargin_15"> <img src="http://www.programas-gtz.org.ni/thumb/evento/600x600/1234657882_Grupos%20de%20trabajo.JPG" alt="">
+														<div class="media-links"> <a class="abs-link" title="" href="blog-single-left.html"></a> </div>
+													</div>
+													<div class="item-content">
+														<h5 class="bottommargin_0"> <a href="blog-single-right.html">Elaboración Estrategia De Género Para CANTERA</a> </h5> <span class="entry-meta greylinks">
+															<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+															<a href="blog-single-full.html">
+																<time datetime="2017-10-03T08:50:40+00:00">
+																17 jan, 2018</time>
+															</a>
+														</span> </div>
+													</div>
+													<div class="vertical-item content-padding with_border">
+														<div class="item-media bottommargin_15"> <img src="https://lavozdetarija.com/wp-content/uploads/2019/05/MG_0020-e1556894630498.jpg" alt="">
+															<div class="media-links"> <a class="abs-link" title="" href="blog-single-left.html"></a> </div>
+														</div>
+														<div class="item-content">
+															<h5 class="bottommargin_0"> <a href="blog-single-right.html">1º Congreso Internacional de equidad de género</a> </h5> <span class="entry-meta greylinks">
+																<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+																<a href="blog-single-full.html">
+																	<time datetime="2017-10-03T08:50:40+00:00">
+																	17 jan, 2018</time>
+																</a>
+															</span> </div>
+														</div>
+													</div>
+												</div>
+
+											</aside>
+											<!-- eof aside sidebar -->
+										</div>
+									</div>
+								</section>
+								<footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">
+									<div class="container">
+										<div class="row">
+
+											<div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 text-center">
+												<div class="widget widget_text widget_about">
+													<div class="logo logo_with_text bottommargin_10"> <img src="images/index/cantera-logo.png" alt=""> </div>
+													<p>Somos una organización nicaragüense no gubernamental, de tipo humanitario, sin fines de lucro y con personalidad jurídica propia, fundada en el año 1988.</p>
+													<p class="topmargin_25"> <a class="social-icon border-icon rounded-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon border-icon rounded-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon border-icon rounded-icon socicon-youtube" href="#" title="Youtube"></a> </p>
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-6 col-xs-12 col-md-pull-4 text-center">
+													<div class="widget widget_text">
+														<h3 class="widget-title">Contáctanos</h3>
+														<ul class="list-unstyled greylinks">
+															<li class="media"> <i class="fa fa-map-marker highlight rightpadding_5" aria-hidden="true"></i> Plaza El Sol 2c. sur 1c. arriba. Managua, Nicaragua.</li>
+															<li class="media"> <i class="fa fa-phone highlight rightpadding_5" aria-hidden="true"></i> (505) 2278-0103 </li>
+															<li class="media"> <i class="fa fa-envelope highlight rightpadding_5" aria-hidden="true"></i> <a href="mailto: comunicacionescantera@gmail.com"> comunicacionescantera@gmail.com</a> </li>
+
+														</ul>
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-6 col-xs-12 hidden-xs hidden-sm text-center">
+													<div class="widget widget_recent_posts">
+														<h3 class="widget-title">Explorar </h3>
+													</div>
+
+													<div class="widget widget_text">
+														<ul class="list1 no-bullets no-top-border no-bottom-border greylinks">
+															<li> <a href="#"> Actualidad</a> </li>
+															<li> <a href="#"> Foro</a> </li>
+															<li> <a href="#"> Iniciativas destacadas</a> </li>
+															<li> <a href="#"> Recursos Metodológicos</a> </li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</footer>	
+									<section class="ds ms parallax page_copyright overlay_color section_padding_top_30 section_padding_bottom_30">
+										<div class="container">
+											<div class="row">
+												<div class="col-sm-12 text-center">
+													<p>&copy; Copyright 2019. Todos los derechos reservados.</p>
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+								<!-- eof #box_wrapper -->
+							</div>
+							<!-- eof #canvas -->
+							<script src="js/compressed.js"></script>
+							<script src="js/selectize.min.js"></script>
+							<script src="js/main.js"></script>
+						</body>
+
+						</html>

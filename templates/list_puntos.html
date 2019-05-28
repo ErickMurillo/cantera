@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<p>dummy text</p>
+
+	{% for obj in list_puntos_vista %}
+	<li><a href="{% url 'point_details' obj.slug %}">{{obj}}</a></li>
+	{% endfor %}
+{% endblock content %}

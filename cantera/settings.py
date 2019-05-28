@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'organizaciones',
     'foro',
     'galerias',
+    'puntosvista',
     'users.apps.UsersConfig',
     'configuracion',
 

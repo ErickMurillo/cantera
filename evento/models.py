@@ -8,7 +8,7 @@ from users.models import User
 # Create your models here.
 
 class Evento(models.Model):
-	tittle = models.CharField('Título',max_length=200)
+	tittle = models.CharField('Título',max_length=200, unique=True)
 	foto = ImageField('Foto',upload_to='eventos/')
 	descripcion = RichTextUploadingField()
 	inicio = models.DateField('Fecha de Inicio')

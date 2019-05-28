@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
 from .models import *
-from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def list_actualidad(request,template='list_actualidad.html'):

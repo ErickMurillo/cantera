@@ -26,7 +26,7 @@ Types_actualidad = (
 )
 
 class Actualidad(models.Model):
-	tittle = models.CharField('Título',max_length=200)
+	tittle = models.CharField('Título',max_length=200, unique=True)
 	category = models.IntegerField('Categoría',choices=Types_actualidad)
 	photo = ImageField('Foto',upload_to='actualidad/')
 	content = RichTextUploadingField()

@@ -1,0 +1,10 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+	<p>editar punto de vista</p>
+	<form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
+		{{form.media}}
+		{{form}}
+		<input type="submit" name="Guardar" value="Guardar">
+	</form>
+{% endblock content %}

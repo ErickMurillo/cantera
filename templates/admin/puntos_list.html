@@ -1,0 +1,10 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+	<p>listado de puntos de vista</p>
+	<a href="./agregar">Crear Punto de vista</a>
+
+	{% for obj in list_object_puntos %}
+		<li>{{obj}} | <a href="{% url 'puntos_vista_edit' obj.slug %}">Editar</a> | <a href="{% url 'puntos_vista_eliminar' obj.id %}">Eliminar</a></li>
+	{% endfor %}
+{% endblock content %}

@@ -7,9 +7,11 @@ from actualidad.models import *
 from foro.models import *
 from evento.models import *
 from galerias.models import *
+from puntosvista.models import *
 from actualidad.forms import *
 from evento.forms import *
 from galerias.forms import *
+from puntosvista.forms import *
 from .forms import *
 
 # Create your views here.
@@ -65,7 +67,7 @@ def actualidad_crear(request,template = 'admin/new_actualidad.html'):
 			actualidad.author = request.user
 			actualidad.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/contrapartes/actualidad/')
+			return HttpResponseRedirect('/alianzas/actualidad/')
 	else:
 		form = ActualidadForms()
 
@@ -80,7 +82,7 @@ def actualidad_editar(request, id, template = 'admin/edit_actualidad.html'):
 			form_uncommited = form.save()
 			form_uncommited.author = request.user
 			form_uncommited.save()
-			return HttpResponseRedirect('/contrapartes/actualidad/')
+			return HttpResponseRedirect('/alianzas/actualidad/')
 	else:
 		form = ActualidadForms(instance=object)
 	return render(request, template, locals())
@@ -88,7 +90,7 @@ def actualidad_editar(request, id, template = 'admin/edit_actualidad.html'):
 @login_required
 def eliminar_actualidad(request, id):
 	actualidad = Actualidad.objects.get(id = id).delete()
-	return HttpResponseRedirect('/contrapartes/actualidad/')
+	return HttpResponseRedirect('/alianzas/actualidad/')
 
 
 def foros_list(request, template = 'admin/foros_list.html'):
@@ -115,7 +117,7 @@ def events_crear(request,template = 'admin/new_event.html'):
 			event.author = request.user
 			event.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/contrapartes/iniciativas-destacadas/eventos/')
+			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
 	else:
 		form = EventsForms()
 	return render(request, template, locals())
@@ -129,7 +131,7 @@ def events_editar(request, id, template = 'admin/new_event.html'):
 			form_uncommited = form.save()
 			form_uncommited.author = request.user
 			form_uncommited.save()
-			return HttpResponseRedirect('/contrapartes/iniciativas-destacadas/eventos/')
+			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
 	else:
 		form = EventsForms(instance=object)
 
@@ -138,7 +140,7 @@ def events_editar(request, id, template = 'admin/new_event.html'):
 @login_required
 def events_eliminar(request, id):
 	nota = Evento.objects.get(id = id).delete()
-	return HttpResponseRedirect('/contrapartes/iniciativas-destacadas/eventos/')
+	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
 
 @login_required
 def galeria_list(request,template='admin/galeria_list.html'):
@@ -163,7 +165,7 @@ def galeria_img_crear(request,template = 'admin/new_galeria_img.html'):
 				instance.save()
 			formset.save_m2m()
 
-			return HttpResponseRedirect('/contrapartes/recursos-metodologicos/galerias/')
+			return HttpResponseRedirect('/alianzas/recursos-metodologicos/galerias/')
 	else:
 		form = GaleriaImagenesForm()
 		formset = FormSetInit()
@@ -182,7 +184,7 @@ def galeria_img_editar(request, id, template = 'admin/new_galeria_img.html'):
 			form_uncommited.save()
 
 			formset.save()
-			return HttpResponseRedirect('/contrapartes/recursos-metodologicos/galerias/')
+			return HttpResponseRedirect('/alianzas/recursos-metodologicos/galerias/')
 	else:
 		form = GaleriaImagenesForm(instance=object)
 		formset = FormSetInit(instance=object)
@@ -191,7 +193,7 @@ def galeria_img_editar(request, id, template = 'admin/new_galeria_img.html'):
 @login_required
 def galeria_img_eliminar(request,id):
 	galeria_img = GaleriaImagenes.objects.get(id=id).delete()
-	return HttpResponseRedirect('/contrapartes/recursos-metodologicos/galerias/')
+	return HttpResponseRedirect('/alianzas/recursos-metodologicos/galerias/')
 
 @login_required
 def galeria_vid_crear(request,template = 'admin/new_galeria_vid.html'):
@@ -202,7 +204,7 @@ def galeria_vid_crear(request,template = 'admin/new_galeria_vid.html'):
 			publi.usuario = request.user
 			publi.save()
 
-			return HttpResponseRedirect('/contrapartes/recursos-metodologicos/galerias/')
+			return HttpResponseRedirect('/alianzas/recursos-metodologicos/galerias/')
 	else:
 		form = GaleriaVideosForm()
 	return render(request, template, locals())
@@ -215,7 +217,7 @@ def galeria_vid_editar(request, id, template = 'admin/new_galeria_vid.html'):
 		if form.is_valid():
 			video = form.save(commit=False)
 			video.save()
-			return HttpResponseRedirect('/contrapartes/recursos-metodologicos/galerias/')
+			return HttpResponseRedirect('/alianzas/recursos-metodologicos/galerias/')
 	else:
 		form = GaleriaVideosForm(instance=object)
 	return render(request,template,locals())
@@ -223,4 +225,42 @@ def galeria_vid_editar(request, id, template = 'admin/new_galeria_vid.html'):
 @login_required
 def galeria_vid_eliminar(request,id):
 	galeria_vid = GaleriaVideos.objects.get(id=id).delete()
-	return HttpResponseRedirect('/contrapartes/recursos-metodologicos/galerias/')
+	return HttpResponseRedirect('/alianzas/recursos-metodologicos/galerias/')
+
+#Puntos de vista
+@login_required
+def puntos_vista_list(request,template = 'admin/puntos_list.html'):
+	list_object_puntos = Puntos.objects.filter(usuario = request.user.id)
+	return render(request,template,locals())
+
+@login_required
+def puntos_vista_crear(request,template = 'admin/new_punto.html'):
+	if request.method == 'POST':
+		form = PuntosForms(request.POST, request.FILES)
+		if form.is_valid():
+			punto = form.save(commit=False)
+			punto.usuario = request.user
+			punto.save()
+			return HttpResponseRedirect('/alianzas/puntos-vista/')
+	else:
+		form = PuntosForms()
+	return render(request, template, locals())
+
+@login_required
+def puntos_vista_edit(request,slug,template = 'admin/edit_puntos.html'):
+	object = get_object_or_404(Puntos, slug=slug)
+	if request.method == 'POST':
+		form = PuntosForms(request.POST, request.FILES, instance = object)
+		if form.is_valid():
+			puntos = form.save()
+			puntos.usuario = request.user
+			puntos.save()
+			return HttpResponseRedirect('/alianzas/puntos-vista/')
+	else:
+		form = PuntosForms(instance = object)
+	return render(request,template,locals())
+
+@login_required
+def puntos_vista_eliminar(request,id):
+	puntos_vista = Puntos.objects.get(id = id).delete()
+	return HttpResponseRedirect('/alianzas/puntos-vista/')

@@ -1,0 +1,13 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<p align="center">Crear punto de vista</p>
+
+	<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+		{{form.media}}
+		{{form.errors}}
+		{{form}}
+		<input type="submit" name="Agregar" value="Agregar punto de vista">
+	</form>
+
+{% endblock content %}

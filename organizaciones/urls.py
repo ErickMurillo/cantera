@@ -27,6 +27,12 @@ urlpatterns = [
 	path('recursos-metodologicos/galerias/videos/agregar/', views.galeria_vid_crear, name = 'galeria_vid_crear'),
 	path('recursos-metodologicos/galerias/videos/<id>/editar/', views.galeria_vid_editar, name = 'galeria_vid_editar'),
 	path('recursos-metodologicos/galerias/videos/<id>/eliminar', views.galeria_vid_eliminar, name = 'galeria_vid_eliminar'),
+	#puntos de vista
+	path('puntos-vista/',views.puntos_vista_list, name = 'puntos-vista'),
+	path('puntos-vista/agregar/',views.puntos_vista_crear, name = 'puntos_vista_crear'),
+	path('puntos-vista/<slug>/editar/',views.puntos_vista_edit, name = 'puntos_vista_edit'),
+	path('puntos-vista/<id>/eliminar/',views.puntos_vista_eliminar, name = 'puntos_vista_eliminar'),
+	
 	path('<slug>/', views.detalles_org, name = 'detalles_organizaciones'),
 
 ]	

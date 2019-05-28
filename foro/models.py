@@ -7,10 +7,11 @@ from actualidad.models import *
 
 # Create your models here.
 class Foros(models.Model):
-	nombre = models.CharField(max_length=200)
+	nombre = models.CharField(max_length=200, unique=True)
 	creacion = models.DateField(auto_now_add=True)
 	apertura = models.DateField('Apertura y recepción de aportes')
 	cierre = models.DateField('Cierre de aportes')
+	foto = ImageField('Foto',upload_to='foros/')
 	contenido = RichTextUploadingField()
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING)

@@ -33,6 +33,7 @@
 				</div>
 				<!-- eof .container -->
 			</li>
+
 			<li>
 				<div class="slide-image-wrap"> <img src="images/slide02.jpg" alt="" /> </div>
 				<div class="container">
@@ -59,6 +60,7 @@
 				</div>
 				<!-- eof .container -->
 			</li>
+
 			<li>
 				<div class="slide-image-wrap"> <img src="images/slide03.jpg" alt="" /> </div>
 				<div class="container">
@@ -87,6 +89,7 @@
 				</div>
 				<!-- eof .container -->
 			</li>
+
 		</ul>
 	</div>
 	<!-- eof flexslider -->
@@ -207,12 +210,19 @@
 
 
 			<div class="col-sm-10 col-sm-push-1 topmargin_30">
-
+				{% for obj in eventos %}
 				<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
 					<div class="row">
 						<div class="col-md-5">
-							<div class="item-media"> <img src="https://www.tn8.tv/media/cache/74/b7/74b79a4658b5f47e0c02aacfb6b05261.jpg" alt="">
-								<div class="media-links"> <a class="abs-link" title="" href="event-single-full.html"></a> </div>
+							<div class="item-media"> 
+								{% thumbnail obj.foto "373x256" crop="center" as im %}
+								    <img src="{{ im.url }}" alt="">
+								{% empty %}
+									<img src="http://via.placeholder.com/373x256" alt="">
+								{% endthumbnail %}
+								<div class="media-links"> 
+									<a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> 
+								</div>
 							</div>
 						</div>
 						<div class="col-md-7">
@@ -220,66 +230,19 @@
 								<header class="entry-header">
 									<div class="entry-meta greylinks inline-content"> <span>
 										<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-										<time datetime="2017-10-03T08:50:40+00:00">17 En, 2019 - 01:00 pm</time>
+										<time datetime="2017-10-03T08:50:40+00:00">{{obj.inicio|date:"d N, Y"}} - {{obj.hora_inicio|time:"h:i a"}}</time>
 									</span> <span>
 										<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
-										Plaza El Sol 2c. sur 1c. arriba.
+										{{obj.city}}
 									</span> </div>
-									<h3 class="entry-title small"> <a href="event-single-full.html"> Evento especial OMI sobre empoderamiento</a> </h3>
+									<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
 								</header>
-								<p>Nicaragua acogerá el evento especial OMI sobre empoderamiento</p>
+								{{obj.descripcion|safe|striptags|truncatechars:470}}
 							</div>
 						</div>
 					</div>
 				</article>
-				<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
-					<div class="row">
-						<div class="col-md-5">
-							<div class="item-media"> <img src="https://lavozdetarija.com/wp-content/uploads/2019/05/MG_0020-e1556894630498.jpg" alt="">
-								<div class="media-links"> <a class="abs-link" title="" href="event-single-full.html"></a> </div>
-							</div>
-						</div>
-						<div class="col-md-7">
-							<div class="item-content">
-								<header class="entry-header">
-									<div class="entry-meta greylinks inline-content"> <span>
-										<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-										<time datetime="2017-10-03T08:50:40+00:00">17 En, 2019 - 01:00 pm</time>
-									</span> <span>
-										<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
-										Plaza El Sol 2c. sur 1c. arriba.
-									</span> </div>
-									<h3 class="entry-title small"> <a href="event-single-full.html">1º Congreso Internacional de equidad de género</a> </h3>
-								</header>
-								<p>1º Congreso Internacional de equidad de género con el lema "Género y Derechos Humanos", junto con RENIES la Red Nacional de Educación Superior para la Igualdad de Género Mexicana, ANUES la Asociación Nacional de Universidades e Instituciones de Educación Superior Mexicana, el Instituto Tecnológico de Sonora y el Proyecto Equidad de Género del Instituto Tecnológico de Sonora.</p>
-							</div>
-						</div>
-					</div>
-				</article>
-				<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
-					<div class="row">
-						<div class="col-md-5">
-							<div class="item-media"> <img src="http://www.programas-gtz.org.ni/thumb/evento/600x600/1234657882_Grupos%20de%20trabajo.JPG" alt="">
-								<div class="media-links"> <a class="abs-link" title="" href="event-single-full.html"></a> </div>
-							</div>
-						</div>
-						<div class="col-md-7">
-							<div class="item-content">
-								<header class="entry-header">
-									<div class="entry-meta greylinks inline-content"> <span>
-										<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-										<time datetime="2017-10-03T08:50:40+00:00">17 En, 2019 - 01:00 pm</time>
-									</span> <span>
-										<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
-										Plaza El Sol 2c. sur 1c. arriba.
-									</span> </div>
-									<h3 class="entry-title small"> <a href="event-single-full.html">Elaboración Estrategia De Género Para CANTERA</a> </h3>
-								</header>
-								<p>Dirigido principalmente a las y los Puntos Focales de Género o personas responsables del tema en las oficinas y supone una propuesta didáctica abierta para que cada oficina encuentre la mejor manera de llevar a cabo y/o fortalecer sus propio proceso de transversalidad de género.</p>
-							</div>
-						</div>
-					</div>
-				</article>
+				{% endfor %}
 
 			</div>
 			<!--eof .col-sm-* (main content)-->

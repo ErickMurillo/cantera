@@ -19,6 +19,9 @@ from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header = 'Administración Cantera'
+admin.site.site_title = 'Cantera'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),

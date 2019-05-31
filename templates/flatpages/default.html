@@ -1,6 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-	{{flatpage.title}} <br>
-	{{flatpage.content}}
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="white-color">{{flatpage.title}}</h2>
+				<ol class="breadcrumb">
+					<li class="white-color"> <a href="/">
+						Inicio
+					</a> </li>
+					<li class="active">{{flatpage.title}}</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				{{flatpage.content}}
+			</div>
+		</div>
+	</div>
+</div>
+	
 {% endblock content %}

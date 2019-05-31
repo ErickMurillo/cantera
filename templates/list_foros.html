@@ -1,7 +1,153 @@
 {% extends "base.html" %}
+{% load el_pagination_tags %}
 
 {% block content %}
-	{% for obj in object_list %}
-		<li><a href="{% url 'detalle-foro' obj.slug %}">{{obj}}</a></li>
-	{% endfor %}
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="white-color ">Foro</h2>
+				<ol class="breadcrumb">
+					<li class="white-color"> <a href="/">
+						Inicio
+					</a> </li>
+					<li class="active">Foros</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="ls section_padding_top_110 section_padding_bottom_100 columns_padding_30">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7 col-md-8 col-lg-8">
+				{% paginate 4 object_list %}
+				{% for obj in object_list %}
+				<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-standard">
+
+					<div class="item-content">
+						<div class="entry-meta greylinks inline-content"> <span>
+							<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+							<a href="blog-single-full.html">
+								<time datetime="2017-10-03T08:50:40+00:00">
+								{{obj.apertura|date:"d N, Y"}}</time>
+							</a>
+						</span> <span>
+							<i class="icofont-comment highlight" aria-hidden="true"></i>
+							<a href="">{{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
+						</span> <span>
+							<i class="fa fa-comment highlight" aria-hidden="true"></i>
+							<a href="">{{obj.aportes_set.all.count}} aportes</a>
+						</span> </div>
+						<div class="entry-content-wrap">
+							<header class="entry-header">
+								<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
+							</header>
+							<div class="entry-content">
+								<p>{{obj.contenido|safe|striptags|truncatechars:200}} <a href="{% url 'detalle-foro' obj.slug %}" class="more-link">Read more</a></p>
+								</div>
+							</div>
+						</div>
+					</article>
+				{% endfor %}
+				
+
+				<div class="topmargin_60">
+					<!--<ul class="pagination">
+						<li><a href="#"><span class="sr-only">Prev</span><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#"><span class="sr-only">Next</span><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+					</ul>-->
+					{{show_pages}}
+				</div>
+			</div>
+				<!--eof .col-sm-8 (main content)-->
+				<!-- sidebar -->
+				<aside class="col-sm-5 col-md-4 col-lg-4">
+					<div class="widget widget_search">
+						<form method="get" class="searchform" action="./">
+							<div class="form-group margin_0"> <label class="sr-only" for="widget-search">Search for:</label> <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Buscar..."> </div> <button type="submit" class="theme_button color1">Search</button>									</form>
+						</div>
+						<!-- tags -->
+						<div class="widget">
+							<h4 class="widget-title">Tags</h4>
+							<div class="tagcloud">
+								<a href="">Igualdad</a>
+								<a href="">Género</a>
+								<a href="">Metodología</a>
+								<a href="">Nicaragua</a>
+							</div>
+						</div>
+						<div class="widget widget_archive">
+
+						</div>
+
+						<div class="widget widget_recent_posts">
+							<h4 class="widget-title">Foros Destacados</h4>
+							<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+								<div class="vertical-item content-padding with_border">
+
+									<div class="item-content">
+										<h5 class="bottommargin_0"> <a href="blog-single-right.html"> LOS VOLUNTARIOS DE LAS ENTIDADES NO LUCRATIVAS</a> </h5> <span class="entry-meta greylinks">
+											<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+											<a href="blog-single-full.html">
+												<time datetime="2017-10-03T08:50:40+00:00">
+												17 jun, 2019</time>
+											</a>
+										</span> </div>
+									</div>
+									<div class="vertical-item content-padding with_border">
+
+										<div class="item-content">
+											<h5 class="bottommargin_0"> <a href="blog-single-right.html">LA COOPERACIÓN INTERNACIONAL Y AYUDA HUMANITARIA</a> </h5> <span class="entry-meta greylinks">
+												<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+												<a href="blog-single-full.html">
+													<time datetime="2017-10-03T08:50:40+00:00">
+													17 jun, 2019</time>
+												</a>
+											</span> </div>
+										</div>
+										<div class="vertical-item content-padding with_border">
+
+											<div class="item-content">
+												<h5 class="bottommargin_0"> <a href="blog-single-right.html">FORO DE ESTOCOLMO SOBRE LA IGUALDAD DE GÉNERO.</a> </h5> <span class="entry-meta greylinks">
+													<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+													<a href="blog-single-full.html">
+														<time datetime="2017-10-03T08:50:40+00:00">
+														17 jun, 2019</time>
+													</a>
+												</span> </div>
+											</div>
+										</div>
+									</div>
+
+									<div class="widget widget_recent_posts">
+										<h4 class="widget-title">Foros Seguidos</h4>
+										<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+											<div class="vertical-item content-padding with_border">
+
+
+												<div class="vertical-item content-padding with_border">
+
+													<div class="item-content">
+														<h5 class="bottommargin_0"> <a href="blog-single-right.html">FORO DE ESTOCOLMO SOBRE LA IGUALDAD DE GÉNERO.</a> </h5> <span class="entry-meta greylinks">
+															<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+															<a href="blog-single-full.html">
+																<time datetime="2017-10-03T08:50:40+00:00">
+																17 jun, 2019</time>
+															</a>
+														</span> </div>
+													</div>
+												</div>
+											</div>
+
+			</aside>
+			<!-- eof aside sidebar -->
+		</div>
+	</div>
+</section>
 {% endblock content %}

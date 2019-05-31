@@ -35,7 +35,7 @@ class Contraparte(models.Model):
     slug = models.SlugField(max_length=200,editable=False)
 
     class Meta:
-        verbose_name_plural = "Contrapartes"
+        verbose_name_plural = "Alianzas"
 
     def __str__(self):
         return self.nombre

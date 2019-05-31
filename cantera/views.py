@@ -6,13 +6,15 @@ from organizaciones.models import *
 from actualidad.models import *
 from evento.models import *
 from configuracion.models import *
+from foro.models import *
 import datetime
+from django.db.models import Count
 
 def index(request,template='index.html'):
 	actualidad = Actualidad.objects.order_by('-created_on')[:6]
 	hoy = datetime.date.today()
 	eventos = Evento.objects.filter(inicio__gte = hoy).order_by('-inicio','-hora_inicio')[:3]
-	
+	foros = Foros.objects.annotate(conteo = Count('aportes')).order_by('-conteo','-aportes__fecha')[:3]
 	return render(request, template,locals())
 
 @login_required

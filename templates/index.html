@@ -205,7 +205,7 @@
 				<div class="col-sm-8 to_animate" data-animation="fadeInRight">
 					<h2 class="section_header">Próximos Eventos</h2>
 				</div>
-				<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="blog-full.html" class="view-more">Ver más</a> </div>
+				<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/eventos/" class="view-more">Ver más</a> </div>
 			</div>
 
 
@@ -256,7 +256,7 @@
 			<div class="col-sm-8 to_animate" data-animation="fadeInRight">
 				<h2 class="section_header">Foros destacados</h2>
 			</div>
-			<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="blog-full.html" class="view-more">Ver más</a> </div>
+			<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/foros/" class="view-more">Ver más</a> </div>
 
 		<!-- <div class="col-sm-12 topmargin_30">
 			<div class="loop-colors">
@@ -404,89 +404,35 @@
 		<!-- Contenido foro-->
 
 		<div class="col-sm-10 col-sm-push-1 topmargin_30">
+			{% for obj in foros %}
 			<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-standard">
 
 				<div class="item-content">
 					<div class="entry-meta greylinks inline-content"> <span>
 						<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-						<a href="blog-single-full.html">
+						<a href="">
 							<time datetime="2017-10-03T08:50:40+00:00">
-							17 En, 2019</time>
+							{{obj.apertura|date:"d N, Y"}}</time>
 						</a>
 					</span> <span>
 						<i class="icofont-comment highlight" aria-hidden="true"></i>
-						<a href="blog-full.html">Admin</a>
+						<a href="">{{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
 					</span> <span>
 						<i class="fa fa-comment highlight" aria-hidden="true"></i>
-						<a href="blog-single-full.html#comments">4 comentarios</a>
+						<a href="">{{obj.conteo}} aportes</a>
 					</span> </div>
 					<div class="entry-content-wrap">
 						<header class="entry-header">
-							<h3 class="entry-title"> <a href="blog-single-full.html">FEMENINO/MASCULINO LA PÉRDIDA DE IDEALES</a> </h3>
+							<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
 						</header>
 						<div class="entry-content">
-							<p>Los cambios sociales que se han producido en los últimos veinte o treinta años respecto a los lugares de hombres y mujeres en las sociedades occidentales, han provocado...</p>
+							<p>{{obj.contenido|safe|striptags|truncatechars:200}}</p>
 						</div>
 					</div>
 				</div>
-
 			</article>
-
-			<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-gallery">
-
-				<div class="item-content">
-					<div class="entry-meta greylinks inline-content"> <span>
-						<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-						<a href="blog-single-full.html">
-							<time datetime="2017-10-03T08:50:40+00:00">
-							17 En, 2019</time>
-						</a>
-					</span> <span>
-						<i class="icofont-comment highlight" aria-hidden="true"></i>
-						<a href="blog-full.html">Admin</a>
-					</span> <span>
-						<i class="fa fa-comment highlight" aria-hidden="true"></i>
-						<a href="blog-single-full.html#comments">4 comentarios</a>
-					</span> </div>
-					<div class="entry-content-wrap">
-						<header class="entry-header">
-							<h3 class="entry-title"> <a href="blog-single-full.html">VIOLENCIA ENTRE LOS GÉNEROS. CUESTIONES NO PENSADAS O "IMPENSABLES"</a> </h3>
-						</header>
-						<div class="entry-content">
-							<p>La violencia entre los géneros es un fenómeno marcadamente asimétrico, donde en la vida adulta, los hombres se ubican mayoritariamente del lado del agresor y las mujeres entre las víctimas...</p>
-						</div>
-					</div>
-				</div>
-
-			</article>
-
-			<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-video">
-
-				<div class="item-content">
-					<div class="entry-meta greylinks inline-content"> <span>
-						<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-						<a href="blog-single-full.html">
-							<time datetime="2017-10-03T08:50:40+00:00">
-							17 En, 2019</time>
-						</a>
-					</span> <span>
-						<i class="icofont-comment highlight" aria-hidden="true"></i>
-						<a href="blog-full.html">Admin</a>
-					</span> <span>
-						<i class="fa fa-comment highlight" aria-hidden="true"></i>
-						<a href="blog-single-full.html#comments">4 comentarios</a>
-					</span> </div>
-					<div class="entry-content-wrap">
-						<header class="entry-header">
-							<h3 class="entry-title"> <a href="blog-single-full.html">LOS VOLUNTARIOS DE LAS ENTIDADES NO LUCRATIVAS</a> </h3>
-						</header>
-						<div class="entry-content">
-							<p>Las organizaciones no lucrativas deben de estar preparadas para acoger a los voluntarios y ofrecerles los medios adecuados para que éstos puedan dar lo mejor de sí mismos, haciendo posible ese intercambio entre la entidad no lucrativa y el voluntariado...</p>
-						</div>
-					</div>
-				</div>
-
-			</article>
+			{% endfor %}
+			
 
 
 		</div>

@@ -42,10 +42,10 @@
 								<header class="entry-header">
 									<div class="entry-meta greylinks inline-content"> <span>
 										<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-										<time datetime="2017-10-03T08:50:40+00:00">17 Ene, 2019 - 01:00 pm</time>
+										<time datetime="2017-10-03T08:50:40+00:00">{{obj.inicio|date:"d N, Y"}} - {{obj.hora_inicio|time:"h:i a"}}</time>
 									</span> <span>
 										<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
-										Plaza El Sol 2c. sur 1c. arriba.
+										{{obj.city}}
 									</span> </div>
 									<h3 class="entry-title small">{{obj.tittle}} <a href="{% url 'detailEventos' obj.slug %}"></a> </h3>
 								</header>

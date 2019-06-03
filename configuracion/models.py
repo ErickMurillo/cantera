@@ -5,13 +5,19 @@ from sorl.thumbnail import ImageField
 # Create your models here.
 
 class SiteConfiguration(SingletonModel):
-	site_name = models.CharField(max_length=255, default='Nombre del Sitio')
+	foto_actualidad = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_eventos = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_galerias_videos = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_galerias_imagenes = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_foros = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_puntos_vista = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_quienes_somos = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 
 	def __unicode__(self):
-		return u"Configuracion del sitio"
+		return u"Configuracion imagenes del sitio"
 
 	class Meta:
-		verbose_name_plural = "Configuracion del sitio"
+		verbose_name_plural = "Configuracion imagenes del sitio"
 
 class Slider(SingletonModel):
 	texto_1 = models.CharField(max_length=100,verbose_name='Texto')

@@ -153,13 +153,38 @@ display block {
 a.actual_content:hover:before {
     content: "Informate";
 }
-
-a.actual_content:hover:after {
-    content: "";
-}
-.actual_content:hover {
-    content: "Infor";
-}
 a.actual_content:hover span {
     display: none;
+}
+
+a.puntos_content:hover:before {
+    content: "Opina";
+}
+a.puntos_content:hover span {
+    display: none;
+}
+
+a.foro_content:hover:before {
+    content: "Participa";
+}
+a.foro_content:hover span {
+    display: none;
+}
+
+a.recurso_content:hover:before{
+    content: "Comparte";
+}
+a.recurso_content:hover span{
+    display: none;
+}
+
+a.iniciativa_content:hover:before{
+    content: "Únete";
+}
+a.iniciativa_content:hover span {
+    display: none;
+}
+
+#services .media {
+    overflow: visible !important;
 }

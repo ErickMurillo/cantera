@@ -1,7 +1,103 @@
 {% extends "admin/base_admin.html" %}
 
 {% block content %}
-<p>Data organizacion</p>
-	<a href="{% url 'org_editar' organizacion.id%}">Editar org</a>
-	{{organizacion}}
+<section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-5">
+							<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+								<div class="item-media"> <img src="images/team/01.jpg" alt=""> </div>
+								<div class="item-content">
+									<header class="entry-header">
+										<h1 class="entry-title small bottommargin_0"> Adeline Barnett </h1> <span class="small-text highlight">leader</span> </header>
+									<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a> </p>
+								</div>
+							</article>
+						</div>
+						<div class="col-sm-7">
+							<p>Kielbasa pancetta sirloin tail meatball, corned beef doner shoulder cow bacon jerky leberkas. Meatball tail landjaeger, cupim alcatra pancetta biltong frankfurter picanha. Turducken pork loin tail pastrami strip steak. Sausage ground round chuck
+								andouille, pork belly bacon ham hock picanha cow spare ribs meatball frankfurter t-bone salami.</p>
+							<p>Landjaeger burgdoggen bresaola picanha, chuck swine cow frankfurter biltong chicken leberkas brisket sausage flank pig.Brisket frankfurter ham hock sausage strip steak flank ground round ball tip, doner corned beef t-bone cow jowl bacon turkey.</p>
+							<ul class="list2 color2 checklist greylinks">
+								<li> Lorem ipsum dolor sit amet </li>
+								<li> Sint animi non ut sed </li>
+								<li> Eaque blanditiis nemo </li>
+							</ul>
+							<p>Cow frankfurter tri-tip chuck flank jowl cupim chicken picanha turducken pork chop pig. Cupim pork biltong pork chop strip steak, hamburger beef ribs ground round. Cow shoulder meatloaf alcatra, ham pork loin shank jerky burgdoggen meatball cupim
+								kevin prosciutto ground round. </p>
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
+								<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Biography</a></li>
+								<li><a href="#tab2" role="tab" data-toggle="tab">Skills</a></li>
+								<li><a href="#tab3" role="tab" data-toggle="tab">Message</a></li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content big-padding top-color-border color2 bottommargin_40">
+								<div class="tab-pane fade in active" id="tab1">
+									<h4>Biography:</h4>
+									<p> Ut wisi enim ad minim veniaquis nostrud exetation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Dutem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
+										at vero eros et accumsan et iusto odio dignissim qui blandit. </p>
+									<h4>Professional Life:</h4>
+									<p> Dutem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit. Praesent luptatum zzril delenit augue duis dolore te
+										feugait nulla facilisi. </p>
+								</div>
+								<div class="tab-pane fade" id="tab2">
+									<p class="progress-bar-title"> Skill Name </p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" data-transitiongoal="90"> <span>90%</span> </div>
+									</div>
+									<p class="progress-bar-title"> Skill Name </p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" data-transitiongoal="100"> <span>100%</span> </div>
+									</div>
+									<p class="progress-bar-title"> Skill Name </p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" data-transitiongoal="75"> <span>75%</span> </div>
+									</div>
+									<p class="progress-bar-title"> Skill Name </p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" data-transitiongoal="95"> <span>95%</span> </div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="tab3">
+									<form class="contact-form" method="post" action="./">
+										<p class="contact-form-name">
+											<!-- <label for="name">Name <span class="required">*</span></label> --><input type="text" aria-required="true" size="30" value="" name="name" class="form-control" placeholder="Name"> </p>
+										<p class="contact-form-email">
+											<!-- <label for="email">Email <span class="required">*</span></label> --><input type="email" aria-required="true" size="30" value="" name="email" class="form-control" placeholder="Email Address"> </p>
+										<p class="contact-form-message">
+											<!-- <label for="message">Message</label> --><textarea aria-required="true" rows="4" cols="45" name="message" class="form-control" placeholder="Message"></textarea> </p>
+										<p class="contact-form-submit topmargin_30"> <button type="submit" name="contact_submit" class="theme_button color1">Send Message</button> </p>
+									</form>
+								</div>
+							</div>
+							<!-- eof .tab-content -->
+							<p>Venison pork shoulder corned beef doner, meatloaf sirloin biltong strip steak burgdoggen brisket tri-tip landjaeger pork loin cow. Strip steak rump alcatra pork loin, chuck beef ribs ball tip pork chop shankle sirloin venison beef flank.</p>
+							<blockquote
+							    class="with_padding big-padding with_border">
+								<p>«Prosciutto pork belly pork loin sirloin picanha. Turkey hamburger chuck, ham pork belly tri-tip pork chop pork loin buffalo. Capicola fatback chuck buffalo tail.» </p>
+								<div class="item-meta">
+									<h5>Alma Chandler</h5> <span class="small-text highlight2">Client</span> </div>
+								</blockquote>
+								<p>Tail ball tip chuck picanha beef ribs drumstick landjaeger kevin tongue pork chop fatback. Andouille tri-tip brisket jerky short ribs, filet mignon frankfurter chuck pork belly ham tip biltong corned beef capicola.Rib shank prosciutto. Ham hock
+									biltong ball tip pork bresaola hamburger, bacon boudin venison turkey pork shankle fatback jerky corned beef.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+<section id="actualidad" class="ls section_padding_top_90">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
+				<h2 class="section_header color">Actualidad</h2>
+				<div class="owl-carousel loop-colors topmargin_40" data-dots="false" data-nav="true" data-responsive-lg="3">
+						<p>Data organizacion</p>
+						<a href="{% url 'org_editar' organizacion.id%}">Editar org</a>
+						{{organizacion}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 {% endblock content %}

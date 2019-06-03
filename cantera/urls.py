@@ -37,4 +37,5 @@ urlpatterns = [
     path('accounts/profile/', perfil, name='perfil'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('pages/', include('django.contrib.flatpages.urls')),
+    path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

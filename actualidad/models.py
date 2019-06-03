@@ -3,7 +3,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from sorl.thumbnail import ImageField
 from users.models import User
-from taggit.managers import TaggableManager
+from taggit_autosuggest.managers import TaggableManager
 
 # Create your models here.
 

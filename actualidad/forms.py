@@ -19,4 +19,13 @@ class ActualidadForms(forms.ModelForm):
 		model = Actualidad
 		fields = '__all__'
 		exclude = ('slug','created_on','author',)
+
+class BuscadorGeneral(forms.Form):
+	q = forms.CharField(widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'type': 'text',
+            'id': 'widget-search',
+            'placeholder': 'Buscar...',
+            'name': 'search',
+        }))
 			

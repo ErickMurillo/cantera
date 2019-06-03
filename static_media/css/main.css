@@ -11043,7 +11043,7 @@ body.active-side-header.slide-right .page_header_side {
 @media (min-width: 1200px) and (max-width: 1599px) {
 	.section_intro_overlap .teaser[class*="_bg_color"],
   .section_intro_overlap .teaser[class*="with_"] {
-		padding: 30px;
+		padding: 5px;
 	}
 
 	.section_intro_overlap .teaser_icon.thick_border_icon[class*="_bg_color"].big_wrapper,

@@ -1,4 +1,5 @@
 from configuracion.models import *
+from actualidad.forms import *
 
 def imagenes(request):
 	foto_eventos = SiteConfiguration.objects.values_list('foto_eventos',flat=True)

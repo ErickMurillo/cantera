@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     #aplicaciones de terceros
     'sorl.thumbnail',
     'taggit',
+    'taggit_autosuggest',
     'ckeditor',
     'ckeditor_uploader',
     'location_field.apps.DefaultConfig',
@@ -94,7 +95,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cantera.context.imagenes'
+                'cantera.context.imagenes',
             ],
         },
     },

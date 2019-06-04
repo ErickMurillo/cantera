@@ -106,12 +106,12 @@
 						</div>
 
 						<div class="dropdown dropup text-center">
-							<a class="visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/actualidad">
 								<span>Actualidad</span> <i class="icofont-caret-down rotate"></i>
 							</a>
 							<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">Noticias</a>
-								<a class="dropdown-item" href="#">Situación regional de género</a>
+								<a class="dropdown-item" href="/actualidad/noticias">Noticias</a>
+								<a class="dropdown-item" href="/actualidad/situacion-regional-genero">Situación regional de género</a>
 							</div>
 						</div>
 						<div class="media-body media-middle text-center">
@@ -126,299 +126,306 @@
 			<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
 				<div class="teaser bg_customgreen transp with_padding big-padding margin_0">
 					<a href="/puntos-vista">
-					<div class="media xxs-media-left">
-						<div class="media- media-middle text-center">
-							<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="fa fa-eye highlight5" aria-hidden="true"></i> </div>
-						</div>
-						<div class="text-center">
-							<a class="visible_hover white-color puntos_content" href="/puntos-vista"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span>Puntos de vista</span>
-							</a>
-						</div>
-
-						<div class="media-body media-middle text-center">
-							<h4 class="white-color"></h4>
-						</div>
-					</div></a>
-				</div>
-			</div>
-			<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-				<div class="teaser main_bg_color2 transp with_padding big-padding margin_0">
-					<a href="/foros">
-					<div class="media xxs-media-left">
-						<div class="media- media-middle text-center">
-							<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-ui-chat highlight2" aria-hidden="true"></i> </div>
-						</div>
-
-						<div class="text-center">
-							<a class="visible_hover white-color foro_content" href="/foros"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Foros</span>
-							</a>
-						</div>
-						<div class="media-body media-middle text-center">
-							<h4></h4>
-
-						</div>
-					</div>
-					</a>
-				</div>
-			</div>
-
-			<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-				<div class="teaser main_bg_color4 transp with_padding big-padding margin_0">
-					<div class="media xxs-media-left">
-						<div class=" media-middle text-center">
-							<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-read-book highlight4" aria-hidden="true"></i> </div>
-						</div>
-
-						<div class="dropdown dropup text-center">
-							<a class="visible_hover white-color recurso_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
-							</a>
-							<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">Publicaciones</a>
-								<a class="dropdown-item" href="#">Guías metodológicas</a>
-								<a class="dropdown-item" href="#">Videos</a>
-								<a class="dropdown-item" href="#">Audios</a>
+						<div class="media xxs-media-left">
+							<div class="media- media-middle text-center">
+								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="fa fa-eye highlight5" aria-hidden="true"></i> </div>
 							</div>
-						</div>
-
-						<div class="media-body media-middle text-center">
-							<h5><a href="#0"> </a></h5>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-				<div class="teaser main_bg_color3 transp with_padding big-padding margin_0">
-					<div class="media xxs-media-left">
-						<div class="media-middle text-center">
-							<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-favourite highlight3" aria-hidden="true"></i> </div>
-						</div>
-
-						<div class="dropdown dropup text-center">
-							<a class="visible_hover white-color iniciativa_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i>
-							</a>
-							<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">Campañas</a>
-								<a class="dropdown-item" href="#">Eventos</a>
-								<a class="dropdown-item" href="#">Concursos</a>
-							</div>
-						</div>
-
-						<div class="media-body media-middle text-center">
-							
-							<h4>
-							</h4>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section id="actualidad" class="ls section_padding_top_90">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
-				<h2 class="section_header color">Actualidad</h2>
-				<div class="owl-carousel loop-colors topmargin_40" data-dots="false" data-nav="true" data-responsive-lg="3">
-
-					{% for obj in actualidad %}
-					<article class="vertical-item content-padding big-padding with_border bottom_color_border">
-						<div class="item-media"> 
-							{% thumbnail obj.photo "333x229" crop="center" as im %}
-							<img src="{{ im.url }}" alt="">
-							{% empty %}
-							<img src="http://via.placeholder.com/333x229" alt="">
-							{% endthumbnail %}
-						</div>
-						<div class="item-content">
-							<header class="entry-header">
-								<h3 class="entry-title small bottommargin_0"> <a href=""><span class="small-text">{{obj.tittle}}</span></a>
-								</header>
-								<p>
-									<a href="{% url 'detalle_actualidad' obj.slug %}" class="more-link">Leer más</a>
-								</p>
-
-								<div class="entry-meta greylinks inline-content">
-
-									<span>
-										<i class="icofont-comment highlight" aria-hidden="true"></i> {{obj.author.get_full_name|default:obj.author.username}}
-									</span>
-
-									<span>
-										<i class="icofont-wall-clock highlight" aria-hidden="true"></i>
-										<time datetime="2017-10-03T08:50:40+00:00">{{obj.created_on|date:"d N, Y"}}</time>
-									</span>  
-								</div>
-							</div>
-						</article>
-						{% endfor %}							
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-	<section class="ls section_padding_top_100 section_padding_bottom_110">
-		<div class="container">
-			<div class="row">															
-
-				<div class="flex-wrap v-center">
-					<div class="col-sm-8 to_animate" data-animation="fadeInRight">
-						<h2 class="section_header">Próximos Eventos</h2>
-					</div>
-					<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/eventos/" class="view-more">Ver más</a> </div>
-				</div>
-
-
-				<div class="col-sm-10 col-sm-push-1 topmargin_30">
-					{% for obj in eventos %}
-					<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
-						<div class="row">
-							<div class="col-md-5">
-								<div class="item-media"> 
-									{% thumbnail obj.foto "373x256" crop="center" as im %}
-									<img src="{{ im.url }}" alt="">
-									{% empty %}
-									<img src="http://via.placeholder.com/373x256" alt="">
-									{% endthumbnail %}
-									<div class="media-links"> 
-										<a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> 
-									</div>
-								</div>
-							</div>
-							<div class="col-md-7">
-								<div class="item-content">
-									<header class="entry-header">
-										<div class="entry-meta greylinks inline-content"> <span>
-											<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-											<time datetime="2017-10-03T08:50:40+00:00">{{obj.inicio|date:"d N, Y"}} - {{obj.hora_inicio|time:"h:i a"}}</time>
-										</span> <span>
-											<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
-											{{obj.city}}
-										</span> </div>
-										<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
-									</header>
-									{{obj.descripcion|safe|striptags|truncatechars:470}}
-								</div>
-							</div>
-						</div>
-					</article>
-					{% endfor %}
-
-				</div>
-				<!--eof .col-sm-* (main content)-->
-			</div>
-		</div>
-	</section>
-
-	<section id="blog" class="ls section_padding_bottom_110">
-		<div class="container">
-			<div class="row flex-wrap v-center">
-				<div class="col-sm-8 to_animate" data-animation="fadeInRight">
-					<h2 class="section_header">Foros destacados</h2>
-				</div>
-				<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/foros/" class="view-more">Ver más</a> </div>
-
-				<!-- Contenido foro-->
-
-				<div class="col-sm-10 col-sm-push-1 topmargin_30">
-					{% for obj in foros %}
-					<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-standard">
-
-						<div class="item-content">
-							<div class="entry-meta greylinks inline-content"> <span>
-								<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-								<a href="">
-									<time datetime="2017-10-03T08:50:40+00:00">
-									{{obj.apertura|date:"d N, Y"}}</time>
+							<div class="text-center">
+								<a class="visible_hover white-color puntos_content" href="/puntos-vista"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span>Puntos de vista</span>
 								</a>
-							</span> <span>
-								<i class="icofont-comment highlight" aria-hidden="true"></i>
-								<a href="">{{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
-							</span> <span>
-								<i class="fa fa-comment highlight" aria-hidden="true"></i>
-								<a href="">{{obj.conteo}} aportes</a>
-							</span> </div>
-							<div class="entry-content-wrap">
-								<header class="entry-header">
-									<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
-								</header>
-								<div class="entry-content">
-									<p>{{obj.contenido|safe|striptags|truncatechars:200}}</p>
+							</div>
+
+							<div class="media-body media-middle text-center">
+								<h4 class="white-color"></h4>
+							</div>
+						</div></a>
+					</div>
+				</div>
+				<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+					<div class="teaser main_bg_color2 transp with_padding big-padding margin_0">
+						<a href="/foros">
+							<div class="media xxs-media-left">
+								<div class="media- media-middle text-center">
+									<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-ui-chat highlight2" aria-hidden="true"></i> </div>
+								</div>
+
+								<div class="text-center">
+									<a class="visible_hover white-color foro_content" href="./foros"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Foros</span>
+									</a>
+								</div>
+								<div class="media-body media-middle text-center">
+									<h4></h4>
+
 								</div>
 							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+					<div class="teaser main_bg_color4 transp with_padding big-padding margin_0">
+						<div class="media xxs-media-left">
+							<div class=" media-middle text-center">
+								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-read-book highlight4" aria-hidden="true"></i> </div>
+							</div>
+
+							<div class="dropdown dropup text-center">
+								<a class="visible_hover white-color recurso_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
+								</a>
+								<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="./recursos-metodologicos/publicaciones">Publicaciones</a>
+									<a class="dropdown-item" href="./recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
+									<a class="dropdown-item blockdisplay" href="#">
+											Galería
+											<ul>
+												<li><a href="./recursos-metodologicos/galerias/imagenes">Imágenes</a></li>
+												<li><a href="./recursos-metodologicos/galerias/videos">Videos</a></li>
+											</ul>
+									</a>
+
+									<a class="dropdown-item" href="./recursos-metodologicos/audios">Audios</a>
+								</div>
+							</div>
+
+							<div class="media-body media-middle text-center">
+								<h5><a href="#0"> </a></h5>
+							</div>
 						</div>
-					</article>
-					{% endfor %}
+					</div>
+				</div>
 
+				<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+					<div class="teaser main_bg_color3 transp with_padding big-padding margin_0">
+						<div class="media xxs-media-left">
+							<div class="media-middle text-center">
+								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-favourite highlight3" aria-hidden="true"></i> </div>
+							</div>
 
+							<div class="dropdown dropup text-center">
+								<a class="visible_hover white-color iniciativa_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i>
+								</a>
+								<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="/iniciativas-destacadas/campanias">Campañas</a>
+									<a class="dropdown-item" href="/iniciativas-destacadas/eventos">Eventos</a>
+									<a class="dropdown-item" href="/iniciativas-destacadas/concursos">Concursos</a>
+								</div>
+							</div>
 
+							<div class="media-body media-middle text-center">
+
+								<h4>
+								</h4>
+
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section id="organizations" class="ls section_padding_top_90">
+	<section id="actualidad" class="ls section_padding_top_90">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
-					<h2 class="section_header color">Alianzas</h2>
+					<h2 class="section_header color">Actualidad</h2>
 					<div class="owl-carousel loop-colors topmargin_40" data-dots="false" data-nav="true" data-responsive-lg="3">
-						{% for obj in alianzas %}
-						<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+
+						{% for obj in actualidad %}
+						<article class="vertical-item content-padding big-padding with_border bottom_color_border">
 							<div class="item-media"> 
-								{% thumbnail obj.logo "x270" crop="center" as im %}
+								{% thumbnail obj.photo "333x229" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/270x270" alt="">
+								<img src="http://via.placeholder.com/333x229" alt="">
 								{% endthumbnail %}
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
-									<h3 class="entry-title small bottommargin_0"> <a href="">{{obj.siglas|default:obj.nombre}}</a> </h3>
-								</header>
-								<p class="member-social greylinks"> 
-									{% for red in obj.redes_set.all|slice:":3" %}
-									<a class="social-icon {% if red.opcion == 'Sitio web' %}
-									socicon-globe
-									{% elif red.opcion == 'Facebook' %}
-									socicon-facebook
-									{% elif red.opcion == 'Twitter' %}
-									socicon-twitter
-									{% elif red.opcion == 'Youtube' %}
-									socicon-youtube
-									{% elif red.opcion == 'Google+' %}
-									socicon-google
-									{% elif red.opcion == 'Instagram' %}
-									socicon-instagram
-									{% elif red.opcion == 'Linkedin' %}
-									socicon-linkedin
-									{% elif red.opcion == 'Flickr' %}
-									socicon-flickr
-									{% elif red.opcion == 'Pinterest' %}
-									socicon-pinterest
-									{% elif red.opcion == 'Vimeo' %}
-									socicon-vimeo
-									{% elif red.opcion == 'Otra' %}
-									socicon-link
-									{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a>
-									{% endfor %}
-								</p>
+									<h3 class="entry-title small bottommargin_0"> <a href=""><span class="small-text">{{obj.tittle}}</span></a>
+									</header>
+									<p>
+										<a href="{% url 'detalle_actualidad' obj.slug %}" class="more-link">Leer más</a>
+									</p>
+
+									<div class="entry-meta greylinks inline-content">
+
+										<span>
+											<i class="icofont-comment highlight" aria-hidden="true"></i> {{obj.author.get_full_name|default:obj.author.username}}
+										</span>
+
+										<span>
+											<i class="icofont-wall-clock highlight" aria-hidden="true"></i>
+											<time datetime="2017-10-03T08:50:40+00:00">{{obj.created_on|date:"d N, Y"}}</time>
+										</span>  
+									</div>
+								</div>
+							</article>
+							{% endfor %}							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+		<section class="ls section_padding_top_100 section_padding_bottom_110">
+			<div class="container">
+				<div class="row">															
+
+					<div class="flex-wrap v-center">
+						<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+							<h2 class="section_header">Próximos Eventos</h2>
+						</div>
+						<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/eventos/" class="view-more">Ver más</a> </div>
+					</div>
+
+
+					<div class="col-sm-10 col-sm-push-1 topmargin_30">
+						{% for obj in eventos %}
+						<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
+							<div class="row">
+								<div class="col-md-5">
+									<div class="item-media"> 
+										{% thumbnail obj.foto "373x256" crop="center" as im %}
+										<img src="{{ im.url }}" alt="">
+										{% empty %}
+										<img src="http://via.placeholder.com/373x256" alt="">
+										{% endthumbnail %}
+										<div class="media-links"> 
+											<a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> 
+										</div>
+									</div>
+								</div>
+								<div class="col-md-7">
+									<div class="item-content">
+										<header class="entry-header">
+											<div class="entry-meta greylinks inline-content"> <span>
+												<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+												<time datetime="2017-10-03T08:50:40+00:00">{{obj.inicio|date:"d N, Y"}} - {{obj.hora_inicio|time:"h:i a"}}</time>
+											</span> <span>
+												<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
+												{{obj.city}}
+											</span> </div>
+											<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
+										</header>
+										{{obj.descripcion|safe|striptags|truncatechars:470}}
+									</div>
+								</div>
 							</div>
 						</article>
 						{% endfor %}
 
 					</div>
+					<!--eof .col-sm-* (main content)-->
 				</div>
 			</div>
-		</div>
-	</section>
-	{% endblock content %}
+		</section>
+
+		<section id="blog" class="ls section_padding_bottom_110">
+			<div class="container">
+				<div class="row flex-wrap v-center">
+					<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+						<h2 class="section_header">Foros destacados</h2>
+					</div>
+					<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/foros/" class="view-more">Ver más</a> </div>
+
+					<!-- Contenido foro-->
+
+					<div class="col-sm-10 col-sm-push-1 topmargin_30">
+						{% for obj in foros %}
+						<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-standard">
+
+							<div class="item-content">
+								<div class="entry-meta greylinks inline-content"> <span>
+									<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+									<a href="">
+										<time datetime="2017-10-03T08:50:40+00:00">
+										{{obj.apertura|date:"d N, Y"}}</time>
+									</a>
+								</span> <span>
+									<i class="icofont-comment highlight" aria-hidden="true"></i>
+									<a href="">{{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
+								</span> <span>
+									<i class="fa fa-comment highlight" aria-hidden="true"></i>
+									<a href="">{{obj.conteo}} aportes</a>
+								</span> </div>
+								<div class="entry-content-wrap">
+									<header class="entry-header">
+										<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
+									</header>
+									<div class="entry-content">
+										<p>{{obj.contenido|safe|striptags|truncatechars:200}}</p>
+									</div>
+								</div>
+							</div>
+						</article>
+						{% endfor %}
+
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="organizations" class="ls section_padding_top_90">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
+						<h2 class="section_header color">Alianzas</h2>
+						<div class="owl-carousel loop-colors topmargin_40" data-dots="false" data-nav="true" data-responsive-lg="3">
+							{% for obj in alianzas %}
+							<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+								<div class="item-media"> 
+									{% thumbnail obj.logo "x270" crop="center" as im %}
+									<img src="{{ im.url }}" alt="">
+									{% empty %}
+									<img src="http://via.placeholder.com/270x270" alt="">
+									{% endthumbnail %}
+								</div>
+								<div class="item-content">
+									<header class="entry-header">
+										<h3 class="entry-title small bottommargin_0"> <a href="/alianzas">{{obj.siglas|default:obj.nombre}}</a> </h3>
+									</header>
+									<p class="member-social greylinks"> 
+										{% for red in obj.redes_set.all|slice:":3" %}
+										<a class="social-icon {% if red.opcion == 'Sitio web' %}
+										socicon-globe
+										{% elif red.opcion == 'Facebook' %}
+										socicon-facebook
+										{% elif red.opcion == 'Twitter' %}
+										socicon-twitter
+										{% elif red.opcion == 'Youtube' %}
+										socicon-youtube
+										{% elif red.opcion == 'Google+' %}
+										socicon-google
+										{% elif red.opcion == 'Instagram' %}
+										socicon-instagram
+										{% elif red.opcion == 'Linkedin' %}
+										socicon-linkedin
+										{% elif red.opcion == 'Flickr' %}
+										socicon-flickr
+										{% elif red.opcion == 'Pinterest' %}
+										socicon-pinterest
+										{% elif red.opcion == 'Vimeo' %}
+										socicon-vimeo
+										{% elif red.opcion == 'Otra' %}
+										socicon-link
+										{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a>
+										{% endfor %}
+									</p>
+								</div>
+							</article>
+							{% endfor %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		{% endblock content %}

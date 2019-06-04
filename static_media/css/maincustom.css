@@ -188,3 +188,7 @@ a.iniciativa_content:hover span {
 #services .media {
     overflow: visible !important;
 }
+
+.blockdisplay{
+  display: block;
+}

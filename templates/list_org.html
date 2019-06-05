@@ -1,12 +1,54 @@
 {% extends "base.html" %}
+{% load thumbnail %}
+{% load el_pagination_tags %}
 
 {% block content %}
-<p align="center">Index organizaciones</p>
-	<ol>
-	{% for obj in list_object %}
-	<li><a href="{% url 'detalles_organizaciones' obj.slug %}">{{obj}}</a></li>
-		
-	{% endfor %}
-	</ol>
+
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="white-color">Alianzas</h2>
+				<ol class="breadcrumb greylinks">
+					<li> <a href="./">
+						Inicio
+					</a> </li>
+					<li class="active">Alianzas</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ls page_portfolio section_padding_top_100 section_padding_bottom_100">
+	<div class="container">
+		<div class="row flex-wrap columns_margin_bottom_20">
+			<div class="col-sm-6 col-md-4">
+				{% for obj in list_object %}
+
+				<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+					<div class="item-media"> 
+						{% thumbnail obj.logo "256x166" crop="center" as im %}
+						<img src="{{ im.url }}" alt="">
+						{% empty %}
+						<img src="http://via.placeholder.com/256x166" alt="">
+						{% endthumbnail %}
+
+						<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalles_organizaciones' obj.slug %}"></a> </div>
+					</div>
+					<div class="item-content">
+						<header class="entry-header">
+							<h3 class="entry-title small bottommargin_0"> <a href="{% url 'detalles_organizaciones' obj.slug %}">{{obj}}</a> </h3> <div class="small-text highlight">{{obj.generalidades|safe|striptags|truncatechars:130}}</div> 
+						</header>
+						<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a> </p>
+					</div>
+				</article>
+
+				{% endfor %}
+			</div>
+
+		</div>
+	</div>
+</section>
 
 {% endblock content %}

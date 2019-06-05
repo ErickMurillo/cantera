@@ -45,7 +45,7 @@ class Contraparte(models.Model):
         return super(Contraparte, self).save(*args, **kwargs)
         
 REDES_CHOICES = (('Sitio web','Sitio web'),('Facebook','Facebook'),('Twitter','Twitter'),('Youtube','Youtube'),
-					('Google+','Google+'),('Instagram','Instagram'),('Linkedin','Linkedin'),
+					('Instagram','Instagram'),('Linkedin','Linkedin'),
 					('Flickr','Flickr'),('Pinterest','Pinterest'),('Vimeo','Vimeo'),('Otra','Otra'),)
 
 class Redes(models.Model):

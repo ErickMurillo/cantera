@@ -1,5 +1,5 @@
 .logo img {
-	max-width: 170px;
+	max-width: 210px;
 }
 
 .size_small {
@@ -189,6 +189,7 @@ a.iniciativa_content:hover span {
     overflow: visible !important;
 }
 
-.blockdisplay{
-  display: block;
+.description div{
+  max-width: 300px;
+  min-width: 300px;
 }

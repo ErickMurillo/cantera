@@ -13,10 +13,10 @@ def list_actualidad(request,template='list_actualidad.html'):
 										Q(tittle__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										category__in = ['informemonos','situacion-regional-genero','reflexiones']).order_by('created_on')
+										category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
 
 	else:
-		list_object = Actualidad.objects.filter(category__in = ['informemonos','situacion-regional-genero','reflexiones']).order_by('created_on')
+		list_object = Actualidad.objects.filter(category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
 
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
@@ -31,7 +31,7 @@ def filtro_categoria(request,category,template='list_actualidad.html'):
 										Q(tittle__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										category__in = ['informemonos','situacion-regional-genero','reflexiones']).order_by('created_on')
+										category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
 		
 	else:
 		list_object = Actualidad.objects.filter(category = category).order_by('created_on')
@@ -49,10 +49,10 @@ def filtro_tag(request,slug,template='list_actualidad.html'):
 										Q(tittle__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										category__in = ['informemonos','situacion-regional-genero','reflexiones']).order_by('created_on')
+										category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
 		
 	else:
-		list_object = Actualidad.objects.filter(category__in = ['informemonos','situacion-regional-genero','reflexiones'],tags__slug = slug).order_by('created_on')
+		list_object = Actualidad.objects.filter(category__in = ['noticias','situacion-regional-genero'],tags__slug = slug).order_by('created_on')
 	
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]

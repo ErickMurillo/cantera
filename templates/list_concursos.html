@@ -19,12 +19,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
-				<h2 class="white-color">Actualidad</h2>
+				<h2 class="white-color">Concursos</h2>
 				<ol class="breadcrumb">
 					<li class="white-color"> <a href="/">
 						Inicio
 					</a> </li>
-					<li class="active">Actualidad</li>
+					<li class="active">Concursos</li>
 				</ol>
 			</div>
 		</div>
@@ -41,19 +41,16 @@
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">			
 						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
 							<div class="item-media"> 
-								{% thumbnail obj.photo "365x229" crop="center" as im %}
+								{% thumbnail obj.photo "333x229" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/365x229" alt="">
+								<img src="http://via.placeholder.com/333x229" alt="">
 								{% endthumbnail %}
 								
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
-									<div class="categories-links small-text highlightlinks"> <a href="#"> {{obj.get_category_display}}</a> 
-									</div>
-
-
+									
 									<div class="entry-meta greylinks color4 inline-content"> 
 										<span>
 											<i class="fa fa-calendar highlight1 rightpadding_5" aria-hidden="true"></i>
@@ -63,11 +60,11 @@
 
 
 
-									<h3 class="entry-title small bottommargin_0"> <a rel="bookmark">
-										{{obj.tittle|striptags|truncatechars:71}}
+									<h3 class="entry-title small bottommargin_0"> <a href="{% url 'detailConcursos' obj.slug %}" rel="bookmark">
+										{{obj.tittle}}
 									</a> </h3>
 								</header>
-								<p class="content-3lines-ellipsis">{{obj.content|safe|striptags|truncatechars:100}} ...<a href="{% url 'detalle_actualidad' obj.slug %}" class="more-link"> Leer más</a> </p>
+								<p class="content-3lines-ellipsis">{{obj.content|safe|striptags|truncatechars:100}} ...<a href="{% url 'detailConcursos' obj.slug %}" class="more-link"> Leer más</a> </p>
 							</div>
 						</article>
 					</div>
@@ -129,17 +126,6 @@
 						<button type="submit" class="theme_button color1">Search</button>	
                     </form>
 				</div>
-
-					<!-- categorias -->
-					<div class="widget">
-						<h4 class="widget-title">Categorías</h4>
-						<div class="">
-							<ul>
-								<li><a href="/actualidad/informemonos/">Noticas</a></li>									
-								<li><a href="/actualidad/situacion-regional-genero/">Situación regional de género</a></li>
-							</ul>
-						</div>
-					</div>
 		
 					<!-- tags -->
 					<div class="widget">
@@ -157,10 +143,10 @@
 							{% for obj in prox_eventos %}
 							<div class="vertical-item content-padding with_border">
 								<div class="item-media"> 
-									{% thumbnail obj.foto "350x279" crop="center" as im %}
+									{% thumbnail obj.foto "318x279" crop="center" as im %}
 									    <img src="{{ im.url }}" alt="">
 									{% empty %}
-										<img src="http://via.placeholder.com/350x279" alt="">
+										<img src="http://via.placeholder.com/318x279" alt="">
 									{% endthumbnail %}
 									<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
 								</div>

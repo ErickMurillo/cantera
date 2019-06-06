@@ -18,16 +18,15 @@ class Temas(models.Model):
 		return self.nombre
 
 Types_actualidad = (
-	(1,'Informémonos'),
-	(2,'Situación regional de género'),
-	(3,'Reflexiones'),
-	(4,'Campañas'),
-	(5,'Concursos')
+	('noticias','Noticias'),
+	('situacion-regional-genero','Situación regional de género'),
+	('campanas','Campañas'),
+	('concursos','Concursos')
 )
 
 class Actualidad(models.Model):
 	tittle = models.CharField('Título',max_length=200, unique=True)
-	category = models.IntegerField('Categoría',choices=Types_actualidad)
+	category = models.CharField('Categoría',choices=Types_actualidad, max_length=50)
 	photo = ImageField('Foto',upload_to='actualidad/')
 	content = RichTextUploadingField()
 	created_on = models.DateField('Fecha de publicación', auto_now_add=True)

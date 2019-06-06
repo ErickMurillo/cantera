@@ -2,6 +2,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-	path('',views.indexEventos, name='indexEventos'),
-	path('<slug>/',views.detailEventos, name='detailEventos'),
+	path('eventos/',views.indexEventos, name = 'indexEventos'),
+	path('eventos/<slug>/',views.detailEventos, name = 'detailEventos'),
+	path('eventos/tag/<slug>',views.filtro_tag_eventos, name ='filtro_tag_eventos'),
+	path('campanias/',views.indexCampanias,name = 'indexCampanias'),
+	path('campanias/<slug>',views.detailCampanias),
+	path('concursos/',views.indexConcursos, name = 'indexConcursos'),
+	path('concursos/<slug>', views.detailConcursos, name = 'detailConcursos'),
+	path('concurso/tag/<slug>/',views.filtro_tag_concurso, name='filtro-tag'),
+	path('campanias/tag/<slug>/',views.filtro_tag_campanias, name='filtro-tag-camp'),
+
 ]

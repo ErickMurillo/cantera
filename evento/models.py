@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 from location_field.models.plain import PlainLocationField
 from sorl.thumbnail import ImageField
 from users.models import User
+from taggit_autosuggest.managers import TaggableManager
 
 # Create your models here.
 
@@ -18,6 +19,7 @@ class Evento(models.Model):
 	city = models.CharField('Dirección', max_length=100)
 	position = PlainLocationField(based_fields=['city'], zoom=7,verbose_name='Posición')
 	slug = models.SlugField(max_length=200, editable=False)
+	tags = TaggableManager("Tags",help_text='Separar elementos con "," ', blank=True)
 	author = models.ForeignKey(User,on_delete=models.DO_NOTHING)
 
 	class Meta:

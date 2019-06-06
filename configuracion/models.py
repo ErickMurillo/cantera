@@ -20,15 +20,15 @@ class SiteConfiguration(SingletonModel):
 		verbose_name_plural = "Configuracion imagenes del sitio"
 
 class Slider(SingletonModel):
-	texto_1 = models.CharField(max_length=100,verbose_name='Texto')
+	texto_1 = models.CharField(max_length=60,verbose_name='Texto')
 	foto_1 = ImageField('Foto',upload_to='slider/')
 	credito_1 = models.CharField(max_length=100,verbose_name='Credito')
 
-	texto_2 = models.CharField(max_length=100,blank=True,null=True,verbose_name='Texto')
+	texto_2 = models.CharField(max_length=60,blank=True,null=True,verbose_name='Texto')
 	foto_2 = ImageField('Foto',upload_to='slider/',blank=True,null=True)
 	credito_2 = models.CharField(max_length=100,blank=True,null=True,verbose_name='Credito')
 
-	texto_3 = models.CharField(max_length=100,blank=True,null=True,verbose_name='Texto')
+	texto_3 = models.CharField(max_length=60,blank=True,null=True,verbose_name='Texto')
 	foto_3 = ImageField('Foto',upload_to='slider/',blank=True,null=True)
 	credito_3 = models.CharField(max_length=100,blank=True,null=True,verbose_name='Credito')
 

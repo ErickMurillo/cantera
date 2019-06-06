@@ -1,5 +1,5 @@
 .logo img {
-	max-width: 170px;
+	max-width: 210px;
 }
 
 .size_small {
@@ -30,10 +30,6 @@
 .align-items-center {
     -ms-flex-align: center!important;
     align-items: center!important;
-}
-
-.with_border .item-media {
-    margin: 15px;
 }
 
 .vertical-item.big-padding .item-content {
@@ -187,4 +183,8 @@ a.iniciativa_content:hover span {
 
 #services .media {
     overflow: visible !important;
+}
+
+#list_alianza .with_border .item-media {
+    margin: 15px;
 }

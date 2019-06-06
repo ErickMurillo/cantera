@@ -56,8 +56,8 @@
 			<li>Message To User</li>
 		</ul>
 	-->
-		</div>
-	</div>
+</div>
+</div>
 <!-- eof .modal -->
 <!-- wrappers for visual page editor and boxed version of template -->
 <!--[if lt IE 9]>
@@ -84,59 +84,65 @@
 			<li>Message To User</li>
 		</ul>
 	-->
-		</div>
-	</div>
+</div>
+</div>
 <!-- eof .modal -->
 <!-- wrappers for visual page editor and boxed version of template -->
 
-	<div id="canvas">
-		<div id="box_wrapper">
-			<!-- template sections -->
-			<section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0 bg_customgreen">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-6 text-center text-lg-left hidden-xs">
-							<div class="inline-content big-spacing">
-								<div class="page_social"> <a class="social-icon socicon-facebook white-color" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter white-color" href="#" title="Twitter"></a>  <a class="social-icon socicon-youtube white-color" href="#" title="Youtube"></a> </div> 
+<div id="canvas">
+	<div id="box_wrapper">
+		<!-- template sections -->
+		<section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0 bg_customgreen">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6 text-center text-lg-left hidden-xs">
+						<div class="inline-content big-spacing">
+							<div class="page_social"> <a class="social-icon socicon-facebook white-color" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter white-color" href="#" title="Twitter"></a>  <a class="social-icon socicon-youtube white-color" href="#" title="Youtube"></a> </div> 
 									<!-- <span class="xs-block">
 										<i class="fa fa-clock-o highlight3 rightpadding_5" aria-hidden="true"></i>
 										Mon-Fri: 9:00-19:00; Sat: 10:00-17:00; Sun: Closed
 									</span>  -->
-							</div>
-						</div>
-						<div class="col-lg-6 text-center text-lg-right">
-							<div id="topline-animation-wrap">
-								<div id="topline-hide" class="inline-content big-spacing"> 
-								 	
-								<div class="xs-block">
-									<ul class="inline-list menu greylinks">
-
-										<li class="dropdown"> <a id="search-show" href="./">
-											<i class="fa fa-search white-color"></i>
-										</a> </li>
-									</ul>
 								</div>
 							</div>
-							<div id="topline-show" class="widget widget_search">
-								<form method="get" class="searchform inline-form" action="./">
-									<div class="form-group-wrap">
-										<div class="form-group"> <label class="sr-only" for="topline-widget-search">Search for:</label> <input id="topline-widget-search" type="text" value="" name="search" class="form-control" placeholder="Enter Keyword..."> <a href="./" id="search-close">
-											<i class="fa fa-close"></i>
-										</a> </div> <button type="submit" class="theme_button no_bg_button color1">ok</button> </div>
-									</form>
+							<div class="col-lg-6 text-center text-lg-right">
+								<div id="topline-animation-wrap">
+									<div id="topline-hide" class="inline-content big-spacing"> 
+
+										<div class="xs-block">
+											<ul class="inline-list menu greylinks">
+
+												{% if request.user.is_authenticated %}
+												<li>
+													<a href="/accounts/profile/" class="white-color">{{user.get_full_name|default:user.username}}</a>
+												</li>
+												{% endif%}
+
+												<li class="dropdown"> <a id="search-show" href="./">
+													<i class="fa fa-search white-color"></i>
+												</a> </li>
+											</ul>
+										</div>
+									</div>
+									<div id="topline-show" class="widget widget_search">
+										<form method="get" class="searchform inline-form" action="./">
+											<div class="form-group-wrap">
+												<div class="form-group"> <label class="sr-only" for="topline-widget-search">Search for:</label> <input id="topline-widget-search" type="text" value="" name="search" class="form-control" placeholder="Enter Keyword..."> <a href="./" id="search-close">
+													<i class="fa fa-close"></i>
+												</a> </div> <button type="submit" class="theme_button no_bg_button color1">ok</button> </div>
+											</form>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</section>
+					</section>
 
-			<header class="page_header header_white toggler_xs_right columns_margin_0">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-sm-12 display_table">
-							<div class="header_left_logo display_table_cell"> <a href="./" class="logo logo_with_text">
-								<img src="/static/img/logo.png" alt="">
+					<header class="page_header header_white toggler_xs_right columns_margin_0">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-sm-12 display_table">
+									<div class="header_left_logo display_table_cell"> <a href="/" class="logo logo_with_text">
+										<img src="/static/img/logo.png" alt="">
 									<!-- <span class="logo_text">
 										Diversify
 										<small class="highlight4">lgbt comunidad center</small>
@@ -148,81 +154,15 @@
 								<nav class="mainmenu_wrapper">
 									<ul class="mainmenu nav sf-menu">
 										<li class="active"> <a href="/">Inicio</a>
-											<!--<ul>
-												<li> <a href="index.html">Home</a> </li>
-												<li> <a href="index-static.html">Home static intro</a> </li>
-												<li> <a href="index-single.html">Home single page</a> </li>
-											</ul>-->
+
 										</li>
 
 										<li> <a href="/quienes-somos/">¿Quienes Somos?</a>
-											<!--<ul>
-												<li> <a href="shortcodes_teasers.html">Shortcodes &amp; Widgets</a>
-													<ul>
-														<li> <a href="shortcodes_typography.html">Typography</a> </li>
-														<li> <a href="shortcodes_buttons.html">Buttons</a> </li>
-														<li> <a href="shortcodes_teasers.html">Teasers</a> </li>
-														<li> <a href="shortcodes_progress.html">Progress</a> </li>
-														<li> <a href="shortcodes_tabs.html">Tabs &amp; Collapse</a> </li>
-														<li> <a href="shortcodes_bootstrap.html">Bootstrap Elements</a> </li>
-														<li> <a href="shortcodes_widgets.html">Widgets</a> </li>
-														<li> <a href="shortcodes_animation.html">Animation</a> </li>
-														<li> <a href="shortcodes_icons.html">Template Icons</a> </li>
-														<li> <a href="shortcodes_socialicons.html">Social Icons</a> </li>
-													</ul>
-												</li>
-												<li> <a href="about.html">About</a> </li>
-												<li> <a href="team.html">Team</a>
-													<ul>
-														<li> <a href="team.html">Leaders</a> </li>
-														<li> <a href="team-single.html">Team Member</a> </li>
-													</ul>
-												</li>
-												<li> <a href="donate.html">Donate</a> </li>
-												<li> <a href="timetable.html">Timetable</a> </li>
-												
-												<li> <a href="events-left.html">Events</a>
-													<ul>
-														<li> <a href="events-left.html">Left Sidebar</a> </li>
-														<li> <a href="events-right.html">Right Sidebar</a> </li>
-														<li> <a href="events-full.html">Full Width</a> </li>
-														<li> <a href="event-single-left.html">Single Event</a>
-															<ul>
-																<li> <a href="event-single-left.html">Left Sidebar</a> </li>
-																<li> <a href="event-single-right.html">Right Sidebar</a> </li>
-																<li> <a href="event-single-full.html">Full Width</a> </li>
-															</ul>
-														</li>
-													</ul>
-												</li>
-												<li> <a href="comingsoon1.html">Comingsoon</a>
-													<ul>
-														<li> <a href="comingsoon1.html">Comingsoon</a> </li>
-														<li> <a href="comingsoon2.html">Comingsoon 2</a> </li>
-													</ul>
-												</li>
-												<li> <a href="faq.html">FAQ</a>
-													<ul>
-														<li> <a href="faq.html">FAQ</a> </li>
-														<li> <a href="faq2.html">FAQ 2</a> </li>
-														<li> <a href="faq3.html">FAQ 3</a> </li>
-													</ul>
-												</li>
-												<li> <a href="404.html">404</a>
-													<ul>
-														<li> <a href="404.html">404</a> </li>
-														<li> <a href="404-2.html">404 2</a> </li>
-													</ul>
-												</li>
-											</ul>-->
 										</li>
 
 										<!-- eof pages -->
-										<li> <a href="services.html">Alianzas y Colaboraciones</a>
-											<!--<ul>
-												<li> <a href="services.html">Services</a> </li>
-												<li> <a href="service-single.html">Single Service</a> </li>
-											</ul>-->
+										<li> <a href="/alianzas">Alianzas y Colaboraciones</a>
+											
 										</li>
 
 										
@@ -234,11 +174,10 @@
 							</div>
 							
 							<div class="header_right_buttons display_table_cell text-right hidden-xs"> 
-								{% if request.user.is_authenticated %}
-									<a href="/accounts/profile/" class="theme_button color2 margin_0">{{user.get_full_name|default:user.username}}</a> 
-									<a href="/accounts/logout/" class="theme_button color2 margin_0">Cerrar Sesión</a> 
+								{% if request.user.is_authenticated %} 
+								<a href="/accounts/logout/" class="theme_button color2 margin_0">Cerrar Sesión</a> 
 								{% else %}
-									<a href="/accounts/login/?next={{ request.path }}" class="theme_button color2 margin_0">Iniciar Sesión</a> 
+								<a href="/accounts/login/?next={{ request.path }}" class="theme_button color2 margin_0">Iniciar Sesión</a> 
 								{% endif %}
 								
 
@@ -310,5 +249,5 @@
 	<script src="/static/js/main.js"></script>
 	{% block extra_js %}{% endblock extra_js %}
 
-	</body>
+</body>
 </html>

@@ -45,7 +45,7 @@
 										{{obj.apertura|date:"d N, Y"}}</time>
 									</a>
 								</span> <span>
-									<i class="icofont-comment highlight" aria-hidden="true"></i>
+									<i class="fa fa-pencil-square-o highlight" aria-hidden="true"></i>
 									<a href="">{{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
 								</span> <span>
 									<i class="fa fa-comment highlight" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
 										<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
 									</header>
 									<div class="entry-content">
-										<p>{{obj.contenido|safe|striptags|truncatechars:200}} <a href="{% url 'detalle-foro' obj.slug %}" class="more-link">Read more</a></p>
+										<p>{{obj.contenido|safe|striptags|truncatechars:200}} <a href="{% url 'detalle-foro' obj.slug %}" class="more-link">Leer más</a></p>
 									</div>
 								</div>
 							</div>

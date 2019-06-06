@@ -26,9 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('actualidad/',include('actualidad.urls')),
-    path('eventos/',include('evento.urls')),
+    path('iniciativas-destacadas/',include('evento.urls')),
     path('foros/',include('foro.urls')),
-    path('galerias/',include('galerias.urls')),
+    path('recursos-metodologicos/galerias/',include('galerias.urls')),
     path('publicaciones/',include('publicaciones.urls')),
     path('alianzas/',include('organizaciones.urls')),
     #path('organizaciones/', , name = 'organizaciones')

@@ -32,10 +32,6 @@
     align-items: center!important;
 }
 
-.with_border .item-media {
-    margin: 15px;
-}
-
 .vertical-item.big-padding .item-content {
     padding: 30px;
 }
@@ -189,7 +185,6 @@ a.iniciativa_content:hover span {
     overflow: visible !important;
 }
 
-.description div{
-  max-width: 300px;
-  min-width: 300px;
+#list_alianza .with_border .item-media {
+    margin: 15px;
 }

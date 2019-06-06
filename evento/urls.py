@@ -6,7 +6,7 @@ urlpatterns = [
 	path('eventos/<slug>/',views.detailEventos, name = 'detailEventos'),
 	path('eventos/tag/<slug>',views.filtro_tag_eventos, name ='filtro_tag_eventos'),
 	path('campanias/',views.indexCampanias,name = 'indexCampanias'),
-	path('campanias/<slug>',views.detailCampanias),
+	path('campanias/<slug>',views.detailCampanias, name = 'detail_campanias'),
 	path('concursos/',views.indexConcursos, name = 'indexConcursos'),
 	path('concursos/<slug>', views.detailConcursos, name = 'detailConcursos'),
 	path('concurso/tag/<slug>/',views.filtro_tag_concurso, name='filtro-tag'),

@@ -143,7 +143,7 @@
 							{% for obj in prox_eventos %}
 							<div class="vertical-item content-padding with_border">
 								<div class="item-media"> 
-									{% thumbnail obj.foto "318x279" crop="center" as im %}
+									{% thumbnail obj.foto "350x279" crop="center" as im %}
 									    <img src="{{ im.url }}" alt="">
 									{% empty %}
 										<img src="http://via.placeholder.com/318x279" alt="">

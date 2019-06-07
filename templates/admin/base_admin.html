@@ -1,32 +1,293 @@
-<html>
-<head>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
+<head>
+	<title>Plataforma Regional Género y Metodologías</title>
+	<meta charset="utf-8">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/animations.css">
+	<link rel="stylesheet" href="/static/css/fonts.css">
+	<link rel="stylesheet" href="/static/css/icofont.min.css">
+	<link rel="stylesheet" href="/static/css/main.css" class="color-switcher-link">
+	<link rel="stylesheet" href="/static/css/shop.css" class="color-switcher-link">
+	<link rel="stylesheet" href="/static/css/maincustom.css" class="color-switcher-link">
+	<link rel="stylesheet" href="/static/css/admin_style.css" class="color-switcher-link">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css"/>
+ 	<script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
 	{% block extra_css %}{% endblock extra_css %}
 </head>
 
 <body>
-	{% if request.user.is_authenticated %}
-	<ul>
-		<li><a href="/alianzas">Organizaciones</a></li>
-		<li><a href="/alianzas/actualidad">Actualidad</a></li>
-		<li><a href="/alianzas/foros">Foros</a></li>
-		<li><a href="/alianzas/iniciativas-destacadas/eventos/">Eventos</a></li>
-		<li><a href="/alianzas/recursos-metodologicos/galerias/">Galería</a></li>
-		<li><a href="/alianzas/puntos-vista/">Puntos de vista</a></li>
-	</ul>
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
 	
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">
+			<i class="rt-icon2-cross2"></i>
+		</span>
+	</button>
+	<div class="widget widget_search">
+		<form method="get" class="searchform search-form form-inline" action="./">
+			<div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
+		</div>
+	</div>
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls with_padding">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+	-->
+		</div>
+	</div>
+<!-- eof .modal -->
+<!-- wrappers for visual page editor and boxed version of template -->
+<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
 	
-	<li><a href="/accounts/profile/">{{request.user.get_full_name|default:request.user.username}}</a></li>
-	<li><a href="/accounts/logout/">logout</a></li>
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">
+			<i class="rt-icon2-cross2"></i>
+		</span>
+	</button>
+	<div class="widget widget_search">
+		<form method="get" class="searchform search-form form-inline" action="./">
+			<div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
+		</div>
+	</div>
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls with_padding">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+	-->
+		</div>
+	</div>
+<!-- eof .modal -->
+<!-- wrappers for visual page editor and boxed version of template -->
 
-	{% else %}
-	<li><a href="/accounts/login/?next={{ request.path }}">login</a></li>
-	{% endif %}
+	<div id="canvas">
+		<div id="box_wrapper">
+			<!-- template sections -->
+			<section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-6 text-center text-lg-left hidden-xs">
+							<div class="inline-content big-spacing">
+								<div class="page_social"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a>  <a class="social-icon socicon-youtube" href="#" title="Youtube"></a> </div> 
+									<!-- <span class="xs-block">
+										<i class="fa fa-clock-o highlight3 rightpadding_5" aria-hidden="true"></i>
+										Mon-Fri: 9:00-19:00; Sat: 10:00-17:00; Sun: Closed
+									</span>  -->
+							</div>
+						</div>
+						<div class="col-lg-6 text-center text-lg-right">
+							<div id="topline-animation-wrap">
+								<div id="topline-hide" class="inline-content big-spacing"> 
+								 	
+								<div class="xs-block">
+									<ul class="inline-list menu greylinks">
 
-	{% block content %}{% endblock content %}
+										<li class="dropdown"> <a id="search-show" href="./">
+											<i class="fa fa-search"></i>
+										</a> </li>
+									</ul>
+								</div>
+							</div>
+							<div id="topline-show" class="widget widget_search">
+								<form method="get" class="searchform inline-form" action="./">
+									<div class="form-group-wrap">
+										<div class="form-group"> <label class="sr-only" for="topline-widget-search">Search for:</label> <input id="topline-widget-search" type="text" value="" name="search" class="form-control" placeholder="Enter Keyword..."> <a href="./" id="search-close">
+											<i class="fa fa-close"></i>
+										</a> </div> <button type="submit" class="theme_button no_bg_button color1">ok</button> </div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<header class="page_header header_white toggler_xs_right columns_margin_0">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-12 display_table">
+							<div class="header_left_logo display_table_cell"> <a href="./" class="logo logo_with_text">
+								<img src="/static/img/logo.png" alt="">
+								</a> 
+							</div>
+							<div class="header_mainmenu display_table_cell text-right">
+								<!-- main nav start -->
+								<nav class="mainmenu_wrapper">
+									<ul class="mainmenu nav sf-menu">
+										<li class="active"> <a href="/">Inicio</a></li>
+										<li> <a href="/quienes-somos/">¿Quienes Somos?</a></li>
+										<li> <a href="services.html">Alianzas y Colaboraciones</a></li>
+									</ul>
+								</nav>
+								<span class="toggle_menu"><span></span></span>
+							</div>
+							
+							<!--<div class="header_right_buttons display_table_cell text-right hidden-xs"> 
+								{% if request.user.is_authenticated %}
+									<a href="/accounts/profile/" class="theme_button color2 margin_0">{{user.get_full_name|default:user.username}}</a> 
+									<a href="/accounts/logout/" class="theme_button color2 margin_0">Cerrar Sesión</a> 
+								{% else %}
+									<a href="/accounts/login/?next={{ request.path }}" class="theme_button color2 margin_0">Iniciar Sesión</a> 
+								{% endif %}
+								
+
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</header>	
+			<section id="services" class="ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0">
+				<div class="container-fluid">
+					<div class="row flex-wrap v-center-content">
+
+						<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+							<div class="teaser main_bg_color transp with_padding big-padding margin_0">
+								<a href="">
+									<div class="media xxs-media-left">
+										<div class="media- media-middle text-center">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-news highlight" aria-hidden="true"></i> </div>
+										</div>
+
+										<div class="media-body media-middle text-center">
+											
+											<h5>Actualidad</h5>
+
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+							<div class="teaser bg_customgreen transp with_padding big-padding margin_0">
+								<a href="#">
+									<div class="media xxs-media-left">
+										<div class="media- media-middle text-center">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="fa fa-eye highlight5" aria-hidden="true"></i> </div>
+										</div>
+
+
+										<div class="media-body media-middle text-center">
+											<h5 class="white-color">Puntos de vista</h5>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+							<div class="teaser main_bg_color2 transp with_padding big-padding margin_0">
+								<a href="/foros">
+									<div class="media xxs-media-left">
+										<div class="media- media-middle text-center">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-ui-chat highlight2" aria-hidden="true"></i> </div>
+										</div>
+										<div class="media-body media-middle text-center">
+											<h4>Foros</h4>
+
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+
+						<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+							<div class="teaser main_bg_color4 transp with_padding big-padding margin_0">
+								<a href="">
+									<div class="media xxs-media-left">
+										<div class=" media-middle text-center">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-read-book highlight4" aria-hidden="true"></i> </div>
+										</div>
+										<div class="media-body media-middle text-center">
+											<h5>Recursos metodológicos</h5>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+
+						<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+							<div class="teaser main_bg_color3 transp with_padding big-padding margin_0">
+								<a href="">
+									<div class="media xxs-media-left">
+										<div class="media-middle text-center">
+											<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-favourite highlight3" aria-hidden="true"></i> </div>
+										</div>
+										<div class="media-body media-middle text-center">
+											
+											<h5>Iniciativas destacadas</h5>
+
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+			
+			{% block content %}{% endblock content %}
+
+
+
+			<section class="ds ms parallax page_copyright overlay_color section_padding_top_30 section_padding_bottom_30">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center justify-content-center align-items-center">
+							<p>&copy; Copyright @ 2019. Todos los derechos reservados</p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
 
 	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/compressed.js"></script>
+	<script src="/static/js/selectize.min.js"></script>
+	<script src="/static/js/main.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#example').DataTable( {
+		        "language": {
+		            "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+		        }
+		    } );
+		} );
+	</script>
 	{% block extra_js %}{% endblock extra_js %}
 
-</body>
+	</body>
 </html>

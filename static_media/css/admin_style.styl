@@ -1,0 +1,60 @@
+/*=================================
+=            variables            =
+=================================*/
+vendor(prop, args)
+    -webkit-{prop} args
+    -moz-{prop} args
+    -o-{prop} args
+    {prop} args
+
+transition()
+    vendor('transition', arguments)
+border-radius()
+    vendor('border-radius', arguments)
+box-shadow() 
+  -moz-box-shadow arguments
+  -webkit-box-shadow arguments
+  box-shadow arguments
+
+
+/*=====  End of variables  ======*/
+/*==============================
+=            colors            =
+==============================*/
+gris = #F4F7F6
+rojo = #EB6658
+verde = #6F9D34
+naranja = #F48043
+azul = #20B2D1
+amarillo = #FCBB30
+
+/*=====  End of colors  ======*/
+body
+	background-color gris
+.card
+	border-radius .55rem
+	background #fff
+	transition .5s
+	border 0
+	margin-bottom: 30px
+	position relative
+	width 100%
+	box-shadow 0 1px 2px 0 rgba(0,0,0,0.1)
+	.header
+		color #444
+		padding 20px
+		position relative
+		box-shadow none
+		h2
+			font-size 16px
+			color #444
+			position relative
+		.header-dropdown
+			position absolute
+			top 14px
+			right 15px
+			list-style none
+	.body
+		color #444
+		padding 20px
+		font-weight 400

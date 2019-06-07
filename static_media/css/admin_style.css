@@ -1,0 +1,53 @@
+/*=================================
+=            variables            =
+=================================*/
+/*=====  End of variables  ======*/
+/*==============================
+=            colors            =
+==============================*/
+/*=====  End of colors  ======*/
+body {
+  background-color: #f4f7f6;
+}
+.card {
+  -webkit-border-radius: 0.55rem;
+  -moz-border-radius: 0.55rem;
+  -o-border-radius: 0.55rem;
+  border-radius: 0.55rem;
+  background: #fff;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  border: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+}
+.card .header {
+  color: #444;
+  padding: 20px;
+  position: relative;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.card .header h2 {
+  font-size: 16px;
+  color: #444;
+  position: relative;
+}
+.card .header .header-dropdown {
+  position: absolute;
+  top: 14px;
+  right: 15px;
+  list-style: none;
+}
+.card .body {
+  color: #444;
+  padding: 20px;
+  font-weight: 400;
+}

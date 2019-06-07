@@ -18,13 +18,15 @@ from django.urls import path, include
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 admin.site.site_header = 'Administración Cantera'
 admin.site.site_title = 'Cantera'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    #path('', index),
+    path('', TemplateView.as_view(template_name = 'prev_index2.html')),
     path('actualidad/',include('actualidad.urls')),
     path('iniciativas-destacadas/',include('evento.urls')),
     path('foros/',include('foro.urls')),

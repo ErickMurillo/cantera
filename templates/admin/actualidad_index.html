@@ -1,22 +1,72 @@
 {% extends "admin/base_admin.html" %}
 
 {% block content %}
-<div class="card">
-	<div class="header">
-		<h2>Actualidad</h2>
-		<ul class="header-dropdown">
-			<li><a href="javascript:void(0);" class="btn btn-info" data-toggle="modal" data-target="#addcontact">Crear actualidad</a></li>
-		</ul>
-	</div>
-	<div class="body">
-		
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="header">
+					<h2>Actualidad</h2>
+					<ul class="header-dropdown">
+						<li><a href="./agregar" class="btn btn-info" >Crear actualidad</a></li>
+					</ul>
+				</div>
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-custom">
+							<thead class="bg-actualidad">
+
+								<tr>
+									<th>Nombre</th>
+									<th>Categoría</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for obj in list_object %}
+									<tr>
+										<td>
+											<h6>{{obj}}</h6>
+											<small>{{obj.created_on}}</small>
+										</td>
+										<td>{{obj.get_category_display}}</td>
+										<td>
+											<div class="action-btn">
+												<a class="btn btn-sm btn-success" href="{% url 'actualidad_editar' obj.id %}">
+													<i class="fa fa-pencil"></i>
+												</a>
+												<a data-fancybox data-src="#trueModal-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+													<i class="fa fa-trash"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+									<div id="trueModal-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+								        <h5>
+								            Eliminar {{obj.get_category_display}}
+								        </h5>
+								        <p>
+								           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+								        </p>
+								        <p>
+								            
+								            <a class="btn btn-sm btn-danger" href="{% url 'eliminar_actualidad' obj.id %}">Eliminar</a>
+								            
+								        </p>
+								    </div>
+								{% endfor %}
+
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-	<a href="./agregar">Crear actualidad</a>
-	<br>
-	<ul>
-	{% for obj in list_object %}
-		<li><a href="">{{obj}}</a> | <a href="{% url 'actualidad_editar' obj.id %}"> Editar </a>|<a href="{% url 'eliminar_actualidad' obj.id %}"> Eliminar</a></li>
-	{% endfor %}
-	</ul>
+
+
+
 {% endblock content %}

@@ -62,5 +62,6 @@ def filtro_tag(request,slug,template='list_actualidad.html'):
 
 def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
 	object = Actualidad.objects.get(slug = slug)
+	print('aqui va')
 
 	return render(request, template, locals())

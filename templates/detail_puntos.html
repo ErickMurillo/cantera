@@ -28,10 +28,10 @@
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<article class="event-single vertical-item content-padding big-padding with_border bottom_color_border color2">
 					<div class="item-media entry-thumbnail"> 
-						{% thumbnail object.foto "728x640" crop="center" as im %}
+						{% thumbnail object.foto "760x640" crop="center" as im %}
 						<img src="{{ im.url }}" alt="">
 						{% empty %}
-						<img src="http://via.placeholder.com/728x640" alt="">
+						<img src="http://via.placeholder.com/760x640" alt="">
 						{% endthumbnail %}
 					</div>
 					<div class="item-content">
@@ -51,7 +51,7 @@
 					</div>
 					<!-- .item-content -->
 				</article>
-				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="#" class="social-icon color-bg-icon socicon-facebook"></a> </div>
+				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="#" class="social-icon color-bg-icon socicon-facebook"></a> <a href=" https://wa.me/?text=http://127.0.0.1:8000/iniciativas-destacadas/eventos/{{object.slug}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> </div>
 			</div>
 			<!--eof .col-sm-8 (main content)-->
 			<!-- sidebar -->

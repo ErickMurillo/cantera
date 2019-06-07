@@ -48,7 +48,13 @@
 							<div class="entry-meta greylinks color4 inline-content"> <span>
 								<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
 								<time datetime="2017-10-03T08:50:40+00:00">{{object.created_on|date:"d N, Y"}}</time>
-							</span> </div>
+							</span> 
+							<span class=""><i class="fa fa-sitemap highlight4 rightpadding_5" aria-hidden="true"></i>{{object.category}}</span>
+							<span>
+								<i class="fa fa-genderless highlight4 rightpadding_5"></i>{{object.author.organizacion}}
+							</span>
+
+						</div>
 							<h1 class="entry-title"> {{object.tittle}} </h1>
 						</header>
 						<div class="entry-content">

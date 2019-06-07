@@ -46,15 +46,64 @@ body
 		position relative
 		box-shadow none
 		h2
-			font-size 16px
+			font-size 1.2 rem
 			color #444
 			position relative
+			font-weight 500
 		.header-dropdown
 			position absolute
 			top 14px
 			right 15px
 			list-style none
+			li a
+				padding 5px 10px
 	.body
 		color #444
 		padding 20px
 		font-weight 400
+/*=============================
+=            table            =
+=============================*/
+.table.table-custom
+	border-collapse collapse !important
+	thead th
+		border-top 0
+		color white
+		font-weight 600
+	tfoot th
+		border-bottom 0
+	tbody tr:hover
+		background-color #f7f7f7
+	th
+	td
+		border-top 1px solid #dee2e6
+		border-bottom 0
+		border-right 0
+		border-left 0
+		padding .75rem
+		h6
+			font-weight 500
+		small
+			display block
+			font-size .8rem
+	.action-btn
+		.btn-sm
+			font-size 15px !important
+	.bg-actualidad
+		background-color rojo
+.table-responsive
+	.pagination > li > a, .pagination > li > span
+		width auto
+		min-width 40px
+		height auto
+		line-height 35px
+		padding 0 6px
+	.form-control
+		height 35px
+		padding 0
+
+table.dataTable thead .sorting_asc:after
+table.dataTable thead .sorting_desc:after
+	opacity 1 !important
+
+/*=====  End of table  ======*/

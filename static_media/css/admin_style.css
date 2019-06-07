@@ -36,9 +36,10 @@ body {
   box-shadow: none;
 }
 .card .header h2 {
-  font-size: 16px;
+  font-size: 1.2rem;
   color: #444;
   position: relative;
+  font-weight: 500;
 }
 .card .header .header-dropdown {
   position: absolute;
@@ -46,8 +47,68 @@ body {
   right: 15px;
   list-style: none;
 }
+.card .header .header-dropdown li a {
+  padding: 5px 10px;
+}
 .card .body {
   color: #444;
   padding: 20px;
   font-weight: 400;
 }
+/*=============================
+=            table            =
+=============================*/
+.table.table-custom {
+  border-collapse: collapse !important;
+}
+.table.table-custom thead th {
+  border-top: 0;
+  color: #fff;
+  font-weight: 600;
+}
+.table.table-custom tfoot th {
+  border-bottom: 0;
+}
+.table.table-custom tbody tr:hover {
+  background-color: #f7f7f7;
+}
+.table.table-custom th,
+.table.table-custom td {
+  border-top: 1px solid #dee2e6;
+  border-bottom: 0;
+  border-right: 0;
+  border-left: 0;
+  padding: 0.75rem;
+}
+.table.table-custom th h6,
+.table.table-custom td h6 {
+  font-weight: 500;
+}
+.table.table-custom th small,
+.table.table-custom td small {
+  display: block;
+  font-size: 0.8rem;
+}
+.table.table-custom .action-btn .btn-sm {
+  font-size: 15px !important;
+}
+.table.table-custom .bg-actualidad {
+  background-color: #eb6658;
+}
+.table-responsive .pagination > li > a,
+.table-responsive .pagination > li > span {
+  width: auto;
+  min-width: 40px;
+  height: auto;
+  line-height: 35px;
+  padding: 0 6px;
+}
+.table-responsive .form-control {
+  height: 35px;
+  padding: 0;
+}
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after {
+  opacity: 1 !important;
+}
+/*=====  End of table  ======*/

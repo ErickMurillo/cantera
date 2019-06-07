@@ -31,7 +31,9 @@
 </head>
 
 <body>
+
 	<style type="text/css">
+		body{ margin: 0; max-width: 100%; }
 		.videoContainer {
 			position: absolute;
 			width: 100%;
@@ -46,8 +48,8 @@
 			align-items: center;
 		}
 		.txtContainer {
-			position: relative;
-			width: 50%;
+			position: absolute;
+			width: 100%;
 			height: 100%;
 			top: 0;
 			left: 0;
@@ -55,8 +57,11 @@
 			right: 0;
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
-			align-items: center;
+
+			align-items: flex-start;
+			padding: 30px 20px;
+			background: rgba(0,0,0,0.6);
+			z-index: 2;
 		}
 
 		iframe {
@@ -66,30 +71,39 @@
 		}
 
 		.btn {
-			padding: 22px 30px 22px;
-			margin: 0 0 4px 0;
-			font-weight: 700;
-			border: none;
-			border-radius: 0;
+
 			outline: none;
-			transition: all 0.3s ease-in-out 0s;
+
+			background-color: #6E9D33;
+			border-color:#6E9D33;
+			position: relative;
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    font-weight: 500;
+		    padding: 18px 30px;
+		    line-height: 1;
+		    display: inline-block;
+		    vertical-align: middle;
+		    text-align: center;
+		    color: #ffffff;
+		    border-radius: 10px;
+		    border: none;
+		    transition: all 0.4s linear 0s;
+		    z-index: 1;
 		}
 
 		.btn:hover, .btn:focus {
 			outline: none;
 		}
+		.txtContainer h1{
+			color: white;
+			font-size: 75px;
 
-		.flexbox-container {
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
 
-	-ms-flex-align: center;
-	-webkit-align-items: center;
-	-webkit-box-align: center;
-
-	align-items: center;
-}
+		}
+		.colored{
+			color: #f3702b ;
+		}
 
 	</style>
 
@@ -98,12 +112,11 @@
 	</div>
 
 	<div class="txtContainer">
-		<div class="flex-container">
-			<img src="../static_media/img/logo.png" alt="" width="40%">
-			<h1>La Página está en <br> construcción</h1>
+		
+			<img src="../static_media/img/logo.png" alt="" width="30%">
+			<h1>La Página está en <br> <span class="colored">construcción</span></h1>
 
-			<button class="">Ver video</button>
-		</div>
+			<button class="btn">Ver video</button>
 	</div>
 
 
@@ -119,6 +132,11 @@
 	<script src="/static/js/compressed.js"></script>
 	<script src="/static/js/selectize.min.js"></script>
 	<script src="/static/js/main.js"></script> -->
-
+	<script src="../static_media/js/jquery.min.js"></script>
+<script type="text/javascript">
+		$('.btn').click (function () {
+    		alert($('.videoContainer').height());
+		});
+</script>
 </body>
 </html>

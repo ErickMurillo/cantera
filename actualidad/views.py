@@ -21,7 +21,6 @@ def list_actualidad(request,template='list_actualidad.html'):
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
-	print(tags)
 
 	return render(request, template, locals())
 
@@ -63,5 +62,6 @@ def filtro_tag(request,slug,template='list_actualidad.html'):
 
 def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
 	object = Actualidad.objects.get(slug = slug)
+	print('aqui va')
 
 	return render(request, template, locals())

@@ -40,7 +40,7 @@
 					<div class="row">
 						<div class="col-md-5">
 							<div class="item-media"> 
-								{% thumbnail obj.foto "286x196" crop="center" as im %}
+								{% thumbnail obj.foto "317x196" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/286x196" alt="">
@@ -120,70 +120,59 @@
 			<!-- sidebar -->
 			<aside class="col-sm-5 col-md-4 col-lg-4">
 				<div class="widget widget_search">
-					<form method="get" class="searchform" action="./">
-						<div class="form-group margin_0"> <label class="sr-only" for="widget-search">Search for:</label> <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Buscar..."> </div> <button type="submit" class="theme_button color1">Search</button>									</form>
-					</div>
+					<form class="" action='.' method='GET'>
+						<div class="form-group margin_0"> 
+							<label class="sr-only" for="widget-search">Search for:</label> 
+							<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+						</div> 
+						<button type="submit" class="theme_button color1">Search</button>	
+					</form>
+				</div>
 
-					<!-- tags -->
-					<div class="widget">
-						<h4 class="widget-title">Tags</h4>
-						<div class="tagcloud">
-							{% for obj in tags %}
-							<a href="">{{obj}}</a>
-							{% endfor %}
-							
-						</div>
-					</div>
-					<div class="widget widget_archive">
-
-					</div>
-
-					<div class="widget widget_recent_posts">
-						<h4 class="widget-title">Próximos Eventos</h4>
-						<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
-							<!--<div class="vertical-item content-padding with_border">
-								<div class="item-media"> <img src="images/circulo_mujeres.jpg" alt="">
-									<div class="media-links"> <a class="abs-link" title="" href="blog-single-left.html"></a> </div>
-								</div>
-
-								<div class="item-content">
-									<h5 class="bottommargin_0"> <a href=""> </a> </h5> <span class="entry-meta greylinks">
-										<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-										<a href="blog-single-full.html">
-											<time datetime="2017-10-03T08:50:40+00:00">
-											17 enero, 2019</time>
-										</a>
-									</span> 
-								</div>
-							</div>-->
-							{% for obj in prox_eventos %}
-							<div class="vertical-item content-padding with_border">
-								<div class="item-media"> 
-									{% thumbnail obj.foto "318x279" crop="center" as im %}
-									    <img src="{{ im.url }}" alt="">
-									{% empty %}
-										<img src="http://via.placeholder.com/318x279" alt="">
-									{% endthumbnail %}
-									<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
-								</div>
-								<div class="item-content">
-									<h5 class="bottommargin_0"> <a href="{% url 'detailEventos' obj.slug %}">{{obj.tittle}}</a> </h5> <span class="entry-meta greylinks">
-										<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-										<a href="{% url 'detailEventos' obj.slug %}">
-											<time datetime="2017-10-03T08:50:40+00:00">
-											{{obj.inicio|date:"d N, Y"}}</time>
-										</a>
-
-
-									</span> 
-								</div>
-							</div>
-							{% endfor %}
-							
-						</aside>
-						<!-- eof aside sidebar -->
+				<!-- tags -->
+				<div class="widget">
+					<h4 class="widget-title">Tags</h4>
+					<div class="tagcloud">
+						{% for obj in tags %}
+						<a href="{% url 'filtro_tag_eventos' obj.slug %}">{{obj}}</a>
+						{% endfor %}							
 					</div>
 				</div>
-			</section>
+				<div class="widget widget_archive">
 
-			{% endblock content %}
+				</div>
+
+				<div class="widget widget_recent_posts">
+					<h4 class="widget-title">Próximos Eventos</h4>
+					<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+						{% for obj in prox_eventos %}
+						<div class="vertical-item content-padding with_border">
+							<div class="item-media"> 
+								{% thumbnail obj.foto "350x279" crop="center" as im %}
+								<img src="{{ im.url }}" alt="">
+								{% empty %}
+								<img src="http://via.placeholder.com/350x279" alt="">
+								{% endthumbnail %}
+								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
+							</div>
+							<div class="item-content">
+								<h5 class="bottommargin_0"> <a href="{% url 'detailEventos' obj.slug %}">{{obj.tittle}}</a> </h5> <span class="entry-meta greylinks">
+									<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+									<a href="{% url 'detailEventos' obj.slug %}">
+										<time datetime="2017-10-03T08:50:40+00:00">
+										{{obj.inicio|date:"d N, Y"}}</time>
+									</a>
+
+
+								</span> 
+							</div>
+						</div>
+						{% endfor %}
+						
+					</aside>
+					<!-- eof aside sidebar -->
+				</div>
+			</div>
+		</section>
+
+		{% endblock content %}

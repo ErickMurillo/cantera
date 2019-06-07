@@ -188,3 +188,12 @@ a.iniciativa_content:hover span {
 #list_alianza .with_border .item-media {
     margin: 15px;
 }
+
+.color-bg-icon.socicon-whatsapp, a.socicon-whatsapp.bg-icon:hover, .socicon-whatsapp.color-icon.border-icon:hover {
+    background-color: #01E676;
+}
+
+a[class*="socicon-"].socicon-whatsapp:hover {
+  color: #01E676;
+  border-color: #01E676;
+}

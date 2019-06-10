@@ -1,27 +1,101 @@
-{% extends "admin/base_admin.html" %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-{% block content %}
-<style type="text/css">
-#services, .mainmenu {
-	display: none
-}
-.page_construccion{
-	margin: 40px 0;
-}
-</style>
+<head>
+	<title>Plataforma Regional Género y Metodologías</title>
+	<meta charset="utf-8">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/animations.css">
+	<link rel="stylesheet" href="/static/css/fonts.css">
+	<link rel="stylesheet" href="/static/css/icofont.min.css">
+	<link rel="stylesheet" href="/static/css/main.css" class="color-switcher-link">
+	<link rel="stylesheet" href="/static/css/shop.css" class="color-switcher-link">
+	<link rel="stylesheet" href="/static/css/maincustom.css" class="color-switcher-link">
+	<script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<style type="text/css">
+	#services, .mainmenu {
+		display: none
+	}
+	.page_construccion{
+		padding-top: 20px;
+	}
 
-<section class="page_construccion">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 text-center">
-				<h2 class="highlight2">Página en construcción</h2>
-			</div>
-			<div class="col-lg-offset-2 col-lg-8">
-				<iframe width="100%" height="400" src="https://www.youtube.com/embed/AdAW5-lWYo4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</div>
-		</div>	
+	li.txtContainer{
+		font-size: 40px;
+		padding-top: 20px
+	}
+
+	.page_breadcrumbs.background_cover {
+		background-image: url(/static/img/breadcrumbs.jpg);
+	}
+
+	.videoContainer {
+		position: absolute;
+		height: 100%;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	iframe {
+		/* optional */
+		width: 100%;
+		height: 100%; 
+	}
+
+	</style>
+
+	<div id="canvas">
+		<div id="box_wrapper">
+			<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2><img src="/static/img/logo.png" alt="" width="20%"></h2>
+							<ol class="breadcrumb greylinks">
+								<li class="txtContainer active">Página en construcción</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="page_construccion">
+				<div class="container">
+					<div class="row">						
+						<div class="">
+							<iframe class="videoContainer__video" width="1920" height="1080" src="http://www.youtube.com/embed/AdAW5-lWYo4?modestbranding=1&autoplay=1	&controls=0&fs=0&loop=1&rel=0&showinfo=0&disablekb=1&mute=1&playlist=AdAW5-lWYo4" allow="autoplay" frameborder="0"></iframe>
+						</div>
+					</div>	
+				</div>
+
+			</section>
+
+
+		</div>
 	</div>
 
-</section>
 
-{% endblock content %}
+</body>

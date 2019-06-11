@@ -197,3 +197,7 @@ a[class*="socicon-"].socicon-whatsapp:hover {
   color: #01E676;
   border-color: #01E676;
 }
+
+h3.entry-title.minismall {
+    font-size: 18px;
+}

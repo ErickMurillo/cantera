@@ -29,7 +29,7 @@ class Actualidad(models.Model):
 	category = models.CharField('Categoría',choices=Types_actualidad, max_length=50)
 	photo = ImageField('Foto',upload_to='actualidad/')
 	content = RichTextUploadingField()
-	created_on = models.DateField('Fecha de publicación', auto_now_add=True)
+	created_on = models.DateField('Fecha de publicación')
 	tematica = models.ManyToManyField(Temas)
 	tags = TaggableManager("Tags",help_text='Separar elementos con "," ', blank=True)
 	slug = models.SlugField(max_length=200, editable=False)

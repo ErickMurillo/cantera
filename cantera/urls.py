@@ -25,13 +25,13 @@ admin.site.site_title = 'Cantera'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', index),
-    path('', TemplateView.as_view(template_name = 'prev_index2.html')),
+    path('', index),
+    #path('', TemplateView.as_view(template_name = 'prev_index2.html')),
     path('actualidad/',include('actualidad.urls')),
     path('iniciativas-destacadas/',include('evento.urls')),
     path('foros/',include('foro.urls')),
     path('recursos-metodologicos/galerias/',include('galerias.urls')),
-    path('publicaciones/',include('publicaciones.urls')),
+    path('recursos-metodologicos/',include('publicaciones.urls')),
     path('alianzas/',include('organizaciones.urls')),
     #path('organizaciones/', , name = 'organizaciones')
     path('puntos-vista/', include('puntosvista.urls')),

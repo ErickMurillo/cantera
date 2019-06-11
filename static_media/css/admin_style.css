@@ -159,4 +159,28 @@ table.dataTable thead .sorting_desc:after {
   line-height: 1em;
   color: #e85242;
 }
+.card input[type="text"],
+.card input[type="email"],
+.card input[type="url"],
+.card input[type="password"],
+.card input[type="search"],
+.card input[type="tel"],
+.card input[type="number"],
+.card input[type="date"],
+.card textarea,
+.card select,
+.card .form-control,
+.card .selectize-control,
+.card .selectize-input {
+  height: 40px;
+}
+.card .selectize-input {
+  padding: 5px 60px 5px 30px;
+}
+.card .selectize-control.multi .selectize-input.has-items {
+  padding: 3px 8px 3px;
+}
+.card .selectize-input > * {
+  line-height: 24px !important;
+}
 /*=====  End of Form admin  ======*/

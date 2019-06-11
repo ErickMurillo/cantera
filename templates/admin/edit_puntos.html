@@ -1,10 +1,24 @@
 {% extends "admin/base_admin.html" %}
 
+{% load crispy_forms_tags %}
 {% block content %}
-	<p>editar punto de vista</p>
-	<form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
-		{{form.media}}
-		{{form}}
-		<input type="submit" name="Guardar" value="Guardar">
-	</form>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="header bg-verde">
+					<h2 class="text-white">Editar Punto de vista</h2>
+				</div>
+				<div class="body">
+					<form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
+						{{form.media}}
+						{{form|crispy}}
+						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Guardar" value="Actulizar punto de vista">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
 {% endblock content %}

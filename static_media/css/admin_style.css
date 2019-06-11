@@ -5,9 +5,27 @@
 /*==============================
 =            colors            =
 ==============================*/
+.bg-rojo {
+  background-color: #eb6658;
+}
+.bg-verde {
+  background-color: #6f9d34;
+}
+.bg-naranja {
+  background-color: #f48043;
+}
+.bg-azul {
+  background-color: #20b2d1;
+}
+.bg-amarillo {
+  background-color: #fcbb30;
+}
 /*=====  End of colors  ======*/
 body {
   background-color: #f4f7f6;
+}
+.text-white {
+  color: #fff !important;
 }
 .card {
   -webkit-border-radius: 0.55rem;
@@ -119,3 +137,50 @@ table.dataTable thead .sorting_desc:after {
   padding: 0;
 }
 /*=====  End of tabs admin  ======*/
+/*==================================
+=            Form admin            =
+==================================*/
+.control-group {
+  margin: 10px 0px;
+}
+.control-group label {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+.selectmultiple .selectize-input::after {
+  content: "\f107";
+  font-family: FontAwesome;
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  margin-top: -8px;
+  font-size: 16px;
+  line-height: 1em;
+  color: #e85242;
+}
+.card input[type="text"],
+.card input[type="email"],
+.card input[type="url"],
+.card input[type="password"],
+.card input[type="search"],
+.card input[type="tel"],
+.card input[type="number"],
+.card input[type="date"],
+.card textarea,
+.card select,
+.card .form-control,
+.card .selectize-control,
+.card .selectize-input {
+  height: 40px;
+}
+.card .selectize-input {
+  padding: 5px 60px 5px 30px;
+}
+.card .selectize-control.multi .selectize-input.has-items {
+  padding: 3px 8px 3px;
+}
+.card .selectize-input > * {
+  line-height: 24px !important;
+}
+/*=====  End of Form admin  ======*/

@@ -29,7 +29,7 @@ body {
 }
 .card .header {
   color: #444;
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
   position: relative;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -52,7 +52,7 @@ body {
 }
 .card .body {
   color: #444;
-  padding: 20px;
+  padding: 10px 20px;
   font-weight: 400;
 }
 /*=============================
@@ -112,3 +112,10 @@ table.dataTable thead .sorting_desc:after {
   opacity: 1 !important;
 }
 /*=====  End of table  ======*/
+/*==================================
+=            tabs admin            =
+==================================*/
+.admin-tabs .tab-content {
+  padding: 0;
+}
+/*=====  End of tabs admin  ======*/

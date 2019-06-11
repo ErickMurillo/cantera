@@ -6,9 +6,8 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 # from sorl.thumbnail import ImageField
 
 Types_actualidad = (
-	(1,'Informémonos'),
-	(2,'Situación regional de género'),
-	(3,'Reflexiones')
+	('noticias','Noticias'),
+	('situacion-regional-genero','Situación regional de género'),
 )
 
 class ActualidadForms(forms.ModelForm):

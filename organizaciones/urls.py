@@ -20,7 +20,7 @@ urlpatterns = [
 	path('iniciativas-destacadas/eventos/eliminar/<id>/', views.events_eliminar, name = 'events_eliminar'),
 	path('iniciativas-destacadas/eventos/editar/<id>/', views.events_editar, name = 'events_editar'),
 	#Galeria-imagenes	
-	path('recursos-metodologicos/galerias/', views.galeria_list, name = 'galeria_list'),
+	path('recursos-metodologicos/', views.recursos_list, name = 'recursos_list'),
 	path('recursos-metodologicos/galerias/imagenes/agregar/', views.galeria_img_crear, name = 'galeria_img_crear'),
 	path('recursos-metodologicos/galerias/imagenes/editar/<id>/', views.galeria_img_editar, name = 'galeria_img_editar'),
 	path('recursos-metodologicos/galerias/imagenes/eliminar/<id>/', views.galeria_img_eliminar, name = 'galeria_img_eliminar'),
@@ -28,6 +28,10 @@ urlpatterns = [
 	path('recursos-metodologicos/galerias/videos/agregar/', views.galeria_vid_crear, name = 'galeria_vid_crear'),
 	path('recursos-metodologicos/galerias/videos/editar/<id>/', views.galeria_vid_editar, name = 'galeria_vid_editar'),
 	path('recursos-metodologicos/galerias/videos/eliminar<id>/', views.galeria_vid_eliminar, name = 'galeria_vid_eliminar'),
+	#publicaciones
+	path('recursos-metodologicos/publicaciones/agregar/', views.publicacion_agregar, name = 'publicacion_agregar'),
+	path('recursos-metodologicos/publicaciones/editar/<id>/', views.publicacion_editar, name = 'publicacion_editar'),
+	path('recursos-metodologicos/publicaciones/eliminar/<id>/', views.publicacion_eliminar, name = 'publicacion_eliminar'),
 	#puntos de vista
 	path('puntos-vista/',views.puntos_vista_list, name = 'puntos-vista'),
 	path('puntos-vista/agregar/',views.puntos_vista_crear, name = 'puntos_vista_crear'),

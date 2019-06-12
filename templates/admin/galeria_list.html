@@ -26,7 +26,7 @@
 						<div class="card">
 							<div class="header">
 								<ul class="header-dropdown">
-									<li><a href="#" class="btn btn-azul text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+									<li><a href="{% url 'publicacion_agregar' %}" class="btn btn-azul text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
 								</ul>
 							</div>
 							<div class="body">
@@ -42,45 +42,47 @@
 											</tr>
 										</thead>
 										<tbody>
-
-											
-												<tr>
-													<td>
-														<h6>Titulo publicación</h6>
-													</td>
+											<tr>
+												{% for pub in publicaciones %}
 													
-													<td>Tematica</td>
-													<td>
-														<div class="action-btn">
-															<a class="btn btn-sm btn-success" href="#">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a data-fancybox data-src="#publicacion-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
-																<i class="fa fa-trash"></i>
-															</a>
-														</div>
-													</td>
-												</tr>
-												<div id="publicacion-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
-											        <h5>
-											            Eliminar Publicación
-											        </h5>
-											        <p>
-											           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
-											        </p>
-											        <p>
-											            
-											            <a class="btn btn-sm btn-danger" href="#">Eliminar</a>
-											            
-											        </p>
-											    </div>											
+												
+												<td>
+													<h6>{{pub.titulo}}</h6>
+												</td>
+												
+												<td>{{pub.tematica}}</td>
+												<td>
+													<div class="action-btn">
+														<a class="btn btn-sm btn-success" href="{% url 'publicacion_editar' pub.id %}">
+															<i class="fa fa-pencil"></i>
+														</a>
+														<a data-fancybox data-src="#publicacion-{{pub.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+															<i class="fa fa-trash"></i>
+														</a>
+													</div>
+												</td>
+											</tr>
+											<div id="publicacion-{{pub.id}}" class="p-5" style="display: none;max-width:600px;">
+										        <h5>
+										            Eliminar Publicación
+										        </h5>
+										        <p>
+										           Se eliminará "{{pub}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+										        </p>
+										        <p>
+										            
+										            <a class="btn btn-sm btn-danger" href="{% url 'publicacion_eliminar' pub.id %}">Eliminar</a>
+										            
+										        </p>
+										    </div>	
+										    {% endfor %}										
 										</tbody>
 									</table>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane active" id="guias">
+					<div role="tabpanel" class="tab-pane" id="guias">
 						<div class="card">
 							<div class="header">
 								<ul class="header-dropdown">

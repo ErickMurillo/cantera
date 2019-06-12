@@ -14,6 +14,8 @@ from galerias.forms import *
 from puntosvista.forms import *
 from foro.forms import *
 from .forms import *
+from publicaciones.models import *
+from publicaciones.forms import *
 
 # Create your views here.
 
@@ -173,10 +175,103 @@ def events_eliminar(request, id):
 	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
 
 @login_required
-def galeria_list(request,template='admin/galeria_list.html'):
+def recursos_list(request,template='admin/galeria_list.html'):
 	list_objects_imagenes = GaleriaImagenes.objects.filter(usuario = request.user.id)
 	list_objects_video = GaleriaVideos.objects.filter(usuario = request.user.id)
+	publicaciones = Publicacion.objects.filter(usuario = request.user.id, tipo = 1)
+	guias = Publicacion.objects.filter(usuario = request.user.id, tipo = 2)
+
 	return render(request,template,locals())
+
+@login_required
+def publicacion_agregar(request, template = 'admin/edit_publi.html'):
+	FormSetInit = inlineformset_factory(Publicacion,ArchivosPublicacion,form=ArchivosPublicacionForm,extra=6,max_num=9)
+	FormSetInit2 = inlineformset_factory(Publicacion,AudiosPublicacion,form=AudiosPublicacionForm,extra=6,max_num=9)
+	FormSetInit3 = inlineformset_factory(Publicacion,VideosPublicacion,form=VideosPublicacionForm,extra=6,max_num=9)
+	if request.method == 'POST':
+		form = PublicacionForm(request.POST, request.FILES)
+		formset = FormSetInit(request.POST,request.FILES)
+		formset2 = FormSetInit2(request.POST,request.FILES)
+		formset3 = FormSetInit3(request.POST)
+		if form.is_valid() and formset.is_valid() and formset2.is_valid() and formset3.is_valid():
+			form_uncommited = form.save()
+			form_uncommited.usuario = request.user
+			form_uncommited.tipo = 1
+			form_uncommited.save()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.publicacion = form_uncommited
+				instance.save()
+			formset.save_m2m()
+
+			instances2 = formset2.save(commit=False)
+			for instance in instances2:
+				instance.publicacion = form_uncommited
+				instance.save()
+			formset2.save_m2m()
+
+			instances3 = formset3.save(commit=False)
+			for instance in instances3:
+				instance.publicacion = form_uncommited
+				instance.save()
+			formset3.save_m2m()
+
+			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+	else:
+		form = PublicacionForm()
+		formset = FormSetInit()
+		formset2 = FormSetInit2()
+		formset3 = FormSetInit3()
+
+	return render(request,template,locals())
+
+@login_required
+def publicacion_editar(request, id, template = 'admin/edit_publi.html'):
+	object = get_object_or_404(Publicacion, id=id)
+	FormSetInit = inlineformset_factory(Publicacion,ArchivosPublicacion,form=ArchivosPublicacionForm,extra=1,max_num=9)
+	FormSetInit2 = inlineformset_factory(Publicacion,AudiosPublicacion,form=AudiosPublicacionForm,extra=1,max_num=9)
+	FormSetInit3 = inlineformset_factory(Publicacion,VideosPublicacion,form=VideosPublicacionForm,extra=1,max_num=9)
+	if request.method == 'POST':
+		form = PublicacionForm(request.POST, request.FILES, instance=object)
+		formset = FormSetInit(request.POST,request.FILES, instance=object)
+		formset2 = FormSetInit2(request.POST,request.FILES, instance=object)
+		formset3 = FormSetInit3(request.POST, instance=object)
+		if form.is_valid() and formset.is_valid() and formset2.is_valid() and formset3.is_valid():
+			form_uncommited = form.save()
+			form_uncommited.save()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.publicacion = form_uncommited
+				instance.save()
+			formset.save_m2m()
+
+			instances2 = formset2.save(commit=False)
+			for instance in instances2:
+				instance.publicacion = form_uncommited
+				instance.save()
+			formset2.save_m2m()
+
+			instances3 = formset3.save(commit=False)
+			for instance in instances3:
+				instance.publicacion = form_uncommited
+				instance.save()
+			formset3.save_m2m()
+
+			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+	else:
+		form = PublicacionForm(instance=object)
+		formset = FormSetInit(instance=object)
+		formset2 = FormSetInit2(instance=object)
+		formset3 = FormSetInit3(instance=object)
+
+	return render(request,template,locals())
+
+@login_required
+def publicacion_eliminar(request,id):
+	publicacion = Publicacion.objects.get(id=id).delete()
+	return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
 
 @login_required
 def galeria_img_crear(request,template = 'admin/new_galeria_img.html'):

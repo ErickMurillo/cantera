@@ -28,9 +28,21 @@ naranja = #F48043
 azul = #20B2D1
 amarillo = #FCBB30
 
+.bg-rojo
+	background-color rojo
+.bg-verde
+	background-color verde
+.bg-naranja
+	background-color naranja
+.bg-azul
+	background-color azul
+.bg-amarillo
+	background-color amarillo
 /*=====  End of colors  ======*/
 body
 	background-color gris
+.text-white
+	color #fff !important
 .card
 	border-radius .55rem
 	background #fff
@@ -42,7 +54,7 @@ body
 	box-shadow 0 1px 2px 0 rgba(0,0,0,0.1)
 	.header
 		color #444
-		padding 20px
+		padding 20px 20px 10px 20px
 		position relative
 		box-shadow none
 		h2
@@ -59,7 +71,7 @@ body
 				padding 5px 10px
 	.body
 		color #444
-		padding 20px
+		padding 10px 20px
 		font-weight 400
 /*=============================
 =            table            =
@@ -107,3 +119,55 @@ table.dataTable thead .sorting_desc:after
 	opacity 1 !important
 
 /*=====  End of table  ======*/
+/*==================================
+=            tabs admin            =
+==================================*/
+.admin-tabs
+	.tab-content
+		padding 0
+
+
+/*=====  End of tabs admin  ======*/
+/*==================================
+=            Form admin            =
+==================================*/
+.control-group
+	margin 10px 0px
+	label
+		font-weight 600
+		font-size 1.1em
+.selectmultiple .selectize-input::after
+	content "\f107"
+	font-family FontAwesome
+	display block
+	position absolute
+	top 50%
+	right 25px
+	margin-top -8px
+	font-size 16px
+	line-height 1em
+	color #e85242
+.card
+	input[type="text"]
+	input[type="email"]
+	input[type="url"]
+	input[type="password"]
+	input[type="search"]
+	input[type="tel"]
+	input[type="number"]
+	input[type="date"]
+	textarea
+	select
+	.form-control
+	.selectize-control
+	.selectize-input
+		height 40px
+	.selectize-input
+		padding 5px 60px 5px 30px
+	.selectize-control.multi .selectize-input.has-items
+		padding 3px 8px 3px
+	.selectize-input > *
+		line-height 24px !important
+/*=====  End of Form admin  ======*/
+
+

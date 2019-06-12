@@ -1,11 +1,25 @@
 {% extends "admin/base_admin.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<p align="center">Crear actualidad</p>
-<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-	{{form.media}}
-	{{form.errors}}
-	{{form}}
-	<input type="submit" name="Agregar" value="Agregar actualidad">
-</form>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+
+				<div class="header bg-rojo">
+					<h2 class="text-white">Nueva Actualidad</h2>
+				</div>
+				<div class="body">
+					<form action="." method="POST" class="form-inline" enctype="multipart/form-data">{% csrf_token %}
+						{{form.media}}
+						{{form.errors}}
+						{{form|crispy}}
+						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Agregar" value="Agregar actualidad">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}

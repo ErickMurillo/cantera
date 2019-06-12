@@ -1,12 +1,85 @@
 {% extends "admin/base_admin.html" %}
 
 {% block content %}
-	<p>Lista dummy Foros organizaciones</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="header">
+					<h2>Foros</h2>
+					<ul class="header-dropdown">
+						<li><a href="./agregar" class="btn btn-info" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+					</ul>
+				</div>
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-custom">
+							<thead class="bg-actualidad">
+
+								<tr>
+									<th>Nombre</th>
+									<th>Período aportes</th>
+									<th>Temática</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for obj in list_object_forum %}
+									<tr>
+										<td>
+											<h6>{{obj.nombre}}</h6>
+											<small>{{obj.creacion}}</small>
+										</td>
+										<td>
+											<p>Apertura: {{obj.apertura}}</p>
+											<p>Cierre: {{obj.cierre}}</p>
+											
+										</td>
+										<td>
+											{{obj.tematica}}
+										</td>
+										<td>
+											<div class="action-btn">
+												<a class="btn btn-sm btn-success" href="">
+													<i class="fa fa-pencil"></i>
+												</a>
+												<a data-fancybox data-src="#trueModal-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+													<i class="fa fa-trash"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+									<div id="trueModal-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+								        <h5>
+								            Eliminar Foro
+								        </h5>
+								        <p>
+								           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+								        </p>
+								        <p>
+								            
+								            <a class="btn btn-sm btn-danger" href="">Eliminar</a>
+								            
+								        </p>
+								    </div>
+								{% endfor %}
+
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 	<p>Lista dummy Foros organizaciones</p>
 	<button>crear foro</button>
 	<ul>
 	{% for obj in list_object_forum %}
 		<li><a href="">{{obj}}</a></li>
 		
 	{% endfor %}
-	</ul>
+	</ul> -->
 {% endblock content %}

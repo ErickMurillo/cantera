@@ -1,18 +1,143 @@
 {% extends "admin/base_admin.html" %}
 
 {% block content %}
-	<p> Galeria</p>
-	<a href="./imagenes/agregar">crear galeria de imagenes</a>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="admin-tabs">
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active">
+						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Galería de imágenes</a>
+					</li>
+					<li role="presentation">
+						<a href="#tab" aria-controls="tab" role="tab" data-toggle="tab">Galería de videos</a>
+					</li>
+				</ul>
+				<div class="tab-content ">
+					<div role="tabpanel" class="tab-pane active" id="home">
+						<div class="card">
+							<div class="header">
+								<ul class="header-dropdown">
+									<li><a href="./imagenes/agregar" class="btn btn-info" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+								</ul>
+							</div>
+							<div class="body">
+								<div class="table-responsive">
+									<table class="table table-custom">
+										<thead class="bg-actualidad">
 
-	{% for obj in list_objects_imagenes %}
-	<li>{{obj}} | <a href="{% url 'galeria_img_editar' obj.id %}">Editar</a> | <a href="{% url 'galeria_img_eliminar' obj.id %}">Eliminar</a></li>
-		
-	{% endfor %}
+											<tr>
+												<th>Nombre</th>
+												<th>Temática</th>
+												<th>Acciones</th>
+											</tr>
+										</thead>
+										<tbody>
 
-	<p>Videos</p>
-	<a href="./videos/agregar">crear galeria de videos</a>
+											{% for obj in list_objects_imagenes %}
+												<tr>
+													<td>
+														<h6>{{obj}}</h6>
+														<small>14/06/2019</small>
+													</td>
+													<td>{{obj.tematica}}</td>
+													<td>
+														<div class="action-btn">
+															<a class="btn btn-sm btn-success" href="{% url 'galeria_img_editar' obj.id %}">
+																<i class="fa fa-pencil"></i>
+															</a>
+															<a data-fancybox data-src="#trueModal-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+																<i class="fa fa-trash"></i>
+															</a>
+														</div>
+													</td>
+												</tr>
+												<div id="trueModal-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+											        <h5>
+											            Eliminar galería de imágenes
+											        </h5>
+											        <p>
+											           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+											        </p>
+											        <p>
+											            
+											            <a class="btn btn-sm btn-danger" href="{% url 'galeria_img_eliminar' obj.id %}">Eliminar</a>
+											            
+											        </p>
+											    </div>
+											{% endfor %}
 
-	{% for video in list_objects_video %}
-		<li><a href="">{{video}}</a> | <a href="{% url 'galeria_vid_editar' video.id %}">Editar</a> | <a href="{% url 'galeria_vid_eliminar' video.id %}">Eliminar</a></li>
-	{% endfor %}
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="tab">
+						<div class="card">
+							<div class="header">
+								<ul class="header-dropdown">
+									<li><a href="./videos/agregar" class="btn btn-info" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+								</ul>
+							</div>
+							<div class="body">
+								<div class="table-responsive">
+									<table class="table table-custom">
+										<thead class="bg-actualidad">
+
+											<tr>
+												<th>Nombre</th>
+												<th>Temática</th>
+												<th>Acciones</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											{% for video in list_objects_video %}
+												<tr>
+													<td>
+														<h6>{{video}}</h6>
+														<small>14/06/2019</small>
+													</td>
+													<td>{{video.tematica}}</td>
+													<td>
+														<div class="action-btn">
+															<a class="btn btn-sm btn-success" href="{% url 'galeria_vid_editar' video.id %}">
+																<i class="fa fa-pencil"></i>
+															</a>
+															<a data-fancybox data-src="#modalvideo-{{video.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+																<i class="fa fa-trash"></i>
+															</a>
+														</div>
+													</td>
+												</tr>
+												<div id="modalvideo-{{video.id}}" class="p-5" style="display: none;max-width:600px;">
+											        <h5>
+											            Eliminar Video
+											        </h5>
+											        <p>
+											           Se eliminará "{{video}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+											        </p>
+											        <p>
+											            
+											            <a class="btn btn-sm btn-danger" href="{% url 'galeria_vid_eliminar' video.id %}">Eliminar</a>
+											            
+											        </p>
+											    </div>
+											{% endfor %}
+
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+</div>
+
 {% endblock content %}

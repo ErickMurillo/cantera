@@ -1,10 +1,69 @@
 {% extends "admin/base_admin.html" %}
 
 {% block content %}
-	<p>listado de puntos de vista</p>
-	<a href="./agregar">Crear Punto de vista</a>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="header">
+					<h2>Puntos de vista</h2>
+					<ul class="header-dropdown">
+						<li><a href="./agregar" class="btn btn-info" ><span class="fa fa-plus"></span> Agregar</a></li>
+					</ul>
+				</div>
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-custom">
+							<thead class="bg-actualidad">
 
-	{% for obj in list_object_puntos %}
-		<li>{{obj}} | <a href="{% url 'puntos_vista_edit' obj.slug %}">Editar</a> | <a href="{% url 'puntos_vista_eliminar' obj.id %}">Eliminar</a></li>
-	{% endfor %}
+								<tr>
+									<th>Nombre</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for obj in list_object_puntos %}
+									<tr>
+										<td>
+											<h6>{{obj}}</h6>
+											<small>14/06/2019</small>
+										</td>
+										
+										<td>
+											<div class="action-btn">
+												<a class="btn btn-sm btn-success" href="{% url 'puntos_vista_edit' obj.slug %}">
+													<i class="fa fa-pencil"></i>
+												</a>
+												<a data-fancybox data-src="#trueModal-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+													<i class="fa fa-trash"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+									<div id="trueModal-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+								        <h5>
+								            Eliminar punto de vista
+								        </h5>
+								        <p>
+								           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+								        </p>
+								        <p>
+								            
+								            <a class="btn btn-sm btn-danger" href="{% url 'puntos_vista_eliminar' obj.id %}">Eliminar</a>
+								            
+								        </p>
+								    </div>
+								{% endfor %}
+
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 {% endblock content %}

@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'embed_video',
     'solo',
     'el_pagination',
+    'crispy_forms',
 ]
 
 AUTH_USER_MODEL = 'users.User'

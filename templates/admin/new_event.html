@@ -1,11 +1,45 @@
 {% extends "admin/base_admin.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<p align="center">Crear Evento</p>
-<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-	{{form.media}}
-	{{form.errors}}
-	{{form}}
-	<input type="submit" name="Agregar" value="Agregar Evento">
-</form>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="header bg-amarillo">
+					<h2 class="text-white">Nuevo Evento</h2>
+				</div>
+				<div class="body">
+					<form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
+						{{form.errors}}
+						{{form|crispy}}
+						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Agregar" value="Agregar Evento">
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}
+
+{% block extra_js %}
+{{form.media}}
+<script>
+  $( function() {
+    $('#id_inicio').datepicker({ dateFormat: 'dd/mm/yy' });
+    $('#id_final').datepicker({ dateFormat: 'dd/mm/yy' });
+    // $('#id_hora_inicio').timepicker({ 'timeFormat': 'H:i:s' });
+    // $('#id_hora_fin').timepicker({ 'timeFormat': 'H:i:s' });
+
+   //  for (var i=0; i<=11; i++) {
+   //    $('#id_agendaevento_set-'+i+'-fecha' ).datepicker({ dateFormat: 'dd/mm/yy' });
+   //    $('#id_agendaevento_set-'+i+'-hora_inicio').timepicker({ 'timeFormat': 'H:i:s' });
+   //    $('#id_agendaevento_set-'+i+'-hora_fin').timepicker({ 'timeFormat': 'H:i:s' });
+  	// }
+
+  });
+
+</script>
+{% endblock extra_js %}

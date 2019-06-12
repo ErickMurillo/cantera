@@ -1,12 +1,80 @@
 {% extends "admin/base_admin.html" %}
 
 {% block content %}
-	<p>Lista dummy Iniciativas destacadas organizaciones</p>
-	<a href="./agregar">Crear Evento</a>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="header">
+					<h2>Eventos</h2>
+					<ul class="header-dropdown">
+						<li><a href="./agregar" class="btn btn-info" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+					</ul>
+				</div>
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-custom">
+							<thead class="bg-actualidad">
 
-	<ul>
-	{% for obj in list_object_events  %}
-	<li><a href="">{{obj}}</a> | <a href="{% url 'events_editar' obj.id %}"> Editar</a> | <a href="{%url 'events_eliminar' obj.id %}">Eliminar</a></li>		
-	{% endfor %}
-	</ul>
+								<tr>
+									<th>Nombre</th>
+									<th>Fecha</th>
+									<th>Hora</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for obj in  list_object_events %}
+									<tr>
+										<td>
+											<h6>{{obj}}</h6>
+											<small>{{obj.city}}</small>
+										</td>
+										<td>
+											<p>Inicio: {{obj.inicio}}</p>
+											{% if obj.final %}
+											<p>Final: {{obj.final}}	</p>
+											{% endif %}
+										</td>
+										<td>
+											<p>Inicio: {{obj.hora_inicio}}</p>
+											<p>Final: {{obj.hora_fin}}	</p>
+										</td>
+										<td>
+											<div class="action-btn">
+												<a class="btn btn-sm btn-success" href="{% url 'events_editar' obj.id %}">
+													<i class="fa fa-pencil"></i>
+												</a>
+												<a data-fancybox data-src="#trueModal-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+													<i class="fa fa-trash"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+									<div id="trueModal-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+								        <h5>
+								            Eliminar {{obj.get_category_display}}
+								        </h5>
+								        <p>
+								           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+								        </p>
+								        <p>
+								            
+								            <a class="btn btn-sm btn-danger" href="{%url 'events_eliminar' obj.id %}">Eliminar</a>
+								            
+								        </p>
+								    </div>
+								{% endfor %}
+
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 {% endblock content %}

@@ -178,11 +178,11 @@
 									<a class="dropdown-item" href="./recursos-metodologicos/publicaciones">Publicaciones</a>
 									<a class="dropdown-item" href="./recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
 									<a class="dropdown-item" href="#">
-											Galería
-											<ul>
-												<li><a href="./recursos-metodologicos/galerias/imagenes">Imágenes</a></li>
-												<li><a href="./recursos-metodologicos/galerias/videos">Videos</a></li>
-											</ul>
+										Galería
+										<ul>
+											<li><a href="./recursos-metodologicos/galerias/imagenes">Imágenes</a></li>
+											<li><a href="./recursos-metodologicos/galerias/videos">Videos</a></li>
+										</ul>
 									</a>
 
 									<a class="dropdown-item" href="./recursos-metodologicos/audios">Audios</a>
@@ -231,7 +231,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
-					<h2 class="section_header color">Actualidad</h2>
+					<!--<h2 class="section_header color">Actualidad</h2>-->
+					<div class="flex-wrap v-center">
+						<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+							<h2 class="section_header">Actualidad</h2>
+						</div>
+						<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/actualidad/" class="view-more">Ver más</a> </div>
+					</div>
 					<div class="owl-carousel loop-colors topmargin_40" data-dots="false" data-nav="true" data-responsive-lg="3">
 
 						{% for obj in actualidad %}
@@ -245,7 +251,7 @@
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
-									<h3 class="entry-title small bottommargin_0"> <a href=""><span class="small-text">{{obj.tittle|striptags|truncatechars:71}}</span></a>
+									<h3 class="entry-title small bottommargin_0"> <a><span class="small-text">{{obj.tittle|striptags|truncatechars:71}}</span></a>
 									</header>
 									<p>
 										<a href="{% url 'detalle-actualidad' obj.slug %}" class="more-link">Leer más</a>
@@ -341,19 +347,22 @@
 						<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-standard">
 
 							<div class="item-content">
-								<div class="entry-meta greylinks inline-content"> <span>
-									<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-									<a href="">
-										<time datetime="2017-10-03T08:50:40+00:00">
-										{{obj.apertura|date:"d N, Y"}}</time>
-									</a>
-								</span> <span>
-									<i class="icofont-comment highlight" aria-hidden="true"></i>
-									<a href="">{{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
-								</span> <span>
-									<i class="fa fa-comment highlight" aria-hidden="true"></i>
-									<a href="">{{obj.conteo}} aportes</a>
-								</span> </div>
+								<div class="entry-meta greylinks inline-content"> 
+									<span>
+										<i class="icofont-ui-user-group highlight" aria-hidden="true"></i>
+										<a> {{obj.usuario.organizacion}}</a>
+									</span>
+									<span>
+										<i class="icofont-quill-pen highlight" aria-hidden="true"></i>
+										<a> {{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
+									</span>
+									
+									<span>
+										<i class="fa fa-comment highlight" aria-hidden="true"></i>
+										<a>{{obj.conteo}} aportes</a>
+									</span> 
+
+								</div>
 								<div class="entry-content-wrap">
 									<header class="entry-header">
 										<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
@@ -365,8 +374,6 @@
 							</div>
 						</article>
 						{% endfor %}
-
-
 
 					</div>
 				</div>

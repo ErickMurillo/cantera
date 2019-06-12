@@ -27,6 +27,8 @@ verde = #6F9D34
 naranja = #F48043
 azul = #20B2D1
 amarillo = #FCBB30
+negro = #3a3d44
+
 
 .bg-rojo
 	background-color rojo
@@ -35,20 +37,30 @@ amarillo = #FCBB30
 .bg-naranja
 	background-color naranja
 .bg-azul
+.btn-azul
 	background-color azul
 .bg-amarillo
+.btn-amarillo
 	background-color amarillo
+.btn-transparent
+	background rgba(31, 35, 43, 0.07)
+	color white
+	&:hover
+	&:focus
+		color white
 /*=====  End of colors  ======*/
 body
 	background-color gris
 .text-white
 	color #fff !important
+section#services
+	margin-bottom 30px
 .card
 	border-radius .55rem
 	background #fff
 	transition .5s
 	border 0
-	margin-bottom: 30px
+	margin-bottom 90px
 	position relative
 	width 100%
 	box-shadow 0 1px 2px 0 rgba(0,0,0,0.1)
@@ -102,7 +114,7 @@ body
 		.btn-sm
 			font-size 15px !important
 	.bg-actualidad
-		background-color rojo
+		background-color negro
 .table-responsive
 	.pagination > li > a, .pagination > li > span
 		width auto
@@ -125,8 +137,29 @@ table.dataTable thead .sorting_desc:after
 .admin-tabs
 	.tab-content
 		padding 0
-
-
+		border 0
+.tab-amarillo 
+	li.active > a
+	li.active > a:hover
+	li.active > a:focus
+	li > a:hover
+	li > a:focus
+		border-color amarillo
+		background-color: amarillo
+		color #ffffff
+	ul.nav.nav-tabs
+		border-bottom 2px solid amarillo
+.tab-azul 
+	li.active > a
+	li.active > a:hover
+	li.active > a:focus
+	li > a:hover
+	li > a:focus
+		border-color azul
+		background-color: azul
+		color #ffffff	
+	ul.nav.nav-tabs
+		border-bottom 2px solid azul
 /*=====  End of tabs admin  ======*/
 /*==================================
 =            Form admin            =

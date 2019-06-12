@@ -11,7 +11,8 @@ import datetime
 from django.db.models import Count
 
 def index(request,template='index.html'):
-	actualidad = Actualidad.objects.order_by('-created_on')[:6]
+	# actualidad = Actualidad.objects.order_by('-created_on')[:6]
+	actualidad = Actualidad.objects.filter(category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
 	hoy = datetime.date.today()
 	eventos = Evento.objects.filter(inicio__gte = hoy).order_by('-inicio','-hora_inicio')[:3]
 	foros = Foros.objects.annotate(conteo = Count('aportes')).order_by('-conteo','-aportes__fecha')[:3]

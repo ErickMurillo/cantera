@@ -41,10 +41,16 @@
 						<div class="col-md-7">
 							<div class="item-content">
 								<header class="entry-header">
-									<div class="entry-meta greylinks inline-content"><span>
-										<i class="fa fa-pencil-square-o highlight" aria-hidden="true"></i>
-										{{obj.usuario}}
-									</span> </div>
+									<div class="entry-meta greylinks inline-content">
+										<span>
+											<i class="fa fa-users highlight" aria-hidden="true"></i>
+											{{obj.usuario.organizacion}}
+										</span> 
+										<span>
+											<i class="fa fa-pencil-square-o highlight" aria-hidden="true"></i>
+											{{obj.usuario}}
+										</span> 
+									</div>
 									<h3 class="entry-title small">{{obj.tittle}} <a href="{% url 'point_details' obj.slug %}"></a> </h3>
 								</header>
 								<p>{{obj.descripcion|safe|striptags|truncatechars:200}} <a href="{% url 'point_details' obj.slug %}" class="more-link">Ver más</a></p>
@@ -54,12 +60,12 @@
 					</div>
 				</article>
 				{% endfor %}
-				
+
 
 				<div class="row topmargin_60">
 					<div class="col-sm-12 text-center">
 						<ul class="pagination">
-							
+
 							{% get_pages %}
 
 							{% if pages.paginated %}
@@ -69,7 +75,7 @@
 									<span class="sr-only">Previous</span>
 								</a>
 							</li>
-							
+
 
 							{% for page in pages %}
 
@@ -79,7 +85,7 @@
 							{% else %}
 							<li class="{% if page.is_current %} active {% endif %}"><a href="./{{ page.url }}">{{ page.number }}</a></li>
 							{% endif %}
-							
+
 
 							{% endfor %}
 							<li class="page-item">

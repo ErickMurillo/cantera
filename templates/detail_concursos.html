@@ -36,19 +36,26 @@
 			<div class="col-sm-10 col-sm-push-1">
 				<article class="event-single vertical-item content-padding big-padding with_border bottom_color_border color2">
 					<div class="item-media entry-thumbnail text-center">
-						{% thumbnail object.photo "800x550" crop="center" as im %}
-						    <img src="{{ im.url }}" alt="">
+						{% thumbnail object.photo "965x550" crop="center" as im %}
+						<img src="{{ im.url }}" alt="">
 						{% empty %}
-							<img src="http://via.placeholder.com/800x550" alt="">
+						<img src="http://via.placeholder.com/800x550" alt="">
 						{% endthumbnail %}
 					</div>
 
 					<div class="item-content">
 						<header class="entry-header">
-							<div class="entry-meta greylinks color4 inline-content"> <span>
-								<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
-								<time datetime="2017-10-03T08:50:40+00:00">{{object.created_on|date:"d N, Y"}}</time>
-							</span> </div>
+							<div class="entry-meta greylinks color4 inline-content"> 
+								<span>
+									<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
+									<time datetime="2017-10-03T08:50:40+00:00">{{object.created_on|date:"d N, Y"}}</time>
+								</span>
+								<span>
+									<i class="fa fa-users highlight4" aria-hidden="true"></i>
+									{{object.author.organizacion}}
+								</span> 
+							
+							</div>
 							<h1 class="entry-title"> {{object.tittle}} </h1>
 						</header>
 						<div class="entry-content">
@@ -57,7 +64,7 @@
 					</div>
 					<!-- .item-content -->
 				</article>
-				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="#" class="social-icon color-bg-icon socicon-facebook"></a> 
+				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="#" class="social-icon color-bg-icon socicon-facebook"></a><a href=" https://wa.me/?text=http://127.0.0.1:8000/iniciativas-destacadas/eventos/evento-especial-omi-sobre-empoderamiento" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
 				</div>
 
 

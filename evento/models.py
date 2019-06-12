@@ -11,7 +11,7 @@ from taggit_autosuggest.managers import TaggableManager
 class Evento(models.Model):
 	tittle = models.CharField('Título',max_length=200, unique=True)
 	foto = ImageField('Foto',upload_to='eventos/')
-	descripcion = RichTextUploadingField()
+	descripcion = RichTextUploadingField('Descripción')
 	inicio = models.DateField('Fecha de Inicio')
 	final = models.DateField('Fecha de Finalización',null=True, blank=True)
 	hora_inicio = models.TimeField('Hora inicio')

@@ -5,11 +5,17 @@ from .models import *
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
+class ForoForm(forms.ModelForm):
+	contenido = forms.CharField(widget=CKEditorUploadingWidget())
+	class Meta:
+		model = Foros
+		exclude = ('slug','usuario',)
+
 class AporteForm(forms.ModelForm):
-    contenido = forms.CharField(widget=CKEditorUploadingWidget())
-    class Meta:
-    	model = Aportes
-    	exclude = ('foro','fecha','usuario',)
+	contenido = forms.CharField(widget=CKEditorUploadingWidget())
+	class Meta:
+		model = Aportes
+		exclude = ('foro','fecha','usuario',)
 
 class ComentarioForm(forms.ModelForm):
 	comentario = forms.CharField(widget=CKEditorUploadingWidget())

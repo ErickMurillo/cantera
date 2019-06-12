@@ -28,7 +28,7 @@ class Actualidad(models.Model):
 	tittle = models.CharField('Título',max_length=200, unique=True)
 	category = models.CharField('Categoría',choices=Types_actualidad, max_length=50)
 	photo = ImageField('Foto',upload_to='actualidad/')
-	content = RichTextUploadingField()
+	content = RichTextUploadingField('Contenido')
 	created_on = models.DateField('Fecha de publicación')
 	tematica = models.ManyToManyField(Temas)
 	tags = TaggableManager("Tags",help_text='Separar elementos con "," ', blank=True)

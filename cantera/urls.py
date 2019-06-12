@@ -26,11 +26,7 @@ admin.site.site_title = 'Cantera'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-<<<<<<< HEAD
     #path('', TemplateView.as_view(template_name = 'prev_index2.html')),
-=======
-    # path('', TemplateView.as_view(template_name = 'prev_index2.html')),
->>>>>>> 8c484db6be3b607b1ce60392eb09d55640b2c21a
     path('actualidad/',include('actualidad.urls')),
     path('iniciativas-destacadas/',include('evento.urls')),
     path('foros/',include('foro.urls')),

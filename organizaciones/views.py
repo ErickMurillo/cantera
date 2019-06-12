@@ -12,6 +12,7 @@ from actualidad.forms import *
 from evento.forms import *
 from galerias.forms import *
 from puntosvista.forms import *
+from foro.forms import *
 from .forms import *
 
 # Create your views here.
@@ -99,13 +100,42 @@ def foros_list(request, template = 'admin/foros_list.html'):
 
 @login_required
 def foros_crear(request,template = 'admin/new_foro.html'):
+	if request.method == 'POST':
+		form = ForoForm(request.POST, request.FILES)
+		if form.is_valid():
+			foro = form.save(commit=False)
+			foro.usuario = request.user
+			foro.save()
+			form.save_m2m()
+			return HttpResponseRedirect('/alianzas/foros/')
+	else:
+		form = ForoForm()
+
 	return render(request, template, locals())
 
+@login_required
+def foros_editar(request, id, template = 'admin/new_foro.html'):
+	object = get_object_or_404(Foros, id=id)
+	if request.method == 'POST':
+		form = ForoForm(request.POST, request.FILES, instance=object)
+		if form.is_valid():
+			form_uncommited = form.save()
+			form_uncommited.usuario = request.user
+			form_uncommited.save()
+			return HttpResponseRedirect('/alianzas/foros/')
+	else:
+		form = ForoForm(instance=object)
+
+	return render(request, template, locals())
+
+@login_required
+def foro_eliminar(request,id):
+	foro = Foros.objects.get(id = id).delete()
+	return HttpResponseRedirect('/alianzas/foros/')
+
+@login_required
 def events_list(request,template = 'admin/events_list.html'):
 	list_object_events = Evento.objects.filter(author = request.user.id)
-	return render(request,template,locals())
-
-def edit_event(request, template = 'edit_event.html'):
 	return render(request,template,locals())
 
 @login_required

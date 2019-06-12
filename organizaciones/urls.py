@@ -11,9 +11,10 @@ urlpatterns = [
 	path('actualidad/eliminar/<id>/',views.eliminar_actualidad, name = 'eliminar_actualidad'),
 	#Foros
 	path('foros/', views.foros_list, name = 'foros_list'),
-	path('foros/agregar', views.foros_crear, name = 'foros_crear'),
+	path('foros/agregar/', views.foros_crear, name = 'foros_crear'),
+	path('foros/editar/<id>/', views.foros_editar, name = 'foros_editar'),
+	path('foros/eliminar/<id>/', views.foro_eliminar, name = 'foro_eliminar'),
 	#eventos
-	path('iniciativas-destacadas/eventos/editar', views.edit_event, name ='edit_event'),
 	path('iniciativas-destacadas/eventos/', views.events_list, name = 'events_list'),
 	path('iniciativas-destacadas/eventos/agregar/', views.events_crear, name = 'events_crear'),
 	path('iniciativas-destacadas/eventos/eliminar/<id>/', views.events_eliminar, name = 'events_eliminar'),

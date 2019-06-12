@@ -14,11 +14,21 @@
 .bg-naranja {
   background-color: #f48043;
 }
-.bg-azul {
+.bg-azul,
+.btn-azul {
   background-color: #20b2d1;
 }
-.bg-amarillo {
+.bg-amarillo,
+.btn-amarillo {
   background-color: #fcbb30;
+}
+.btn-transparent {
+  background: rgba(31,35,43,0.07);
+  color: #fff;
+}
+.btn-transparent:hover,
+.btn-transparent:focus {
+  color: #fff;
 }
 /*=====  End of colors  ======*/
 body {
@@ -26,6 +36,9 @@ body {
 }
 .text-white {
   color: #fff !important;
+}
+section#services {
+  margin-bottom: 30px;
 }
 .card {
   -webkit-border-radius: 0.55rem;
@@ -38,7 +51,7 @@ body {
   -o-transition: 0.5s;
   transition: 0.5s;
   border: 0;
-  margin-bottom: 30px;
+  margin-bottom: 90px;
   position: relative;
   width: 100%;
   -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
@@ -111,7 +124,7 @@ body {
   font-size: 15px !important;
 }
 .table.table-custom .bg-actualidad {
-  background-color: #eb6658;
+  background-color: #3a3d44;
 }
 .table-responsive .pagination > li > a,
 .table-responsive .pagination > li > span {
@@ -135,6 +148,31 @@ table.dataTable thead .sorting_desc:after {
 ==================================*/
 .admin-tabs .tab-content {
   padding: 0;
+  border: 0;
+}
+.tab-amarillo li.active > a,
+.tab-amarillo li.active > a:hover,
+.tab-amarillo li.active > a:focus,
+.tab-amarillo li > a:hover,
+.tab-amarillo li > a:focus {
+  border-color: #fcbb30;
+  background-color: #fcbb30;
+  color: #fff;
+}
+.tab-amarillo ul.nav.nav-tabs {
+  border-bottom: 2px solid #fcbb30;
+}
+.tab-azul li.active > a,
+.tab-azul li.active > a:hover,
+.tab-azul li.active > a:focus,
+.tab-azul li > a:hover,
+.tab-azul li > a:focus {
+  border-color: #20b2d1;
+  background-color: #20b2d1;
+  color: #fff;
+}
+.tab-azul ul.nav.nav-tabs {
+  border-bottom: 2px solid #20b2d1;
 }
 /*=====  End of tabs admin  ======*/
 /*==================================

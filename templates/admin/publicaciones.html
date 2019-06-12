@@ -8,12 +8,17 @@
 			<div class="card">
 				<div class="header bg-amarillo">
 					<h2 class="text-white">
-						{% if '/publicaciones/editar/' in request.path %}
+						{% if '/editar/' in request.path %}
 							Editar
 						{% else %}
 							Nueva
-						{% endif %} 
-						Publicación
+						{% endif %}
+						{% if '/publicaciones/' in request.path %}
+							Publicación
+						{% else %}
+							Guía
+						{% endif %}
+						
 					</h2>
 				</div>
 				<div class="body">
@@ -87,7 +92,7 @@
 							</div>
 						</div>
 						
-						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Agregar" value="{% if '/publicaciones/editar/' in request.path %}Modificar{% else %}Agregar{% endif %} ">
+						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Agregar" value="{% if '/editar/' in request.path %}Modificar{% else %}Agregar{% endif %} ">
 
 					</form>
 				</div>

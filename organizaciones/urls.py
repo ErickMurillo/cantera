@@ -15,7 +15,7 @@ urlpatterns = [
 	path('foros/editar/<id>/', views.foros_editar, name = 'foros_editar'),
 	path('foros/eliminar/<id>/', views.foro_eliminar, name = 'foro_eliminar'),
 	#eventos
-	path('iniciativas-destacadas/eventos/', views.events_list, name = 'events_list'),
+	path('iniciativas-destacadas/', views.events_list, name = 'events_list'),
 	path('iniciativas-destacadas/eventos/agregar/', views.events_crear, name = 'events_crear'),
 	path('iniciativas-destacadas/eventos/eliminar/<id>/', views.events_eliminar, name = 'events_eliminar'),
 	path('iniciativas-destacadas/eventos/editar/<id>/', views.events_editar, name = 'events_editar'),
@@ -32,6 +32,10 @@ urlpatterns = [
 	path('recursos-metodologicos/publicaciones/agregar/', views.publicacion_agregar, name = 'publicacion_agregar'),
 	path('recursos-metodologicos/publicaciones/editar/<id>/', views.publicacion_editar, name = 'publicacion_editar'),
 	path('recursos-metodologicos/publicaciones/eliminar/<id>/', views.publicacion_eliminar, name = 'publicacion_eliminar'),
+	#guias
+	path('recursos-metodologicos/guias/agregar/', views.guia_agregar, name = 'guias_agregar'),
+	path('recursos-metodologicos/guias/editar/<id>/', views.publicacion_editar, name = 'guias_editar'),
+	path('recursos-metodologicos/guias/eliminar/<id>/', views.publicacion_eliminar, name = 'guias_eliminar'),
 	#puntos de vista
 	path('puntos-vista/',views.puntos_vista_list, name = 'puntos-vista'),
 	path('puntos-vista/agregar/',views.puntos_vista_crear, name = 'puntos_vista_crear'),

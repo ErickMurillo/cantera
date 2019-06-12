@@ -2,10 +2,9 @@
 
 {% block content %}
 
-<p>Data organizacion</p>
-<a href="{% url 'org_editar' organizacion.id%}">Editar org</a>
-{{organizacion}}
-
-
+<div class="container">
+	<a href="{% url 'org_editar' organizacion.id %}">Editar org</a>
+	{{organizacion}}
+</div>
 
 {% endblock content %}

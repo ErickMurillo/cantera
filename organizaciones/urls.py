@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
 	path('',views.index_org, name = 'list_org'),
-	path('<id>/editar/', views.org_editar, name = 'org_editar'),
+	path('editar/<id>', views.org_editar, name = 'org_editar'),
 	#actualidad
 	path('actualidad/',views.actualidad_list, name ='actualidad_list'),
 	path('actualidad/agregar/',views.actualidad_crear, name = 'actualidad_crear'),

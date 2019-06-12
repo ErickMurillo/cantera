@@ -44,7 +44,13 @@
 							<div class="item-content">
 								<header class="entry-header">
 									<div class="categories-links small-text highlightlinks"> <a href="#">{{obj.tematica}}</a> </div>
-									<h3 class="entry-title small bottommargin_0"> <a rel="bookmark" href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a> </h3>
+									<h3 class="entry-title small bottommargin_0">
+										{% if request.path == '/recursos-metodologicos/galerias/imagenes/' %}
+											<a rel="bookmark" href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a>
+										{% else %}
+											<a rel="bookmark" href="{% url 'detalle_galeria_vid' obj.slug %}">{{obj}}</a>
+										{% endif %}
+									</h3>
 								</header>
 								
 							</div>
@@ -106,7 +112,7 @@
 				</div>
 
 				<div class="widget">
-					<h4 class="widget-title">Temática</h4>
+					<h4 class="widget-title">Temáticas</h4>
 					<div class="tagcloud">
 						<!--{% for tema in tematica %}
 								<a href="">{{tema}}</a>

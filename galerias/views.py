@@ -40,6 +40,9 @@ def index_galeriaVideos(request,template = 'list_galeria.html'):
 			dic_temas[tema] = count
 	return render(request,template,locals())
 
+def detalle_galeria_vid(request,slug,template ='detail_galeria_vid.html'):
+	return render(request,template,locals())
+
 def filtro_temas_vid(request,tema,template='list_galeria.html'):
 	list_galeria = GaleriaVideos.objects.filter(tematica = tema).order_by('-id')
 

@@ -1,27 +1,80 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% load el_pagination_tags %}
 <!--{% load embed_video_tags %}-->
 
 {% block content %}
-<p>Detalles {{object.titulo}}</p>
 
 <!--{{object.imagen.url}} -->
-<p>Imagenes</p>
-
-{% for galeria in object.imagenes_set.all %}
-<div class="" style="display: inline-block;" data-bound="">
-	{% thumbnail galeria.imagen "800" crop="center" as im %}
-	<p>{{galeria.nombre}}</p>
-	<a class="" title="{{galeria.nombre}}" href="{{im.url}}">
-		{% endthumbnail %}
-		<!--<a class="gallery-item cboxElement" href="/media/{{galeria.imagen}}">-->
-			{% thumbnail galeria.imagen "380x250" crop="center" as im %}
-			<img class="gallery-item__photo lazy" src="{{im.url}}" style="display: inline; " >
-			{% endthumbnail %}
-			<div class="loader loder-hide"></div>
-		</a><!--/.portfolio-item-->
-
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="white-color">{{object.titulo}}</h2>
+				<ol class="breadcrumb">
+					<li class=" white-color"> <a href="/">
+						Inicio
+					</a> </li>
+					<li class=" white-color"> <a href="/recursos-metodologicos/galerias/imagenes/">Galeria imágenes</a> </li>
+					<li class="active">{{object.titulo}}</li>
+				</ol>
+			</div>
+		</div>
 	</div>
-	{% endfor %}
+</section>
+
+
+
+	<section class="ls page_portfolio section_padding_top_100 section_padding_bottom_100">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
+						{% for galeria in object.imagenes_set.all %}
+
+						<div class="isotope-item col-lg-4 col-md-6 col-sm-12 category-1">
+							<div class="vertical-item gallery-item content-absolute text-center ds">
+								<div class="item-media">
+									{% thumbnail galeria.imagen "370x246" crop="center" as im %}
+									<img src="{{ im.url }}" alt="">
+									{% empty %}
+									<img src="http://via.placeholder.com/370x246" alt="">
+									{% endthumbnail %}
+
+									<div class="media-links">
+										<div class="links-wrap"> 
+											<a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="{{galeria.imagen.url}}"></a> 
+										</div>
+									</div>
+								</div>
+								<div class="item-content">
+									<h4> <a class="white-color">{{galeria.nombre}}</a> </h4>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+
+					</div>
+					<!-- eof .isotope_container.row -->
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<div class="topmargin_30">
+								<ul class="pagination">
+									<li><a href="#"><span class="sr-only">Prev</span><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+									<li class="active"><a href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li><a href="#"><span class="sr-only">Next</span><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	{% endblock content %}

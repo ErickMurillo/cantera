@@ -33,9 +33,9 @@
 
 					<div class="item-media entry-thumbnail"> 
 						{% thumbnail object.foto "760x507" crop="center" as im %}
-						    <img src="{{ im.url }}" alt="">
+						<img src="{{ im.url }}" alt="">
 						{% empty %}
-							<img src="http://via.placeholder.com/728x640" alt="">
+						<img src="http://via.placeholder.com/728x640" alt="">
 						{% endthumbnail %}
 					</div>
 
@@ -44,15 +44,22 @@
 							<div class="entry-meta greylinks color4 inline-content"> <span>
 								<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
 								<time datetime="2017-10-03T08:50:40+00:00">Creación {{object.creacion|date:"d N, Y"}}</time>
-							</span> <span>
-								<i class="fa fa-comment highlight4 rightpadding_5" aria-hidden="true"></i>
-								<a href="">{{object.aportes_set.all.count}} aportes</a>
-							</span> <span class="categories-links">
+							</span>
+							{% if obj.usuario.organizacion != '' %}
+							<span>
+								<i class="fa fa-users highlight4 rightpadding_5" aria-hidden="true"></i>
+								<a href="">{{object.usuario.organizacion}}</a>
+							</span>										
+							{% endif %}
+							<span class="categories-links">
 								<i class="icofont-comment highlight4 rightpadding_5" aria-hidden="true"></i>
 								<a href="">{{object.usuario.get_full_name|default:object.usuario.username}}</a>
-							</span> 
-							<span class="text-right">
+							</span>
+							
 
+							 <span>
+								<i class="fa fa-comment highlight4 rightpadding_5" aria-hidden="true"></i>
+								<a href="">{{object.aportes_set.all.count}} aportes</a>
 							</span>
 
 						</div>

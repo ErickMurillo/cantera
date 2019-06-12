@@ -4,21 +4,29 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="admin-tabs">
+			<div class="admin-tabs tab-azul">
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active">
-						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Galería de imágenes</a>
+						<a href="#publicaciones" aria-controls="publicaciones" role="tab" data-toggle="tab">Publicaciones</a>
 					</li>
 					<li role="presentation">
-						<a href="#tab" aria-controls="tab" role="tab" data-toggle="tab">Galería de videos</a>
+						<a href="#guias" aria-controls="guias" role="tab" data-toggle="tab">Guías metodológicas</a>
 					</li>
+					<li role="presentation">
+						<a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Galería de videos</a>
+					</li>
+					<li role="presentation" >
+						<a href="#imagenes" aria-controls="imagenes" role="tab" data-toggle="tab">Galería de imágenes</a>
+					</li>
+					
+					
 				</ul>
 				<div class="tab-content ">
-					<div role="tabpanel" class="tab-pane active" id="home">
+					<div role="tabpanel" class="tab-pane active" id="publicaciones">
 						<div class="card">
 							<div class="header">
 								<ul class="header-dropdown">
-									<li><a href="./imagenes/agregar" class="btn btn-info" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+									<li><a href="#" class="btn btn-azul text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
 								</ul>
 							</div>
 							<div class="body">
@@ -28,57 +36,113 @@
 
 											<tr>
 												<th>Nombre</th>
+												
 												<th>Temática</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
 										<tbody>
 
-											{% for obj in list_objects_imagenes %}
+											
 												<tr>
 													<td>
-														<h6>{{obj}}</h6>
-														<small>14/06/2019</small>
+														<h6>Titulo publicación</h6>
 													</td>
-													<td>{{obj.tematica}}</td>
+													
+													<td>Tematica</td>
 													<td>
 														<div class="action-btn">
-															<a class="btn btn-sm btn-success" href="{% url 'galeria_img_editar' obj.id %}">
+															<a class="btn btn-sm btn-success" href="#">
 																<i class="fa fa-pencil"></i>
 															</a>
-															<a data-fancybox data-src="#trueModal-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+															<a data-fancybox data-src="#publicacion-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
 																<i class="fa fa-trash"></i>
 															</a>
 														</div>
 													</td>
 												</tr>
-												<div id="trueModal-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+												<div id="publicacion-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
 											        <h5>
-											            Eliminar galería de imágenes
+											            Eliminar Publicación
 											        </h5>
 											        <p>
 											           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
 											        </p>
 											        <p>
 											            
-											            <a class="btn btn-sm btn-danger" href="{% url 'galeria_img_eliminar' obj.id %}">Eliminar</a>
+											            <a class="btn btn-sm btn-danger" href="#">Eliminar</a>
 											            
 											        </p>
-											    </div>
-											{% endfor %}
-
-											
+											    </div>											
 										</tbody>
 									</table>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="tab">
+					<div role="tabpanel" class="tab-pane active" id="guias">
 						<div class="card">
 							<div class="header">
 								<ul class="header-dropdown">
-									<li><a href="./videos/agregar" class="btn btn-info" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+									<li><a href="" class="btn btn-azul text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+								</ul>
+							</div>
+							<div class="body">
+								<div class="table-responsive">
+									<table class="table table-custom">
+										<thead class="bg-actualidad">
+
+											<tr>
+												<th>Nombre</th>
+												
+												<th>Temática</th>
+												<th>Acciones</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											
+												<tr>
+													<td>
+														<h6>Titulo Guias</h6>
+													</td>
+													
+													<td>Tematica</td>
+													<td>
+														<div class="action-btn">
+															<a class="btn btn-sm btn-success" href="#">
+																<i class="fa fa-pencil"></i>
+															</a>
+															<a data-fancybox data-src="#guias-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+																<i class="fa fa-trash"></i>
+															</a>
+														</div>
+													</td>
+												</tr>
+												<div id="guias-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+											        <h5>
+											            Eliminar Guías metodológica
+											        </h5>
+											        <p>
+											           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+											        </p>
+											        <p>
+											            
+											            <a class="btn btn-sm btn-danger" href="#">Eliminar</a>
+											            
+											        </p>
+											    </div>											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="videos">
+						<div class="card">
+							<div class="header">
+								<ul class="header-dropdown">
+									<li><a href="./videos/agregar" class="btn btn-azul text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
 								</ul>
 							</div>
 							<div class="body">
@@ -134,6 +198,67 @@
 							</div>
 						</div>
 					</div>
+					<div role="tabpanel" class="tab-pane" id="imagenes">
+						<div class="card">
+							<div class="header">
+								<ul class="header-dropdown">
+									<li><a href="./imagenes/agregar" class="btn btn-azul text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+								</ul>
+							</div>
+							<div class="body">
+								<div class="table-responsive">
+									<table class="table table-custom">
+										<thead class="bg-actualidad">
+
+											<tr>
+												<th>Nombre</th>
+												<th>Temática</th>
+												<th>Acciones</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											{% for obj in list_objects_imagenes %}
+												<tr>
+													<td>
+														<h6>{{obj}}</h6>
+														<small>14/06/2019</small>
+													</td>
+													<td>{{obj.tematica}}</td>
+													<td>
+														<div class="action-btn">
+															<a class="btn btn-sm btn-success" href="{% url 'galeria_img_editar' obj.id %}">
+																<i class="fa fa-pencil"></i>
+															</a>
+															<a data-fancybox data-src="#trueModal-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+																<i class="fa fa-trash"></i>
+															</a>
+														</div>
+													</td>
+												</tr>
+												<div id="trueModal-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+											        <h5>
+											            Eliminar galería de imágenes
+											        </h5>
+											        <p>
+											           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+											        </p>
+											        <p>
+											            
+											            <a class="btn btn-sm btn-danger" href="{% url 'galeria_img_eliminar' obj.id %}">Eliminar</a>
+											            
+											        </p>
+											    </div>
+											{% endfor %}
+
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 			</div>		
 		</div>

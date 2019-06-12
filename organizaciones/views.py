@@ -54,7 +54,7 @@ def org_editar(request,id, template = 'admin/org_edit.html'):
 		return HttpResponse('Bad request')
 
 def actualidad_list(request, template = 'admin/actualidad_index.html'):
-	list_object = Actualidad.objects.filter(author = request.user.id)
+	list_object = Actualidad.objects.filter(author = request.user.id,category__in = ['noticias','situacion-regional-genero'])
 	return render (request, template,locals())
 
 @login_required

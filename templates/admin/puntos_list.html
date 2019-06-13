@@ -8,7 +8,7 @@
 				<div class="header  bg-verde">
 					<h2 class="text-white">Puntos de vista</h2>
 					<ul class="header-dropdown">
-						<li><a href="./agregar" class="btn btn-transparent" ><span class="fa fa-plus"></span> Agregar</a></li>
+						<li><a href="{% url 'puntos_vista_crear' %}" class="btn btn-transparent" ><span class="fa fa-plus"></span> Agregar</a></li>
 					</ul>
 				</div>
 				<div class="body">
@@ -27,7 +27,6 @@
 									<tr>
 										<td>
 											<h6>{{obj}}</h6>
-											<small>14/06/2019</small>
 										</td>
 										
 										<td>

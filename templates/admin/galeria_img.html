@@ -1,0 +1,61 @@
+{% extends "admin/base_admin.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="header bg-azul">
+					<h2 class="text-white">{% if '/editar/' in request.path %}
+							Editar
+						{% else %}
+							Nueva
+						{% endif %} Galería de imágenes </h2>
+				</div>
+				<div class="body">
+					<form action="." method="POST" class="form-inline" enctype="multipart/form-data">{% csrf_token %}
+						{{form.media}}
+						{{form|crispy}}
+						
+						<div class="row">
+							<h4 class="blog-details__title">Imagenes</h4>
+							<hr>
+							<div class="col-md-6">
+								{{ formset.management_form }}
+								<div id="form_set">
+									{% for form in formset.forms %}
+									    {{form.non_field_errors}}
+										{{form.errors}}
+								        <div class='no_error'>
+								            {{ form.as_p }}
+								        </div>
+								    {% endfor %}
+								</div>
+
+								<input class="theme_button color2 min_width_button margin_0" type="button" value="Agregar foto adicional" id="add_more">
+								<div id="empty_form" style="display:none">
+								    <div class='no_error'>
+								        {{ formset.empty_form }}
+								    </div>
+								</div>
+							</div>
+						</div>
+						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Guardar" value="{% if '/editar/' in request.path %}Editar{% else %}Agregar{% endif %}">
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+$('#add_more').click(function() {
+	var form_idx = $('#id_imagenes_set-TOTAL_FORMS').val();
+	$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+	$('#id_imagenes_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+});
+</script>
+{% endblock extra_js %}

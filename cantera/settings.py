@@ -254,3 +254,7 @@ LOCATION_FIELD = {
         ],
     },
 }
+
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.CustomUserCreationForm',
+}

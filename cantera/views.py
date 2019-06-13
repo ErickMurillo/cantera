@@ -26,4 +26,4 @@ def perfil(request,template='admin/org_index.html'):
 		organizacion = Contraparte.objects.get(id = request.user.organizacion.id)
 		return render(request, template,locals())
 	except :
-		return HttpResponse('Bad request')
+		return render(request, 'admin/error.html',locals())

@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+{% load account socialaccount %}
+
+{% block content %}
+Inicio de sesion
+{% get_providers as socialaccount_providers %}
+{% if socialaccount_providers %}
+                        
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+ 	
+	{% include "socialaccount/snippets/login_extra.html" %}
+
+{% endif %}
+<form class="login" method="POST" action="{% url 'account_login' %}">{% csrf_token %}
+      {{ form.as_p }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+	    <li><a href="{% url 'account_reset_password' %}">Olvidé mi contraseña</a></li>
+	    <li>Si aún no ha creado una cuenta, por favor <a href="{{ signup_url }}">Registrarse</a></li>
+ 
+    <button type="submit">Iniciar sesion</button>
+        
+</form>
+{% endblock content %}

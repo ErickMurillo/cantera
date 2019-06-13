@@ -215,3 +215,39 @@ h3.entry-title.minismall {
   padding: 0px 10px 15px;
   font-size: 1.5em !important;
 }
+
+/* redes sociales */
+.socialaccount_providers{
+text-align: center;
+margin: 0px;
+}
+
+.socialaccount_providers .socialaccount_provider{
+border-radius: 50px;
+text-align: center;
+color: white;
+
+}
+.socialaccount_providers .btn{
+padding: 10px 30px;
+}
+.socialaccount_providers .google{
+background-color: #dd4b39;
+}
+
+.socialaccount_providers .google:hover{
+background-color: #be3423;
+}
+.socialaccount_providers .facebook{
+background-color: #3b5998;
+}
+
+.socialaccount_providers .facebook:hover{
+background-color: #192e59;
+}
+.socialaccount_providers .twitter{
+background-color: #1da1f2;
+}
+.socialaccount_providers .twitter:hover{
+background-color: #1c6ea1;
+}

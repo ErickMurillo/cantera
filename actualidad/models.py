@@ -28,13 +28,8 @@ class Actualidad(models.Model):
 	tittle = models.CharField('Título',max_length=200, unique=True)
 	category = models.CharField('Categoría',choices=Types_actualidad, max_length=50)
 	photo = ImageField('Foto',upload_to='actualidad/')
-<<<<<<< HEAD
-	content = RichTextUploadingField('Contenido')
-	created_on = models.DateField('Fecha de publicación')
-=======
 	content = RichTextUploadingField(verbose_name='Contenido')
 	created_on = models.DateField('Fecha de publicación', auto_now_add=True)
->>>>>>> 2865a37bc9a1a9ff8201a487d5ffd4850ea9d617
 	tematica = models.ManyToManyField(Temas)
 	tags = TaggableManager("Tags",help_text='Separar elementos con "," ', blank=True)
 	slug = models.SlugField(max_length=200, editable=False)

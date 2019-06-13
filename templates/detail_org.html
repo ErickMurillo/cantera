@@ -68,11 +68,23 @@
 
 				<article id ="contact_alliance" class="vertical-item content-padding big-padding with_border bottom_color_border">
 					<div class="item-content">
+						{% if detail_object.contacto %}
 						<p class="entry-title "><a><i class="icofont-contact-add font-alliance"></i></a> {{detail_object.contacto}}</p>
+						{% endif %}
+						{% if detail_object.pais %}
 						<p class="entry-title "><a><i class="icofont-location-pin font-alliance"></i></a> {{detail_object.pais}}</p>
+						{% endif %}
+						{% if detail_object.fundacion %}
 						<p class="entry-title "><a><i class="icofont-ui-calendar font-alliance"></i></a> {{detail_object.fundacion}}</p>
-						<p class="entry-title "><a href="mailto:{{detail_object.correo}}"><i class="icofont-email font-alliance"></i>{{detail_object.correo}}</a> </p>
-						<p class="entry-title"><a><i class="icofont-phone-circle font-alliance"></i></a> {{detail_object.telefono}}</p>
+						{% endif %}
+						{% if detail_object.correo %}
+							<p class="entry-title "><a href="mailto:{{detail_object.correo}}"><i class="icofont-email font-alliance"></i>{{detail_object.correo}}</a> </p>
+						{% endif %}
+
+						{% if detail_object.telefono %}
+							<p class="entry-title"><a><i class="icofont-phone-circle font-alliance"></i></a> {{detail_object.telefono}}</p>
+						{% endif %}
+												
 					</div>
 				</article>
 			</div>

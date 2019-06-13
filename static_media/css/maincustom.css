@@ -189,6 +189,11 @@ a.iniciativa_content:hover span {
     margin: 15px;
 }
 
+#detail_alianza .with_border .item-media {
+    margin: 15px;
+}
+
+
 .color-bg-icon.socicon-whatsapp, a.socicon-whatsapp.bg-icon:hover, .socicon-whatsapp.color-icon.border-icon:hover {
     background-color: #01E676;
 }
@@ -200,4 +205,13 @@ a[class*="socicon-"].socicon-whatsapp:hover {
 
 h3.entry-title.minismall {
     font-size: 18px;
+}
+
+.fixed-height {
+  height: 417px !important;
+}
+
+#contact_alliance i.font-alliance {
+  padding: 0px 10px 15px;
+  font-size: 1.5em !important;
 }

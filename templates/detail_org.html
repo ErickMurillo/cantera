@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 
 {% block content %}
 
@@ -12,7 +13,7 @@
 						Inicio
 					</a> </li>
 					<li> <a href="/alianzas">Alianzas</a> </li>
-					<li class="active">{{detail_object.nombre}}</li>
+					<li class="active">{{detail_object.siglas}}</li>
 				</ol>
 			</div>
 		</div>
@@ -20,56 +21,83 @@
 </section>
 
 
-<section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-5">
-							<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
-								<div class="item-media"> <img src="images/team/01.jpg" alt=""> </div>
-								<div class="item-content">
-									<header class="entry-header">
-										<h1 class="entry-title small bottommargin_0"> Adeline Barnett </h1> <span class="small-text highlight">leader</span> </header>
-									<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon socicon-google" href="#" title="Google"></a> </p>
-								</div>
-							</article>
-						</div>
-						<div class="col-sm-7">
-							<p>{{detail_object.generalidades|safe}}</p>
-							<!-- Nav tabs -->
-							<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
-								<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Biography</a></li>
-								<li><a href="#tab2" role="tab" data-toggle="tab">Skills</a></li>
-								
-							</ul>
-							<!-- Tab panes -->
-							<div class="tab-content big-padding top-color-border color2 bottommargin_40">
-								<div class="tab-pane fade in active" id="tab1">
-									<h4>Biography:</h4>
-								
-								</p>
-								</div>
-								<div class="tab-pane fade" id="tab2">
-									<p class="progress-bar-title"> Skill Name </p>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" data-transitiongoal="90"> <span>90%</span> </div>
-									</div>
-									
-								</div>
-							</div>
-							
-							<blockquote
-							    class="with_padding big-padding with_border">
-								<p>«Prosciutto pork belly pork loin sirloin picanha. Turkey hamburger chuck, ham pork belly tri-tip pork chop pork loin buffalo. Capicola fatback chuck buffalo tail.» </p>
-								<div class="item-meta">
-									<h5>Alma Chandler</h5> <span class="small-text highlight2">Client</span> </div>
-								</blockquote>
-						</div>
+<section id ="detail_alianza" class="ls section_padding_top_100 section_padding_bottom_80 columns_padding_30">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5">
+				<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+					<div class="item-media"> 
+						{% thumbnail detail_object.logo "350x252" format='PNG' as im %}
+						<img src="{{ im.url }}" alt="" width="100%">
+						{% empty %}
+						<img src="http://via.placeholder.com/400x300" alt="">
+						{% endthumbnail %}
 					</div>
+					<div class="item-content">
+						<header class="entry-header">
+							<h1 class="entry-title small bottommargin_0 highlight"> {{detail_object.siglas}} </h1>
+						</header>
+						<p class="member-social greylinks"> 
+							{% for red in detail_object.redes_set.all|slice:":3" %}
+							<a class="social-icon {% if red.opcion == 'Sitio web' %}
+							socicon-globe
+							{% elif red.opcion == 'Facebook' %}
+							socicon-facebook
+							{% elif red.opcion == 'Twitter' %}
+							socicon-twitter
+							{% elif red.opcion == 'Youtube' %}
+							socicon-youtube
+							{% elif red.opcion == 'Instagram' %}
+							socicon-instagram
+							{% elif red.opcion == 'Linkedin' %}
+							socicon-linkedin
+							{% elif red.opcion == 'Flickr' %}
+							socicon-flickr
+							{% elif red.opcion == 'Pinterest' %}
+							socicon-pinterest
+							{% elif red.opcion == 'Vimeo' %}
+							socicon-vimeo
+							{% elif red.opcion == 'Otra' %}
+							socicon-link
+							{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a>
+							{% endfor %}
+						</p>
+					</div>
+				</article>
+				<br>
+
+				<article id ="contact_alliance" class="vertical-item content-padding big-padding with_border bottom_color_border">
+					<div class="item-content">
+						<p class="entry-title "><a><i class="icofont-contact-add font-alliance"></i></a> {{detail_object.contacto}}</p>
+						<p class="entry-title "><a><i class="icofont-location-pin font-alliance"></i></a> {{detail_object.pais}}</p>
+						<p class="entry-title "><a><i class="icofont-ui-calendar font-alliance"></i></a> {{detail_object.fundacion}}</p>
+						<p class="entry-title "><a href="mailto:{{detail_object.correo}}"><i class="icofont-email font-alliance"></i>{{detail_object.correo}}</a> </p>
+						<p class="entry-title"><a><i class="icofont-phone-circle font-alliance"></i></a> {{detail_object.telefono}}</p>
+					</div>
+				</article>
+			</div>
+			<div class="col-sm-7">
+				<h3>{{detail_object.nombre|safe}}</h3>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
+					<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Generalidades</a></li>
+					<li><a href="#tab2" role="tab" data-toggle="tab">Temas</a></li>
+
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content big-padding top-color-border color2 bottommargin_40">
+					<div class="tab-pane fade in active" id="tab1">
+						{{detail_object.generalidades|safe}}
+					</div>
+
+					<div class="tab-pane fade" id="tab2">
+						{{detail_object.temas|safe}}
+					</div>
+
 				</div>
-			</section>
-
-
-<p>{{detail_object.nombre }}</p>
-
-{{detail_object.generalidades|safe}}
+			</div>
+		</div>
+	</div>
+</div>
+</section>
 {% endblock content %}

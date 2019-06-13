@@ -139,7 +139,7 @@ def foro_eliminar(request,id):
 def events_list(request,template = 'admin/iniciativas-destacadas.html'):
 	list_object_events = Evento.objects.filter(author = request.user.id)
 	campanias = Actualidad.objects.filter(author = request.user.id,category = 'campanas')
-	consursos = Actualidad.objects.filter(author = request.user.id,category = 'concursos')
+	concursos = Actualidad.objects.filter(author = request.user.id,category = 'concursos')
 
 	return render(request,template,locals())
 
@@ -175,7 +175,7 @@ def events_editar(request, id, template = 'admin/event.html'):
 @login_required
 def events_eliminar(request, id):
 	nota = Evento.objects.get(id = id).delete()
-	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
+	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
 
 @login_required
 def recursos_list(request,template='admin/recursos.html'):
@@ -437,3 +437,76 @@ def puntos_vista_edit(request,slug,template = 'admin/punto.html'):
 def puntos_vista_eliminar(request,id):
 	puntos_vista = Puntos.objects.get(id = id).delete()
 	return HttpResponseRedirect('/alianzas/puntos-vista/')
+
+@login_required
+def campanias_crear(request,template = 'admin/actualidad.html'):
+	if request.method == 'POST':
+		form = Actualidad2Forms(request.POST, request.FILES)
+
+		if form.is_valid():
+			campanias = form.save(commit=False)
+			campanias.author = request.user
+			campanias.category = 'campanas'
+			campanias.save()
+			form.save_m2m()
+			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+	else:
+		form = Actualidad2Forms()
+
+	return render(request, template, locals())
+
+@login_required
+def campanias_editar(request, id, template = 'admin/actualidad.html'):
+	object = get_object_or_404(Actualidad, id=id)
+	if request.method == 'POST':
+		form = Actualidad2Forms(request.POST, request.FILES, instance=object)
+		if form.is_valid():
+			form_uncommited = form.save()
+			form_uncommited.author = request.user
+			form_uncommited.save()
+			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+	else:
+		form = Actualidad2Forms(instance=object)
+	return render(request, template, locals())
+
+@login_required
+def eliminar_campania(request, id):
+	camp = Actualidad.objects.get(id = id).delete()
+	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+
+@login_required
+def concursos_crear(request,template = 'admin/actualidad.html'):
+	if request.method == 'POST':
+		form = Actualidad2Forms(request.POST, request.FILES)
+
+		if form.is_valid():
+			campanias = form.save(commit=False)
+			campanias.author = request.user
+			campanias.category = 'concursos'
+			campanias.save()
+			form.save_m2m()
+			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+	else:
+		form = Actualidad2Forms()
+
+	return render(request, template, locals())
+
+@login_required
+def concursos_editar(request, id, template = 'admin/actualidad.html'):
+	object = get_object_or_404(Actualidad, id=id)
+	if request.method == 'POST':
+		form = Actualidad2Forms(request.POST, request.FILES, instance=object)
+		if form.is_valid():
+			form_uncommited = form.save()
+			form_uncommited.author = request.user
+			form_uncommited.save()
+			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+	else:
+		form = Actualidad2Forms(instance=object)
+	return render(request, template, locals())
+
+@login_required
+def eliminar_concursos(request, id):
+	concurso = Actualidad.objects.get(id = id).delete()
+	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+

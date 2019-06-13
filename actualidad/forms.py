@@ -19,6 +19,14 @@ class ActualidadForms(forms.ModelForm):
 		fields = '__all__'
 		exclude = ('slug','created_on','author',)
 
+class Actualidad2Forms(forms.ModelForm):
+	content = forms.CharField(widget=CKEditorUploadingWidget())
+	
+	class Meta:
+		model = Actualidad
+		fields = '__all__'
+		exclude = ('slug','created_on','author','category')
+
 class BuscadorGeneral(forms.Form):
 	q = forms.CharField(widget=forms.TextInput(attrs={
             'class': 'form-control',

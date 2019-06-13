@@ -41,6 +41,14 @@ urlpatterns = [
 	path('puntos-vista/agregar/',views.puntos_vista_crear, name = 'puntos_vista_crear'),
 	path('puntos-vista/editar/<slug>/',views.puntos_vista_edit, name = 'puntos_vista_edit'),
 	path('puntos-vista/eliminar/<id>/',views.puntos_vista_eliminar, name = 'puntos_vista_eliminar'),
+	#campania
+	path('campanias/agregar/',views.campanias_crear, name = 'campanias_crear'),
+	path('campanias/editar/<id>/', views.campanias_editar, name = 'campanias_editar'),
+	path('campanias/eliminar/<id>/',views.eliminar_campania, name = 'eliminar_campania'),
+	#concursos
+	path('concursos/agregar/',views.concursos_crear, name = 'concursos_crear'),
+	path('concursos/editar/<id>/', views.concursos_editar, name = 'concursos_editar'),
+	path('concursos/eliminar/<id>/',views.eliminar_concursos, name = 'eliminar_concursos'),
 	
 	path('<slug>/', views.detalles_org, name = 'detalles_organizaciones'),
 

@@ -23,7 +23,7 @@
 						<div class="card">
 							<div class="header">
 								<ul class="header-dropdown">
-									<li><a href="" class="btn btn-amarillo text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+									<li><a href="{% url 'campanias_crear' %}" class="btn btn-amarillo text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
 								</ul>
 							</div>
 							<div class="body">
@@ -38,36 +38,37 @@
 										</thead>
 										<tbody>
 
-											
+											{% for camp in campanias %}
 												<tr>
 													<td>
-														<h6>Titulo Campañas</h6>
-														<small>14/06/2019</small>
+														<h6>{{camp.tittle}}</h6>
+														<small>{{camp.created_on}}</small>
 													</td>
 													<td>
 														<div class="action-btn">
-															<a class="btn btn-sm btn-success" href="#">
+															<a class="btn btn-sm btn-success" href="{% url 'campanias_editar' camp.id %}">
 																<i class="fa fa-pencil"></i>
 															</a>
-															<a data-fancybox data-src="#campana-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+															<a data-fancybox data-src="#campana-{{camp.id}}" class="btn btn-sm btn-danger" href="javascript:;">
 																<i class="fa fa-trash"></i>
 															</a>
 														</div>
 													</td>
 												</tr>
-												<div id="campana-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+												<div id="campana-{{camp.id}}" class="p-5" style="display: none;max-width:600px;">
 											        <h5>
 											            Eliminar Publicación
 											        </h5>
 											        <p>
-											           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+											           Se eliminará "{{camp}}" permanentemente.<br>¿Esta seguro que desea eliminar?
 											        </p>
 											        <p>
 											            
-											            <a class="btn btn-sm btn-danger" href="#">Eliminar</a>
+											            <a class="btn btn-sm btn-danger" href="{% url 'eliminar_actualidad' camp.id %}">Eliminar</a>
 											            
 											        </p>
-											    </div>											
+											    </div>
+											{% endfor %}											
 										</tbody>
 									</table>
 								</div>
@@ -148,7 +149,7 @@
 						<div class="card">
 							<div class="header">
 								<ul class="header-dropdown">
-									<li><a href="" class="btn btn-amarillo text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+									<li><a href="{% url 'concursos_crear' %}" class="btn btn-amarillo text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
 								</ul>
 							</div>
 							<div class="body">
@@ -162,37 +163,38 @@
 											</tr>
 										</thead>
 										<tbody>
-
-											
+											{% for con in concursos %}
+												
 												<tr>
 													<td>
-														<h6>Titulo Concurso</h6>
-														<small>14/06/2019</small>
+														<h6>{{con.tittle}}</h6>
+														<small>{{con.created_on}}</small>
 													</td>
 													<td>
 														<div class="action-btn">
-															<a class="btn btn-sm btn-success" href="#">
+															<a class="btn btn-sm btn-success" href="{% url 'concursos_editar' con.id %}">
 																<i class="fa fa-pencil"></i>
 															</a>
-															<a data-fancybox data-src="#concurso-{{obj.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+															<a data-fancybox data-src="#concurso-{{con.id}}" class="btn btn-sm btn-danger" href="javascript:;">
 																<i class="fa fa-trash"></i>
 															</a>
 														</div>
 													</td>
 												</tr>
-												<div id="concurso-{{obj.id}}" class="p-5" style="display: none;max-width:600px;">
+												<div id="concurso-{{con.id}}" class="p-5" style="display: none;max-width:600px;">
 											        <h5>
 											            Eliminar Publicación
 											        </h5>
 											        <p>
-											           Se eliminará "{{obj}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+											           Se eliminará "{{con}}" permanentemente.<br>¿Esta seguro que desea eliminar?
 											        </p>
 											        <p>
 											            
-											            <a class="btn btn-sm btn-danger" href="#">Eliminar</a>
+											            <a class="btn btn-sm btn-danger" href="{% url 'eliminar_concursos' con.id %}">Eliminar</a>
 											            
 											        </p>
-											    </div>											
+											    </div>	
+											{% endfor %}										
 										</tbody>
 									</table>
 								</div>

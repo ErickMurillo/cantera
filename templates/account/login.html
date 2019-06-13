@@ -29,13 +29,15 @@
 						{% endif %}
 					</div>
 					<form method="POST" class="checkout with_border with_padding form-horizontal" role="form"action="{% url 'account_login' %}">{% csrf_token %}
-
+						{% if form.errors %}
+							{{form.errors}}
+						{% endif %}
 						<div class="form-group"> 
 							<label for="username" class="col-sm-3 control-label">
 								<span class="grey">Usuario:</span> 
 								<span class="required">*</span>
 							</label>
-							<div class="col-sm-9"> {{ form.login}}
+							<div class="col-sm-9"> {{form.login}}
 							</div>
 						</div>
 						<div class="form-group"> 
@@ -50,7 +52,7 @@
 								<div class="checkbox"> <label for="rememberme" class="control-label">
 									{{form.remember}}
 									Recordarme     
-								</label> </div> <input type="submit" class="theme_button color1 topmargin_20" name="login" value="Iniciar sesión">
+								</label> </div> <input type="submit" class="theme_button color1 topmargin_20" name="inicio_sesion" value="Iniciar sesión">
 								<div class="lost_password"> <a href="{% url 'account_reset_password' %}">¿Olvidó su contraseña?</a> </div>
 								<div class="lost_password"> <a href="{{ signup_url }}">Registrarse</a> </div>
 							</div>

@@ -82,219 +82,161 @@
 					</div>
 					<!-- .item-content -->
 				</article>
-				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="#" class="social-icon color-bg-icon socicon-facebook"></a>  </div>
-				<div class="row page-nav columns_padding_10">
-					<div class="col-md-6 col-xs-12">
-						<div class="nav-item prev-item with_padding big-padding ds bg_teaser after_cover darkgrey_bg ms"> <img src="images/side-image.jpg" alt="">
-							<div>
-								<div class="highlight4 small-text"> Foro Anterior </div>
-								<h4 class="entry-title">LA COOPERACIÓN INTERNACIONAL Y AYUDA HUMANITARIA</h4>
-							</div>
-							<!-- eof .item-content -->
-							<div class="media-links"> <a href="#" class="abs-link"></a> </div>
-						</div>
-					</div>
-					<div class="col-md-6 col-xs-12">
-						<div class="nav-item next-item with_padding big-padding ds bg_teaser after_cover darkgrey_bg ms"> 
-							<img src="images/side-image.jpg" alt="">
-							<div class="item-content">
-								<div class="highlight4 small-text"> Siguiente Foro </div>
-								<h4 class="entry-title">
-									<a href="blog-single-right.html">LOS VOLUNTARIOS DE LAS ENTIDADES NO LUCRATIVAS</a> </h4>
+				<div class="post-share"> 
+					<a href="#" class="social-icon color-bg-icon socicon-twitter"></a> 
+					<a href="#" class="social-icon color-bg-icon socicon-facebook"></a>  
+				</div>
+
+				<div class="comments-area" id="comments">
+					<h3>{{object.aportes_set.all.count}} Aportes en este foro</h3>
+					<ol class="comment-list">
+						{% for aporte in object.aportes_set.all %}
+						<li class="comment even thread-even depth-1 parent">
+							<article class="comment">
+								<div class="comment-author"> <img class="media-object" alt="" src="images/user2.jpg"> </div>
+								<div class="comment-body">
+									<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{aporte.usuario.get_full_name|default:aporte.usuario.username}} </a> <span class="comment-date">
+										<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
+										<time datetime="2017-10-03T08:50:40+00:00">
+											{{aporte.fecha|date:"d N, Y"}}
+										</time>
+									</span> </div>
+									<div class="comment-text">
+										{{aporte.contenido|safe}}
+									</div> 
+									{% if request.user == object.usuario %}
+									<a href="{% url 'editar_aporte' aporte.id %}">Modificar</a> 
+									<a href="{% url 'eliminar_aporte' aporte.id %}">Eliminar</a>
+									{% endif %}
+									{% if request.user.is_authenticated %}
+									<span class="reply">
+										<a class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
+											<i class="fa fa-reply" aria-hidden="true"></i>
+											<span class="sr-only">Reply</span> 
+										</a>
+									</span>
+									{% endif %}
+
 								</div>
-								<!-- eof .item-content -->
-								<div class="media-links"> <a href="#" class="abs-link"></a> </div>
-							</div>
-						</div>
-					</div>
-
-					<div class="comments-area" id="comments">
-						<h3>{{object.aportes_set.all.count}} Aportes en este foro</h3>
-						<ol class="comment-list">
-							{% for aporte in object.aportes_set.all %}
-							<li class="comment even thread-even depth-1 parent">
-								<article class="comment">
-									<div class="comment-author"> <img class="media-object" alt="" src="images/user2.jpg"> </div>
-									<div class="comment-body">
-										<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{aporte.usuario.get_full_name|default:aporte.usuario.username}} </a> <span class="comment-date">
-											<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
-											<time datetime="2017-10-03T08:50:40+00:00">
-												{{aporte.fecha|date:"d N, Y"}}
-											</time>
-										</span> </div>
-										<div class="comment-text">
-											{{aporte.contenido|safe}}
-										</div> 
-										{% if request.user.is_authenticated %}
-										<span class="reply">
-											<a class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
-												<i class="fa fa-reply" aria-hidden="true"></i>
-												<span class="sr-only">Reply</span> 
-											</a>
-										</span>
-										{% endif %}
-
-									</div>
-								</article>
-								<!-- .comment-body -->
-								{% if aporte.comentarios_set.all %}
-								<ol class="children">
-									{% for comment in aporte.comentarios_set.all %}
-									<li class="comment byuser odd alt depth-2 parent">
-										<article class="comment">
-											<div class="comment-author"> <img class="media-object" alt="" src="images/forumuser2.jpg"> </div>
-											<div class="comment-body">
-												<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{comment.usuario.get_full_name|default:comment.usuario.username}} </a> <span class="comment-date">
-													<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
-													<time datetime="2017-10-03T08:50:40+00:00">
-														{{comment.fecha|date:"d N, Y"}}
-													</time>
-												</span> </div>
-												<div class="comment-text">
-													{{comment.comentario|safe}}
-												</div>
-												<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_comentario' comment.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
-													Modificar
-												</a> 
+							</article>
+							<!-- .comment-body -->
+							{% if aporte.comentarios_set.all %}
+							<ol class="children">
+								{% for comment in aporte.comentarios_set.all %}
+								<li class="comment byuser odd alt depth-2 parent">
+									<article class="comment">
+										<div class="comment-author"> <img class="media-object" alt="" src="images/forumuser2.jpg"> </div>
+										<div class="comment-body">
+											<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{comment.usuario.get_full_name|default:comment.usuario.username}} </a> <span class="comment-date">
+												<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
+												<time datetime="2017-10-03T08:50:40+00:00">
+													{{comment.fecha|date:"d N, Y"}}
+												</time>
+											</span> </div>
+											<div class="comment-text">
+												{{comment.comentario|safe}}
 											</div>
-										</article>
-										<!-- .comment-body -->
+											{% if request.user == object.usuario %}
+											<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_comentario' comment.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
+											Modificar
+											</a> 
+											<a href="{% url 'eliminar_comentario' comment.id %}">Eliminar</a>
+											{% endif %}
+											
+										</div>
+									</article>
+									<!-- .comment-body -->
 
-										<!-- .children -->
-									</li>
-									{% endfor %}
-									<!-- #comment-## -->
-								</ol>
-								{% endif %}
+									<!-- .children -->
+								</li>
+								{% endfor %}
+								<!-- #comment-## -->
+							</ol>
+							{% endif %}
 
-								<!-- .children -->
-							</li>
-							{% endfor %}
-						</ol>
-						<!-- .comment-list -->
-					</div>
-					<!-- #comments -->
+							<!-- .children -->
+						</li>
+						{% endfor %}
+					</ol>
+					<!-- .comment-list -->
+				</div>
+				<!-- #comments -->
 
-					{% if request.user.is_authenticated %}
-					<div class="comment-respond text-center" id="respond">
-						<h3>Agrega un aporte</h3>
-						<form class="comment-form" id="commentform" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-							{{form.media}}
-							{{form.errors}}
-							<div class="row columns_padding_10">
-								<div class="col-xs-12">
-									{{form}}
-								</div>
+				{% if request.user.is_authenticated %}
+				<div class="comment-respond text-center" id="respond">
+					<h3>Agrega un aporte</h3>
+					<form class="comment-form" id="commentform" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+						{{form.media}}
+						{{form.errors}}
+						<div class="row columns_padding_10">
+							<div class="col-xs-12">
+								{{form}}
 							</div>
-							<div class="form-submit topmargin_30"> <button type="submit" id="submit" name="submit" class="theme_button color3 min_width_button margin_0">Enviar </button> </div>
-						</form>
-
-					</div>
-					{% endif %}
-					<!-- #respond -->
+						</div>
+						<div class="form-submit topmargin_30"> <button type="submit" id="submit" name="submit" class="theme_button color3 min_width_button margin_0">Enviar </button> </div>
+					</form>
 
 				</div>
+				{% endif %}
+				<!-- #respond -->
+
+			</div>
 				<!--eof .col-sm-8 (main content)-->
 				<!-- sidebar -->
-				<aside class="col-sm-5 col-md-4 col-lg-4">
+			<aside class="col-sm-5 col-md-4 col-lg-4">
 					<div class="widget widget_search">
-						<form method="get" class="searchform" action="./">
-							<div class="form-group margin_0"> <label class="sr-only" for="widget-search">Search for:</label> <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Buscar..."> </div> <button type="submit" class="theme_button color1">Search</button>									</form>
-						</div>
-						<!-- tags -->
-						<div class="widget">
-							<h4 class="widget-title">Tags</h4>
-							<div class="tagcloud">
-								<a href="">Igualdad</a>
-								<a href="">Género</a>
-								<a href="">Metodología</a>
-								<a href="">Nicaragua</a>
-							</div>
+						<form class="" action='.' method='GET'>
+                        <div class="form-group margin_0"> 
+							<label class="sr-only" for="widget-search">Search for:</label> 
+							<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+						</div> 
+						<button type="submit" class="theme_button color1">Search</button>	
+                    </form>
 						</div>
 						<div class="widget widget_archive">
 
 						</div>
 
 						<div class="widget widget_recent_posts">
-							<h4 class="widget-title">Foros Destacados</h4>
-							<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
-								<div class="vertical-item content-padding with_border">
-
-									<div class="item-content">
-										<h5 class="bottommargin_0"> <a href="blog-single-right.html"> LOS VOLUNTARIOS DE LAS ENTIDADES NO LUCRATIVAS</a> </h5> <span class="entry-meta greylinks">
-											<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-											<a href="blog-single-full.html">
-												<time datetime="2017-10-03T08:50:40+00:00">
-												17 enero, 2019</time>
-											</a>
-										</span> 
-									</div>
+						<h4 class="widget-title">Foros Destacados</h4>
+						<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+							{% for destacado in foros_destacados %}
+							<div class="vertical-item content-padding with_border">
+								
+								<div class="item-content">
+									<h5 class="bottommargin_0"> <a href="{% url 'detalle-foro' destacado.slug %}"> {{destacado.nombre}}</a> </h5> <span class="entry-meta greylinks">
+										<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+										<a href="blog-single-full.html">
+											<time datetime="2017-10-03T08:50:40+00:00">
+											{{destacado.creacion|date:"d N, Y"}}</time>
+										</a>
+									</span> 
 								</div>
-								<div class="vertical-item content-padding with_border">
-
-									<div class="item-content">
-										<h5 class="bottommargin_0"> <a href="blog-single-right.html">LA COOPERACIÓN INTERNACIONAL Y AYUDA HUMANITARIA</a> </h5> <span class="entry-meta greylinks">
-											<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-											<a href="blog-single-full.html">
-												<time datetime="2017-10-03T08:50:40+00:00">
-												17 enero, 2019</time>
-											</a>
-										</span> 
-									</div>
-								</div>
-								<div class="vertical-item content-padding with_border">
-
-									<div class="item-content">
-										<h5 class="bottommargin_0"> <a href="blog-single-right.html">FORO DE ESTOCOLMO SOBRE LA IGUALDAD DE GÉNERO.</a> </h5> <span class="entry-meta greylinks">
-											<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-											<a href="blog-single-full.html">
-												<time datetime="2017-10-03T08:50:40+00:00">
-												17 enero, 2019</time>
-											</a>
-										</span> </div>
-									</div>
-								</div>
+								
 							</div>
-
-							<div class="widget widget_recent_posts">
-								<h4 class="widget-title">Foros Seguidos</h4>
-								<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
-									<div class="vertical-item content-padding with_border">
-
-
-										<div class="vertical-item content-padding with_border">
-
-											<div class="item-content">
-												<h5 class="bottommargin_0"> <a href="blog-single-right.html">FORO DE ESTOCOLMO SOBRE LA IGUALDAD DE GÉNERO.</a> </h5> <span class="entry-meta greylinks">
-													<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-													<a href="blog-single-full.html">
-														<time datetime="2017-10-03T08:50:40+00:00">
-														17 enero, 2019</time>
-													</a>
-												</span> </div>
-											</div>
-										</div>
-									</div>
-
-								</aside>
-								<!-- eof aside sidebar -->
-							</div>
+							{% endfor %}
 						</div>
-					</section>
+					</div>
 
-					{% endblock content %}
+			</aside>
+			<!-- eof aside sidebar -->
+		</div>
+	</div>
+</section>
 
-					{% block extra_js %}
-					<script src="/static/js/jquery.fancybox.min.js"></script>
+{% endblock content %}
 
-					<script>
-					$('.fancybox').fancybox({ 
-						afterShow: function(){     
-							$('.fancybox-iframe').contents().find('input').click(function(){
-								window.parent.location.reload();
-								window.parent.$.fancybox.close();
-							}); 
-						}
-					});
-					</script>
-					{% endblock extra_js %}
+{% block extra_js %}
+<script src="/static/js/jquery.fancybox.min.js"></script>
+
+<script>
+$('.fancybox').fancybox({ 
+	afterShow: function(){     
+		$('.fancybox-iframe').contents().find('input').click(function(){
+			window.parent.location.reload();
+			window.parent.$.fancybox.close();
+		}); 
+	}
+});
+</script>
+{% endblock extra_js %}

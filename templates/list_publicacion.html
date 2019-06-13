@@ -114,17 +114,55 @@
 				<!--aaside-->
 				<aside class="col-sm-5 col-md-4 col-lg-4">
 					<div class="widget widget_search">
-						<form method="get" class="searchform" action="./">
-							<div class="form-group margin_0"> <label class="sr-only" for="widget-search">Search for:</label> <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Buscar..."> 
-							</div> 
-							<button type="submit" class="theme_button color1">Search</button>									
-						</form>
+						<form class="" action='.' method='GET'>
+                        <div class="form-group margin_0"> 
+							<label class="sr-only" for="widget-search">Search for:</label> 
+							<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+						</div> 
+						<button type="submit" class="theme_button color1">Search</button>	
+                    </form>
 					</div>
 
+					<!-- categorias -->
 					<div class="widget">
-						<h4 class="widget-title">Temática</h4>
-						<div class="tagcloud">
-							<a href="">holis</a>
+						<h4 class="widget-title">Categorías</h4>
+						<div class="">
+							<ul>
+								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
+								<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>
+								<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>	
+								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>	
+							</ul>
+						</div>
+					</div>
+
+					<div class="widget widget_slider widget_recent_posts">
+						<h4 class="widget-title"> Próximos Eventos </h4>
+						<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+							{% for obj in prox_eventos %}
+							<div class="vertical-item content-padding with_border">
+								<div class="item-media"> 
+									{% thumbnail obj.foto "350x279" crop="center" as im %}
+									    <img src="{{ im.url }}" alt="">
+									{% empty %}
+										<img src="http://via.placeholder.com/350x279" alt="">
+									{% endthumbnail %}
+									<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
+								</div>
+								<div class="item-content">
+									<h5 class="bottommargin_0"> <a href="{% url 'detailEventos' obj.slug %}">{{obj.tittle}}</a> </h5> <span class="entry-meta greylinks">
+										<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+										<a href="{% url 'detailEventos' obj.slug %}">
+											<time datetime="2017-10-03T08:50:40+00:00">
+											{{obj.inicio|date:"d N, Y"}}</time>
+										</a>
+
+
+									</span> 
+								</div>
+							</div>
+							{% endfor %}
+							
 						</div>
 					</div>
 				</aside>

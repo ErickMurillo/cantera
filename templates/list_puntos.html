@@ -104,8 +104,13 @@
 			<!-- sidebar -->
 			<aside class="col-sm-5 col-md-4 col-lg-4">
 				<div class="widget widget_search">
-					<form method="get" class="searchform" action="./">
-						<div class="form-group margin_0"> <label class="sr-only" for="widget-search">Search for:</label> <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Buscar..."> </div> <button type="submit" class="theme_button color1">Search</button>									</form>
+					<form class="" action='.' method='GET'>
+                        <div class="form-group margin_0"> 
+							<label class="sr-only" for="widget-search">Search for:</label> 
+							<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+						</div> 
+						<button type="submit" class="theme_button color1">Search</button>	
+                    </form>
 					</div>
 
 					<div class="widget widget_recent_posts">

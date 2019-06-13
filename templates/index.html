@@ -5,8 +5,15 @@
 <section class="intro_section page_mainslider ds all-scr-cover bottom-overlap-teasers">
 	<div class="flexslider" data-dots="true" data-nav="true">
 		<ul class="slides">
+			{% for obj in slider %}
 			<li>
-				<div class="slide-image-wrap"> <img src="images/BELEN-1-Copy.JPG" alt="" /> </div>
+				<div class="slide-image-wrap"> 
+					{% thumbnail obj.foto_1 "1350x810" crop="center" as im %}
+					<img src="{{ im.url }}" alt="">
+					{% empty %}
+					<img src="http://via.placeholder.com/1350x810" alt="">
+					{% endthumbnail %}
+				</div>
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 text-center">
@@ -14,10 +21,10 @@
 								<div class="slide_description">
 									<div class="intro-layer" data-animation="fadeInRight"> Plataforma regional género y metodologías</div>
 									<div class="intro-layer" data-animation="fadeInLeft">
-										<h2> <span class="highlight3">“La igualdad de género</span><br>  ha de ser una realidad vivida”</h2>
+										<h2> <span class="highlight3">“{{obj.texto_1}}”</span></h2>
 									</div>
 									<div class="intro-layer" data-animation="fadeInRight">
-										<p class="thin"><em>- Michelle Bachelet</em></p>
+										<p class="thin"><em>- {{obj.credito_1}}</em></p>
 									</div>
 									<div class="intro-layer" data-animation="fadeInUp">
 										<div class="slide_buttons"> <a href="contact.html" class="theme_button color1 min_width_button">Contáctanos</a> </div>
@@ -89,6 +96,8 @@
 				</div>
 				<!-- eof .container -->
 			</li>
+			{% endfor %}
+			
 
 		</ul>
 	</div>

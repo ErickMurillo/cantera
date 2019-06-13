@@ -8,7 +8,6 @@ from actualidad.models import *
 # Create your models here.
 class Foros(models.Model):
 	nombre = models.CharField(max_length=200, unique=True)
-
 	creacion = models.DateField(auto_now_add=True)
 	# apertura = models.DateField('Apertura y recepción de aportes')
 	# cierre = models.DateField('Cierre de aportes')

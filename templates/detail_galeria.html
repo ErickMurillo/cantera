@@ -3,9 +3,19 @@
 {% load el_pagination_tags %}
 <!--{% load embed_video_tags %}-->
 
-{% block content %}
+{% block extra_css %}
+<style type="text/css">
+.page_breadcrumbs.background_cover {
+	{% thumbnail foto_galerias_imagenes.0 "1350x230" crop="center" as im %}
+	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	{% endthumbnail %}
+}
+</style>
+{% endblock extra_css %}
 
-<!--{{object.imagen.url}} -->
+{% block content %}
 <section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
 	<div class="container">
 		<div class="row">

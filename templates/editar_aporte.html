@@ -1,22 +1,11 @@
-{% extends "base.html" %}
-
-{% block content %}
-<section class="ls section_padding_top_110 section_padding_bottom_100 columns_padding_30">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-7 col-md-8 col-lg-8">
-				<form class="comment-form" id="commentform" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-						{{form.media}}
-						{{form.errors}}
-						<div class="row columns_padding_10">
-							<div class="col-xs-12">
-								{{form}}
-							</div>
-						</div>
-						<div class="form-submit topmargin_30"> <button type="submit" id="submit" name="submit" class="theme_button color3 min_width_button margin_0">Editar </button> </div>
-					</form>
-			</div>
-		</div>
-	</div>
+<div class="content-header">
+	Modificar aporte
 </div>
-{% endblock content %}
+<div class="content-scroll">
+	<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+		{{form.media}}
+		{{form.errors}}
+		{{form}}
+		<input type="submit" name="Modificar comentario" value="Modificar">
+	</form>
+</div>

@@ -2,13 +2,33 @@
 {% load el_pagination_tags %}
 {% load thumbnail %}
 
-{% block content %}
+{% block extra_css %}
+<style type="text/css">
+.page_breadcrumbs.background_cover {
+	{% if '/imagenes/' in request.path %}
+		{% thumbnail foto_galerias_imagenes.0 "1350x230" crop="center" as im %}
+		background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+		background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+		background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+		{% endthumbnail %}
+	{% elif '/videos/' in request.path %}
+		{% thumbnail foto_galerias_videos.0 "1350x230" crop="center" as im %}
+		background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+		background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+		background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+		{% endthumbnail %}
+	{% endif %}
+	
+}
+</style>
+{% endblock extra_css %}
 
+{% block content %}
 <section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
-				<h2 class="white-color">Imágenes</h2>
+				<h2 class="white-color">{% if '/imagenes/' in request.path %}Imágenes{% else %}Videos{% endif %}</h2>
 				<ol class="breadcrumb white-color">
 					<li> <a href="/">
 						Inicio

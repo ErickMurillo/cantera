@@ -16,49 +16,47 @@
 <div class="section_padding_top_90">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-7 col-md-8 col-lg-8">
-				<div class="">
-					<div>
-						{% get_providers as socialaccount_providers %}
-						{% if socialaccount_providers %}
+			<div class="col-md-10 col-md-push-1">
+				<div>
+					{% get_providers as socialaccount_providers %}
+					{% if socialaccount_providers %}
 
-						{% include "socialaccount/snippets/provider_list.html" with process="login" %}
+					{% include "socialaccount/snippets/provider_list.html" with process="login" %}
 
-						{% include "socialaccount/snippets/login_extra.html" %}
+					{% include "socialaccount/snippets/login_extra.html" %}
 
-						{% endif %}
-					</div>
-					<form method="POST" class="checkout with_border with_padding form-horizontal" role="form"action="{% url 'account_login' %}">{% csrf_token %}
-						{% if form.errors %}
-							{{form.errors}}
-						{% endif %}
-						<div class="form-group"> 
-							<label for="username" class="col-sm-3 control-label">
-								<span class="grey">Usuario:</span> 
-								<span class="required">*</span>
-							</label>
-							<div class="col-sm-9"> {{form.login}}
-							</div>
-						</div>
-						<div class="form-group"> 
-							<label for="password" class="col-sm-3 control-label">
-								<span class="grey">Contraseña:</span> 
-								<span class="required">*</span>
-							</label>
-							<div class="col-sm-9">{{form.password}} </div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-3 col-sm-9">
-								<div class="checkbox"> <label for="rememberme" class="control-label">
-									{{form.remember}}
-									Recordarme     
-								</label> </div> <input type="submit" class="theme_button color1 topmargin_20" name="inicio_sesion" value="Iniciar sesión">
-								<div class="lost_password"> <a href="{% url 'account_reset_password' %}">¿Olvidó su contraseña?</a> </div>
-								<div class="lost_password"> <a href="{{ signup_url }}">Registrarse</a> </div>
-							</div>
-						</div>
-					</form>
+					{% endif %}
 				</div>
+				<form method="POST" class="checkout with_border with_padding form-horizontal" role="form"action="{% url 'account_login' %}">{% csrf_token %}
+					{% if form.errors %}
+					{{form.errors}}
+					{% endif %}
+					<div class="form-group"> 
+						<label for="username" class="col-sm-3 control-label">
+							<span class="grey">Usuario:</span> 
+							<span class="required">*</span>
+						</label>
+						<div class="col-sm-9"> {{form.login}}
+						</div>
+					</div>
+					<div class="form-group"> 
+						<label for="password" class="col-sm-3 control-label">
+							<span class="grey">Contraseña:</span> 
+							<span class="required">*</span>
+						</label>
+						<div class="col-sm-9">{{form.password}} </div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<div class="checkbox"> <label for="rememberme" class="control-label">
+								{{form.remember}}
+								Recordarme     
+							</label> </div> <input type="submit" class="theme_button color1 topmargin_20" name="inicio_sesion" value="Iniciar sesión">
+							<div class="lost_password"> <a href="{% url 'account_reset_password' %}">¿Olvidó su contraseña?</a> </div>
+							<div class="lost_password"> <a href="{{ signup_url }}">Registrarse</a> </div>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -1,10 +1,17 @@
-
 {% extends "base.html" %}
 {% load thumbnail %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
-
+<style type="text/css">
+.page_breadcrumbs.background_cover {
+	{% thumbnail foto_foro.0 "1350x230" crop="center" as im %}
+	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	{% endthumbnail %}
+}
+</style>
 {% endblock extra_css %}
 
 {% block content %}
@@ -105,8 +112,25 @@
 										{{aporte.contenido|safe}}
 									</div> 
 									{% if request.user == object.usuario %}
-									<a href="{% url 'editar_aporte' aporte.id %}">Modificar</a> 
-									<a href="{% url 'eliminar_aporte' aporte.id %}">Eliminar</a>
+									<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_aporte' aporte.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
+									Modificar
+									</a> 
+									<a data-fancybox data-src="#trueModal-{{aporte.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+										<i class="fa fa-trash"></i>
+									</a>
+									<div id="trueModal-{{aporte.id}}" class="p-5" style="display: none;max-width:600px;">
+								        <h5>
+								            Eliminar aporte
+								        </h5>
+								        <p>
+								           Se eliminará aporte permanentemente.<br>¿Esta seguro que desea eliminar?
+								        </p>
+								        <p>
+								            
+								            <a class="btn btn-sm btn-danger" href="{% url 'eliminar_aporte' aporte.id %}">Eliminar</a>
+								            
+								        </p>
+								    </div>
 									{% endif %}
 									{% if request.user.is_authenticated %}
 									<span class="reply">
@@ -140,7 +164,22 @@
 											<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_comentario' comment.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
 											Modificar
 											</a> 
-											<a href="{% url 'eliminar_comentario' comment.id %}">Eliminar</a>
+											<a data-fancybox data-src="#trueModal-comment-{{comment.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+												<i class="fa fa-trash"></i>
+											</a>
+											<div id="trueModal-comment-{{comment.id}}" class="p-5" style="display: none;max-width:600px;">
+										        <h5>
+										            Eliminar comentario
+										        </h5>
+										        <p>
+										           Se eliminará el comentario permanentemente.<br>¿Esta seguro que desea eliminar?
+										        </p>
+										        <p>
+										            
+										            <a class="btn btn-sm btn-danger" href="{% url 'eliminar_comentario' comment.id %}">Eliminar</a>
+										            
+										        </p>
+										    </div>
 											{% endif %}
 											
 										</div>

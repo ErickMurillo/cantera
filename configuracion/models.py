@@ -12,9 +12,14 @@ class SiteConfiguration(SingletonModel):
 	foto_foros = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 	foto_puntos_vista = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 	foto_quienes_somos = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_guias_metodologicas = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_publicaciones = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_campanias = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_concursos = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_alianzas = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 
 	def __unicode__(self):
-		return u"Configuracion imagenes del sitio"
+		return "Configuracion imagenes del sitio"
 
 	class Meta:
 		verbose_name_plural = "Configuracion imagenes del sitio"

@@ -67,7 +67,6 @@ def actualidad_list(request, template = 'admin/actualidad_list.html'):
 def actualidad_crear(request,template = 'admin/actualidad.html'):
 	if request.method == 'POST':
 		form = ActualidadForms(request.POST, request.FILES)
-
 		if form.is_valid():
 			actualidad = form.save(commit=False)
 			actualidad.author = request.user
@@ -80,7 +79,7 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 
 				html_content = render_to_string('email/correo.txt', {'obj': actualidad,})
 
-				list_mail = User.objects.exclude(id = request.user.id,email = None).values_list('email',flat=True)
+				list_mail = User.objects.exclude(id = request.user.id).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -133,7 +132,7 @@ def foros_crear(request,template = 'admin/foro.html'):
 
 				html_content = render_to_string('email/foro.txt', {'obj': foro,})
 
-				list_mail = User.objects.exclude(id = request.user.id,email = None).values_list('email',flat=True)
+				list_mail = User.objects.exclude(id = request.user.id).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -183,7 +182,21 @@ def events_crear(request,template = 'admin/event.html'):
 			event.author = request.user
 			event.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
+			
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/evento.txt', {'obj': event,})
+
+				html_content = render_to_string('email/evento.txt', {'obj': event,})
+
+				list_mail = User.objects.exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
+			except:
+				pass
 	else:
 		form = EventsForms()
 	return render(request, template, locals())

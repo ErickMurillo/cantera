@@ -14,8 +14,11 @@ from galerias.forms import *
 from puntosvista.forms import *
 from foro.forms import *
 from .forms import *
+from users.models import *
 from publicaciones.models import *
 from publicaciones.forms import *
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -70,7 +73,21 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 			actualidad.author = request.user
 			actualidad.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/alianzas/actualidad/')
+			
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/correo.txt', {'obj': actualidad,})
+
+				html_content = render_to_string('email/correo.txt', {'obj': actualidad,})
+
+				list_mail = User.objects.exclude(id = request.user.id,email = None).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/actualidad/')
+			except:
+				pass
 	else:
 		form = ActualidadForms()
 
@@ -109,7 +126,21 @@ def foros_crear(request,template = 'admin/foro.html'):
 			foro.usuario = request.user
 			foro.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/alianzas/foros/')
+			
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/foro.txt', {'obj': foro,})
+
+				html_content = render_to_string('email/foro.txt', {'obj': foro,})
+
+				list_mail = User.objects.exclude(id = request.user.id,email = None).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/foros/')
+			except:
+				pass
 	else:
 		form = ForoForm()
 

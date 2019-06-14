@@ -257,3 +257,7 @@ background-color: #1da1f2;
 .socialaccount_providers .twitter:hover{
 background-color: #1c6ea1;
 }
+
+div.overflow_t{
+   overflow: visible !important;
+}

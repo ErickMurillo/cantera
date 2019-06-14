@@ -61,6 +61,21 @@ def filtro_tag(request,slug,template='list_actualidad.html'):
 	return render(request, template, locals())
 
 def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
-	object = Actualidad.objects.get(slug = slug)
+	if request.GET.get('buscador'):
+		q = request.GET['buscador']
+		list_object = Actualidad.objects.filter(
+										Q(tittle__icontains = q) |
+										Q(tematica__nombre__icontains = q) |
+										Q(tags__name__icontains = q),
+										category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
+		return render(request,'list_actualidad.html',locals())
 
-	return render(request, template, locals())
+	else:
+		list_object = Actualidad.objects.filter(category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
+		object = Actualidad.objects.get(slug = slug)
+
+		hoy = datetime.date.today()
+		prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
+		tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
+
+		return render(request, template, locals())

@@ -150,8 +150,6 @@ STATICFILES_DIRS = (
    os.path.join(BASE_DIR, "static_media"),
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'METHOD': 'oauth2',

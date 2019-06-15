@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>El usuario {{obj.usuario}} ha publicado un nuevo evento en <br>
+la Plataforma Género y Metodologías</p>
+
+<p>Fecha: {{obj.inicio|date:"D d M Y"}} <br>
+Nombre del evento: {{obj.tittle}}  <br>
+Lugar: {{obj.city}}
+</p>
+<p>Diríjase a la siguiente dirección: <br>
+https://generoymetodologias.org/iniciativas-destacadas/eventos/{{obj.slug}}/</p>
+
+Plataforma Género y Metodologías
+</body>
+</html>

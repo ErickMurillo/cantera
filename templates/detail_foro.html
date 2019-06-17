@@ -112,12 +112,12 @@
 								<!--<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_aporte' aporte.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
 									Modificar
 								</a>-->
-								<a class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'editar_aporte' aporte.id %}" href="javascript:;">
+								<a title="Modificar" class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'editar_aporte' aporte.id %}" href="javascript:;">
 									<i class="fa fa-pencil" aria-hidden="true"></i>
-									<span class="sr-only">Responder</span> 
+									<span class="sr-only">Modificar</span> 
 								</a>|
 
-								<a data-fancybox data-src="#trueModal-{{aporte.id}}"href="javascript:;">
+								<a title="Eliminar" data-fancybox data-src="#trueModal-{{aporte.id}}"href="javascript:;">
 									<i class="fa fa-trash-o"></i>
 									<span class="sr-only">Eliminar</span>
 								</a>
@@ -138,7 +138,7 @@
 								{% endif %}
 								{% if request.user.is_authenticated %}
 								<span class="reply">
-									<a class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
+									<a title="Responder" class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
 										<i class="fa fa-reply" aria-hidden="true"></i>
 										<span class="sr-only">Responder</span> 
 									</a>
@@ -166,7 +166,7 @@
 										</div>
 										{% if request.user == object.usuario %}
 										<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_comentario' comment.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
-											<i class="fa fa-reply" aria-hidden="true"></i>
+											<i class="fa fa-pencil" aria-hidden="true"></i>
 										<span class="sr-only">Responder</span> 
 										</a>|
 

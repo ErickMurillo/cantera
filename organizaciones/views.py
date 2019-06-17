@@ -120,10 +120,12 @@ def foros_list(request, template = 'admin/foros_list.html'):
 def foros_crear(request,template = 'admin/foro.html'):
 	if request.method == 'POST':
 		form = ForoForm(request.POST, request.FILES)
+		usuarios = User.objects.filter(organizacion__isnull = False)
 		if form.is_valid():
 			foro = form.save(commit=False)
 			foro.usuario = request.user
 			foro.save()
+			foro.usuarios_siguiendo.set(usuarios)
 			form.save_m2m()
 			
 			try:

@@ -15,6 +15,7 @@ class Foros(models.Model):
 	contenido = RichTextUploadingField()
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+	usuarios_siguiendo = models.ManyToManyField(User,blank=True,related_name='siguiendo',editable=False)
 	slug = models.SlugField(max_length=200,editable=False)
 
 	class Meta:

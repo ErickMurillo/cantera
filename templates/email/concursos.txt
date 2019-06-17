@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>El usuario {{obj.author}} ha publicado un nuevo concurso en <br>
+la Plataforma Género y Metodologías</p>
+
+<p>Fecha: {{obj.created_on|date:"D d M Y"}} <br>
+Titulo: {{obj.tittle}}</p>
+<p>Diríjase a la siguiente dirección: <br>
+https://generoymetodologias.org/iniciativas-destacadas/concursos/{{obj.slug}}/</p>
+
+Plataforma Género y Metodologías
+</body>
+</html>

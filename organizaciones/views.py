@@ -79,7 +79,7 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 
 				html_content = render_to_string('email/correo.txt', {'obj': actualidad,})
 
-				list_mail = User.objects.exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -132,7 +132,7 @@ def foros_crear(request,template = 'admin/foro.html'):
 
 				html_content = render_to_string('email/foro.txt', {'obj': foro,})
 
-				list_mail = User.objects.exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -189,7 +189,7 @@ def events_crear(request,template = 'admin/event.html'):
 
 				html_content = render_to_string('email/evento.txt', {'obj': event,})
 
-				list_mail = User.objects.exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -264,7 +264,21 @@ def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 				instance.save()
 			formset3.save_m2m()
 
-			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/publicacion.txt', {'obj': form_uncommited,})
+
+				html_content = render_to_string('email/publicacion.txt', {'obj': form_uncommited,})
+
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			except:
+				pass
+
 	else:
 		form = PublicacionForm()
 		formset = FormSetInit()
@@ -349,7 +363,21 @@ def guia_agregar(request, template = 'admin/publicaciones.html'):
 				instance.save()
 			formset3.save_m2m()
 
-			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/guia.txt', {'obj': form_uncommited,})
+
+				html_content = render_to_string('email/guia.txt', {'obj': form_uncommited,})
+
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			except:
+				pass
+
 	else:
 		form = PublicacionForm()
 		formset = FormSetInit()
@@ -380,7 +408,20 @@ def galeria_img_crear(request,template = 'admin/galeria_img.html'):
 				instance.save()
 			formset.save_m2m()
 
-			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/galeria.txt', {'obj': galeria,})
+
+				html_content = render_to_string('email/galeria.txt', {'obj': galeria,})
+
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			except:
+				pass
 	else:
 		form = GaleriaImagenesForm()
 		formset = FormSetInit()
@@ -417,11 +458,25 @@ def galeria_vid_crear(request,template = 'admin/galeria_vid.html'):
 	if request.method == 'POST':
 		form = GaleriaVideosForm(request.POST, request.FILES)
 		if form.is_valid():
-			publi = form.save(commit=False)
-			publi.usuario = request.user
-			publi.save()
+			video = form.save(commit=False)
+			video.usuario = request.user
+			video.save()
 
-			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/video.txt', {'obj': video,})
+
+				html_content = render_to_string('email/video.txt', {'obj': video,})
+
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			except:
+				pass
+
 	else:
 		form = GaleriaVideosForm()
 	return render(request, template, locals())
@@ -458,7 +513,21 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 			punto = form.save(commit=False)
 			punto.usuario = request.user
 			punto.save()
-			return HttpResponseRedirect('/alianzas/puntos-vista/')
+
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/puntos.txt', {'obj': punto,})
+
+				html_content = render_to_string('email/puntos.txt', {'obj': punto,})
+
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/puntos-vista/')
+			except:
+				pass
 	else:
 		form = PuntosForms()
 	return render(request, template, locals())
@@ -493,7 +562,21 @@ def campanias_crear(request,template = 'admin/actualidad.html'):
 			campanias.category = 'campanas'
 			campanias.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+			
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/campanias.txt', {'obj': campanias,})
+
+				html_content = render_to_string('email/campanias.txt', {'obj': campanias,})
+
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+			except:
+				pass
 	else:
 		form = Actualidad2Forms()
 
@@ -529,7 +612,21 @@ def concursos_crear(request,template = 'admin/actualidad.html'):
 			campanias.category = 'concursos'
 			campanias.save()
 			form.save_m2m()
-			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				text_content =  render_to_string('email/campanias.txt', {'obj': campanias,})
+
+				html_content = render_to_string('email/campanias.txt', {'obj': campanias,})
+
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+			except:
+				pass
 	else:
 		form = Actualidad2Forms()
 

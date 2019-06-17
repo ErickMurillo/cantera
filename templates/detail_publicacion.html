@@ -14,7 +14,89 @@
 {% endblock extra_css %}
 
 {% block content %}
-{{object.titulo}}
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="white-color">{% if request.path == '/recursos-metodologicos/publicaciones/' %}
+					Publicaciones
+					{% else %} Guías metodológicas
+				{% endif %}</h2>
+				<ol class="breadcrumb greylinks">
+					<li> <a href="/" class="white-color">
+						Inicio
+					</a> </li>
+					<li> <a href="#" class="white-color">Recursos Metodológicos</a> </li>
+					<li>
+						{% if request.path == '/recursos-metodologicos/publicaciones/' %}
+						Publicaciones
+						{% else %} Guías metodológicas
+						{% endif %}
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
 
-	
+<blockquote class="text-center">
+	<div class="item-meta">
+		<h5>{{object.titulo}}</h5> 
+		<span class="small-text highlight">{{object.usuario.organizacion}}</span> 
+	</div>
+</blockquote>
+
+
+<section class="ls section_padding_top_90 section_padding_bottom_100 columns_padding_30">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5">
+				<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+					<div class="item-media">
+						{% thumbnail object.imagen "365x370" crop="center" as im %}
+						<img src="{{ im.url }}" alt="">
+						{% empty %}
+						<img src="http://via.placeholder.com/365x370" alt="">
+						{% endthumbnail %}
+					</div>
+					<div class="item-content">
+						<header class="entry-header">
+							<h1 class="entry-title small bottommargin_0"> {{object.tematica}} </h1> <span class="small-text highlight">{{object.usuario.organizacion.siglas}} - {{object.usuario}}</span> 
+						</header>
+						<p class="member-social greylinks"> 
+							<a class="social-icon socicon-facebook" href="#" title="Facebook"></a> 
+							<a class="social-icon socicon-twitter" href="#" title="Twitter"></a> 
+							<a class="social-icon socicon-google" href="#" title="Google"></a> 
+						</p>
+					</div>
+				</article>
+			</div>
+			<div class="col-sm-7">
+				<p>Kielbasa pancetta sirloin tail meatball, corned beef doner shoulder cow bacon jerky leberkas. Meatball tail landjaeger, cupim alcatra pancetta biltong frankfurter picanha. Turducken pork loin tail pastrami strip steak. Sausage ground round chuck
+				andouille, pork belly bacon ham hock picanha cow spare ribs meatball frankfurter t-bone salami.</p>
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
+					<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Archivos</a></li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content big-padding top-color-border color2 bottommargin_40">
+					<div class="tab-pane fade in active" id="tab1">
+						<h4>Biography:</h4>
+						<p> Ut wisi enim ad minim veniaquis nostrud exetation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Dutem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
+						at vero eros et accumsan et iusto odio dignissim qui blandit. </p>
+						<h4>Professional Life:</h4>
+						<p> Dutem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit. Praesent luptatum zzril delenit augue duis dolore te
+						feugait nulla facilisi. </p>
+					</div>
+
+				</div>
+
+				<p>Tail ball tip chuck picanha beef ribs drumstick landjaeger kevin tongue pork chop fatback. Andouille tri-tip brisket jerky short ribs, filet mignon frankfurter chuck pork belly ham tip biltong corned beef capicola.Rib shank prosciutto. Ham hock
+				biltong ball tip pork bresaola hamburger, bacon boudin venison turkey pork shankle fatback jerky corned beef.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
 {% endblock content %}

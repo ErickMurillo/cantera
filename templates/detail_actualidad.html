@@ -33,13 +33,13 @@
 <section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-10 col-sm-push-1">
+			<div class="col-sm-7 col-md-8 col-lg-8">
 				<article class="event-single vertical-item content-padding big-padding with_border bottom_color_border color2">
 					<div class="item-media entry-thumbnail text-center">
 						{% thumbnail object.photo "965x550" crop="center" as im %}
-						    <img src="{{ im.url }}" alt="">
+						<img src="{{ im.url }}" alt="">
 						{% empty %}
-							<img src="http://via.placeholder.com/965x550" alt="">
+						<img src="http://via.placeholder.com/965x550" alt="">
 						{% endthumbnail %}
 					</div>
 
@@ -51,24 +51,92 @@
 							</span> 
 							<span class=""><i class="fa fa-sitemap highlight4 rightpadding_5" aria-hidden="true"></i>{{object.category}}</span>
 							<span>
-								<i class="fa fa-users highlight4 rightpadding_5"></i>{{object.author.organizacion}}
+								<i class="fa fa-users highlight4 rightpadding_5"></i>{{object.author.organizacion.siglas}}
+							</span>
+							<span>
+								<i class="fa fa-pencil-square-o highlight4 rightpadding_5"></i>{{object.author}}
 							</span>
 
 						</div>
-							<h1 class="entry-title"> {{object.tittle}} </h1>
-						</header>
-						<div class="entry-content">
-							{{object.content|safe}}
-						</div>
+						<h1 class="entry-title"> {{object.tittle}} </h1>
+					</header>
+					<div class="entry-content">
+						{{object.content|safe}}
 					</div>
-					<!-- .item-content -->
-				</article>
-				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="social-icon color-bg-icon socicon-facebook"></a> <a href=" https://wa.me/?text=http://127.0.0.1:8000/iniciativas-destacadas/eventos/{{object.slug}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
 				</div>
+				<!-- .item-content -->
+			</article>
+			<div class="post-share"> <a target="_blank" href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="social-icon color-bg-icon socicon-facebook"></a> <a href=" https://wa.me/?text=http://127.0.0.1:8000/iniciativas-destacadas/eventos/{{object.slug}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+			</div>
+
+		</div>
+		<!--eof .col-sm-10 (main content)-->
+			<aside class="col-sm-5 col-md-4 col-lg-4">
+		<div class="widget widget_search">
+			<form class="" action='.' method='GET'>
+				<div class="form-group margin_0"> 
+					<label class="sr-only" for="widget-search">Buscar:</label> 
+					<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+				</div> 
+				<button type="submit" class="theme_button color1">Search</button>	
+			</form>
+		</div>
+
+		<!-- categorias -->
+		<div class="widget">
+			<h4 class="widget-title">Categorías</h4>
+			<div class="">
+				<ul>
+					<li><a href="/actualidad/noticias/">Noticas</a></li>									
+					<li><a href="/actualidad/situacion-regional-genero/">Situación regional de género</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- tags -->
+		<div class="widget">
+			<h4 class="widget-title">Tags</h4>
+			<div class="tagcloud">
+				{% for tag in tags %}
+				<a href="{% url 'filtro-tag' tag.slug %}">{{tag}}</a>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="widget widget_slider widget_recent_posts">
+			<h4 class="widget-title"> Próximos Eventos </h4>
+			<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+				{% for obj in prox_eventos %}
+				<div class="vertical-item content-padding with_border">
+					<div class="item-media"> 
+						{% thumbnail obj.foto "350x279" crop="center" as im %}
+						<img src="{{ im.url }}" alt="">
+						{% empty %}
+						<img src="http://via.placeholder.com/350x279" alt="">
+						{% endthumbnail %}
+						<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
+					</div>
+					<div class="item-content">
+						<h5 class="bottommargin_0"> <a href="{% url 'detailEventos' obj.slug %}">{{obj.tittle}}</a> </h5> <span class="entry-meta greylinks">
+							<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+							<a href="{% url 'detailEventos' obj.slug %}">
+								<time datetime="2017-10-03T08:50:40+00:00">
+								{{obj.inicio|date:"d N, Y"}}</time>
+							</a>
+
+
+						</span> 
+					</div>
+				</div>
+				{% endfor %}
 
 			</div>
-			<!--eof .col-sm-10 (main content)-->
 		</div>
+
+	</aside>
 	</div>
+
+
+</div>
 </section>
 {% endblock content %}

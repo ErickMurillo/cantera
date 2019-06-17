@@ -32,6 +32,7 @@
 		</div>
 	</div>
 </section>
+
 <section class="ls section_padding_top_110 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
@@ -55,16 +56,15 @@
 							{% if obj.usuario.organizacion != '' %}
 							<span>
 								<i class="fa fa-users highlight4 rightpadding_5" aria-hidden="true"></i>
-								<a href="">{{object.usuario.organizacion}}</a>
+								<a href="">{{object.usuario.organizacion.siglas}}</a>
 							</span>										
 							{% endif %}
 							<span class="categories-links">
 								<i class="icofont-comment highlight4 rightpadding_5" aria-hidden="true"></i>
 								<a href="">{{object.usuario.get_full_name|default:object.usuario.username}}</a>
-							</span>
-							
+							</span>							
 
-							 <span>
+							<span>
 								<i class="fa fa-comment highlight4 rightpadding_5" aria-hidden="true"></i>
 								<a href="">{{object.aportes_set.all.count}} aportes</a>
 							</span>
@@ -72,195 +72,202 @@
 						</div>
 
 						<div class="highlight1 small-text text-right">	
-							<!-- <i class="icofont-tack-pin"></i>
-
-								<a href="">Seguir</a> -->
-
-								<div class="theme_button color2 inverse"> <i class="icofont-tack-pin"></i><a href="#" class=""> Seguir</a></div>
-							</div>
-
-
-							<h1 class="entry-title"> {{object.nombre}} </h1>
-						</header>
-						<div class="entry-content">
-							{{object.contenido|safe}}
+							<div class="theme_button color2 inverse"> <i class="icofont-tack-pin"></i><a href="#" class=""> Seguir</a></div>
 						</div>
-						<!-- .entry-content -->
+
+
+						<h1 class="entry-title"> {{object.nombre}} </h1>
+					</header>
+					<div class="entry-content">
+						{{object.contenido|safe}}
 					</div>
-					<!-- .item-content -->
-				</article>
-				<div class="post-share"> 
-					<a href="#" class="social-icon color-bg-icon socicon-twitter"></a> 
-					<a href="#" class="social-icon color-bg-icon socicon-facebook"></a>  
+					<!-- .entry-content -->
 				</div>
+				<!-- .item-content -->
+			</article>
+			<div class="post-share"> 
+				<a href="#" class="social-icon color-bg-icon socicon-twitter"></a> 
+				<a href="#" class="social-icon color-bg-icon socicon-facebook"></a>
+				<a href=" https://wa.me/?text=http://127.0.0.1:8000/iniciativas-destacadas/eventos/{{object.slug}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+			</div>
 
-				<div class="comments-area" id="comments">
-					<h3>{{object.aportes_set.all.count}} Aportes en este foro</h3>
-					<ol class="comment-list">
-						{% for aporte in object.aportes_set.all %}
-						<li class="comment even thread-even depth-1 parent">
-							<article class="comment">
-								<div class="comment-author"> <img class="media-object" alt="" src="images/user2.jpg"> </div>
-								<div class="comment-body">
-									<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{aporte.usuario.get_full_name|default:aporte.usuario.username}} </a> <span class="comment-date">
-										<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
-										<time datetime="2017-10-03T08:50:40+00:00">
-											{{aporte.fecha|date:"d N, Y"}}
-										</time>
-									</span> </div>
-									<div class="comment-text">
-										{{aporte.contenido|safe}}
-									</div> 
-									{% if request.user == object.usuario %}
-									<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_aporte' aporte.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
+			<div class="comments-area" id="comments">
+				<h3>{{object.aportes_set.all.count}} Aportes en este foro</h3>
+				<ol class="comment-list">
+					{% for aporte in object.aportes_set.all %}
+					<li class="comment even thread-even depth-1 parent">
+						<article class="comment">
+							<div class="comment-author"> <img class="media-object" alt="" src="images/user2.jpg"> </div>
+							<div class="comment-body">
+								<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{aporte.usuario.get_full_name|default:aporte.usuario.username}} </a> <span class="comment-date">
+									<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
+									<time datetime="2017-10-03T08:50:40+00:00">
+										{{aporte.fecha|date:"d N, Y"}}
+									</time>
+								</span> </div>
+								<div class="comment-text">
+									{{aporte.contenido|safe}}
+								</div> 
+								{% if request.user == object.usuario %}
+								<!--<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_aporte' aporte.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
 									Modificar
-									</a> 
-									<a data-fancybox data-src="#trueModal-{{aporte.id}}" class="btn btn-sm btn-danger" href="javascript:;">
-										<i class="fa fa-trash"></i>
-									</a>
-									<div id="trueModal-{{aporte.id}}" class="p-5" style="display: none;max-width:600px;">
-								        <h5>
-								            Eliminar aporte
-								        </h5>
-								        <p>
-								           Se eliminará aporte permanentemente.<br>¿Esta seguro que desea eliminar?
-								        </p>
-								        <p>
-								            
-								            <a class="btn btn-sm btn-danger" href="{% url 'eliminar_aporte' aporte.id %}">Eliminar</a>
-								            
-								        </p>
-								    </div>
-									{% endif %}
-									{% if request.user.is_authenticated %}
-									<span class="reply">
-										<a class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
-											<i class="fa fa-reply" aria-hidden="true"></i>
-											<span class="sr-only">Reply</span> 
-										</a>
-									</span>
-									{% endif %}
+								</a>-->
+								<a title="Modificar" class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'editar_aporte' aporte.id %}" href="javascript:;">
+									<i class="fa fa-pencil" aria-hidden="true"></i>
+									<span class="sr-only">Modificar</span> 
+								</a>|
 
+								<a title="Eliminar" data-fancybox data-src="#trueModal-{{aporte.id}}"href="javascript:;">
+									<i class="fa fa-trash-o"></i>
+									<span class="sr-only">Eliminar</span>
+								</a>
+
+								<div id="trueModal-{{aporte.id}}" class="p-5" style="display: none;max-width:600px;">
+									<h5>
+										Eliminar aporte
+									</h5>
+									<p>
+										Se eliminará aporte permanentemente.<br>¿Esta seguro que desea eliminar?
+									</p>
+									<p>
+
+										<a class="btn btn-sm btn-danger" href="{% url 'eliminar_aporte' aporte.id %}">Eliminar</a>
+
+									</p>
 								</div>
-							</article>
-							<!-- .comment-body -->
-							{% if aporte.comentarios_set.all %}
-							<ol class="children">
-								{% for comment in aporte.comentarios_set.all %}
-								<li class="comment byuser odd alt depth-2 parent">
-									<article class="comment">
-										<div class="comment-author"> <img class="media-object" alt="" src="images/forumuser2.jpg"> </div>
-										<div class="comment-body">
-											<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{comment.usuario.get_full_name|default:comment.usuario.username}} </a> <span class="comment-date">
-												<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
-												<time datetime="2017-10-03T08:50:40+00:00">
-													{{comment.fecha|date:"d N, Y"}}
-												</time>
-											</span> </div>
-											<div class="comment-text">
-												{{comment.comentario|safe}}
-											</div>
-											{% if request.user == object.usuario %}
-											<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_comentario' comment.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
-											Modificar
-											</a> 
-											<a data-fancybox data-src="#trueModal-comment-{{comment.id}}" class="btn btn-sm btn-danger" href="javascript:;">
-												<i class="fa fa-trash"></i>
-											</a>
-											<div id="trueModal-comment-{{comment.id}}" class="p-5" style="display: none;max-width:600px;">
-										        <h5>
-										            Eliminar comentario
-										        </h5>
-										        <p>
-										           Se eliminará el comentario permanentemente.<br>¿Esta seguro que desea eliminar?
-										        </p>
-										        <p>
-										            
-										            <a class="btn btn-sm btn-danger" href="{% url 'eliminar_comentario' comment.id %}">Eliminar</a>
-										            
-										        </p>
-										    </div>
-											{% endif %}
-											
-										</div>
-									</article>
-									<!-- .comment-body -->
+								{% endif %}
+								{% if request.user.is_authenticated %}
+								<span class="reply">
+									<a title="Responder" class="fancybox" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' data-src="{% url 'add_comentario' aporte.id %}" href="javascript:;">
+										<i class="fa fa-reply" aria-hidden="true"></i>
+										<span class="sr-only">Responder</span> 
+									</a>
+								</span>
+								{% endif %}
 
-									<!-- .children -->
-								</li>
-								{% endfor %}
-								<!-- #comment-## -->
-							</ol>
-							{% endif %}
-
-							<!-- .children -->
-						</li>
-						{% endfor %}
-					</ol>
-					<!-- .comment-list -->
-				</div>
-				<!-- #comments -->
-
-				{% if request.user.is_authenticated %}
-				<div class="comment-respond text-center" id="respond">
-					<h3>Agrega un aporte</h3>
-					<form class="comment-form" id="commentform" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-						{{form.media}}
-						{{form.errors}}
-						<div class="row columns_padding_10">
-							<div class="col-xs-12">
-								{{form}}
 							</div>
-						</div>
-						<div class="form-submit topmargin_30"> <button type="submit" id="submit" name="submit" class="theme_button color3 min_width_button margin_0">Enviar </button> </div>
-					</form>
+						</article>
+						<!-- .comment-body -->
+						{% if aporte.comentarios_set.all %}
+						<ol class="children">
+							{% for comment in aporte.comentarios_set.all %}
+							<li class="comment byuser odd alt depth-2 parent">
+								<article class="comment">
+									<div class="comment-author"> <img class="media-object" alt="" src="images/forumuser2.jpg"> </div>
+									<div class="comment-body">
+										<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{comment.usuario.get_full_name|default:comment.usuario.username}} </a> <span class="comment-date">
+											<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
+											<time datetime="2017-10-03T08:50:40+00:00">
+												{{comment.fecha|date:"d N, Y"}}
+											</time>
+										</span> </div>
+										<div class="comment-text">
+											{{comment.comentario|safe}}
+										</div>
+										{% if request.user == object.usuario %}
+										<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_comentario' comment.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
+											<i class="fa fa-pencil" aria-hidden="true"></i>
+										<span class="sr-only">Responder</span> 
+										</a>|
 
-				</div>
-				{% endif %}
-				<!-- #respond -->
+
+										<a data-fancybox data-src="#trueModal-comment-{{comment.id}}" href="javascript:;">
+											<i class="fa fa-trash"></i>
+										</a>
+										<div id="trueModal-comment-{{comment.id}}" class="p-5" style="display: none;max-width:600px;">
+											<h5>
+												Eliminar comentario
+											</h5>
+											<p>
+												Se eliminará el comentario permanentemente.<br>¿Esta seguro que desea eliminar?
+											</p>
+											<p>
+
+												<a class="btn btn-sm btn-danger" href="{% url 'eliminar_comentario' comment.id %}">Eliminar</a>
+
+											</p>
+										</div>
+										{% endif %}
+
+									</div>
+								</article>
+								<!-- .comment-body -->
+
+								<!-- .children -->
+							</li>
+							{% endfor %}
+							<!-- #comment-## -->
+						</ol>
+						{% endif %}
+
+						<!-- .children -->
+					</li>
+					{% endfor %}
+				</ol>
+				<!-- .comment-list -->
+			</div>
+			<!-- #comments -->
+
+			{% if request.user.is_authenticated %}
+			<div class="comment-respond text-center" id="respond">
+				<h3>Agrega un aporte</h3>
+				<form class="comment-form" id="commentform" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+					{{form.media}}
+					{{form.errors}}
+					<div class="row columns_padding_10">
+						<div class="col-xs-12">
+							{{form}}
+						</div>
+					</div>
+					<div class="form-submit topmargin_30"> <button type="submit" id="submit" name="submit" class="theme_button color3 min_width_button margin_0">Enviar </button> </div>
+				</form>
 
 			</div>
-				<!--eof .col-sm-8 (main content)-->
-				<!-- sidebar -->
-			<aside class="col-sm-5 col-md-4 col-lg-4">
-					<div class="widget widget_search">
-						<form class="" action='.' method='GET'>
-                        <div class="form-group margin_0"> 
-							<label class="sr-only" for="widget-search">Search for:</label> 
-							<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
-						</div> 
-						<button type="submit" class="theme_button color1">Search</button>	
-                    </form>
-						</div>
-						<div class="widget widget_archive">
+			{% endif %}
+			<!-- #respond -->
 
-						</div>
-
-						<div class="widget widget_recent_posts">
-						<h4 class="widget-title">Foros Destacados</h4>
-						<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
-							{% for destacado in foros_destacados %}
-							<div class="vertical-item content-padding with_border">
-								
-								<div class="item-content">
-									<h5 class="bottommargin_0"> <a href="{% url 'detalle-foro' destacado.slug %}"> {{destacado.nombre}}</a> </h5> <span class="entry-meta greylinks">
-										<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-										<a href="blog-single-full.html">
-											<time datetime="2017-10-03T08:50:40+00:00">
-											{{destacado.creacion|date:"d N, Y"}}</time>
-										</a>
-									</span> 
-								</div>
-								
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-
-			</aside>
-			<!-- eof aside sidebar -->
 		</div>
+		<!--eof .col-sm-8 (main content)-->
+		<!-- sidebar -->
+		<aside class="col-sm-5 col-md-4 col-lg-4">
+			<div class="widget widget_search">
+				<form class="" action='.' method='GET'>
+					<div class="form-group margin_0"> 
+						<label class="sr-only" for="widget-search">Search for:</label> 
+						<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+					</div> 
+					<button type="submit" class="theme_button color1">Search</button>	
+				</form>
+			</div>
+			<div class="widget widget_archive">
+
+			</div>
+
+			<div class="widget widget_recent_posts">
+				<h4 class="widget-title">Foros Destacados</h4>
+				<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+					{% for destacado in foros_destacados %}
+					<div class="vertical-item content-padding with_border">
+
+						<div class="item-content">
+							<h5 class="bottommargin_0"> <a href="{% url 'detalle-foro' destacado.slug %}"> {{destacado.nombre}}</a> </h5> <span class="entry-meta greylinks">
+								<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
+								<a href="blog-single-full.html">
+									<time datetime="2017-10-03T08:50:40+00:00">
+									{{destacado.creacion|date:"d N, Y"}}</time>
+								</a>
+							</span> 
+						</div>
+
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+		</aside>
+		<!-- eof aside sidebar -->
 	</div>
+</div>
 </section>
 
 {% endblock content %}

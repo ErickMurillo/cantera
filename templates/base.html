@@ -110,39 +110,42 @@
 
 										<div class="xs-block">
 											<ul class="inline-list menu greylinks">
-
 												{% if request.user.is_authenticated %}
 												<li>
-													<a href="/accounts/profile/" class="white-color">{{user.get_full_name|default:user.username}}</a>
+													<div class="dropdown dropup text-center ">
+														<a class="visible_hover white-color small-text"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+															<span>{{user.get_full_name|default:user.username}}</span> <i class="icofont-caret-down rotate"></i>
+														</a>
+														<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
+															<a class="dropdown-item" href="/accounts/profile/">Perfil</a>
+															<a href="/accounts/logout/" class="theme_button color2 margin_0">Cerrar Sesión</a>
+														</div>
+													</div>
+
+												</li>
+												{% else %}
+												<li>
+													<a href="/accounts/login/?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
 												</li>
 												{% endif%}
 
-												<li class="dropdown"> <a id="search-show" href="./">
-													<i class="fa fa-search white-color"></i>
-												</a> </li>
+												
 											</ul>
 										</div>
 									</div>
-									<div id="topline-show" class="widget widget_search">
-										<form method="get" class="searchform inline-form" action="./">
-											<div class="form-group-wrap">
-												<div class="form-group"> <label class="sr-only" for="topline-widget-search">Search for:</label> <input id="topline-widget-search" type="text" value="" name="search" class="form-control" placeholder="Enter Keyword..."> <a href="./" id="search-close">
-													<i class="fa fa-close"></i>
-												</a> </div> <button type="submit" class="theme_button no_bg_button color1">ok</button> </div>
-											</form>
-										</div>
-									</div>
+
 								</div>
 							</div>
 						</div>
-					</section>
+					</div>
+				</section>
 
-					<header class="page_header header_white toggler_xs_right columns_margin_0">
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-sm-12 display_table">
-									<div class="header_left_logo display_table_cell"> <a href="/" class="logo logo_with_text">
-										<img src="/static/img/logo.png" alt="">
+				<header class="page_header header_white toggler_xs_right columns_margin_0">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-12 display_table">
+								<div class="header_left_logo display_table_cell"> <a href="/" class="logo logo_with_text">
+									<img src="/static/img/logo.png" alt="">
 									<!-- <span class="logo_text">
 										Diversify
 										<small class="highlight4">lgbt comunidad center</small>
@@ -173,15 +176,7 @@
 								<!-- header toggler --><span class="toggle_menu"><span></span></span>
 							</div>
 							
-							<div class="header_right_buttons display_table_cell text-right hidden-xs"> 
-								{% if request.user.is_authenticated %} 
-								<a href="/accounts/logout/" class="theme_button color2 margin_0">Cerrar Sesión</a> 
-								{% else %}
-								<a href="/accounts/login/?next={{ request.path }}" class="theme_button color2 margin_0">Iniciar Sesión</a> 
-								{% endif %}
-								
-
-							</div>
+						
 						</div>
 					</div>
 				</div>

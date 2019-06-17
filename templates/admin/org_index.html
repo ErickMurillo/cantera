@@ -1,10 +1,101 @@
 {% extends "admin/base_admin.html" %}
+{% load thumbnail %}
 
 {% block content %}
 
-<div class="container">
-	<a href="{% url 'org_editar' organizacion.id %}">Editar org</a>
-	{{organizacion}}
-</div>
+<section id ="detail_alianza" class="ls section_padding_top_100 section_padding_bottom_80 columns_padding_30">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5">
+				<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+					<div class="item-media"> 
+						{% thumbnail organizacion.logo "350x252" format='PNG' as im %}
+						<img src="{{ im.url }}" alt="" width="100%">
+						{% empty %}
+						<img src="http://via.placeholder.com/400x300" alt="">
+						{% endthumbnail %}
+					</div>
+					<div class="item-content">
+						<header class="entry-header">
+							<h1 class="entry-title small bottommargin_0 highlight"> {{organizacion.siglas}} </h1>
+						</header>
+						<p class="member-social greylinks"> 
+							{% for red in organizacion.redes_set.all|slice:":3" %}
+							<a class="social-icon {% if red.opcion == 'Sitio web' %}
+							socicon-globe
+							{% elif red.opcion == 'Facebook' %}
+							socicon-facebook
+							{% elif red.opcion == 'Twitter' %}
+							socicon-twitter
+							{% elif red.opcion == 'Youtube' %}
+							socicon-youtube
+							{% elif red.opcion == 'Instagram' %}
+							socicon-instagram
+							{% elif red.opcion == 'Linkedin' %}
+							socicon-linkedin
+							{% elif red.opcion == 'Flickr' %}
+							socicon-flickr
+							{% elif red.opcion == 'Pinterest' %}
+							socicon-pinterest
+							{% elif red.opcion == 'Vimeo' %}
+							socicon-vimeo
+							{% elif red.opcion == 'Otra' %}
+							socicon-link
+							{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a>
+							{% endfor %}
+						</p>
+					</div>
+				</article>
+				<br>
+				<article id ="contact_alliance" class="vertical-item content-padding big-padding with_border bottom_color_border">
+					<div class="item-content">
+						{% if organizacion.contacto %}
+						<p class="entry-title "><a><i class="icofont-contact-add font-alliance"></i></a> {{organizacion.contacto}}</p>
+						{% endif %}
+						{% if organizacion.pais %}
+						<p class="entry-title "><a><i class="icofont-location-pin font-alliance"></i></a> {{organizacion.pais}}</p>
+						{% endif %}
+						{% if organizacion.fundacion %}
+						<p class="entry-title "><a><i class="icofont-ui-calendar font-alliance"></i></a> {{organizacion.fundacion}}</p>
+						{% endif %}
+						{% if organizacion.correo %}
+						<p class="entry-title "><a href="mailto:{{organizacion.correo}}"><i class="icofont-email font-alliance"></i>{{organizacion.correo}}</a> </p>
+						{% endif %}
 
-{% endblock content %}
+						{% if organizacion.telefono %}
+						<p class="entry-title"><a><i class="icofont-phone-circle font-alliance"></i></a> {{organizacion.telefono}}</p>
+						{% endif %}
+
+					</div>
+				</article>
+			</div>
+			<div class="col-sm-7">
+				<h3>{{organizacion.nombre|safe}}</h3>
+
+				<div>
+					<a href="{% url 'org_editar' organizacion.id %}" class="theme_button min_width_button color1 inverse"><i class="fa fa-edit rightpadding_5"></i> Editar org </a> </div>
+
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
+						<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Generalidades</a></li>
+						<li><a href="#tab2" role="tab" data-toggle="tab">Temas</a></li>
+
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content big-padding top-color-border color2 bottommargin_40">
+						<div class="tab-pane fade in active" id="tab1">
+							{{organizacion.generalidades|safe}}
+						</div>
+
+						<div class="tab-pane fade" id="tab2">
+							{{organizacion.temas|safe}}
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	{% endblock content %}

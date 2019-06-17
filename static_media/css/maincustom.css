@@ -147,6 +147,7 @@ display block {
 }
 
 a.actual_content:hover:before {
+  color: #FFFFFF !important;
     content: "Informate";
 }
 a.actual_content:hover span {
@@ -154,13 +155,16 @@ a.actual_content:hover span {
 }
 
 a.puntos_content:hover:before {
+  color: #FFFFFF !important;
     content: "Opina";
 }
 a.puntos_content:hover span {
+  color: #FFFFFF !important;
     display: none;
 }
 
 a.foro_content:hover:before {
+  color: #FFFFFF !important;
     content: "Participa";
 }
 a.foro_content:hover span {
@@ -168,6 +172,7 @@ a.foro_content:hover span {
 }
 
 a.recurso_content:hover:before{
+  color: #FFFFFF !important;
     content: "Comparte";
 }
 a.recurso_content:hover span{
@@ -175,6 +180,7 @@ a.recurso_content:hover span{
 }
 
 a.iniciativa_content:hover:before{
+  color: #FFFFFF !important;
     content: "Únete";
 }
 a.iniciativa_content:hover span {
@@ -250,4 +256,8 @@ background-color: #1da1f2;
 }
 .socialaccount_providers .twitter:hover{
 background-color: #1c6ea1;
+}
+
+div.overflow_t{
+   overflow: visible !important;
 }

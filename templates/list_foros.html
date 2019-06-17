@@ -33,6 +33,10 @@
 <section class="ls section_padding_top_110 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
+
+			{% if  object_list.count > 0 %}
+
+			
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				{% paginate 2 object_list %}
 				{% for obj in object_list %}
@@ -54,7 +58,7 @@
 									{% if obj.usuario.organizacion != '' %}
 									<span>
 										<i class="fa fa-users highlight" aria-hidden="true"></i>
-										<a href="">{{obj.usuario.organizacion}}</a>
+										<a href="">{{obj.usuario.organizacion.siglas}}</a>
 									</span>										
 									{% endif %}
 									<span>
@@ -66,11 +70,11 @@
 									</span>
 								</div>
 								<div class="entry-content-wrap">
-									<header class="entry-header">
-										<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
+									<header class="entry-header" style="height: 35px;">
+										<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre|truncatechars:27}}</a> </h3>
 									</header>
 									<div class="entry-content">
-										<p>{{obj.contenido|safe|striptags|truncatechars:200}} <a href="{% url 'detalle-foro' obj.slug %}" class="more-link">Leer más</a></p>
+										<p>{{obj.contenido|safe|striptags|truncatechars:39}} <a href="{% url 'detalle-foro' obj.slug %}" class="more-link">Leer más</a></p>
 									</div>
 								</div>
 							</div>
@@ -144,19 +148,27 @@
 					</ul>
 				</div>
 			</div>
-			<!--eof .col-sm-8 (main content)-->
+
+			{% else %}
+			<div class="col-sm-7 col-md-8 col-lg-8">
+				<div class="alert alert-danger" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button> <strong>Oh no!</strong> No hay resultados </div>
+
+			</div>
+			{% endif %}
+
+
 			<!-- sidebar -->
 			<aside class="col-sm-5 col-md-4 col-lg-4">
 				<div class="widget widget_search">
 					<form class="" action='.' method='GET'>
-                        <div class="form-group margin_0"> 
+						<div class="form-group margin_0"> 
 							<label class="sr-only" for="widget-search">Search for:</label> 
 							<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
 						</div> 
 						<button type="submit" class="theme_button color1">Search</button>	
-                    </form>
-					</div>
-					<!-- tags -->
+					</form>
+				</div>
+				<!-- tags -->
 					<!--<div class="widget">
 						<h4 class="widget-title">Tags</h4>
 						<div class="tagcloud">
@@ -169,7 +181,7 @@
 					<div class="widget widget_archive">
 
 					</div>
-		
+
 					<div class="widget widget_recent_posts">
 						<h4 class="widget-title">Foros Destacados</h4>
 						<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
@@ -214,9 +226,9 @@
 						</div>
 					</div>-->
 
-			</aside>
-			<!-- eof aside sidebar -->
+				</aside>
+				<!-- eof aside sidebar -->
+			</div>
 		</div>
-	</div>
-</section>
-{% endblock content %}
+	</section>
+	{% endblock content %}

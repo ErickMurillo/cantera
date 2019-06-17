@@ -518,9 +518,9 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
-				text_content =  render_to_string('email/puntos.txt', {'obj': punto,})
+				text_content =  render_to_string('email/punto.txt', {'obj': punto,})
 
-				html_content = render_to_string('email/puntos.txt', {'obj': punto,})
+				html_content = render_to_string('email/punto.txt', {'obj': punto,})
 
 				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
 
@@ -530,6 +530,7 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 				return HttpResponseRedirect('/alianzas/puntos-vista/')
 			except:
 				pass
+			
 	else:
 		form = PuntosForms()
 	return render(request, template, locals())

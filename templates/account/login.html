@@ -54,6 +54,9 @@
 							</label> </div> <input type="submit" class="theme_button color1 topmargin_20" name="inicio_sesion" value="Iniciar sesión">
 							<div class="lost_password"> <a href="{% url 'account_reset_password' %}">¿Olvidó su contraseña?</a> </div>
 							<div class="lost_password"> <a href="{{ signup_url }}">Registrarse</a> </div>
+							{% if redirect_field_value %}
+							<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+							{% endif %}
 						</div>
 					</div>
 				</form>

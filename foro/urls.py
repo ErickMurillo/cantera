@@ -9,5 +9,6 @@ urlpatterns = [
 	path('commentario/eliminar/<id>/', eliminar_comentario, name='eliminar_comentario'),
 	path('aporte/modificar/<id>/', editar_aporte, name='editar_aporte'),
 	path('aporte/eliminar/<id>/', eliminar_aporte, name='eliminar_aporte'),
-
+	path('seguir/<id>/', seguir_foro, name='seguir_foro'),
+	path('dejar/seguir/<id>/', dejar_seguir_foro, name='dejar_seguir_foro'),
 ]

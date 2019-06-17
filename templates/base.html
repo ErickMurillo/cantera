@@ -125,7 +125,7 @@
 												</li>
 												{% else %}
 												<li>
-													<a href="/accounts/login/?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
+													<a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
 												</li>
 												{% endif%}
 

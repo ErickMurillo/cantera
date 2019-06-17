@@ -16,6 +16,7 @@
 				</div>
 				<div class="body">
 					<form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
+						{{form.errors}}
 						{{form.media}}
 						{{form|crispy}}
 						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Guardar" value="{% if '/editar/' in request.path %}Editar{% else %}Agregar{% endif %}">

@@ -53,7 +53,7 @@
 						</header>
 						<p class="member-social greylinks">
 							{% for red in obj.redes_set.all|slice:":3" %}
-							<a class="social-icon {% if red.opcion == 'Sitio web' %}
+							<a target="_blank" class="social-icon {% if red.opcion == 'Sitio web' %}
 							socicon-globe
 							{% elif red.opcion == 'Facebook' %}
 							socicon-facebook

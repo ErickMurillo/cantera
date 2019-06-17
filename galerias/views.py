@@ -41,6 +41,7 @@ def index_galeriaVideos(request,template = 'list_galeria.html'):
 	return render(request,template,locals())
 
 def detalle_galeria_vid(request,slug,template ='detail_galeria_vid.html'):
+	object = GaleriaVideos.objects.get(slug = slug)
 	return render(request,template,locals())
 
 def filtro_temas_vid(request,tema,template='list_galeria.html'):

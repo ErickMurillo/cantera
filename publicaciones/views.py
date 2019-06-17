@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from evento.models import *
 import datetime
@@ -14,7 +14,8 @@ def index_publicaciones(request,template='list_publicacion.html'):
 	return render(request, template, locals())
 
 def detail_publicacion(request,slug,template='detail_publicacion.html'):
-	object= Publicacion.objects.get(slug=slug)
+	#object= Publicacion.objects.get(slug=slug)
+	object = get_object_or_404(Publicacion, slug=slug)
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	

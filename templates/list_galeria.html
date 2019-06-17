@@ -3,20 +3,21 @@
 {% load thumbnail %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
 <style type="text/css">
 .page_breadcrumbs.background_cover {
 	{% if '/imagenes/' in request.path %}
-		{% thumbnail foto_galerias_imagenes.0 "1350x230" crop="center" as im %}
-		background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
-		background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
-		background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
-		{% endthumbnail %}
+	{% thumbnail foto_galerias_imagenes.0 "1350x230" crop="center" as im %}
+	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	{% endthumbnail %}
 	{% elif '/videos/' in request.path %}
-		{% thumbnail foto_galerias_videos.0 "1350x230" crop="center" as im %}
-		background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
-		background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
-		background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
-		{% endthumbnail %}
+	{% thumbnail foto_galerias_videos.0 "1350x230" crop="center" as im %}
+	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	{% endthumbnail %}
 	{% endif %}
 	
 }
@@ -48,7 +49,7 @@
 		<div class="row">
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
-					{% paginate 1 list_galeria %}
+					{% paginate 6 list_galeria %}
 					{% for obj in  list_galeria %}
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">
 						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
@@ -66,9 +67,13 @@
 									<div class="categories-links small-text highlightlinks"> <a href="#">{{obj.tematica}}</a> </div>
 									<h3 class="entry-title small bottommargin_0">
 										{% if request.path == '/recursos-metodologicos/galerias/imagenes/' %}
-											<a rel="bookmark" href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a>
+										<a rel="bookmark" href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a>
 										{% else %}
-											<a rel="bookmark" href="{% url 'detalle_galeria_vid' obj.slug %}">{{obj}}</a>
+
+										<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'detalle_galeria_vid' obj.slug %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
+											{{obj}}
+										</a>
+
 										{% endif %}
 									</h3>
 								</header>
@@ -150,6 +155,20 @@
 				</div>
 			</aside>
 
-			</section>
+		</section>
 
-			{% endblock content %}
+		{% endblock content %}
+		{% block extra_js %}
+		<script src="/static/js/jquery.fancybox.min.js"></script>
+
+		<script>
+		$('.fancybox').fancybox({ 
+			afterShow: function(){     
+				$('.fancybox-iframe').contents().find('input').click(function(){
+					window.parent.location.reload();
+					window.parent.$.fancybox.close();
+				}); 
+			}
+		});
+		</script>
+		{% endblock extra_js %}

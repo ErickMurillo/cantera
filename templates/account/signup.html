@@ -20,7 +20,11 @@
 				<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
 				<form class="checkout with_border with_padding form-horizontal" method="POST" action="/accounts/signup/">{% csrf_token %}
-					{{ form.as_p }} 
+					{{form.username}}
+					{{form.email}}
+					{{form.password1}}
+					{{form.password2}}
+
 					<button type="submit">{% trans "Sign Up" %}</button>
 				</form>
 

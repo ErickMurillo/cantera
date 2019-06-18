@@ -104,15 +104,15 @@
 									</span>  -->
 								</div>
 							</div>
-							<div class="col-lg-6 text-center text-lg-right">
+							<!--<div class="col-lg-6 text-center text-lg-right">
 								<div id="topline-animation-wrap">
 									<div id="topline-hide" class="inline-content big-spacing"> 
 
-										<div class="xs-block">
+										<div class="">
 											<ul class="inline-list menu greylinks">
 												{% if request.user.is_authenticated %}
 												<li>
-													<div class="dropdown dropup text-center ">
+													<div class="dropdown text-center ">
 														<a class="visible_hover white-color small-text"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 															<span>{{user.get_full_name|default:user.username}}</span> <i class="icofont-caret-down rotate"></i>
 														</a>
@@ -121,7 +121,6 @@
 															<a href="/accounts/logout/" class="theme_button color2 margin_0">Cerrar Sesión</a>
 														</div>
 													</div>
-
 												</li>
 												{% else %}
 												<li>
@@ -129,13 +128,13 @@
 												</li>
 												{% endif%}
 
-												
+
 											</ul>
 										</div>
 									</div>
 
 								</div>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</section>
@@ -168,21 +167,44 @@
 											
 										</li>
 
-										
-										
+										<li> 
+											<a href="contact.html">Contacts</a>
+											<ul>
+												<li> <a href="contact.html">Contact 1</a> </li>
+												<li> <a href="contact2.html">Contact 2</a> </li>
+											</ul>
+										</li>
+										{% if request.user.is_authenticated %}
+										<li class="">
+
+											<a>
+												<span>{{user.get_full_name|default:user.username}}</span> <i class="icofont-caret-down rotate"></i>
+											</a>
+											<ul>
+												<li> <a href="/accounts/profile/">Perfil</a> </li>
+												<li> <a href="/accounts/logout/">Cerrar Sesión</a> </li>
+											</ul>
+										</li>
+										{% else %}
+										<li>
+											<a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
+										</li>
+										{% endif%}
+
 									</ul>
 								</nav>
 								<!-- eof main nav -->
 								<!-- header toggler --><span class="toggle_menu"><span></span></span>
 							</div>
-							
-						
+
+
+
 						</div>
 					</div>
 				</div>
 			</header>	
 
-			
+
 			{% block content %}{% endblock content %}
 
 			<footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">

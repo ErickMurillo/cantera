@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load el_pagination_tags %}
 {% load thumbnail %}
+{% load embed_video_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
@@ -53,12 +54,21 @@
 					{% for obj in  list_galeria %}
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">
 						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
-							<div class="item-media"> 
+							<div class="item-media">
+								{% if request.path == '/recursos-metodologicos/galerias/imagenes/' %}
 								{% thumbnail obj.portada "365x243" crop="center" as im %}
+
 								<img src="{{ im.url }}" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/365x243" alt="">
 								{% endthumbnail %}
+								{% else %}
+								{% video obj.url as my_video %}
+								{% thumbnail my_video.thumbnail "365x243" crop="center" as im %}
+								<img src="{{ im.url }}" alt="">
+								{% endthumbnail %}
+								{% endvideo %}
+								{% endif %}
 
 								
 							</div>
@@ -70,10 +80,13 @@
 										<a rel="bookmark" href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a>
 										{% else %}
 
-										<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'detalle_galeria_vid' obj.slug %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
+										<a data-fancybox href="{{obj.url}}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
 											{{obj}}
 										</a>
-
+										
+										<!--<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'detalle_galeria_vid' obj.slug %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
+											{{obj}}
+										</a>-->
 										{% endif %}
 									</h3>
 								</header>
@@ -135,6 +148,19 @@
 						<button type="submit" class="theme_button color1">Search</button>									
 					</form>
 				</div>
+
+				<!-- categorias -->
+					<div class="widget">
+						<h4 class="widget-title">Categorías</h4>
+						<div class="">
+							<ul>
+								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
+								<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>
+								<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>	
+								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>	
+							</ul>
+						</div>
+					</div>
 
 				<div class="widget">
 					<h4 class="widget-title">Temáticas</h4>

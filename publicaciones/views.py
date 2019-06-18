@@ -34,4 +34,3 @@ def detail_guias(request,slug,template='detail_publicacion.html'):
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 
 	return render(request,template,locals())
-

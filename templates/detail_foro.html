@@ -231,10 +231,17 @@
 							{{form}}
 						</div>
 					</div>
-					<div class="form-submit topmargin_30"> <button type="submit" id="submit" name="submit" class="theme_button color3 min_width_button margin_0">Enviar </button> </div>
+					<div class="form-submit topmargin_30"> <button type="submit" id="submit" name="submit" class="theme_button color2 min_width_button margin_0"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar </button> </div>
 				</form>
 
 			</div>
+			{% else %}
+			<br>
+			
+			<div class="alert alert-info" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> <strong>Debe</strong>  <a href="/accounts/login/?next=/">iniciar sesión </a> para agregar aportes a este foro </div>
+
+
+
 			{% endif %}
 			<!-- #respond -->
 

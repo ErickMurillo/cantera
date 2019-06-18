@@ -3,6 +3,7 @@
 {% load embed_video_tags %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
 <style type="text/css">
 .page_breadcrumbs.background_cover {
 	{% thumbnail foto_publicaciones.0 "1350x230" crop="center" as im %}
@@ -70,41 +71,61 @@
 			</div>
 			<div class="col-sm-7">
 				<p>{{object.resumen|safe}}</p>
+				<hr>
 
-				<!-- Nav tabs -->
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
-					<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Archivos</a></li>
-					<li><a href="#tab2" role="tab" data-toggle="tab">Audios</a></li>
-					<li><a href="#tab3" role="tab" data-toggle="tab">Videos</a></li>
-				</ul>
-				<!-- Tab panes -->
-				<div class="tab-content big-padding top-color-border color2 bottommargin_40">
-					<div class="tab-pane fade in active" id="tab1">
-						<ul class="list2 color2 checklist greylinks">
-							{% for pdf in object.archivospublicacion_set.all %}
-							<li>
-								<a href="/media/{{pdf.archivo_pdf}}" class="base-color" target="_blank">{{pdf.nombre}}</a>
-							</li>
-							{% endfor %}
+				<!-- Nav vertical tabs -->
+				<div class="row vertical-tabs color2">
+					<div class="col-sm-4">
+						<!-- Nav tabs -->
+						<ul class="nav" role="tablist">
+							<li class="active"> <a href="#vertical-tab1" role="tab" data-toggle="tab">
+								<i class="rt-icon2-files"></i> Archivos
+							</a> </li>
+							<li> <a href="#vertical-tab2" role="tab" data-toggle="tab">
+								<i class="rt-icon2-file-sound-o"></i> Audio
+							</a> </li>
+							<li> <a href="#vertical-tab3" role="tab" data-toggle="tab">
+								<i class="rt-icon2-file-video"></i> Video
+							</a> </li>
 						</ul>
-
 					</div>
-					<div class="tab-pane fade" id="tab2">
-						<ul style="list-style-type:none;">
-							{% for audio in object.audiospublicacion_set.all %}        					
-							<li><a href="/media/{{audio.archivo_audio}}" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> {{audio.nombre}}</a></li>
-							{% endfor %}
-						</ul>
-
-					</div>
-					<div class="tab-pane fade" id="tab3">
-						<div>
-							{% for video in object.videospublicacion_set.all %}
-							<div class="col-md-6">
-								{% video video.url '100% x 240px' %}
+					<div class="col-sm-8">
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="vertical-tab1">
+								<ul style="list-style-type:none;">
+									{% for pdf in object.archivospublicacion_set.all %}
+									<li>
+										<a href="/media/{{pdf.archivo_pdf}}" class="base-color" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{pdf.nombre}}</a>
+									</li>
+									{% endfor %}
+								</ul>
 							</div>
-							{% endfor %}
+							<div class="tab-pane fade" id="vertical-tab2">
+								<ul style="list-style-type:none;">
+									{% for audio in object.audiospublicacion_set.all %}        					
+									<li><a href="/media/{{audio.archivo_audio}}" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> {{audio.nombre}}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
+							<div class="tab-pane fade" id="vertical-tab3">
+								<ul style="list-style-type:none;">
+									{% for video in object.videospublicacion_set.all %}
+									<li>
+										<a data-fancybox href="{{video.url}}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+											<i class="fa fa-youtube-play" aria-hidden="true"></i> {{video}}
+										</a>
+									</li>
+									{% endfor %}
+								</ul>
+								<!--<div>
+									{% for video in object.videospublicacion_set.all %}
+									<div class="col-md-6">
+										{% video video.url '100% x 240px' %}
+									</div>
+									{% endfor %}
+								</div>-->
+							</div>
 						</div>
 					</div>
 				</div>
@@ -114,3 +135,18 @@
 </section>
 
 {% endblock content %}
+
+{% block extra_js %}
+<script src="/static/js/jquery.fancybox.min.js"></script>
+
+<script>
+$('.fancybox').fancybox({ 
+	afterShow: function(){     
+		$('.fancybox-iframe').contents().find('input').click(function(){
+			window.parent.location.reload();
+			window.parent.$.fancybox.close();
+		}); 
+	}
+});
+</script>
+{% endblock extra_js %}

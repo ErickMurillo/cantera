@@ -28,3 +28,6 @@ def perfil(request,template='admin/org_index.html'):
 		return render(request, template,locals())
 	except :
 		return render(request, 'admin/error.html',locals())
+
+def contacto(request,template='contact.html'):
+	return render(request,template,locals())

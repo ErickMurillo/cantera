@@ -3,17 +3,36 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h1 class="white-color">{% trans "Sign Out" %}</h1>
+			</div>
+		</div>
+	</div>
+</section>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
+<div class="section_padding_top_90">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-push-1">
+				<div class="checkout with_border with_padding form-horizontal text-center">
+					<p>{% trans 'Are you sure you want to sign out?' %}</p>
+					<form method="post" action="{% url 'account_logout' %}">
+						{% csrf_token %}
+						{% if redirect_field_value %}
+						<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+						{% endif %}
+						<button type="submit">{% trans 'Sign Out' %}</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 
 {% endblock %}

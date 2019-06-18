@@ -70,10 +70,22 @@
 							</span>
 
 						</div>
-
-						<div class="highlight1 small-text text-right">	
-							<div class="theme_button color2 inverse"> <i class="icofont-tack-pin"></i><a href="#" class=""> Seguir</a></div>
+						
+						{% if request.user.is_authenticated %}
+						<div class="highlight1 small-text text-right">
+							{% if request.user in object.usuarios_siguiendo.all %}
+							<div class="theme_button color2 inverse"> 
+								<i class="icofont-tack-pin"></i><a href="{% url 'dejar_seguir_foro' object.id %}" class="">Dejar de seguir</a>
+							</div>
+							{% else %}
+							<div class="theme_button color2 inverse"> 
+								<i class="icofont-tack-pin"></i><a href="{% url 'seguir_foro' object.id %}" class="">Seguir</a>
+							</div>
+							{% endif %}	
+							
 						</div>
+						{% endif %}
+						
 
 
 						<h1 class="entry-title"> {{object.nombre}} </h1>
@@ -102,7 +114,7 @@
 								<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{aporte.usuario.get_full_name|default:aporte.usuario.username}} </a> <span class="comment-date">
 									<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
 									<time datetime="2017-10-03T08:50:40+00:00">
-										{{aporte.fecha|date:"d N, Y"}}
+										{{aporte.fecha|date:"d N Y"}}
 									</time>
 								</span> </div>
 								<div class="comment-text">
@@ -158,7 +170,7 @@
 										<div class="comment-meta darklinks"> <a class="author_url" rel="external nofollow" href="#">{{comment.usuario.get_full_name|default:comment.usuario.username}} </a> <span class="comment-date">
 											<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
 											<time datetime="2017-10-03T08:50:40+00:00">
-												{{comment.fecha|date:"d N, Y"}}
+												{{comment.fecha|date:"d N Y"}}
 											</time>
 										</span> </div>
 										<div class="comment-text">

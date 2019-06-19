@@ -13,7 +13,7 @@
 						{% endif %} Galería de imágenes </h2>
 				</div>
 				<div class="body">
-					<form action="." method="POST" class="form-inline" enctype="multipart/form-data">{% csrf_token %}
+					<form action="." method="POST"  enctype="multipart/form-data">{% csrf_token %}
 						{{form.media}}
 						{{form|crispy}}
 						<br>
@@ -22,7 +22,7 @@
 								<h4 class="blog-details__title">Imagenes</h4>
 								<hr>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-6 pt-10"  style="background-color:#AFEEEE">
 								
 								{{ formset.management_form }}
 								<div id="form_set">
@@ -35,7 +35,10 @@
 								    {% endfor %}
 								</div>
 
-								<input class="theme_button color2 min_width_button margin_0" type="button" value="Agregar foto adicional" id="add_more">
+								<a class="btn-add row" type="button" id="add_more">
+									<span class="fa fa-plus"> </span>
+									Agregar archivo adicional
+								</a>
 								<div id="empty_form" style="display:none">
 								    <div class='no_error'>
 								        {{ formset.empty_form }}

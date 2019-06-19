@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="card">
-				<div class="header bg-amarillo">
+				<div class="header bg-azul">
 					<h2 class="text-white">
 						{% if '/editar/' in request.path %}
 							Editar
@@ -27,9 +27,11 @@
 						{{form.errors}}
 						{{form|crispy}}
 
-						
+						<br>
 						<div class="row">
 							<div class="col-md-6">
+								<h4>Documentos</h4>
+								<hr>
 								{{ formset.management_form }}
 								<div id="form_set">
 									{% for form in formset.forms %}
@@ -50,6 +52,8 @@
 							</div>
 
 							<div class="col-md-6">
+								<h4>Audios</h4>
+								<hr>
 								{{ formset2.management_form }}
 								<div id="form_set2">
 									{% for form in formset2.forms %}
@@ -69,9 +73,11 @@
 								</div>
 							</div>
 						</div>
-
+						<br>
 						<div class="row">
 							<div class="col-md-6">
+								<h4>Videos</h4>
+								<hr>
 								{{ formset3.management_form }}
 								<div id="form_set3">
 									{% for form in formset3.forms %}
@@ -122,5 +128,8 @@ $('#add_more3').click(function() {
 	$('#id_videospublicacion_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
 });
 
+$('.no_error').addClass('control-group');
+$('.no_error label').addClass('control-label');
+$('.no_error input[type=text], .no_error input[type=url]').addClass('form-control mb-10');
 </script>
 {% endblock extra_js %}

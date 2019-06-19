@@ -16,11 +16,14 @@
 					<form action="." method="POST" class="form-inline" enctype="multipart/form-data">{% csrf_token %}
 						{{form.media}}
 						{{form|crispy}}
-						
+						<br>
 						<div class="row">
-							<h4 class="blog-details__title">Imagenes</h4>
-							<hr>
+							<div class="col-md-12">
+								<h4 class="blog-details__title">Imagenes</h4>
+								<hr>
+							</div>
 							<div class="col-md-6">
+								
 								{{ formset.management_form }}
 								<div id="form_set">
 									{% for form in formset.forms %}
@@ -57,5 +60,8 @@ $('#add_more').click(function() {
 	$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
 	$('#id_imagenes_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
 });
+$('.no_error').addClass('control-group');
+$('.no_error label').addClass('control-label');
+$('.no_error input[type=text], .no_error input[type=url]').addClass('form-control mb-10');
 </script>
 {% endblock extra_js %}

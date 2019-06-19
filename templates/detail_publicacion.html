@@ -78,15 +78,24 @@
 					<div class="col-sm-4">
 						<!-- Nav tabs -->
 						<ul class="nav" role="tablist">
-							<li class="active"> <a href="#vertical-tab1" role="tab" data-toggle="tab">
+							{% if object.archivospublicacion_set.all %}
+								<li class="active"> <a href="#vertical-tab1" role="tab" data-toggle="tab">
 								<i class="rt-icon2-files"></i> Archivos
 							</a> </li>
-							<li> <a href="#vertical-tab2" role="tab" data-toggle="tab">
+							{% endif %}
+							
+							
+							{% if object.audiospublicacion_set.all %}
+								<li> <a href="#vertical-tab2" role="tab" data-toggle="tab">
 								<i class="rt-icon2-file-sound-o"></i> Audio
 							</a> </li>
-							<li> <a href="#vertical-tab3" role="tab" data-toggle="tab">
+							{% endif %}
+							{% if object.videospublicacion_set.all %}
+								<li> <a href="#vertical-tab3" role="tab" data-toggle="tab">
 								<i class="rt-icon2-file-video"></i> Video
 							</a> </li>
+							{% endif %}
+							
 						</ul>
 					</div>
 					<div class="col-sm-8">

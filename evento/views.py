@@ -32,6 +32,10 @@ def indexCampanias(request,template='list_campanias.html'):
 
 def detailCampanias(request,slug,template='detail_campanas.html'):
 	object = Actualidad.objects.get(slug = slug)
+	list_object = Actualidad.objects.filter(category__in = ['campanas']).order_by('created_on')
+	hoy = datetime.date.today()
+	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
+	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
 	return render(request,template,locals())
 
 def indexConcursos(request, template="list_concursos.html"):

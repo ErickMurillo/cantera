@@ -104,15 +104,15 @@
 									</span>  -->
 								</div>
 							</div>
-							<!--<div class="col-lg-6 text-center text-lg-right">
+							<div class="col-lg-6 text-center text-lg-right">
 								<div id="topline-animation-wrap">
 									<div id="topline-hide" class="inline-content big-spacing"> 
 
-										<div class="">
+										<div style="z-index:20">
 											<ul class="inline-list menu greylinks">
 												{% if request.user.is_authenticated %}
 												<li>
-													<div class="dropdown text-center ">
+													<div class="dropdown dropup text-center ">
 														<a class="visible_hover white-color small-text"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 															<span>{{user.get_full_name|default:user.username}}</span> <i class="icofont-caret-down rotate"></i>
 														</a>
@@ -134,7 +134,7 @@
 									</div>
 
 								</div>
-							</div>-->
+							</div>
 						</div>
 					</div>
 				</section>
@@ -167,13 +167,6 @@
 											
 										</li>
 
-										<li> 
-											<a href="contact.html">Contacts</a>
-											<ul>
-												<li> <a href="contact.html">Contact 1</a> </li>
-												<li> <a href="contact2.html">Contact 2</a> </li>
-											</ul>
-										</li>
 										{% if request.user.is_authenticated %}
 										<li class="">
 
@@ -186,9 +179,10 @@
 											</ul>
 										</li>
 										{% else %}
-										<li>
-											<a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
+										<li> 
+											<a href="{% url 'account_login' %}?next={{ request.path }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión</a>
 										</li>
+										
 										{% endif%}
 
 									</ul>

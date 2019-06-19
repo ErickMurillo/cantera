@@ -12,7 +12,8 @@ def index_galeriasImagenes(request, template = 'list_galeria.html'):
 
 def detalle_galeriaImagenes(request, slug, template = 'detail_galeria.html'):
 	object = GaleriaImagenes.objects.get(slug = slug)
-
+	related_gal = GaleriaImagenes.objects.filter(tematica = object.tematica)
+	latest_gal = GaleriaImagenes.objects.order_by('-id')[:9]
 	return render(request, template, locals())
 
 def filtro_temas_img(request,tema,template="list_galeria.html"):

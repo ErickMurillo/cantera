@@ -39,7 +39,7 @@ def org_editar(request,id, template = 'admin/org_edit.html'):
 	# Validar que la organizacion que se desea editar es la asignada al usuario
 	if str(usr_org.id) == id:
 		contra = get_object_or_404(Contraparte, id=id)
-		FormSetInit = inlineformset_factory(Contraparte, Redes, form=RedesFrom,extra=11,max_num=11)
+		FormSetInit = inlineformset_factory(Contraparte, Redes, form=RedesFrom,extra=1)
 
 		if request.method == 'POST':
 			form = ContraparteForms(data=request.POST,instance=contra,files=request.FILES)

@@ -17,35 +17,10 @@ class ContraparteForms(forms.ModelForm):
 	contacto = forms.CharField(required=False,widget=forms.TextInput(attrs={'rel':"tooltip", 'title':"Nombre completo de la persona de contacto"}))
 	correo = forms.CharField(required=False,widget=forms.TextInput(attrs={'rel':"tooltip", 'title':"Correo de la persona de contacto"}))
 	telefono = forms.CharField(required=False,widget=forms.TextInput(attrs={'rel':"tooltip", 'title':"Formato ### - ######## "}))
-	#sitio_web = forms.URLField(required=False,widget=forms.TextInput(attrs={'rel':"tooltip", 'title':"Con este formato http://www.dominio.com "}))
-	# rss = forms.CharField(required=False,widget=forms.TextInput(attrs={'rel':"tooltip", 'title':"Dirección rss de contenido sindicado"}))
-	#font_color = forms.CharField(required=False, widget=ColorPickerWidget, label="Color")
 
 	class Meta:
 		model = Contraparte
 		fields = '__all__'
-
-
-
-# class UserProfileForm(ModelForm):
-# 	class Meta:
-# 		model = User
-# 		fields = ('avatar',)
-
-# from django.forms import ModelMultipleChoiceField
-
-# class UserModelMultipleChoiceField(ModelMultipleChoiceField):
-# 	def label_from_instance(self, obj):
-# 		user_profile = UserProfile.objects.get(user = obj)
-# 		return "%s - %s" % (obj.username,user_profile.contraparte.siglas)
-
-# class MensajeForm(forms.ModelForm):
-# 	user = UserModelMultipleChoiceField(queryset = User.objects.order_by('username'))
-# 	mensaje = forms.CharField(widget=CKEditorUploadingWidget())
-# 	class Meta:
-# 		#widgets = {'user': forms.CheckboxSelectMultiple}
-# 		model = Mensajero
-# 		exclude = ('usuario','fecha')
 
 class RedesFrom(forms.ModelForm):
 	class Meta:

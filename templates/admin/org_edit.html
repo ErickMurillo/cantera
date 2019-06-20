@@ -1,37 +1,65 @@
 {% extends "admin/base_admin.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<p>Modificar Org</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="header bg-none">
+					<h2 class="">Modificar Org</h2>
+				</div>
+				<div class="body">
+					<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+						{{form.media}}
+						
+						{{form.errors}}
+						{{form|crispy}}
+						<div class="row">
+							<div class="col-md-12">
+								<h4 class="blog-details__title">Redes</h4>
+								<hr>
+							</div>
+							 
+							<div id="form_set">
+								{% for form in formset.forms %}
+								    {{form.non_field_errors}}
+									{{form.errors}}
+							        <div class='no_error'>
+							            {{ form }}
+							        </div>
+							    {% endfor %}
+							</div>
+							<input class="theme_button color2 min_width_button margin_0" type="button" value="Agregar red adicional" id="add_more">
+							<div id="empty_form" style="display:none">
+							    <div class='no_error'>
+							        {{ formset.empty_form }}
+							    	
+							    </div>
+							</div>
+						</div>
+								
+						<input type="submit" name="guardar" value="Guardar">	
+					</form>
 
-<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-	{{form.media}}
-	{{form.errors}}
-	{{form}}
-
-	<div>
-
-		<h4 class="blog-details__title">Redes</h4>
-		<hr>
-		<div class="row">
-			{{ formset.management_form }}
-
-			{% for red in formset %}
-			<div class="col-md-4">
-				{% if red.errors %}
-				{{red.errors}}
-				{% endif %}
-
-				{{red.id}}
-				{{red.opcion}}
-				{{red.url}}
-				Eliminar: {{red.DELETE}}
+				</div>
 			</div>
-			{% endfor %}
 		</div>
 	</div>
-
-
-	<input type="submit" name="guardar" value="Guardar">	
-</form>
+</div>
 
 {% endblock content %}
+
+{% block extra_js %}
+<script>
+$('#add_more').click(function() {
+	var form_idx = $('#id_redes_set-TOTAL_FORMS').val();
+	$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+	$('#id_redes_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+});
+
+$('.no_error').addClass('control-group');
+$('.no_error label').addClass('control-label');
+$('.no_error input[type=text], .no_error input[type=url]').addClass('form-control mb-10');
+</script>
+{% endblock extra_js %}

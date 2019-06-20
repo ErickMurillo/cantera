@@ -1,0 +1,12 @@
+{% extends "admin/base_admin.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+	{{form.media}}	
+	{{form.errors}}
+	{{form|crispy}}
+	<input type="submit" name="actualizar" value="Actualizar">
+
+</form>
+{% endblock content %}

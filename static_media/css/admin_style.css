@@ -30,6 +30,12 @@
 .btn-transparent:focus {
   color: #fff;
 }
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
 /*=====  End of colors  ======*/
 body {
   background-color: #f4f7f6;
@@ -184,6 +190,11 @@ table.dataTable thead .sorting_desc:after {
 .control-group label {
   font-weight: 600;
   font-size: 1.1em;
+}
+.theme_button[class*="color"]:active,
+.theme_button[class*="color"]:focus,
+.theme_button[class*="color"]:hover {
+  color: #fff;
 }
 .selectmultiple .selectize-input::after {
   content: "\f107";

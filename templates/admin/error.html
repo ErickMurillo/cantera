@@ -1,149 +1,19 @@
-{% extends "../base.html" %}
+{% extends "admin/base_admin.html" %}
 
 {% block content %}
-<section id="services" class="ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0">
-	<div class="container-fluid">
-		<div class="row flex-wrap v-center-content">
-
-			<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-				<div class="teaser main_bg_color transp with_padding big-padding margin_0">
-					<div class="media xxs-media-left">
-						<div class="media- media-middle text-center">
-							<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-news highlight" aria-hidden="true"></i> </div>
-						</div>
-
-						<div class="dropdown dropup text-center">
-							<a class="visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/actualidad">
-								<span>Actualidad</span> <i class="icofont-caret-down rotate"></i>
-							</a>
-							<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="/actualidad/noticias">Noticias</a>
-								<a class="dropdown-item" href="/actualidad/situacion-regional-genero">Situación regional de género</a>
-							</div>
-						</div>
-						<div class="media-body media-middle text-center">
-							
-							<h4>
-							</h4>
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-				<div class="teaser bg_customgreen transp with_padding big-padding margin_0">
-					<a href="/puntos-vista">
-						<div class="media xxs-media-left">
-							<div class="media- media-middle text-center">
-								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="fa fa-eye highlight5" aria-hidden="true"></i> </div>
-							</div>
-							<div class="text-center">
-								<a class="visible_hover white-color puntos_content" href="/puntos-vista"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span>Puntos de vista</span>
-								</a>
-							</div>
-
-							<div class="media-body media-middle text-center">
-								<h4 class="white-color"></h4>
-							</div>
-						</div></a>
-					</div>
-				</div>
-				<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-					<div class="teaser main_bg_color2 transp with_padding big-padding margin_0">
-						<a href="/foros">
-							<div class="media xxs-media-left">
-								<div class="media- media-middle text-center">
-									<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-ui-chat highlight2" aria-hidden="true"></i> </div>
-								</div>
-
-								<div class="text-center">
-									<a class="visible_hover white-color foro_content" href="./foros"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Foros</span>
-									</a>
-								</div>
-								<div class="media-body media-middle text-center">
-									<h4></h4>
-
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-					<div class="teaser main_bg_color4 transp with_padding big-padding margin_0">
-						<div class="media xxs-media-left">
-							<div class=" media-middle text-center">
-								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-read-book highlight4" aria-hidden="true"></i> </div>
-							</div>
-
-							<div class="dropdown dropup text-center">
-								<a class="visible_hover white-color recurso_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
-								</a>
-								<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="./recursos-metodologicos/publicaciones">Publicaciones</a>
-									<a class="dropdown-item" href="./recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
-									<a class="dropdown-item" href="#">
-											Galería
-											<ul>
-												<li><a href="./recursos-metodologicos/galerias/imagenes">Imágenes</a></li>
-												<li><a href="./recursos-metodologicos/galerias/videos">Videos</a></li>
-											</ul>
-									</a>
-
-									<a class="dropdown-item" href="./recursos-metodologicos/audios">Audios</a>
-								</div>
-							</div>
-
-							<div class="media-body media-middle text-center">
-								<h5><a href="#0"> </a></h5>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-					<div class="teaser main_bg_color3 transp with_padding big-padding margin_0">
-						<div class="media xxs-media-left">
-							<div class="media-middle text-center">
-								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-favourite highlight3" aria-hidden="true"></i> </div>
-							</div>
-
-							<div class="dropdown dropup text-center">
-								<a class="visible_hover white-color iniciativa_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i>
-								</a>
-								<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="/iniciativas-destacadas/campanias">Campañas</a>
-									<a class="dropdown-item" href="/iniciativas-destacadas/eventos">Eventos</a>
-									<a class="dropdown-item" href="/iniciativas-destacadas/concursos">Concursos</a>
-								</div>
-							</div>
-
-							<div class="media-body media-middle text-center">
-
-								<h4>
-								</h4>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-<section id="actualidad" class="ls section_padding_top_90">
+<style type="text/css">
+	#services{display: none}
+</style>
+<section class="ls ms section_404 section_padding_top_50 section_padding_bottom_50">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
-				<div class="owl-carousel loop-colors topmargin_40" data-dots="false" data-nav="true" data-responsive-lg="3">
-					<p>No pertenece a ninguna organización</p>
-										
-				</div>
+			<div class="col-md-12 text-center">
+				<p class="not_found"> <span class="highlight2">ERROR</span> </p>
+				<h1>Oops, No pertenece a ninguna organización!</h1>
+				<p>Contáctenos para solicitar vinculación a una organización.</p>
+				<p> <a href="/contactenos/" class="theme_button color1 min_width_button">Contáctenos</a> </p>
 			</div>
 		</div>
 	</div>
 </section>
-{% endblock content %}	
+{% endblock content %}

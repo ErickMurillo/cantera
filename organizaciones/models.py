@@ -56,11 +56,3 @@ class Redes(models.Model):
 	class Meta:
 		verbose_name = 'Red'
 		verbose_name_plural = 'Redes'
-
-# class Avatars(models.Model):
-#     user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
-#     avatar = ImageField(upload_to='usuario/avatar/')
-
-#     class Meta:
-#         verbose_name = 'Avatar usuario'
-#         verbose_name_plural = 'Avatars usuarios'

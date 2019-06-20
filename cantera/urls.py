@@ -38,6 +38,7 @@ urlpatterns = [
     path('puntos-vista/', include('puntosvista.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', perfil, name='perfil'),
+    path('accounts/edit/<id>/', editar_perfil, name='editar_perfil'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('pages/', include('django.contrib.flatpages.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),

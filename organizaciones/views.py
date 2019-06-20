@@ -34,30 +34,30 @@ def detalles_org(request, slug, template = 'detail_org.html'):
 #-- ADMIN
 @login_required
 def org_editar(request,id, template = 'admin/org_edit.html'):
-	#obtener la organizacion asociada al usuario
-	usr_org = Contraparte.objects.get(id = request.user.organizacion.id)
-	# Validar que la organizacion que se desea editar es la asignada al usuario
-	if str(usr_org.id) == id:
-		contra = get_object_or_404(Contraparte, id=id)
-		FormSetInit = inlineformset_factory(Contraparte, Redes, form=RedesFrom,extra=1)
+	contra = get_object_or_404(Contraparte, id=id)
+	FormSetInit = inlineformset_factory(Contraparte, Redes, form=RedesFrom,extra=1)
 
-		if request.method == 'POST':
-			form = ContraparteForms(data=request.POST,instance=contra,files=request.FILES)
-			formset = FormSetInit(request.POST,request.FILES,instance=contra)
+	if request.method == 'POST':
+		form = ContraparteForms(data=request.POST,instance=contra,files=request.FILES)
+		formset = FormSetInit(request.POST,request.FILES,instance=contra)
 
-			if form.is_valid() and formset.is_valid():
-				form_uncommited = form.save(commit=False)
-				form_uncommited.user = request.user
-				form_uncommited.save()
+		if form.is_valid() and formset.is_valid():
+			form_uncommited = form.save(commit=False)
+			form_uncommited.user = request.user
+			form_uncommited.save()
 
-				formset.save()
-				return HttpResponseRedirect('/accounts/profile/')
-		else:
-			form = ContraparteForms(instance=contra)
-			formset = FormSetInit(instance=contra)
-		return render(request, template, locals())
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.organizacion = form_uncommited
+				instance.save()
+				
+			return HttpResponseRedirect('/accounts/profile/')
+			
 	else:
-		return HttpResponse('Bad request')
+		form = ContraparteForms(instance=contra)
+		formset = FormSetInit(instance=contra)
+
+	return render(request, template, locals())
 
 def actualidad_list(request, template = 'admin/actualidad_list.html'):
 	list_object = Actualidad.objects.filter(author = request.user.id,category__in = ['noticias','situacion-regional-genero'])

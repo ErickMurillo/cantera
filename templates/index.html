@@ -41,32 +41,6 @@
 				<!-- eof .container -->
 			</li>
 
-			<li>
-				<div class="slide-image-wrap"> <img src="images/slide02.jpg" alt="" /> </div>
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12 text-center">
-							<div class="slide_description_wrapper">
-								<div class="slide_description">
-									<div class="intro-layer" data-animation="fadeInRight"> LGBT Comunidad Center </div>
-									<div class="intro-layer" data-animation="fadeInLeft">
-										<h2> <span class="highlight3">Become The Change</span><br> You Want To See </h2>
-									</div>
-									<div class="intro-layer" data-animation="fadeInRight">
-										<p class="thin"><em>Details on the huge Calvin Sandoval celebration coming to Hillcrest on February 27, 2018</em></p>
-									</div>
-
-								</div>
-								<!-- eof .slide_description -->
-							</div>
-							<!-- eof .slide_description_wrapper -->
-						</div>
-						<!-- eof .col-* -->
-					</div>
-					<!-- eof .row -->
-				</div>
-				<!-- eof .container -->
-			</li>
 			{% endfor %}
 
 		</ul>
@@ -103,14 +77,14 @@
 				</div>
 			</div>
 			<div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-				<div class="teaser bg_customgreen transp with_padding big-padding margin_0">
+				<div class="teaser bg_customgreen transp with_padding big-padding margin_0" id="p_vista">
 					<a href="/puntos-vista">
 						<div class="media xxs-media-left">
 							<div class="media- media-middle text-center">
 								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="fa fa-eye highlight5" aria-hidden="true"></i> </div>
 							</div>
 							<div class="text-center">
-								<a class="visible_hover white-color puntos_content" href="/puntos-vista"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<a class="visible_hover white-color" href="/puntos-vista"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<span id ="txtpuntos">Puntos de vista</span>
 								</a>
 							</div>
@@ -274,11 +248,11 @@
 
 				<div class="col-sm-10 col-sm-push-1 topmargin_30">
 					{% for obj in eventos %}
-					<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
+					<article class="post side-item side-md content-padding with_border bottom_color_border left loop-colors">
 						<div class="row">
 							<div class="col-md-5">
 								<div class="item-media"> 
-									{% thumbnail obj.foto "405x256" crop="center" as im %}
+									{% thumbnail obj.foto "422x282" crop="center" as im %}
 									<img src="{{ im.url }}" alt="">
 									{% empty %}
 									<img src="http://via.placeholder.com/405x256" alt="">
@@ -300,7 +274,7 @@
 										</span> </div>
 										<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
 									</header>
-									{{obj.descripcion|safe|striptags|truncatechars:470}}
+									{{obj.descripcion|safe|striptags|truncatechars:275}}
 								</div>
 							</div>
 						</div>
@@ -362,3 +336,18 @@
 	</section>
 
 	{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+$(function() {
+	console.log( "ready!" );
+
+	$( "#p_vista div" ).on( "hover", function( event ) {
+  	$("#txtpuntos").val('test');
+});
+
+});
+
+</script>
+
+{% endblock extra_js %}

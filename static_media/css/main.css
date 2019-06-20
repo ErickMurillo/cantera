@@ -10871,7 +10871,7 @@ body.active-side-header.slide-right .page_header_side {
 .page_footer .parallax.parallax,
 .page_copyright.parallax,
 .page_contacts.parallax {
-	background-image: url(../images/index/footer-shape.png);
+	background-image: url(../img/footer-shape.png);
 }
 
 @media (max-width: 1199px) {

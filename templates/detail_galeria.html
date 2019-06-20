@@ -69,23 +69,16 @@
 	</div>
 </section>
 
-<section class="ls columns_padding_0 fluid_padding_0 section_padding_bottom_100">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="owl-carousel related-photos-carousel loop-colors" data-margin="50" data-nav="false" data-dots="true" data-loop="true" data-items="3">
-					{% if related_gal.count > 0 %}
+{% for gallery in latest_gal %}
 
-					
-					{% for gallery in related_gal %}
-					<div>
-						<article class="vertical-item content-padding post format-standard  with_border bottom_color_border text-center">
-							<div class="item-media">
-								{% thumbnail gallery.portada "300x200" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
-								{% empty %}
-								<img src="http://via.placeholder.com/300x200" alt="">
-								{% endthumbnail %}
+<div>
+	<article class="vertical-item content-padding post format-standard  with_border bottom_color_border text-center">
+		<div class="item-media">
+			{% thumbnail gallery.portada "300x200" crop="center" as im %}
+			<img src="{{ im.url }}" alt="">
+			{% empty %}
+			<img src="http://via.placeholder.com/300x200" alt="">
+			{% endthumbnail %}
 								<!--<div class="media-links">
 									<div class="links-wrap"> <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="{{gallery.imagen.url}}"></a> </div>
 								</div>-->
@@ -100,39 +93,14 @@
 							</div>
 						</article>
 					</div>
-					{% endfor %}
-					{% else %}
-					{% for gallery in latest_gal %}
-					<div>
-						<article class="vertical-item content-padding post format-standard  with_border bottom_color_border text-center">
-							<div class="item-media">
-								{% thumbnail gallery.portada "300x200" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
-								{% empty %}
-								<img src="http://via.placeholder.com/300x200" alt="">
-								{% endthumbnail %}
-								<!--<div class="media-links">
-									<div class="links-wrap"> <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="{{gallery.imagen.url}}"></a> </div>
-								</div>-->
-							</div>
-							<div class="item-content">
-								<header class="entry-header">
-									<div class="categories-links small-text highlightlinks"> <a href="#">{{gallery.tematica}}</a> </div>
-									<h4 class="entry-title margin_0"> <a href="{% url 'detalle_galeriaImagenes' gallery.slug %}" rel="bookmark">
-										{{gallery.titulo}}
-									</a> </h4>
-								</header>
-							</div>
-						</article>
-					</div>
-					
-					{% endfor %}
-					{% endif %}
 
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+					{% endfor %}
 
-{% endblock content %}
+					{% for galeria in related_gal %}
+					<p>relacion galerias</p>
+					{{galeria}}
+
+					{% endfor %}
+
+
+					{% endblock content %}

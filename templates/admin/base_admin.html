@@ -119,7 +119,7 @@
 									<ul class="mainmenu nav sf-menu">
 										<li class="active"> <a href="/">Inicio</a></li>
 										<li> <a href="/quienes-somos/">¿Quienes Somos?</a></li>
-										<li> <a href="services.html">Alianzas y Colaboraciones</a></li>
+										<li> <a href="/alianzas/">Alianzas y Colaboraciones</a></li>
 									</ul>
 								</nav>
 								<span class="toggle_menu"><span></span></span>
@@ -247,6 +247,9 @@
 
 	<script src="/static/js/jquery.min.js"></script>
 	<script src="/static/js/compressed.js"></script>
+	{% if '/alianzas/editar/' not in request.path %}
+		<script src="/static/js/selectize.min.js"></script>
+	{% endif %}
 	<!--<script src="/static/js/selectize.min.js"></script>-->
 	<script src="/static/js/main.js"></script>
 	<script src="/static/js/jquery.fancybox.min.js"></script>

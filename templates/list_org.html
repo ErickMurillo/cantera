@@ -53,8 +53,8 @@
 						</header>
 						<p class="member-social greylinks">
 							{% for red in obj.redes_set.all|slice:":3" %}
-							<a target="_blank" class="social-icon {% if red.opcion == 'Sitio web' %}
-							socicon-globe
+							<a target="_blank" style="margin-left:25px;" class="{% if red.opcion == 'Sitio web' %}
+							fa fa-globe
 							{% elif red.opcion == 'Facebook' %}
 							socicon-facebook
 							{% elif red.opcion == 'Twitter' %}
@@ -72,7 +72,7 @@
 							{% elif red.opcion == 'Vimeo' %}
 							socicon-vimeo
 							{% elif red.opcion == 'Otra' %}
-							socicon-link
+							fa fa-link
 							{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a>
 							{% endfor %}
 

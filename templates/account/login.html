@@ -1,68 +1,89 @@
-{% extends "../base.html" %}
+{% extends "../admin/base_admin.html" %}
 {% load i18n %}
 {% load account socialaccount %}
 
 {% block content %}
-<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+<style type="text/css">
+    #services{display: none}
+</style>
+<section class="ls ms section_404 section_padding_top_30 section_padding_bottom_30">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 text-center">
-				<h1 class="white-color">{% trans "Sign In" %}</h1>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card">
+				
+					<div class="header mb-20">
+						<h3 class="section-title text-center">Inicia sesión</h3>
+					</div>
+					<div class="body">
+						<div class="socialaccount_providers">
+							{% get_providers as socialaccount_providers %}
+                                    {% if socialaccount_providers %}
+                                        <!-- {% with site.name as site_name %}
+                                                Por favor inicie sesion con uno de los siguientes metodos de autenticacion!!.
+                                        {%endwith%} -->
+                                        <ul class="socialaccount_providers list-inline">
+                                            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                                        </ul>
+
+                                        <div class="or-seperator"><b>O</b></div>
+
+
+                                        {% include "socialaccount/snippets/login_extra.html" %}
+
+                                        {% else %}
+                                        <p>Si aún no ha creado una cuenta, por favor
+                                        <a href="{{ signup_url }}">Registrarse</a> primero</p>
+                                    {% endif %}
+						</div>
+						<form method="POST" class="checkout with_padding form-horizontal" role="form"action="{% url 'account_login' %}">{% csrf_token %}
+							{% if form.errors %}
+							{{form.errors}}
+							{% endif %}
+							<div class="form-group"> 
+								<label for="username" class="col-sm-3 control-label">
+									<span class="grey">Usuario:</span> 
+									<span class="required">*</span>
+								</label>
+								<div class="col-sm-9"> {{form.login}}
+								</div>
+							</div>
+							<div class="form-group"> 
+								<label for="password" class="col-sm-3 control-label">
+									<span class="grey">Contraseña:</span> 
+									<span class="required">*</span>
+								</label>
+								<div class="col-sm-9">{{form.password}} </div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-9">
+									<div class="checkbox"> <label for="rememberme" class="control-label">
+										{{form.remember}}
+										Recordarme     
+									</label> </div> <input type="submit" class="theme_button color1 topmargin_20" name="inicio_sesion" value="Iniciar sesión">
+									<div class="lost_password"> <a href="{% url 'account_reset_password' %}">¿Olvidó su contraseña?</a> </div>
+									<div class="lost_password"> <a href="{{ signup_url }}">Registrarse</a> </div>
+									{% if redirect_field_value %}
+									<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+									{% endif %}
+								</div>
+							</div>
+						</form>
+					</div>
+					<br>
+
+				</div>
+				
 			</div>
 		</div>
 	</div>
 </section>
 
-<div class="section_padding_top_90">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-push-1">
-				<div>
-					{% get_providers as socialaccount_providers %}
-					{% if socialaccount_providers %}
 
-					{% include "socialaccount/snippets/provider_list.html" with process="login" %}
-
-					{% include "socialaccount/snippets/login_extra.html" %}
-
-					{% endif %}
-				</div>
-				<form method="POST" class="checkout with_border with_padding form-horizontal" role="form"action="{% url 'account_login' %}">{% csrf_token %}
-					{% if form.errors %}
-					{{form.errors}}
-					{% endif %}
-					<div class="form-group"> 
-						<label for="username" class="col-sm-3 control-label">
-							<span class="grey">Usuario:</span> 
-							<span class="required">*</span>
-						</label>
-						<div class="col-sm-9"> {{form.login}}
-						</div>
-					</div>
-					<div class="form-group"> 
-						<label for="password" class="col-sm-3 control-label">
-							<span class="grey">Contraseña:</span> 
-							<span class="required">*</span>
-						</label>
-						<div class="col-sm-9">{{form.password}} </div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-9">
-							<div class="checkbox"> <label for="rememberme" class="control-label">
-								{{form.remember}}
-								Recordarme     
-							</label> </div> <input type="submit" class="theme_button color1 topmargin_20" name="inicio_sesion" value="Iniciar sesión">
-							<div class="lost_password"> <a href="{% url 'account_reset_password' %}">¿Olvidó su contraseña?</a> </div>
-							<div class="lost_password"> <a href="{{ signup_url }}">Registrarse</a> </div>
-							{% if redirect_field_value %}
-							<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-							{% endif %}
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
 
 {% endblock content %}
+{% block extra_js %}
+<script type="text/javascript">
+    $( "a.socialaccount_provider" ).addClass("btn");
+</script>
+{% endblock extra_js %}

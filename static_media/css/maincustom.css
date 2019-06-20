@@ -258,6 +258,8 @@ background-color: #1da1f2;
 background-color: #1c6ea1;
 }
 
-div.overflow_t{
-   overflow: visible !important;
+img.b_avatar {
+    border-radius: 50% !important;
+    max-width: 90px !important;
+    border: 2px solid #e4e4e4 !important;
 }

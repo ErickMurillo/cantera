@@ -20,9 +20,9 @@
 							<h1 class="entry-title small bottommargin_0 highlight"> {{organizacion.siglas}} </h1>
 						</header>
 						<p class="member-social greylinks"> 
-							{% for red in organizacion.redes_set.all|slice:":3" %}
-							<a class="social-icon {% if red.opcion == 'Sitio web' %}
-							socicon-globe
+							{% for red in organizacion.redes_set.all %}
+							<a style="margin-left:25px;" class="{% if red.opcion == 'Sitio web' %}
+							fa fa-globe
 							{% elif red.opcion == 'Facebook' %}
 							socicon-facebook
 							{% elif red.opcion == 'Twitter' %}
@@ -40,7 +40,8 @@
 							{% elif red.opcion == 'Vimeo' %}
 							socicon-vimeo
 							{% elif red.opcion == 'Otra' %}
-							socicon-link
+							fa fa-link
+
 							{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a>
 							{% endfor %}
 						</p>

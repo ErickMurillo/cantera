@@ -1,12 +1,21 @@
 {% extends "admin/base_admin.html" %}
 {% load crispy_forms_tags %}
+
+
 {% block content %}
+<style type="text/css">
+	select{
+		padding-top: 0px !important;
+		padding-bottom: 0px !important;
+	}
+</style>
+
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="card">
 				<div class="header bg-none">
-					<h2 class="">Modificar Org</h2>
+					<h2 class="">Modificar Organización</h2>
 				</div>
 				<div class="body">
 					<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
@@ -19,24 +28,28 @@
 								<h4 class="blog-details__title">Redes</h4>
 								<hr>
 							</div>
+							 
 							{{ formset.management_form }}
-
-							{% for red in formset %}
-							<div class="col-md-4">
-								{% if red.errors %}
-								{{red.errors}}
-								{% endif %}
-
-								{{red.id}}
-								{{red.opcion}}
-								{{red.url}}
-								Eliminar: {{red.DELETE}}
+							<div id="form_set">
+								{% for form in formset.forms %}
+								    {{form.non_field_errors}}
+									{{form.errors}}
+							        <div class='no_error'>
+							            
+							            {{form.as_p}}
+							        </div>
+							    {% endfor %}
 							</div>
-							{% endfor %}
+							<br>
+							<input class="theme_button color2 min_width_button margin_0" type="button" value="Agregar red adicional" id="add_more">
+							<div id="empty_form" style="display:none">
+							    <div class='no_error'>
+							        {{ formset.empty_form }}
+							    	
+							    </div>
+							</div>
 						</div>
-						
-
-
+								
 						<input type="submit" name="guardar" value="Guardar">	
 					</form>
 
@@ -45,13 +58,16 @@
 		</div>
 	</div>
 </div>
-<p></p>
-
-
 
 {% endblock content %}
+
 {% block extra_js %}
 <script>
+$('#add_more').click(function() {
+	var form_idx = $('#id_redes_set-TOTAL_FORMS').val();
+	$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+	$('#id_redes_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+});
 
 $('.no_error').addClass('control-group');
 $('.no_error label').addClass('control-label');

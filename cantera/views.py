@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from organizaciones.models import *
 from actualidad.models import *
 from evento.models import *
@@ -9,6 +9,8 @@ from configuracion.models import *
 from foro.models import *
 import datetime
 from django.db.models import Count
+from users.models import *
+from users.forms import *
 
 def index(request,template='index.html'):
 	# actualidad = Actualidad.objects.order_by('-created_on')[:6]
@@ -30,4 +32,19 @@ def perfil(request,template='admin/org_index.html'):
 		return render(request, 'admin/error.html',locals())
 
 def contacto(request,template='contact.html'):
+	return render(request,template,locals())
+
+@login_required
+def editar_perfil(request,id,template='admin/editar_perfil.html'):
+	user = User.objects.get(id = id)
+	if request.method == 'POST':
+		form = UserChangeForm(request.POST, request.FILES, instance=user)
+		if form.is_valid():
+			form_uncommited = form.save(commit=False)
+			form_uncommited.save()
+
+			return HttpResponseRedirect('/accounts/profile/')
+	else:
+		form = UserChangeForm(instance=user)
+
 	return render(request,template,locals())

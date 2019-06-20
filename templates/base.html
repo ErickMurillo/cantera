@@ -1,3 +1,5 @@
+{% load thumbnail %}
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -111,6 +113,22 @@
 										<div style="z-index:20">
 											<ul class="inline-list menu greylinks">
 												{% if request.user.is_authenticated %}
+
+												<li>
+													<div class="comment-author">
+														{% if user.avatar %}
+														{% thumbnail user.avatar "30x34" crop="center" as im %}
+														<img class="" src="{{ im.url }}" alt="">
+														{% endthumbnail %}
+														{% elif user.socialaccount_set.all.0.get_avatar_url %}
+														{% thumbnail user.socialaccount_set.all.0.get_avatar_url "30x34" crop="center" as im %}
+														<img class="" src="{{ im.url }}" alt="">
+														{% endthumbnail %}
+														{% else %}
+														<img class="" src="http://via.placeholder.com/30x34" alt="">
+														{% endif %}
+													</div>
+												</li>
 												<li>
 													<div class="dropdown dropup text-center ">
 														<a class="visible_hover white-color small-text"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -155,15 +173,15 @@
 								<!-- main nav start -->
 								<nav class="mainmenu_wrapper">
 									<ul class="mainmenu nav sf-menu">
-										<li class="active"> <a href="/">Inicio</a>
+										<li class="{% if request.path == '/' %} active {% endif %}"> <a href="/">Inicio</a>
 
 										</li>
 
-										<li> <a href="/quienes-somos/">¿Quienes Somos?</a>
+										<li> <a class="{% if request.path == '/quienes-somos' %} active {% endif %}" href="/quienes-somos/">¿Quienes Somos?</a>
 										</li>
 
 										<!-- eof pages -->
-										<li> <a href="/alianzas">Alianzas y Colaboraciones</a>
+										<li> <a class="{% if '/alianzas' in request.path %} active {% endif %}" href="/alianzas">Alianzas y Colaboraciones</a>
 											
 										</li>
 

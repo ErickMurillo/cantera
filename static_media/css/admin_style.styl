@@ -52,6 +52,10 @@ negro = #3a3d44
 	margin-bottom 10px
 .mb-20
 	margin-bottom 20px
+.pt-10
+	padding-top 10px
+.pb-10
+	padding-bottom 10px
 /*=====  End of colors  ======*/
 body
 	background-color gris
@@ -178,6 +182,19 @@ table.dataTable thead .sorting_desc:after
 	&:focus
 	&:hover
 		color white
+.btn-add
+	display block
+	text-align right
+	padding 10px 10px
+	background rgba(31,35,43,0.07)
+	color white
+	cursor pointer
+	font-weight 600
+	font-size 16px
+	&:hover
+		color white
+		background-color rgba(31,35,43,0.15)
+
 .selectmultiple .selectize-input::after
 	content "\f107"
 	font-family FontAwesome
@@ -204,6 +221,7 @@ table.dataTable thead .sorting_desc:after
 	.selectize-control
 	.selectize-input
 		height 40px
+		width: 400px;
 	.selectize-input
 		padding 5px 60px 5px 30px
 	.selectize-control.multi .selectize-input.has-items

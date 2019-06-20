@@ -36,6 +36,12 @@
 .mb-20 {
   margin-bottom: 20px;
 }
+.pt-10 {
+  padding-top: 10px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
 /*=====  End of colors  ======*/
 body {
   background-color: #f4f7f6;
@@ -196,6 +202,20 @@ table.dataTable thead .sorting_desc:after {
 .theme_button[class*="color"]:hover {
   color: #fff;
 }
+.btn-add {
+  display: block;
+  text-align: right;
+  padding: 10px 10px;
+  background: rgba(31,35,43,0.07);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+}
+.btn-add:hover {
+  color: #fff;
+  background-color: rgba(31,35,43,0.15);
+}
 .selectmultiple .selectize-input::after {
   content: "\f107";
   font-family: FontAwesome;
@@ -222,6 +242,7 @@ table.dataTable thead .sorting_desc:after {
 .card .selectize-control,
 .card .selectize-input {
   height: 40px;
+  width: 400px;
 }
 .card .selectize-input {
   padding: 5px 60px 5px 30px;

@@ -29,7 +29,7 @@
 
 						<br>
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-6 pt-10"  style="background-color:#AFEEEE">
 								<h4>Documentos</h4>
 								<hr>
 								{{ formset.management_form }}
@@ -43,7 +43,10 @@
 								    {% endfor %}
 								</div>
 
-								<input class="theme_button color2 min_width_button margin_0" type="button" value="Agregar archivo adicional" id="add_more">
+								<a class="btn-add row" type="button" id="add_more">
+									<span class="fa fa-plus"> </span>
+									Agregar archivo adicional
+								</a>
 								<div id="empty_form" style="display:none">
 								    <div class='no_error'>
 								        {{ formset.empty_form }}
@@ -51,7 +54,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-6">
+							<div class="col-md-6 pt-10"  style="background-color:#FFAF92">
 								<h4>Audios</h4>
 								<hr>
 								{{ formset2.management_form }}
@@ -62,10 +65,14 @@
 								        <div class='no_error'>
 								            {{ form }}
 								        </div>
+
 								    {% endfor %}
 								</div>
-
-								<input class="theme_button color2 min_width_button margin_0" type="button" value="Agregar audio adicional" id="add_more2">
+								
+								<a class="btn-add row" type="button" id="add_more2">
+									<span class="fa fa-plus"> </span>
+									Agregar audio adicional
+								</a>
 								<div id="empty_form2" style="display:none">
 								    <div class='no_error'>
 								        {{ formset2.empty_form }}
@@ -73,9 +80,9 @@
 								</div>
 							</div>
 						</div>
-						<br>
+
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-6 pt-10"  style="background-color:#DDCBEE">
 								<h4>Videos</h4>
 								<hr>
 								{{ formset3.management_form }}
@@ -89,7 +96,10 @@
 								    {% endfor %}
 								</div>
 
-								<input class="theme_button color2 min_width_button margin_0" type="button" value="Agregar video adicional" id="add_more3">
+								<a class="btn-add row" type="button" id="add_more3">
+									<span class="fa fa-plus"> </span>
+									Agregar archivo adicional
+								</a>
 								<div id="empty_form3" style="display:none">
 								    <div class='no_error'>
 								        {{ formset3.empty_form }}

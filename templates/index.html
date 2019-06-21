@@ -130,13 +130,16 @@
 								<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
 									<a class="dropdown-item" href="./recursos-metodologicos/publicaciones">Publicaciones</a>
 									<a class="dropdown-item" href="./recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
-									<a class="dropdown-item" href="#">
+									<!--<a class="dropdown-item" href="#">
 										Galería
 										<ul>
 											<li><a href="./recursos-metodologicos/galerias/imagenes">Imágenes</a></li>
 											<li><a href="./recursos-metodologicos/galerias/videos">Videos</a></li>
 										</ul>
-									</a>
+									</a>-->
+									<a class="dropdown-header">Galería</a>
+									<a class="dropdown-item" href="./recursos-metodologicos/galerias/imagenes">Imágenes</a>
+									<a class="dropdown-item" href="./recursos-metodologicos/galerias/videos">Videos</a>
 
 									<a class="dropdown-item" href="./recursos-metodologicos/audios">Audios</a>
 								</div>
@@ -271,10 +274,15 @@
 											</span> <span>
 												<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
 												{{obj.city}}
-											</span> </div>
+											</span>
+											<span class="text-center">
+											<i class="icofont-ui-user-group highlight rightpadding_5 "></i>{{obj.author.organizacion.siglas}}
+										</span>
+
+										</div>
 											<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
 										</header>
-										{{obj.descripcion|safe|striptags|truncatechars:275}}
+										{{obj.descripcion|safe|striptags|truncatechars:265}}<a href="{% url 'detailEventos' obj.slug %}" class="more-link">Ver más</a>
 									</div>
 								</div>
 							</div>
@@ -298,9 +306,9 @@
 
 				<!-- Contenido foro-->
 
-				<div class="col-sm-10 col-sm-push-1 topmargin_30">
+				<div class="col-sm-10 col-sm-push-1 topmargin_30 loop-colors">
 					{% for obj in foros %}
-					<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-standard">
+					<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border post format-standard">
 
 						<div class="item-content">
 							<div class="entry-meta greylinks inline-content"> 

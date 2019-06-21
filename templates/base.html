@@ -117,15 +117,17 @@
 												<li>
 													<div class="comment-author">
 														{% if user.avatar %}
-														{% thumbnail user.avatar "30x34" crop="center" as im %}
+														{% thumbnail user.avatar "34x34" crop="center" as im %}
 														<img class="" src="{{ im.url }}" alt="">
 														{% endthumbnail %}
 														{% elif user.socialaccount_set.all.0.get_avatar_url %}
-														{% thumbnail user.socialaccount_set.all.0.get_avatar_url "30x34" crop="center" as im %}
+														{% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
 														<img class="" src="{{ im.url }}" alt="">
 														{% endthumbnail %}
 														{% else %}
+
 														<span><i class="icofont-ui-user white-color"></i></span>
+
 														{% endif %}
 													</div>
 												</li>

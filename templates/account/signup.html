@@ -1,38 +1,62 @@
-{% extends "../base.html" %}
+{% extends "../admin/base_admin.html" %}
 
 {% load i18n %}
 
 {% block content %}
-<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-               <h1 class="white-color">{% trans "Sign Up" %}</h1>
-           </div>
-       </div>
-   </div>
-</section>
+<style type="text/css">
+    #services{display: none}
+</style>
+<section class="ls ms section_404 section_padding_top_30 section_padding_bottom_30">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="card">
+				
+					<div class="header mb-20">
+						<h3 class="section-title text-center">Registrarse</h3>
+					</div>
+					<div class="body">
+						<form class="checkout with_padding form-horizontal" method="POST" action="/accounts/signup/">{% csrf_token %}
 
-<div class="container">
-	<div class="row">
-		<div class="col-sm-7 col-md-8 col-lg-8">
-			<div class="">
-				<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+							<div class="form-group">
+								<label class="label-control" for="">Nombre de usuario: </label>
+								{{form.username}}
+							</div>
+							<div class="form-group">
+								<label class="label-control" for="">Correo electrónico (opcional): </label>
+								{{form.email}}
+							</div>
+							<div class="form-group">
+								<label class="label-control" for="">Contraseña: </label>
+								{{form.password1}}
+								{{form.password1.errors}}
+								{{form.password1.help}}
+							</div>
+							<div class="form-group">
+								<label class="label-control" for="">Contraseña (de nuevo): </label>
+								{{form.password2}}
+								{{form.password2.errors}}
+								{{form.password2.help}}
+							</div>
 
-				<form class="checkout with_border with_padding form-horizontal" method="POST" action="/accounts/signup/">{% csrf_token %}
-					{{form.username}}
-					{{form.email}}
-					{{form.password1}}
-					{{form.password2}}
+							<button class="theme_button color2 min_width_button margin_0" type="submit">{% trans "Sign Up" %}</button>
+						</form>
+						<p class="text-center">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+						
+					</div>
+					<br>
 
-					<button type="submit">{% trans "Sign Up" %}</button>
-				</form>
-
-				{% endblock %}
-
+				</div>
+				
 			</div>
 		</div>
 	</div>
-</div>
+</section>
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript">
+	$('input[type=text], input[type=email], input[type=password]').addClass('form-control');
+</script>
+{% endblock extra_js %}
 
 

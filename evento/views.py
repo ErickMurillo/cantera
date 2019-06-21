@@ -48,6 +48,8 @@ def indexConcursos(request, template="list_concursos.html"):
 
 def detailConcursos(request,slug,template='detail_concursos.html'):
 	object = Actualidad.objects.get(slug = slug)
+	hoy = datetime.date.today()
+	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	return render(request,template,locals())
 
 def filtro_tag_concurso(request,slug,template='list_concursos.html'):

@@ -190,6 +190,11 @@ a.iniciativa_content:hover span {
 #services .media {
     overflow: visible !important;
 }
+#services a.dropdown-header{
+  border-top: 1px solid #e9ecef;
+  color: #959BA0 !important;
+  font-size: 15px;
+}
 
 #list_alianza .with_border .item-media {
     margin: 15px;

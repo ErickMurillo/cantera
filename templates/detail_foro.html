@@ -112,13 +112,13 @@
 							
 							<div class="comment-author">
 								{% if aporte.usuario.avatar %}
-									{% thumbnail aporte.usuario.avatar "80x80" crop="center" as im %}
-									<img class="media-object" src="{{ im.url }}" alt="">
-									{% endthumbnail %}
+								{% thumbnail aporte.usuario.avatar "80x80" crop="center" as im %}
+								<img class="media-object" src="{{ im.url }}" alt="">
+								{% endthumbnail %}
 								{% elif aporte.usuario.socialaccount_set.all.0.get_avatar_url %}
-									{% thumbnail aporte.usuario.socialaccount_set.all.0.get_avatar_url "80x80" crop="center" as im %}
-									<img class="media-object" src="{{ im.url }}" alt="">
-									{% endthumbnail %}
+								{% thumbnail aporte.usuario.socialaccount_set.all.0.get_avatar_url "80x80" crop="center" as im %}
+								<img class="media-object" src="{{ im.url }}" alt="">
+								{% endthumbnail %}
 								{% else %}
 								<img class="media-object" src="http://via.placeholder.com/80x80" alt="">
 								{% endif %}
@@ -181,13 +181,13 @@
 								<article class="comment">
 									<div class="comment-author"> 
 										{% if comment.usuario.avatar %}
-											{% thumbnail comment.usuario.avatar "80x80" crop="center" as im %}
-											<img class="media-object" src="{{ im.url }}" alt="">
-											{% endthumbnail %}
+										{% thumbnail comment.usuario.avatar "80x80" crop="center" as im %}
+										<img class="media-object" src="{{ im.url }}" alt="">
+										{% endthumbnail %}
 										{% elif comment.usuario.socialaccount_set.all.0.get_avatar_url %}
-											{% thumbnail comment.usuario.socialaccount_set.all.0.get_avatar_url "80x80" crop="center" as im %}
-											<img class="media-object" src="{{ im.url }}" alt="">
-											{% endthumbnail %}
+										{% thumbnail comment.usuario.socialaccount_set.all.0.get_avatar_url "80x80" crop="center" as im %}
+										<img class="media-object" src="{{ im.url }}" alt="">
+										{% endthumbnail %}
 										{% else %}
 										<img class="media-object" src="http://via.placeholder.com/80x80" alt="">
 										{% endif %}
@@ -205,7 +205,7 @@
 										{% if request.user == object.usuario %}
 										<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'editar_comentario' comment.id %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
 											<i class="fa fa-pencil" aria-hidden="true"></i>
-										<span class="sr-only">Responder</span> 
+											<span class="sr-only">Responder</span> 
 										</a>|
 
 
@@ -288,26 +288,33 @@
 
 			</div>
 
-			<div class="widget widget_recent_posts">
-				<h4 class="widget-title">Foros Destacados</h4>
-				<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+			<div class="widget widget_slider widget_recent_posts">
+				<h4 class="widget-title"> Foros Destacados </h4>
+				<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
 					{% for destacado in foros_destacados %}
 					<div class="vertical-item content-padding with_border">
-
+						<div class="item-media"> 
+							{% thumbnail destacado.foto "350x279" crop="center" as im %}
+							<img src="{{ im.url }}" alt="">
+							{% empty %}
+							<img src="http://via.placeholder.com/350x279" alt="">
+							{% endthumbnail %}
+							<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-foro' destacado.slug %}"></a> </div>
+						</div>
 						<div class="item-content">
-							<h5 class="bottommargin_0"> <a href="{% url 'detalle-foro' destacado.slug %}"> {{destacado.nombre}}</a> </h5> <span class="entry-meta greylinks">
+							<h5 class="bottommargin_0"> <a href="{% url 'detalle-foro' destacado.slug %}">{{destacado.nombre}}</a> </h5> <span class="entry-meta greylinks">
 								<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-								<a href="blog-single-full.html">
+								<a href="{% url 'detalle-foro' destacado.slug %}">
 									<time datetime="2017-10-03T08:50:40+00:00">
 									{{destacado.creacion|date:"d N, Y"}}</time>
 								</a>
 							</span> 
 						</div>
-
 					</div>
 					{% endfor %}
+
 				</div>
-			</div>
+			</div>	
 
 		</aside>
 		<!-- eof aside sidebar -->

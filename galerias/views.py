@@ -1,4 +1,5 @@
 from django.shortcuts import render,get_object_or_404
+from django.db.models import Count 
 from .models import *
 from evento.models import *
 import datetime
@@ -7,7 +8,7 @@ import datetime
 
 def index_galeriasImagenes(request, template = 'list_galeria.html'):
 	list_galeria = GaleriaImagenes.objects.order_by('-id')
-
+	list_tematica = GaleriaImagenes.objects.values_list('tematica__nombre', flat = True)
 	return render(request,template,locals())
 
 def detalle_galeriaImagenes(request, slug, template = 'detail_galeria.html'):

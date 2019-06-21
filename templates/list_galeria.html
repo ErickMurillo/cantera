@@ -48,6 +48,8 @@
 <section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
+			{% if list_galeria %}
+				
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
 					{% paginate 6 list_galeria %}
@@ -74,7 +76,7 @@
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
-									<div class="categories-links small-text highlightlinks"> <a href="#">{{obj.tematica}}</a> </div>
+									<div class="categories-links small-text highlightlinks"> <span class="highlight">{{obj.tematica}}</span> </div>
 									<h3 class="entry-title small bottommargin_0">
 										{% if request.path == '/recursos-metodologicos/galerias/imagenes/' %}
 										<a rel="bookmark" href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a>
@@ -138,6 +140,11 @@
 					</div>
 				</div>
 			</div>
+			{% else %}
+			<div class="col-sm-7 col-md-8 col-lg-8">
+				<div class="alert alert-danger" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button> <strong>Oh no!</strong> No hay resultados </div>
+			</div>
+			{% endif %}
 			<!--eof .col-sm-8 (main content)-->
 			<!-- sidebar -->
 			<aside class="col-sm-5 col-md-4 col-lg-4">
@@ -165,18 +172,19 @@
 				<div class="widget">
 					<h4 class="widget-title">Temáticas</h4>
 					<div class="tagcloud">
-						<!--{% for tema in tematica %}
+						{% for tema in list_tematica %}
 								<a href="">{{tema}}</a>
 							{% endfor %}
-						-->
-						{% for x,y in dic_temas.items %}
+						
+						<!--{% for x,y in dic_temas.items %}
 						<a href="{% if '/recursos-metodologicos/galerias/imagenes/' in request.path %}
 						{% url 'filtro_temas_img' x.id %}
 						{% else %}
 						{% url 'filtro_temas_vid' x.id %}
 						{% endif %}
 						" class="pdr10 filter-options__item filter" data-filter=".{{x.id}}"><i class="fa fa-tags"></i> {{x}}</a>
-						{% endfor %}
+						{% endfor %}-->
+
 					</div>
 				</div>
 			</aside>

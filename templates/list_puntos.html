@@ -34,7 +34,7 @@
 <section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
-			{% if list_puntos_vista.count > 0 %}
+			{% if list_puntos_vista %}
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				{% paginate 1 list_puntos_vista %}
 				{% for obj in list_puntos_vista  %}
@@ -54,7 +54,7 @@
 						<div class="col-md-7">
 							<div class="item-content">
 								<header class="entry-header">
-									<h3 class="entry-title small">{{obj.tittle}} <a href="{% url 'point_details' obj.slug %}"></a> </h3>
+									<h3 class="entry-title small"><a href="{% url 'point_details' obj.slug %}">{{obj.tittle}}</a> </h3>
 									<div class="entry-meta greylinks inline-content">
 										<span>
 											<i class="fa fa-users highlight" aria-hidden="true"></i>
@@ -64,8 +64,7 @@
 											<i class="fa fa-pencil-square-o highlight" aria-hidden="true"></i>
 											{{obj.usuario}}
 										</span> 
-									</div>
-									
+									</div>									
 								</header>
 								<p>{{obj.descripcion|safe|striptags|truncatechars:200}} <a href="{% url 'point_details' obj.slug %}" class="more-link">Ver más</a></p>
 
@@ -86,7 +85,7 @@
 							<li class="page-item">
 								<a class="page-link" href="{{ pages.previous.path }}" aria-label="Previous">
 									<span aria-hidden="true">&lt;</span>
-									<span class="sr-only">Previous</span>
+									<span class="sr-only">Anterior</span>
 								</a>
 							</li>
 
@@ -120,8 +119,6 @@
 				<div class="alert alert-danger" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button> <strong>Oh no!</strong> No hay resultados </div>
 			</div>
 			{% endif%}
-			
-
 
 			<!-- sidebar -->
 			<aside class="col-sm-5 col-md-4 col-lg-4">

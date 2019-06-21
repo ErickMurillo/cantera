@@ -263,3 +263,7 @@ img.b_avatar {
     max-width: 90px !important;
     border: 2px solid #e4e4e4 !important;
 }
+.bgtext {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0px 8px 0px 8px;
+}

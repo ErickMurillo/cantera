@@ -27,7 +27,7 @@
 					<li> <a href="/" class="white-color">
 						Inicio
 					</a> </li>
-					<li> <a href="#" class="white-color">Recursos Metodológicos</a> </li>
+					<li> <a class="white-color">Recursos Metodológicos</a> </li>
 					<li class="active">
 						{% if request.path == '/recursos-metodologicos/publicaciones/' %}
 						Publicaciones
@@ -43,6 +43,9 @@
 <section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
+			{% if list_pub %}
+			
+			
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
 					{% paginate 4 list_pub %}
@@ -123,16 +126,21 @@
 						</div>
 					</div>
 				</div>
+				{% else %}
+				<div class="col-sm-7 col-md-8 col-lg-8">
+					<div class="alert alert-danger" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button> <strong>Oh no!</strong> No hay resultados </div>
+				</div>
+				{% endif %}
 				<!--aaside-->
 				<aside class="col-sm-5 col-md-4 col-lg-4">
 					<div class="widget widget_search">
 						<form class="" action='.' method='GET'>
-                        <div class="form-group margin_0"> 
-							<label class="sr-only" for="widget-search">Search for:</label> 
-							<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
-						</div> 
-						<button type="submit" class="theme_button color1">Search</button>	
-                    </form>
+							<div class="form-group margin_0"> 
+								<label class="sr-only" for="widget-search">Search for:</label> 
+								<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+							</div> 
+							<button type="submit" class="theme_button color1">Search</button>	
+						</form>
 					</div>
 
 					<!-- categorias -->
@@ -155,9 +163,9 @@
 							<div class="vertical-item content-padding with_border">
 								<div class="item-media"> 
 									{% thumbnail obj.foto "350x279" crop="center" as im %}
-									    <img src="{{ im.url }}" alt="">
+									<img src="{{ im.url }}" alt="">
 									{% empty %}
-										<img src="http://via.placeholder.com/350x279" alt="">
+									<img src="http://via.placeholder.com/350x279" alt="">
 									{% endthumbnail %}
 									<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
 								</div>
@@ -180,6 +188,7 @@
 				</aside>
 
 			</div>
+			
 		</div>
 	</section>
 

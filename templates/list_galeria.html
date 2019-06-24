@@ -57,7 +57,7 @@
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">
 						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
 							<div class="item-media">
-								{% if request.path == '/recursos-metodologicos/galerias/imagenes/' %}
+								{% if '/recursos-metodologicos/galerias/imagenes/' in request.path   %}
 								{% thumbnail obj.portada "365x243" crop="center" as im %}
 
 								<img src="{{ im.url }}" alt="">
@@ -78,11 +78,11 @@
 								<header class="entry-header">
 									<div class="categories-links small-text highlightlinks"> <span class="highlight">{{obj.tematica}}</span> </div>
 									<h3 class="entry-title small bottommargin_0">
-										{% if request.path == '/recursos-metodologicos/galerias/imagenes/' %}
+										{% if '/recursos-metodologicos/galerias/imagenes/' in request.path  %}
 										<a rel="bookmark" href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a>
 										{% else %}
 
-										<a data-fancybox href="{{obj.url}}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+										<a data-fancybox href="{{obj.url}}&amp;autoplay=1&amp;rel=0&amp;controls=1&amp;showinfo=0">
 											{{obj}}
 										</a>
 										
@@ -172,9 +172,16 @@
 				<div class="widget">
 					<h4 class="widget-title">Temáticas</h4>
 					<div class="tagcloud">
-						{% for tema in list_tematica %}
-								<a href="">{{tema}}</a>
-							{% endfor %}
+						{% for x in list_tematica.keys %}
+							{% if forloop.counter < 7 %}
+								{% if '/recursos-metodologicos/galerias/imagenes/' in request.path %}
+									<a href="{% url 'filtro_temas_img' x.id %}">{{x}}</a>
+								{% else %}
+									<a href="{% url 'filtro_temas_vid' x.id %}">{{x}}</a>
+								{% endif %}
+								
+							{% endif %}
+						{% endfor %}
 						
 						<!--{% for x,y in dic_temas.items %}
 						<a href="{% if '/recursos-metodologicos/galerias/imagenes/' in request.path %}

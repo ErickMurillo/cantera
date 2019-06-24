@@ -5625,9 +5625,9 @@ body.boxed {
 	}
 }
 
-#box_wrapper > section {
+/*#box_wrapper > section {
 	overflow: hidden;
-}
+}*/
 
 /* full height for 404 page */
 #box_wrapper, #canvas {

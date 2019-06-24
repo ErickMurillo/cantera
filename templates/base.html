@@ -9,307 +9,331 @@
 <!--<![endif]-->
 
 <head>
-	<title>Plataforma Regional Género y Metodologías</title>
-	<meta charset="utf-8">
-	<!--[if IE]>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<![endif]-->
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/static/css/animations.css">
-	<link rel="stylesheet" href="/static/css/fonts.css">
-	<link rel="stylesheet" href="/static/css/icofont.min.css">
-	<link rel="stylesheet" href="/static/css/main.css" class="color-switcher-link">
-	<link rel="stylesheet" href="/static/css/shop.css" class="color-switcher-link">
-	<link rel="stylesheet" href="/static/css/maincustom.css" class="color-switcher-link">
-	<script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
-	<!--[if lt IE 9]>
-		<script src="js/vendor/html5shiv.min.js"></script>
-		<script src="js/vendor/respond.min.js"></script>
-		<script src="js/vendor/jquery-1.12.4.min.js"></script>
-	<![endif]-->
-	{% block extra_css %}{% endblock extra_css %}
+    <title>Plataforma Regional Género y Metodologías</title>
+    <meta charset="utf-8">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/fonts.css">
+    <link rel="stylesheet" href="/static/css/icofont.min.css">
+    <link rel="stylesheet" href="/static/css/main.css" class="color-switcher-link">
+    <link rel="stylesheet" href="/static/css/shop.css" class="color-switcher-link">
+    <link rel="stylesheet" href="/static/css/maincustom.css" class="color-switcher-link">
+    <script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/vendor/html5shiv.min.js"></script>
+        <script src="js/vendor/respond.min.js"></script>
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <![endif]-->
+    {% block extra_css %}{% endblock extra_css %}
 </head>
 
 <body>
-	<!--[if lt IE 9]>
-		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
-	<![endif]-->
-	
-	<!-- search modal -->
-	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		<span aria-hidden="true">
-			<i class="rt-icon2-cross2"></i>
-		</span>
-	</button>
-	<div class="widget widget_search">
-		<form method="get" class="searchform search-form form-inline" action="./">
-			<div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
-		</div>
-	</div>
-	<!-- Unyson messages modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
-		<div class="fw-messages-wrap ls with_padding">
-			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
-			<!--
-		<ul class="list-unstyled">
-			<li>Message To User</li>
-		</ul>
-	-->
+    <!--[if lt IE 9]>
+        <div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+    <![endif]-->
+    
+    <!-- search modal -->
+    <div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">
+            <i class="rt-icon2-cross2"></i>
+        </span>
+    </button>
+    <div class="widget widget_search">
+        <form method="get" class="searchform search-form form-inline" action="./">
+            <div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
+        </div>
+    </div>
+    <!-- Unyson messages modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+        <div class="fw-messages-wrap ls with_padding">
+            <!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+            <!--
+        <ul class="list-unstyled">
+            <li>Message To User</li>
+        </ul>
+    -->
 </div>
 </div>
 <!-- eof .modal -->
 <!-- wrappers for visual page editor and boxed version of template -->
 <!--[if lt IE 9]>
-		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
-	<![endif]-->
-	
-	<!-- search modal -->
-	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		<span aria-hidden="true">
-			<i class="rt-icon2-cross2"></i>
-		</span>
-	</button>
-	<div class="widget widget_search">
-		<form method="get" class="searchform search-form form-inline" action="./">
-			<div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
-		</div>
-	</div>
-	<!-- Unyson messages modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
-		<div class="fw-messages-wrap ls with_padding">
-			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
-			<!--
-		<ul class="list-unstyled">
-			<li>Message To User</li>
-		</ul>
-	-->
+        <div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+    <![endif]-->
+    
+    <!-- search modal -->
+    <div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">
+            <i class="rt-icon2-cross2"></i>
+        </span>
+    </button>
+    <div class="widget widget_search">
+        <form method="get" class="searchform search-form form-inline" action="./">
+            <div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
+        </div>
+    </div>
+    <!-- Unyson messages modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+        <div class="fw-messages-wrap ls with_padding">
+            <!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+            <!--
+        <ul class="list-unstyled">
+            <li>Message To User</li>
+        </ul>
+    -->
 </div>
 </div>
 <!-- eof .modal -->
 <!-- wrappers for visual page editor and boxed version of template -->
 
 <div id="canvas">
-	<div id="box_wrapper">
-		<!-- template sections -->
-		<section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0 bg_customgreen">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-6 text-center text-lg-left hidden-xs">
-						<div class="inline-content big-spacing">
-							<div class="page_social"> <a class="social-icon socicon-facebook white-color" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter white-color" href="#" title="Twitter"></a>  <a class="social-icon socicon-youtube white-color" href="#" title="Youtube"></a> </div> 
-									<!-- <span class="xs-block">
-										<i class="fa fa-clock-o highlight3 rightpadding_5" aria-hidden="true"></i>
-										Mon-Fri: 9:00-19:00; Sat: 10:00-17:00; Sun: Closed
-									</span>  -->
-								</div>
-							</div>
-							<div class="col-lg-6 text-center text-lg-right">
-								<div id="topline-animation-wrap">
-									<div id="topline-hide" class="inline-content big-spacing"> 
+    <div id="box_wrapper">
+        <!-- template sections -->
+        <section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0 bg_customgreen">
+            <div class="container-fluid">
+                <div class="row">
+            		<div class="col-lg-6 text-center text-lg-left hidden-xs">
+                		<div class="inline-content big-spacing">
+                            <div class="page_social"> 
+                            	<a class="social-icon socicon-facebook white-color" href="#" title="Facebook"></a> 
+                            	<a class="social-icon socicon-twitter white-color" href="#" title="Twitter"></a>  
+                            	<a class="social-icon socicon-youtube white-color" href="#" title="Youtube"></a> 
+                            </div>
 
-										<!--<div style="z-index:20">
-											<ul class="inline-list menu greylinks">
-												{% if request.user.is_authenticated %}
+                            <!-- <span class="xs-block">
+                                <i class="fa fa-clock-o highlight3 rightpadding_5" aria-hidden="true"></i>
+                                Mon-Fri: 9:00-19:00; Sat: 10:00-17:00; Sun: Closed
+                            </span>  -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-right">
+                        <div id="topline-animation-wrap">
+                            <div id="topline-hide" class="inline-content big-spacing"> 
 
-												<li>
-													<div class="comment-author">
-														{% if user.avatar %}
-														{% thumbnail user.avatar "34x34" crop="center" as im %}
-														<img class="" src="{{ im.url }}" alt="">
-														{% endthumbnail %}
-														{% elif user.socialaccount_set.all.0.get_avatar_url %}
-														{% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
-														<img class="" src="{{ im.url }}" alt="">
-														{% endthumbnail %}
-														{% else %}
+                               
+                                <ul class="inline-list menu">
+                                    {% if request.user.is_authenticated %}
 
-														<span><i class="icofont-ui-user white-color"></i></span>
+                                    <li>
+                                        <div class="comment-author">
+                                            {% if user.avatar %}
+                                            {% thumbnail user.avatar "34x34" crop="center" as im %}
+                                            <img class="" src="{{ im.url }}" alt="">
+                                            {% endthumbnail %}
+                                            {% elif user.socialaccount_set.all.0.get_avatar_url %}
+                                            {% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
+                                            <img class="" src="{{ im.url }}" alt="">
+                                            {% endthumbnail %}
+                                            {% else %}
 
-														{% endif %}
-													</div>
-												</li>
-												<li>
-													<div class="dropdown dropup text-center ">
-														<a class="visible_hover white-color small-text"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-															<span>{{user.get_full_name|default:user.username}}</span> <i class="icofont-caret-down rotate"></i>
-														</a>
-														<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-															<a class="dropdown-item" href="/accounts/profile/">Perfil</a>
-															<a href="/accounts/logout/" class="theme_button color2 margin_0">Cerrar Sesión</a>
-														</div>
-													</div>
-												</li>
-												{% else %}
-												<li>
-													<a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
-												</li>
-												{% endif%}
+                                            <span><i class="icofont-ui-user white-color"></i></span>
 
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                    <li>
 
-											</ul>
-										</div>-->
-									</div>
+                                    	<div class="dropdown dp-user">
+                                    		<a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    			{{user.get_full_name|default:user.username}}
+                                    			<i class="icofont-caret-down rotate"></i>
+                                    		</a>
+                                    		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    			
+                                    			<li><a href="{% url 'perfil' %}">Organización</a></li>
+												<li><a href="{% url 'editar_perfil' user.id %}">Editar perfil</a></li>
+												<li><a href="{% url 'account_change_password' %}">Cambiar contraseña</a></li>
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<header class="page_header header_white toggler_xs_right columns_margin_0">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-sm-12 display_table">
-								<div class="header_left_logo display_table_cell"> <a href="/" class="logo logo_with_text">
-									<img src="/static/img/logo.png" alt="">
-									<!-- <span class="logo_text">
-										Diversify
-										<small class="highlight4">lgbt comunidad center</small>
-									</span> -->
-								</a> 
-							</div>
-							<div class="header_mainmenu display_table_cell text-center">
-								<!-- main nav start -->
-								<nav class="mainmenu_wrapper">
-									<ul class="mainmenu nav sf-menu">
-										<li class="{% if request.path == '/' %} active {% endif %}"> <a href="/">Inicio</a>
-
-										</li>
-
-										<li> <a class="{% if request.path == '/quienes-somos' %} active {% endif %}" href="/quienes-somos/">¿Quienes Somos?</a>
-										</li>
-
-										<!-- eof pages -->
-										<li> <a class="{% if '/alianzas' in request.path %} active {% endif %}" href="/alianzas">Alianzas y Colaboraciones</a>
-											
-										</li>
-
-										{% if request.user.is_authenticated %}
-										<li class="">
-
-											<a>
-												<span>{{user.get_full_name|default:user.username}}</span> <i class="icofont-caret-down rotate"></i>
-											</a>
-											<ul>
-												<li> <a href="/accounts/profile/">Perfil</a> </li>
-												<li> <a href="/accounts/logout/">Cerrar Sesión</a> </li>
-											</ul>
-										</li>
-										{% else %}
-										<li> 
-											<a href="{% url 'account_login' %}?next={{ request.path }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión</a>
-										</li>
-										
-										{% endif%}
-
-									</ul>
-								</nav>
-								<!-- eof main nav -->
-								<!-- header toggler --><span class="toggle_menu"><span></span></span>
-							</div>
+                                    			<li role="separator" class="divider"></li>
+                                    			<li><a href="/accounts/logout/">Cerrar Sesión</a></li>
+                                    		</ul>
+                                    	</div>
+                                    </li>
+                                    {% else %}
+                                    <li>
+                                        <a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
+                                    </li>
+                                    {% endif%}
 
 
+                                </ul>
+                               
+                            </div>
 
-						</div>
-					</div>
-				</div>
-			</header>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <header class="page_header header_white toggler_xs_right columns_margin_0">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 display_table">
+                        <div class="header_left_logo display_table_cell"> 
+                        	<a href="/" class="logo">
+                                <img src="/static/img/logo.png" alt="">
+                            </a> 
+                    	</div>
+                        <div class="header_mainmenu display_table_cell text-right">
+                            <!-- main nav start -->
+                            <nav class="mainmenu_wrapper">
+                                <ul class="mainmenu nav sf-menu">
+                                    <li class="{% if request.path == '/' %} active {% endif %}"> <a href="/">Inicio</a>
+
+                                    </li>
+
+                                    <li> <a class="{% if request.path == '/quienes-somos' %} active {% endif %}" href="/quienes-somos/">¿Quienes Somos?</a>
+                                    </li>
+
+                                    <!-- eof pages -->
+                                    <li> <a class="{% if '/alianzas' in request.path %} active {% endif %}" href="/alianzas">Alianzas y Colaboraciones</a>
+
+                                    </li>
+
+                                    <div id="mobile_menu" class="nav">
+                                        <hr>
+
+                                        <li class="">
+
+                                            <a href="#"><span>Actualidad</span></a>
+                                            <ul>
+                                                <li> <a href="/actualidad/noticias">Noticias</a> </li>
+                                                <li> <a href="/actualidad/situacion-regional-genero">Situación regional de género</a> </li>
+                                            </ul>
+                                        </li>
+
+                                        <li> 
+                                            <a href="/puntos-vista">Puntos de vista</a>
+                                        </li>
+
+                                        <li> 
+                                            <a href="/foros">Foros</a>
+                                        </li>
+
+                                        <li class="#">
+
+                                            <a>
+                                                <span>Recursos metodológicos</span>
+                                            </a>
+                                            <ul>
+                                                <li> <a href="/recursos-metodologicos/publicaciones">Publicaciones</a> </li>
+                                                <li> <a href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a> </li>
+                                                <li> <a href="/recursos-metodologicos/galerias/imagenes">Imágenes</a> </li>
+                                                <li> <a href="/recursos-metodologicos/galerias/videos">Videos</a> </li>
+                                                <li><a href="#">Audios</a></li>
+                                            </ul>
+                                        </li>
+                                    </div>
+
+                                </ul>
+
+                            </nav>
+                            <!-- eof main nav -->
+                            <!-- header toggler -->
+
+                        </div>
 
 
-			{% block content %}{% endblock content %}
 
-			<footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 text-center">
-							<div class="widget widget_text widget_about">
-								<div class="logo logo_with_text bottommargin_10"> <img src="/static/img/logo.png" alt=""> </div>
-								<p>La Plataforma Regional Género y Metodologías es un espacio de comunicación e intercambio cuyo propósito es contribuir a fortalecer los procesos de cambio hacia relaciones de género justas y sostenibles en la región centroamericana. La Plataforma es administrada por Cantera Nicaragua.</p>
-								<p class="topmargin_25"> <a class="social-icon border-icon rounded-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon border-icon rounded-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon border-icon rounded-icon socicon-youtube" href="#" title="Youtube"></a> </p>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6 col-xs-12 col-md-pull-4 text-center">
-							<div class="widget widget_text">
-								<h3 class="widget-title">Contáctanos</h3>
-								<ul class="list-unstyled greylinks">
-									<li class="media"> <i class="fa fa-map-marker highlight rightpadding_5" aria-hidden="true"></i> Plaza El Sol 2c. sur 1c. arriba. Managua, Nicaragua.</li>
-									<li class="media"> <i class="fa fa-phone highlight rightpadding_5" aria-hidden="true"></i> (505) 2278-0103 </li>
-									<li class="media"> <i class="fa fa-envelope highlight rightpadding_5" aria-hidden="true"></i> <a href="mailto: comunicacionescantera@gmail.com"> generoymetodologia@gmail.com</a> </li>
+                	</div>
+            	</div>
+        	</div>
+    	</header>   
 
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6 col-xs-12 hidden-xs hidden-sm text-center">
-							<div class="widget widget_recent_posts">
-								<h3 class="widget-title">Explorar </h3>
 
-							</div>
-							<div class="widget widget_text">
-								<ul class="list1 no-bullets no-top-border no-bottom-border greylinks">
-									<li> <a href="/actualidad" target="_blank">Actualidad</a> </li>
-									<li> <a href="/puntos-vista" target="_blank">Puntos de vista</a> </li>									
-									<li> <a href="/foros" target="_blank">Foros</a> </li>
-									<li> <a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
-									</a>
-									<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-										<a class="dropdown-item" href="./recursos-metodologicos/publicaciones">Publicaciones</a>
-										<a class="dropdown-item" href="./recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
-										<a class="dropdown-header">Galeria</a>
-										<a class="dropdown-item" href="./recursos-metodologicos/galerias/imagenes">Imágenes</a>
-										<a class="dropdown-item" href="./recursos-metodologicos/galerias/videos">Videos</a>
-										
+            {% block content %}{% endblock content %}
 
-										<a class="dropdown-item" href="./recursos-metodologicos/audios">Audios</a>
-									</div> </li>
-									<li>
-										<a class="visible_hover"  id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i></a>
-										<div class="dropdown-menu arrow-down highlight" aria-labelledby="dropdownMenuButton12">
-											<a class="dropdown-item " href="/iniciativas-destacadas/campanias">Campañas</a>
-											<a class="dropdown-item" href="/iniciativas-destacadas/eventos">Eventos</a>
-											<a class="dropdown-item" href="/iniciativas-destacadas/concursos">Concursos</a>
-										</div>
-									</li>
-									<!--<li>
-										<div class="dropdown dropup text-center">
-											<a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i>
-											</a>
-											<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-												<a class="dropdown-item" href="/iniciativas-destacadas/campanias">Campañas</a>
-												<a class="dropdown-item" href="/iniciativas-destacadas/eventos">Eventos</a>
-												<a class="dropdown-item" href="/iniciativas-destacadas/concursos">Concursos</a>
-											</div>
-										</div>
-									</li>-->
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
+        <footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">
+            <div class="container">
+                <div class="row">
 
-			<section class="ds ms parallax page_copyright overlay_color section_padding_top_30 section_padding_bottom_30">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12 text-center justify-content-center align-items-center">
-							<p>&copy; Copyright @ 2019. Todos los derechos reservados</p>
+                    <div class="col-md-4 col-sm-12 col-md-push-4 text-center">
+                        <div class="widget widget_text">
+                            <div class="logo logo_with_text"> <img src="/static/img/logo.png" alt=""></div>
+                            <p>La Plataforma Regional Género y Metodologías es un espacio de comunicación e intercambio cuyo propósito es contribuir a fortalecer los procesos de cambio hacia relaciones de género justas y sostenibles en la región centroamericana. La Plataforma es administrada por Cantera Nicaragua.</p>
+                            <p class="topmargin_25"> <a class="social-icon border-icon rounded-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon border-icon rounded-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon border-icon rounded-icon socicon-youtube" href="#" title="Youtube"></a> </p>                               
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-md-pull-4 text-center">
+                        <div class="widget widget_text widget_media_margin">
+                            <h3 class="widget-title">Explorar</h3>
+                            <ul class="list1 no-bullets no-top-border no-bottom-border greylinks">
+                                <li> <a href="/actualidad" target="_blank">Actualidad</a> </li>
+                                <li> <a href="/puntos-vista" target="_blank">Puntos de vista</a> </li>
+                                <li> <a href="/foros" target="_blank">Foros</a> </li>
+                                <li> <a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
+                                </a>
+                                <div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="./recursos-metodologicos/publicaciones">Publicaciones</a>
+                                    <a class="dropdown-item" href="./recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
+                                    <a class="dropdown-header">Galeria</a>
+                                    <a class="dropdown-item" href="./recursos-metodologicos/galerias/imagenes">Imágenes</a>
+                                    <a class="dropdown-item" href="./recursos-metodologicos/galerias/videos">Videos</a>
 
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-	</div>
 
-	<script src="/static/js/jquery.min.js"></script>
-	<script src="/static/js/compressed.js"></script>
-	<script src="/static/js/selectize.min.js"></script>
-	<script src="/static/js/main.js"></script>
-	{% block extra_js %}{% endblock extra_js %}
+                                    <a class="dropdown-item" href="./recursos-metodologicos/audios">Audios</a>
+                                </div> </li>
+                                <li>
+                                    <a class="visible_hover"  id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i></a>
+                                    <div class="dropdown-menu arrow-down highlight" aria-labelledby="dropdownMenuButton12">
+                                        <a class="dropdown-item " href="/iniciativas-destacadas/campanias">Campañas</a>
+                                        <a class="dropdown-item" href="/iniciativas-destacadas/eventos">Eventos</a>
+                                        <a class="dropdown-item" href="/iniciativas-destacadas/concursos">Concursos</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 text-center">
+                        <div class="widget widget_mailchimp widget_media_margin">
+                            <h3 class="widget-title">Contáctanos</h3>
+                            <div class="media small-teaser">
+                                <div class="media-left"> <i class="icofont-google-map highlight fontsize_24"></i> </div>
+                                <div class="media-body"> Plaza El Sol 2c. sur 1c. arriba. Managua, Nicaragua </div>
+                            </div>
+                            <div class="media small-teaser">
+                                <div class="media-left"> <i class="icofont-phone-circle highlight fontsize_24"></i> </div>
+                                <div class="media-body"> (505) 2278-0103 </div>
+                            </div>
+                            <div class="media small-teaser greylinks">
+                                <div class="media-left"> <i class="icofont-email highlight fontsize_24"></i> </div>
+                                <div class="media-body"> <a href="mailto: generoymetodologia@gmail.com"> generoymetodologia@gmail.com</a> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <section class="ds ms parallax page_copyright overlay_color section_padding_top_30 section_padding_bottom_30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center justify-content-center align-items-center">
+                        <p>&copy; Copyright @ 2019. Todos los derechos reservados</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/compressed.js"></script>
+<script src="/static/js/selectize.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+    {% block extra_js %}{% endblock extra_js %}
+
 
 </body>
 </html>

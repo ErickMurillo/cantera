@@ -16,19 +16,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/static/css/animations.css">
-	<link rel="stylesheet" href="/static/css/fonts.css">
-	<link rel="stylesheet" href="/static/css/icofont.min.css">
-	<link rel="stylesheet" href="/static/css/main.css" class="color-switcher-link">
-	<link rel="stylesheet" href="/static/css/shop.css" class="color-switcher-link">
-
-	<link rel="stylesheet" href="/static/css/maincustom.css" class="color-switcher-link">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css"/>
-	<link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
-
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/fonts.css">
+    <link rel="stylesheet" href="/static/css/icofont.min.css">
+    <link rel="stylesheet" href="/static/css/main.css" class="color-switcher-link">
+    <link rel="stylesheet" href="/static/css/shop.css" class="color-switcher-link">
+    <link rel="stylesheet" href="/static/css/maincustom.css" class="color-switcher-link">
+	
 	<link rel="stylesheet" href="/static/css/admin_style.css" class="color-switcher-link">
-
- 	<script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
+	
+    <script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
 	<!--[if lt IE 9]>
 		<script src="js/vendor/html5shiv.min.js"></script>
 		<script src="js/vendor/respond.min.js"></script>
@@ -78,67 +75,143 @@
 	<div id="canvas">
 		<div id="box_wrapper">
 			<!-- template sections -->
-			<section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-6 text-center text-lg-left hidden-xs">
-							<div class="inline-content big-spacing">
-								<div class="page_social"> <a class="social-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon socicon-twitter" href="#" title="Twitter"></a>  <a class="social-icon socicon-youtube" href="#" title="Youtube"></a> </div> 
-									<!-- <span class="xs-block">
-										<i class="fa fa-clock-o highlight3 rightpadding_5" aria-hidden="true"></i>
-										Mon-Fri: 9:00-19:00; Sat: 10:00-17:00; Sun: Closed
-									</span>  -->
-							</div>
-						</div>
-						<div class="col-lg-6 text-center text-lg-right">
-							<div id="topline-animation-wrap">
-								<div id="topline-hide" class="inline-content big-spacing"> 
-								<a href="">{{user.get_full_name|default:user.username}}</a>
-								<a href="{% url 'perfil' %}">Organización</a>
-								<a href="{% url 'editar_perfil' user.id %}">Editar perfil</a>
-								<a href="{% url 'account_change_password' %}">Cambiar contraseña</a>
-								<a href="/accounts/logout/">Cerrar Sesión</a>
-							</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+			<section class="page_topline ds table_section table_section_lg section_padding_top_15 section_padding_bottom_15 columns_margin_0 bg_customgreen">
+	            <div class="container-fluid">
+	                <div class="row">
+	            		<div class="col-lg-6 text-center text-lg-left hidden-xs">
+	                		<div class="inline-content big-spacing">
+	                            <div class="page_social"> 
+	                            	<a class="social-icon socicon-facebook white-color" href="#" title="Facebook"></a> 
+	                            	<a class="social-icon socicon-twitter white-color" href="#" title="Twitter"></a>  
+	                            	<a class="social-icon socicon-youtube white-color" href="#" title="Youtube"></a> 
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-6 text-center text-lg-right">
+	                        <div id="topline-animation-wrap">
+	                            <div id="topline-hide" class="inline-content big-spacing"> 
+
+	                               
+	                                <ul class="inline-list menu">
+	                                    {% if request.user.is_authenticated %}
+
+	                                    <li>
+	                                        <div class="comment-author">
+
+	                                            <span><i class="icofont-ui-user white-color"></i></span>
+
+	                                           
+	                                        </div>
+	                                    </li>
+	                                    <li>
+
+	                                    	<div class="dropdown dp-user">
+	                                    		<a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	                                    			{{user.get_full_name|default:user.username}}
+	                                    			<i class="icofont-caret-down rotate"></i>
+	                                    		</a>
+	                                    		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	                                    			
+	                                    			<li><a href="{% url 'perfil' %}">Organización</a></li>
+													<li><a href="{% url 'editar_perfil' user.id %}">Editar perfil</a></li>
+													<li><a href="{% url 'account_change_password' %}">Cambiar contraseña</a></li>
+
+	                                    			<li role="separator" class="divider"></li>
+	                                    			<li><a href="/accounts/logout/">Cerrar Sesión</a></li>
+	                                    		</ul>
+	                                    	</div>
+	                                    </li>
+	                                    {% else %}
+	                                    <li>
+	                                        <a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
+	                                    </li>
+	                                    {% endif%}
+
+
+	                                </ul>
+	                               
+	                            </div>
+
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </section>
 
 			<header class="page_header header_white toggler_xs_right columns_margin_0">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-sm-12 display_table">
-							<div class="header_left_logo display_table_cell"> <a href="./" class="logo logo_with_text">
-								<img src="/static/img/logo.png" alt="">
-								</a> 
-							</div>
-							<div class="header_mainmenu display_table_cell text-right">
-								<!-- main nav start -->
-								<nav class="mainmenu_wrapper">
-									<ul class="mainmenu nav sf-menu">
-										<li class="active"> <a href="/">Inicio</a></li>
-										<li> <a href="/quienes-somos/">¿Quienes Somos?</a></li>
-										<li> <a href="/alianzas/">Alianzas y Colaboraciones</a></li>
-									</ul>
-								</nav>
-								<span class="toggle_menu"><span></span></span>
-							</div>
-							
-							<!--<div class="header_right_buttons display_table_cell text-right hidden-xs"> 
-								{% if request.user.is_authenticated %}
-									<a href="/accounts/profile/" class="theme_button color2 margin_0">{{user.get_full_name|default:user.username}}</a> 
-									<a href="/accounts/logout/" class="theme_button color2 margin_0">Cerrar Sesión</a> 
-								{% else %}
-									<a href="/accounts/login/?next={{ request.path }}" class="theme_button color2 margin_0">Iniciar Sesión</a> 
-								{% endif %}
-								
+	            <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-sm-12 display_table">
+	                        <div class="header_left_logo display_table_cell"> 
+	                        	<a href="/" class="logo">
+	                                <img src="/static/img/logo.png" alt="">
+	                            </a> 
+	                    	</div>
+	                        <div class="header_mainmenu display_table_cell text-right">
+	                            <!-- main nav start -->
+	                            <nav class="mainmenu_wrapper">
+	                                <ul class="mainmenu nav sf-menu">
+	                                    <li class="{% if request.path == '/' %} active {% endif %}"> <a href="/">Inicio</a>
 
-							</div> -->
-						</div>
-					</div>
-				</div>
-			</header>	
+	                                    </li>
+
+	                                    <li> <a class="{% if request.path == '/quienes-somos' %} active {% endif %}" href="/quienes-somos/">¿Quienes Somos?</a>
+	                                    </li>
+
+	                                    <!-- eof pages -->
+	                                    <li> <a class="{% if '/alianzas' in request.path %} active {% endif %}" href="/alianzas">Alianzas y Colaboraciones</a>
+
+	                                    </li>
+
+	                                    <div id="mobile_menu" class="nav">
+	                                        <hr>
+
+	                                        <li class="">
+
+	                                            <a href="#"><span>Actualidad</span></a>
+	                                            <ul>
+	                                                <li> <a href="/actualidad/noticias">Noticias</a> </li>
+	                                                <li> <a href="/actualidad/situacion-regional-genero">Situación regional de género</a> </li>
+	                                            </ul>
+	                                        </li>
+
+	                                        <li> 
+	                                            <a href="/puntos-vista">Puntos de vista</a>
+	                                        </li>
+
+	                                        <li> 
+	                                            <a href="/foros">Foros</a>
+	                                        </li>
+
+	                                        <li class="#">
+
+	                                            <a>
+	                                                <span>Recursos metodológicos</span>
+	                                            </a>
+	                                            <ul>
+	                                                <li> <a href="/recursos-metodologicos/publicaciones">Publicaciones</a> </li>
+	                                                <li> <a href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a> </li>
+	                                                <li> <a href="/recursos-metodologicos/galerias/imagenes">Imágenes</a> </li>
+	                                                <li> <a href="/recursos-metodologicos/galerias/videos">Videos</a> </li>
+	                                                <li><a href="#">Audios</a></li>
+	                                            </ul>
+	                                        </li>
+	                                    </div>
+
+	                                </ul>
+
+	                            </nav>
+	                            <!-- eof main nav -->
+	                            <!-- header toggler -->
+
+	                        </div>
+
+
+
+	                	</div>
+	            	</div>
+	        	</div>
+	    	</header>
 			<section id="services" class="ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0">
 				<div class="container-fluid">
 					<div class="row flex-wrap v-center-content">
@@ -233,15 +306,15 @@
 
 
 			<section class="ds ms parallax page_copyright overlay_color section_padding_top_30 section_padding_bottom_30">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12 text-center justify-content-center align-items-center">
-							<p>&copy; Copyright @ 2019. Todos los derechos reservados</p>
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-sm-12 text-center justify-content-center align-items-center">
+	                        <p>&copy; Copyright @ 2019. Todos los derechos reservados</p>
 
-						</div>
-					</div>
-				</div>
-			</section>
+	                    </div>
+	                </div>
+	            </div>
+	        </section>
 		</div>
 	</div>
 

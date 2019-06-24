@@ -34,7 +34,7 @@
 <section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
-			{% if list_puntos_vista.count > 0 %}
+			{% if list_puntos_vista %}
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				{% paginate 1 list_puntos_vista %}
 				{% for obj in list_puntos_vista  %}
@@ -54,7 +54,7 @@
 						<div class="col-md-7">
 							<div class="item-content">
 								<header class="entry-header">
-									<h3 class="entry-title small">{{obj.tittle}} <a href="{% url 'point_details' obj.slug %}"></a> </h3>
+									<h3 class="entry-title small"><a href="{% url 'point_details' obj.slug %}">{{obj.tittle}}</a> </h3>
 									<div class="entry-meta greylinks inline-content">
 										<span>
 											<i class="fa fa-users highlight" aria-hidden="true"></i>
@@ -64,8 +64,7 @@
 											<i class="fa fa-pencil-square-o highlight" aria-hidden="true"></i>
 											{{obj.usuario}}
 										</span> 
-									</div>
-									
+									</div>									
 								</header>
 								<p>{{obj.descripcion|safe|striptags|truncatechars:200}} <a href="{% url 'point_details' obj.slug %}" class="more-link">Ver más</a></p>
 
@@ -86,7 +85,7 @@
 							<li class="page-item">
 								<a class="page-link" href="{{ pages.previous.path }}" aria-label="Previous">
 									<span aria-hidden="true">&lt;</span>
-									<span class="sr-only">Previous</span>
+									<span class="sr-only">Anterior</span>
 								</a>
 							</li>
 
@@ -120,8 +119,6 @@
 				<div class="alert alert-danger" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button> <strong>Oh no!</strong> No hay resultados </div>
 			</div>
 			{% endif%}
-			
-
 
 			<!-- sidebar -->
 			<aside class="col-sm-5 col-md-4 col-lg-4">
@@ -135,16 +132,16 @@
 					</form>
 				</div>
 
-				<div class="widget widget_recent_posts">
-					<h4 class="widget-title">Próximos Eventos</h4>
-					<div class=" loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
+				<div class="widget widget_slider widget_recent_posts">
+					<h4 class="widget-title"> Próximos Eventos </h4>
+					<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
 						{% for obj in prox_eventos %}
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
 								{% thumbnail obj.foto "350x279" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/318x279" alt="">
+								<img src="http://via.placeholder.com/350x279" alt="">
 								{% endthumbnail %}
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
 							</div>
@@ -155,12 +152,11 @@
 										<time datetime="2017-10-03T08:50:40+00:00">
 										{{obj.inicio|date:"d N, Y"}}</time>
 									</a>
-
-
 								</span> 
 							</div>
 						</div>
 						{% endfor %}
+
 					</div>
 				</div>
 			</aside>

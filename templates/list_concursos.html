@@ -34,6 +34,9 @@
 <section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
+			{% if list_object %}
+			
+			
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
 					{% paginate 2 list_object %}
@@ -115,7 +118,14 @@
 			<!--eof .col-sm-8 (main content)-->
 			<!-- sidebar -->
 			<!--eof .col-sm-8 (main content)-->
+			{% else %}
+			<div class="col-sm-7 col-md-8 col-lg-8">
+				<div class="alert alert-danger" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button> <strong>Oh no!</strong> No hay resultados </div>
+
+			</div>
+			{% endif %}
 			<!-- sidebar -->
+
 			<aside class="col-sm-5 col-md-4 col-lg-4">
 				<div class="widget widget_search">
 					<form class="" action='.' method='GET'>

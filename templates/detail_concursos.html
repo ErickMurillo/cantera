@@ -52,7 +52,7 @@
 								</span>
 								<span>
 									<i class="fa fa-users highlight4" aria-hidden="true"></i>
-									{{object.author.organizacion}}
+									{{object.author.organizacion.siglas}}
 								</span> 
 							
 							</div>
@@ -86,6 +86,16 @@
 					</form>
 				</div>
 				<div class="widget">
+					<h4 class="widget-title">Categorías</h4>
+					<div class="">
+						<ul>
+							<li><a href="/iniciativas-destacadas/campanias/">Campañas</a></li>
+							<li><a href="/iniciativas-destacadas/eventos/">Eventos</a></li>									
+							<li><a href="/iniciativas-destacadas/concursos/">Concursos</a></li>								
+						</ul>
+					</div>
+				</div>
+				<div class="widget">
 					<h4 class="widget-title">Tags</h4>
 					<div class="tagcloud">
 						{% for tag in tags %}
@@ -93,6 +103,7 @@
 						{% endfor %}
 					</div>
 				</div>
+
 				<div class="widget widget_slider widget_recent_posts">
 					<h4 class="widget-title"> Próximos Eventos </h4>
 					<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
@@ -113,13 +124,10 @@
 										<time datetime="2017-10-03T08:50:40+00:00">
 										{{obj.inicio|date:"d N, Y"}}</time>
 									</a>
-
-
-								</span> 
+								</span>
 							</div>
 						</div>
 						{% endfor %}
-
 					</div>
 				</div>
 			</aside>

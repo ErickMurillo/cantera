@@ -19,12 +19,12 @@
 						<div class="col-sm-12 text-center">
 							<div class="slide_description_wrapper">
 								<div class="slide_description">
-									<div class="intro-layer" data-animation="fadeInRight"> Plataforma regional género y metodologías</div>
+									<div class="intro-layer" data-animation="fadeInRight"><span class="bgtext">Plataforma regional género y metodologías</span> </div>
 									<div class="intro-layer" data-animation="fadeInLeft">
-										<h2> <span class="highlight3">“{{obj.texto_1}}”</span></h2>
+										<h2 class="bgtext"> <span class="highlight3">“{{obj.texto_1}}”</span></h2>
 									</div>
 									<div class="intro-layer" data-animation="fadeInRight">
-										<p class="thin"><em>- {{obj.credito_1}}</em></p>
+										<p class="thin "><em class="bgtext">- {{obj.credito_1}}</em></p>
 									</div>
 									<div class="intro-layer" data-animation="fadeInUp">
 										<div class="slide_buttons"> <a href="/contactenos" class="theme_button color1 min_width_button">Contáctanos</a> </div>
@@ -84,7 +84,7 @@
 								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="fa fa-eye highlight5" aria-hidden="true"></i> </div>
 							</div>
 							<div class="text-center">
-								<a class="visible_hover white-color" href="/puntos-vista"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<a class="visible_hover white-color puntos_content" href="/puntos-vista"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<span id ="txtpuntos">Puntos de vista</span>
 								</a>
 							</div>
@@ -130,13 +130,16 @@
 								<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
 									<a class="dropdown-item" href="./recursos-metodologicos/publicaciones">Publicaciones</a>
 									<a class="dropdown-item" href="./recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
-									<a class="dropdown-item" href="#">
+									<!--<a class="dropdown-item" href="#">
 										Galería
 										<ul>
 											<li><a href="./recursos-metodologicos/galerias/imagenes">Imágenes</a></li>
 											<li><a href="./recursos-metodologicos/galerias/videos">Videos</a></li>
 										</ul>
-									</a>
+									</a>-->
+									<a class="dropdown-header">Galería</a>
+									<a class="dropdown-item" href="./recursos-metodologicos/galerias/imagenes">Imágenes</a>
+									<a class="dropdown-item" href="./recursos-metodologicos/galerias/videos">Videos</a>
 
 									<a class="dropdown-item" href="./recursos-metodologicos/audios">Audios</a>
 								</div>
@@ -206,7 +209,7 @@
 								<header class="entry-header">
 									<h3 class="entry-title small bottommargin_0" style="
 									height: 52px;
-									"> <a><span class="small-text">{{obj.tittle|striptags|truncatechars:71}}</span></a>
+									"> <a href="{% url 'detalle-actualidad' obj.slug %}"><span class="small-text">{{obj.tittle|striptags|truncatechars:71}}</span></a>
 								</header>
 								<p>
 									<a href="{% url 'detalle-actualidad' obj.slug %}" class="more-link">Leer más</a>
@@ -237,50 +240,56 @@
 	<section class="ls section_padding_top_100 section_padding_bottom_110">
 		<div class="container">
 			<div class="row">															
-
-				<div class="flex-wrap v-center">
-					<div class="col-sm-8 to_animate" data-animation="fadeInRight">
-						<h2 class="section_header">Próximos Eventos</h2>
+				<div class="to_animate" data-animation="fadeInUp">
+					<div class="flex-wrap v-center">
+						<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+							<h2 class="section_header">Próximos Eventos</h2>
+						</div>
+						<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/eventos/" class="view-more">Ver más</a> </div>
 					</div>
-					<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/eventos/" class="view-more">Ver más</a> </div>
-				</div>
 
 
-				<div class="col-sm-10 col-sm-push-1 topmargin_30 loop-colors">
-					{% for obj in eventos %}
-					<article class="post side-item side-md content-padding with_border bottom_color_border left loop-colors">
-						<div class="row">
-							<div class="col-md-5">
-								<div class="item-media"> 
-									{% thumbnail obj.foto "422x282" crop="center" as im %}
-									<img src="{{ im.url }}" alt="">
-									{% empty %}
-									<img src="http://via.placeholder.com/405x256" alt="">
-									{% endthumbnail %}
-									<div class="media-links"> 
-										<a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> 
+					<div class="col-sm-10 col-sm-push-1 topmargin_30 loop-colors">
+						{% for obj in eventos %}
+						<article class="post side-item side-md content-padding with_border bottom_color_border left loop-colors">
+							<div class="row">
+								<div class="col-md-5">
+									<div class="item-media"> 
+										{% thumbnail obj.foto "422x282" crop="center" as im %}
+										<img src="{{ im.url }}" alt="">
+										{% empty %}
+										<img src="http://via.placeholder.com/405x256" alt="">
+										{% endthumbnail %}
+										<div class="media-links"> 
+											<a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> 
+										</div>
+									</div>
+								</div>
+								<div class="col-md-7">
+									<div class="item-content">
+										<header class="entry-header">
+											<div class="entry-meta greylinks inline-content"> <span>
+												<i class="fa fa-calendar highlight" aria-hidden="true"></i>
+												<time datetime="2017-10-03T08:50:40+00:00">{{obj.inicio|date:"d N, Y"}} - {{obj.hora_inicio|time:"h:i a"}}</time>
+											</span> <span>
+												<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
+												{{obj.city}}
+											</span>
+											<span class="text-center">
+											<i class="icofont-ui-user-group highlight rightpadding_5 "></i>{{obj.author.organizacion.siglas}}
+										</span>
+
+										</div>
+											<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
+										</header>
+										{{obj.descripcion|safe|striptags|truncatechars:265}}<a href="{% url 'detailEventos' obj.slug %}" class="more-link">Ver más</a>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-7">
-								<div class="item-content">
-									<header class="entry-header">
-										<div class="entry-meta greylinks inline-content"> <span>
-											<i class="fa fa-calendar highlight" aria-hidden="true"></i>
-											<time datetime="2017-10-03T08:50:40+00:00">{{obj.inicio|date:"d N, Y"}} - {{obj.hora_inicio|time:"h:i a"}}</time>
-										</span> <span>
-											<i class="fa fa-map-marker highlight" aria-hidden="true"></i>
-											{{obj.city}}
-										</span> </div>
-										<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
-									</header>
-									{{obj.descripcion|safe|striptags|truncatechars:275}}
-								</div>
-							</div>
-						</div>
-					</article>
-					{% endfor %}
+						</article>
+						{% endfor %}
 
+					</div>
 				</div>
 				<!--eof .col-sm-* (main content)-->
 			</div>
@@ -297,9 +306,9 @@
 
 				<!-- Contenido foro-->
 
-				<div class="col-sm-10 col-sm-push-1 topmargin_30">
+				<div class="col-sm-10 col-sm-push-1 topmargin_30 loop-colors">
 					{% for obj in foros %}
-					<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border loop-color post format-standard">
+					<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border post format-standard">
 
 						<div class="item-content">
 							<div class="entry-meta greylinks inline-content"> 
@@ -337,17 +346,15 @@
 
 	{% endblock content %}
 
-{% block extra_js %}
-<script type="text/javascript">
-$(function() {
-	console.log( "ready!" );
+	{% block extra_js %}
+	<script type="text/javascript">
+	$(function() {
+		console.log( "ready!" );
 
-	$( "#p_vista div" ).on( "hover", function( event ) {
-  	$("#txtpuntos").val('test');
-});
+		$( "#p_vista div" ).on( "hover", function( event ) {
+			$("#txtpuntos").val('test');
+		});
+	});
+	</script>
 
-});
-
-</script>
-
-{% endblock extra_js %}
+	{% endblock extra_js %}

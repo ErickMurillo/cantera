@@ -59,7 +59,7 @@
 						</div>
 
 						<div class="dropdown dropup text-center">
-							<a class="visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/actualidad">
+							<a class="orangefont visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/actualidad">
 								<span>Actualidad</span> <i class="icofont-caret-down rotate"></i>
 							</a>
 							<div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
@@ -84,7 +84,7 @@
 								<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="fa fa-eye highlight5" aria-hidden="true"></i> </div>
 							</div>
 							<div class="text-center">
-								<a class="visible_hover white-color puntos_content" href="/puntos-vista"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<a class="visible_hover white-color puntos_content" href="/puntos-vista" aria-haspopup="true" aria-expanded="false">
 									<span id ="txtpuntos">Puntos de vista</span>
 								</a>
 							</div>
@@ -104,7 +104,7 @@
 								</div>
 
 								<div class="text-center">
-									<a class="visible_hover white-color foro_content" href="./foros"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Foros</span>
+									<a class="visible_hover white-color foro_content" href="/foros" aria-haspopup="true" aria-expanded="false"><span>Foros</span>
 									</a>
 								</div>
 								<div class="media-body media-middle text-center">
@@ -268,7 +268,9 @@
 								<div class="col-md-7">
 									<div class="item-content">
 										<header class="entry-header">
-											<div class="entry-meta greylinks inline-content"> <span>
+											
+										<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
+										<div class="entry-meta greylinks inline-content"> <span>
 												<i class="fa fa-calendar highlight" aria-hidden="true"></i>
 												<time datetime="2017-10-03T08:50:40+00:00">{{obj.inicio|date:"d N, Y"}} - {{obj.hora_inicio|time:"h:i a"}}</time>
 											</span> <span>
@@ -276,63 +278,12 @@
 												{{obj.city}}
 											</span>
 											<span class="text-center">
-											<i class="icofont-ui-user-group highlight rightpadding_5 "></i>{{obj.author.organizacion.siglas}}
-										</span>
+												<i class="icofont-ui-user-group highlight rightpadding_5 "></i>{{obj.author.organizacion.siglas}}
+											</span>
 
 										</div>
-											<h3 class="entry-title small"> <a href="{% url 'detailEventos' obj.slug %}"> {{obj.tittle}}</a> </h3>
-										</header>
-										{{obj.descripcion|safe|striptags|truncatechars:265}}<a href="{% url 'detailEventos' obj.slug %}" class="more-link">Ver más</a>
-									</div>
-								</div>
-							</div>
-						</article>
-						{% endfor %}
-
-					</div>
-				</div>
-				<!--eof .col-sm-* (main content)-->
-			</div>
-		</div>
-	</section>
-
-	<section id="blog" class="ls section_padding_bottom_110">
-		<div class="container">
-			<div class="row flex-wrap v-center">
-				<div class="col-sm-8 to_animate" data-animation="fadeInRight">
-					<h2 class="section_header">Foros destacados</h2>
-				</div>
-				<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/foros/" class="view-more">Ver más</a> </div>
-
-				<!-- Contenido foro-->
-
-				<div class="col-sm-10 col-sm-push-1 topmargin_30 loop-colors">
-					{% for obj in foros %}
-					<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border post format-standard">
-
-						<div class="item-content">
-							<div class="entry-meta greylinks inline-content"> 
-								<span>
-									<i class="icofont-ui-user-group highlight" aria-hidden="true"></i>
-									<a> {{obj.usuario.organizacion.siglas}}</a>
-								</span>
-								<span>
-									<i class="icofont-quill-pen highlight" aria-hidden="true"></i>
-									<a> {{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
-								</span>
-
-								<span>
-									<i class="fa fa-comment highlight" aria-hidden="true"></i>
-									<a>{{obj.conteo}} aportes</a>
-								</span> 
-
-							</div>
-							<div class="entry-content-wrap">
-								<header class="entry-header">
-									<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
-								</header>
-								<div class="entry-content">
-									<p>{{obj.contenido|safe|striptags|truncatechars:200}}</p>
+									</header>
+									{{obj.descripcion|safe|striptags|truncatechars:265}}<a href="{% url 'detailEventos' obj.slug %}" class="more-link">Ver más</a>
 								</div>
 							</div>
 						</div>
@@ -341,20 +292,71 @@
 
 				</div>
 			</div>
+			<!--eof .col-sm-* (main content)-->
 		</div>
-	</section>
+	</div>
+</section>
 
-	{% endblock content %}
+<section id="blog" class="ls section_padding_bottom_110">
+	<div class="container">
+		<div class="row flex-wrap v-center">
+			<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+				<h2 class="section_header">Foros destacados</h2>
+			</div>
+			<div class="col-sm-3 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="/foros/" class="view-more">Ver más</a> </div>
 
-	{% block extra_js %}
-	<script type="text/javascript">
-	$(function() {
-		console.log( "ready!" );
+			<!-- Contenido foro-->
 
-		$( "#p_vista div" ).on( "hover", function( event ) {
-			$("#txtpuntos").val('test');
-		});
+			<div class="col-sm-10 col-sm-push-1 topmargin_30 loop-colors">
+				{% for obj in foros %}
+				<article class="vertical-item content-padding big-padding side-meta with_border bottom_color_border post format-standard">
+
+
+					<div class="item-content">
+						<div class="entry-meta greylinks inline-content"> 
+							<span>
+								<i class="icofont-ui-user-group highlight" aria-hidden="true"></i>
+								<a> {{obj.usuario.organizacion.siglas}}</a>
+							</span>
+							<span>
+								<i class="icofont-quill-pen highlight" aria-hidden="true"></i>
+								<a> {{obj.usuario.get_full_name|default:obj.usuario.username}}</a>
+							</span>
+
+							<span>
+								<i class="fa fa-comment highlight" aria-hidden="true"></i>
+								<a>{{obj.conteo}} aportes</a>
+							</span> 
+
+						</div>
+						<div class="entry-content-wrap">
+							<header class="entry-header">
+								<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre}}</a> </h3>
+							</header>
+							<div class="entry-content">
+								<p>{{obj.contenido|safe|striptags|truncatechars:200}}</p>
+							</div>
+						</div>
+					</div>
+				</article>
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+$(function() {
+	console.log( "ready!" );
+
+	$( "#p_vista div" ).on( "hover", function( event ) {
+		$("#txtpuntos").val('test');
 	});
-	</script>
+});
+</script>
 
-	{% endblock extra_js %}
+{% endblock extra_js %}

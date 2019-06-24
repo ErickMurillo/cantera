@@ -19,7 +19,7 @@
 }
 
 .ds .greylinks a {
-    color: #6c6c73;
+    color: #6c6c73 !important;
 }
 
 .justify-content-center {
@@ -272,3 +272,24 @@ img.b_avatar {
   background: rgba(0, 0, 0, 0.2);
   padding: 0px 8px 0px 8px;
 }
+
+#mobile_menu{
+  display: none;
+}
+
+@media only screen and (max-width:960px){
+ #mobile_menu{
+ display:block;
+
+}
+}
+
+#mobile_menu a.orangefont {
+    color: #e85242 !important;
+  }
+
+#mobile_menu a.orangefont {
+    color: #e85242 !important;
+    background-color: rgba(0, 0, 255, 0) !important;
+  }
+

@@ -22,7 +22,7 @@ class Pais(models.Model):
 
 class Contraparte(models.Model):
     nombre = models.CharField(max_length=200)
-    siglas = models.CharField("Siglas o nombre corto",help_text="Siglas o nombre corto de la oganización",max_length=200,blank=True, null=True)
+    siglas = models.CharField("Siglas o nombre corto",help_text="Siglas o nombre corto de la oganización",max_length=200)
     logo = ImageField(upload_to='contrapartes/logos/',null=True, blank=True)
     pais = models.ForeignKey(Pais,on_delete=models.DO_NOTHING)
     fundacion = models.CharField('Año de fundación', max_length=200,blank=True, null=True)

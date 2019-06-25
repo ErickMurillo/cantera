@@ -43,7 +43,7 @@ def editar_perfil(request,id,template='admin/editar_perfil.html'):
 			form_uncommited = form.save(commit=False)
 			form_uncommited.save()
 
-			return HttpResponseRedirect('/accounts/profile/')
+			#return HttpResponseRedirect('/accounts/profile/')
 	else:
 		form = UserChangeForm(instance=user)
 

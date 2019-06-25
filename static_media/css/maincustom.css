@@ -319,3 +319,9 @@ img.b_avatar {
 .dp-user .dropdown-menu li a:hover{
   color: #e85242;
 }
+
+.ds .dropdown-menu {
+    background-color: #ffffff !important;
+    color: #e85242 !important;
+}
+

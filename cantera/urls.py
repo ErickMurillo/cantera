@@ -36,6 +36,7 @@ urlpatterns = [
     path('alianzas/',include('organizaciones.urls')),
     #path('organizaciones/', , name = 'organizaciones')
     path('puntos-vista/', include('puntosvista.urls')),
+    path('accounts/password/change/', CustomPasswordChangeView.as_view(), name='account_change_password'),
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', perfil, name='perfil'),
     path('accounts/edit/<id>/', editar_perfil, name='editar_perfil'),

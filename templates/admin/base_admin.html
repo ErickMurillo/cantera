@@ -120,8 +120,10 @@
 	                                    		</a>
 	                                    		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 	                                    			
-	                                    			<li><a href="{% url 'perfil' %}">Organización</a></li>
-													<li><a href="{% url 'editar_perfil' user.id %}">Editar perfil</a></li>
+	                                    			{% if user.organizacion %}
+	                                                   <li><a href="{% url 'perfil' %}">Organización</a></li> 
+	                                                {% endif %}
+													<li><a href="{% url 'editar_perfil' user.id %}?next={{ request.path }}">Editar perfil</a></li>
 													<li><a href="{% url 'account_change_password' %}">Cambiar contraseña</a></li>
 
 	                                    			<li role="separator" class="divider"></li>

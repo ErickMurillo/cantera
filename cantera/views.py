@@ -51,3 +51,11 @@ def editar_perfil(request,id,template='admin/editar_perfil.html'):
 		form = UserChangeForm(instance=user)
 
 	return render(request,template,locals())
+
+
+from allauth.account.views import PasswordChangeView
+
+class CustomPasswordChangeView(PasswordChangeView):
+	@property
+	def success_url(self):
+		return '/'

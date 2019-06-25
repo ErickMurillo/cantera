@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% load disqus_tags %}
 
 {% block extra_css %}
 <style type="text/css">
@@ -64,13 +65,13 @@
 					</div>
 					<!-- .item-content -->
 				</article>
-				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="#" class="social-icon color-bg-icon socicon-facebook"></a><a href=" https://wa.me/?text=http://127.0.0.1:8000/iniciativas-destacadas/eventos/evento-especial-omi-sobre-empoderamiento" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="#" class="social-icon color-bg-icon socicon-facebook"></a><a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
 				</div>
 
 
 				<!-- #respond -->
 				<div class="topmargin_30">
-					<!-- Disqus image -->
+					{% disqus_show_comments %}
 				</div>
 			</div>
 			<!--eof .col-sm-10 (main content)-->

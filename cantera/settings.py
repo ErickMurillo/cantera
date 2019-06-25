@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'solo',
     'el_pagination',
     'crispy_forms',
+    'disqus',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -256,3 +257,6 @@ LOCATION_FIELD = {
 ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',
 }
+
+DISQUS_API_KEY = '2dwFxEqkNjZtNAxRr9Sa4jfknLONQrwXL5zl5fleL0od7Vhdyl2WRo9rZsbhDMwE'
+DISQUS_WEBSITE_SHORTNAME = 'https-generoymetodologias-org'

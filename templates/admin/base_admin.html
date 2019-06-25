@@ -1,3 +1,4 @@
+{% load thumbnail %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -96,12 +97,19 @@
 	                                    {% if request.user.is_authenticated %}
 
 	                                    <li>
-	                                        <div class="comment-author">
-
-	                                            <span><i class="icofont-ui-user white-color"></i></span>
-
-	                                           
-	                                        </div>
+                                            <div class="comment-author">
+                                        		{% if user.avatar %}
+                                            		{% thumbnail user.avatar "34x34" crop="center" as im %}
+                                                		<img class="" src="{{ im.url }}" alt="">
+                                            		{% endthumbnail %}
+                                        		{% elif user.socialaccount_set.all.0.get_avatar_url %}
+                                            		{% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
+                                                		<img class="" src="{{ im.url }}" alt="">
+                                            		{% endthumbnail %}
+                                        		{% else %}
+                                            		<span><i class="icofont-ui-user white-color"></i></span>
+                                        		{% endif %}
+                                    		</div>
 	                                    </li>
 	                                    <li>
 

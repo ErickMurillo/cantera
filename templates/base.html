@@ -122,22 +122,20 @@
                                     <li>
                                         <div class="comment-author">
                                             {% if user.avatar %}
-                                            {% thumbnail user.avatar "34x34" crop="center" as im %}
-                                            <img class="" src="{{ im.url }}" alt="">
-                                            {% endthumbnail %}
+                                                {% thumbnail user.avatar "34x34" crop="center" as im %}
+                                                    <img class="" src="{{ im.url }}" alt="">
+                                                {% endthumbnail %}
                                             {% elif user.socialaccount_set.all.0.get_avatar_url %}
-                                            {% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
-                                            <img class="" src="{{ im.url }}" alt="">
-                                            {% endthumbnail %}
+                                                {% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
+                                                    <img class="" src="{{ im.url }}" alt="">
+                                                {% endthumbnail %}
                                             {% else %}
-
-                                            <span><i class="icofont-ui-user white-color"></i></span>
-
+                                                <span><i class="icofont-ui-user white-color"></i></span>
                                             {% endif %}
                                         </div>
                                     </li>
+                                    
                                     <li>
-
                                     	<div class="dropdown dp-user">
                                     		<a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     			{{user.get_full_name|default:user.username}}
@@ -147,8 +145,8 @@
                                     			{% if user.organizacion %}
                                                    <li><a href="{% url 'perfil' %}">Organización</a></li> 
                                                 {% endif %}
-                                    			
-												<li><a href="{% url 'editar_perfil' user.id %}">Editar perfil</a></li>
+
+												<li><a href="{% url 'editar_perfil' user.id %}?next={{ request.path }}">Editar perfil</a></li>
 												<li><a href="{% url 'account_change_password' %}">Cambiar contraseña</a></li>
 
                                     			<li role="separator" class="divider"></li>
@@ -161,12 +159,8 @@
                                         <a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
                                     </li>
                                     {% endif%}
-
-
-                                </ul>
-                               
+                                </ul>                               
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -240,9 +234,6 @@
                             <!-- header toggler -->
 
                         </div>
-
-
-
                 	</div>
             	</div>
         	</div>

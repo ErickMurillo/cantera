@@ -37,13 +37,16 @@ def contacto(request,template='contact.html'):
 @login_required
 def editar_perfil(request,id,template='admin/editar_perfil.html'):
 	user = User.objects.get(id = id)
+
 	if request.method == 'POST':
+		redirect_to = request.POST.get('next', '')
 		form = UserChangeForm(request.POST, request.FILES, instance=user)
 		if form.is_valid():
 			form_uncommited = form.save(commit=False)
 			form_uncommited.save()
 
-			#return HttpResponseRedirect('/accounts/profile/')
+			return HttpResponseRedirect(redirect_to)
+			
 	else:
 		form = UserChangeForm(instance=user)
 

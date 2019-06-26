@@ -24,7 +24,7 @@
 					<li> <a href="/">
 						Inicio
 					</a> </li>
-					<li> <a href="/eventos/">Evento</a> </li>
+					<li> <a href="/puntos-vista/">Puntos de vista</a> </li>
 					<li class="active">{{object.tittle}}</li>
 				</ol>
 			</div>
@@ -86,7 +86,7 @@
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
 								{% thumbnail obj.foto "350x279" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/350x279" alt="">
 								{% endthumbnail %}

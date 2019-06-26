@@ -277,12 +277,11 @@ img.b_avatar {
   display: none;
 }
 
+
 @media only screen and (max-width:960px){
- #mobile_menu{
- display:block;
-
+  #show_services {
+  display: none;
 }
-
 }
 
 #mobile_menu a.orangefont {

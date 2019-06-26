@@ -41,10 +41,10 @@
 					<div class="row">
 						<div class="col-md-5">
 							<div class="item-media"> 
-								{% thumbnail obj.foto "317x210" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
+								{% thumbnail obj.foto "317x250" crop="center" padding=True as im %}
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/317x210" alt="">
+								<img src="http://via.placeholder.com/317x250" alt="">
 								{% endthumbnail %}
 
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
@@ -57,7 +57,14 @@
 										<span>
 											<i class="fa fa-calendar-check-o highlight rightpadding_5" aria-hidden="true"></i>
 											<time datetime="2017-10-03T08:50:40+00:00">
-											{{obj.inicio|date:"d N, Y"}} - {{obj.final|date:"d N, Y"}}</time>
+											{{obj.inicio|date:"d N, Y"}} {% if obj.final %}
+												- {{obj.final|date:"d N, Y"}}
+											{% endif %} </time>
+										</span>
+
+										<span>
+											<i class="fa fa-clock-o highlight" aria-hidden="true"></i>
+											<time>{{obj.hora_inicio}} - {{obj.hora_fin}}</time>
 										</span>
 										
 										<span>

@@ -42,8 +42,8 @@
 					<div class="row">
 						<div class="col-md-5">
 							<div class="item-media"> 
-								{% thumbnail obj.foto "317x196" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
+								{% thumbnail obj.foto "317x196" crop="center" padding=True as im %}
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/286x196" alt="">
 								{% endthumbnail %}
@@ -67,7 +67,6 @@
 									</div>									
 								</header>
 								<p>{{obj.descripcion|safe|striptags|truncatechars:200}} <a href="{% url 'point_details' obj.slug %}" class="more-link">Ver más</a></p>
-
 							</div>
 						</div>
 					</div>
@@ -139,7 +138,7 @@
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
 								{% thumbnail obj.foto "350x279" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/350x279" alt="">
 								{% endthumbnail %}

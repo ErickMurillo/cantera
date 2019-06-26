@@ -64,12 +64,14 @@
 								{% empty %}
 								<img src="http://via.placeholder.com/365x243" alt="">
 								{% endthumbnail %}
+								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle_galeriaImagenes' obj.slug %}"></a> </div>
 								{% else %}
 								{% video obj.url as my_video %}
 								{% thumbnail my_video.thumbnail "365x243" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
 								{% endthumbnail %}
 								{% endvideo %}
+								
 								{% endif %}
 
 								

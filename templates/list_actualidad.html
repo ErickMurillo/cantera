@@ -46,10 +46,11 @@
 						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
 							<div class="item-media"> 
 								{% thumbnail obj.photo "365x229" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/365x229" alt="">
-								{% endthumbnail %}								
+								{% endthumbnail %}
+								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-actualidad' obj.slug %}"></a> </div>								
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
@@ -64,9 +65,7 @@
 										</span>
 									</div>
 
-
-
-									<h3 class="entry-title small bottommargin_0" style="height:52px;"> <a rel="bookmark">
+									<h3 class="entry-title small bottommargin_0" style="height:52px;"> <a href="{% url 'detalle-actualidad' obj.slug %}" rel="bookmark">
 										{{obj.tittle|striptags|truncatechars:52}}
 									</a> </h3>
 								</header>
@@ -168,7 +167,7 @@
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
 								{% thumbnail obj.foto "350x279" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/350x279" alt="">
 								{% endthumbnail %}

@@ -122,20 +122,22 @@
                                     <li>
                                         <div class="comment-author">
                                             {% if user.avatar %}
-                                                {% thumbnail user.avatar "34x34" crop="center" as im %}
-                                                    <img class="" src="{{ im.url }}" alt="">
-                                                {% endthumbnail %}
+                                            {% thumbnail user.avatar "34x34" crop="center" as im %}
+                                            <img class="" src="{{ im.url }}" alt="">
+                                            {% endthumbnail %}
                                             {% elif user.socialaccount_set.all.0.get_avatar_url %}
-                                                {% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
-                                                    <img class="" src="{{ im.url }}" alt="">
-                                                {% endthumbnail %}
+                                            {% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
+                                            <img class="" src="{{ im.url }}" alt="">
+                                            {% endthumbnail %}
                                             {% else %}
-                                                <span><i class="icofont-ui-user white-color"></i></span>
+
+                                            <span><i class="icofont-ui-user white-color"></i></span>
+
                                             {% endif %}
                                         </div>
                                     </li>
-                                    
                                     <li>
+
                                     	<div class="dropdown dp-user">
                                     		<a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     			{{user.get_full_name|default:user.username}}
@@ -147,6 +149,7 @@
                                                 {% endif %}
 
 												<li><a href="{% url 'editar_perfil' user.id %}?next={{ request.path }}">Editar perfil</a></li>
+
 												<li><a href="{% url 'account_change_password' %}">Cambiar contraseña</a></li>
 
                                     			<li role="separator" class="divider"></li>
@@ -159,8 +162,10 @@
                                         <a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
                                     </li>
                                     {% endif%}
-                                </ul>                               
+                                </ul>
+                               
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -212,7 +217,7 @@
                                             <a href="/foros">Foros</a>
                                         </li>
 
-                                        <li class="#">
+                                        <li class="">
 
                                             <a>
                                                 <span>Recursos metodológicos</span>
@@ -225,6 +230,18 @@
                                                 <li><a href="#">Audios</a></li>
                                             </ul>
                                         </li>
+
+                                        <li class="">
+
+                                            <a>
+                                                <span>Iniciativas destacadas</span>
+                                            </a>
+                                            <ul>
+                                                <li> <a href="/iniciativas-destacadas/campanias">Campañas</a> </li>
+                                                <li> <a href="/iniciativas-destacadas/eventos">Eventos</a> </li>
+                                                <li> <a href="/iniciativas-destacadas/concursos">Concursos</a> </li>
+                                            </ul>
+                                        </li>
                                     </div>
 
                                 </ul>
@@ -235,6 +252,9 @@
                             <span class="toggle_menu"><span></span></span>
 
                         </div>
+
+
+
                 	</div>
             	</div>
         	</div>
@@ -265,14 +285,14 @@
                                     <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
                                 </a>
                                 <div class="dropdown-menu arrow-down" aria-labelledby="dropdownMenuButton">
-                                    <a id="bg-drop-footer" class="dropdown-item" href="./recursos-metodologicos/publicaciones">Publicaciones</a>
-                                    <a class="dropdown-item" href="./recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
+                                    <a id="bg-drop-footer" class="dropdown-item" href="/recursos-metodologicos/publicaciones">Publicaciones</a>
+                                    <a class="dropdown-item" href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
                                     <a class="dropdown-header">Galeria</a>
-                                    <a class="dropdown-item" href="./recursos-metodologicos/galerias/imagenes">Imágenes</a>
-                                    <a class="dropdown-item" href="./recursos-metodologicos/galerias/videos">Videos</a>
+                                    <a class="dropdown-item" href="/recursos-metodologicos/galerias/imagenes">Imágenes</a>
+                                    <a class="dropdown-item" href="/recursos-metodologicos/galerias/videos">Videos</a>
 
 
-                                    <a class="dropdown-item" href="./recursos-metodologicos/audios">Audios</a>
+                                    <a class="dropdown-item">Audios</a>
                                 </div> </li>
                                 <li>
                                     <a class="visible_hover"  id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i></a>
@@ -299,7 +319,7 @@
                             </div>
                             <div class="media small-teaser greylinks">
                                 <div class="media-left"> <i class="icofont-email highlight fontsize_24"></i> </div>
-                                <div class="media-body"> <a href="mailto: generoymetodologia@gmail.com"> generoymetodologia@gmail.com</a> </div>
+                                <div class="media-body"> <a href="mailto: generoymetodologias@gmail.com"> generoymetodologias@gmail.com</a> </div>
                             </div>
                         </div>
                     </div>

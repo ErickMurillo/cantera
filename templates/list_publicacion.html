@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+	{% extends "base.html" %}
 {% load el_pagination_tags %}
 {% load thumbnail %}
 
@@ -44,8 +44,7 @@
 	<div class="container">
 		<div class="row">
 			{% if list_pub %}
-			
-			
+					
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
 					{% paginate 4 list_pub %}
@@ -163,7 +162,7 @@
 							<div class="vertical-item content-padding with_border">
 								<div class="item-media"> 
 									{% thumbnail obj.foto "350x279" crop="center" as im %}
-									<img src="{{ im.url }}" alt="">
+									<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 									{% empty %}
 									<img src="http://via.placeholder.com/350x279" alt="">
 									{% endthumbnail %}

@@ -121,7 +121,7 @@
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
 								{% thumbnail obj.foto "350x279" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/350x279" alt="">
 								{% endthumbnail %}

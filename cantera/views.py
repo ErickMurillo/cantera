@@ -53,9 +53,13 @@ def editar_perfil(request,id,template='admin/editar_perfil.html'):
 	return render(request,template,locals())
 
 
-from allauth.account.views import PasswordChangeView
+from allauth.account.views import PasswordChangeView, SignupView
 
 class CustomPasswordChangeView(PasswordChangeView):
 	@property
 	def success_url(self):
 		return '/'
+
+
+class LocaLSignupView(SignupView):
+    success_url = '/'

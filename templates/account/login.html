@@ -6,12 +6,11 @@
 <style type="text/css">
     #services{display: none}
 </style>
-<section class="ls ms section_404 section_padding_top_30 section_padding_bottom_30">
+<section class="ls ms section_padding_top_30 section_padding_bottom_30">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				<div class="card">
-				
+				<div class="customcard">
 					<div class="header mb-20">
 						<h3 class="section-title text-center">Inicia sesión</h3>
 					</div>
@@ -82,6 +81,7 @@
 				
 			</div>
 		</div>
+
 	</div>
 </section>
 
@@ -91,5 +91,7 @@
 {% block extra_js %}
 <script type="text/javascript">
     $( "a.socialaccount_provider" ).addClass("btn");
+    $("#id_login").addClass("form-control");
+    $("#id_password").addClass("form-control");
 </script>
 {% endblock extra_js %}

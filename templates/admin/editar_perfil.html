@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				<div class="card">
+				<div class="customcard">
 				
 					<div class="header">
 						<h3 class="">Editar perfil</h3>
@@ -23,7 +23,8 @@
 							
 
 							<input class="theme_button color2 min_width_button margin_0" type="submit" name="actualizar" value="Actualizar">
-							<a class="theme_button color1 min_width_button margin_0 pull-right" href="/accounts/profile/"> Cancelar</a>
+							<a class="theme_button color1 min_width_button margin_0 pull-right" href="{{ request.GET.next }}"> Cancelar</a>
+							
 							<input type="hidden" name="next" value="{{ request.GET.next }}"/>
 
 						</form>

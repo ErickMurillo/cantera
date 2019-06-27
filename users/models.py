@@ -10,3 +10,6 @@ class User(AbstractUser):
 	def __str__(self):
 		return self.username
 
+	class Meta(object):
+		unique_together = ('email',)
+

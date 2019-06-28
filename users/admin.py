@@ -18,6 +18,13 @@ class UserAdmin(UserAdmin):
 									   'groups', 'user_permissions')}),
 		(('Important dates'), {'fields': ('last_login', 'date_joined')}),
 	)
+
+	add_fieldsets = (
+		(None, {
+			'classes': ('wide',),
+			'fields': ('username','email', 'password1', 'password2')}
+		),
+	)
  
 
 admin.site.register(User, UserAdmin)

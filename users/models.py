@@ -6,6 +6,8 @@ from organizaciones.models import *
 class User(AbstractUser):
 	organizacion = models.ForeignKey(Contraparte,on_delete=models.DO_NOTHING,null=True,blank=True)
 	avatar = ImageField(upload_to='usuario/avatar/',null=True,blank=True)
+	# USERNAME_FIELD = 'email'
+	# REQUIRED_FIELDS = []
 
 	def __str__(self):
 		return self.username

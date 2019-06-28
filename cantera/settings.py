@@ -258,5 +258,6 @@ ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',
 }
 
+AUTH_USER_MODEL = 'users.User'
 DISQUS_API_KEY = '2dwFxEqkNjZtNAxRr9Sa4jfknLONQrwXL5zl5fleL0od7Vhdyl2WRo9rZsbhDMwE'
 DISQUS_WEBSITE_SHORTNAME = 'https-generoymetodologias-org'

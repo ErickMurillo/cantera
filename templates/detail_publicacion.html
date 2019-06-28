@@ -28,11 +28,13 @@
 					<li> <a href="/" class="white-color">
 						Inicio
 					</a> </li>
-					<li> <a href="#" class="white-color">Recursos Metodológicos</a> </li>
+					<li> <a class="white-color">Recursos Metodológicos</a> </li>
 					<li class="white-color">
 						{% if '/recursos-metodologicos/publicaciones/' in request.path  %}
-						Publicaciones
-						{% else %} Guías metodológicas
+						<a href="/recursos-metodologicos/publicaciones">Publicaciones</a>
+						
+						{% else %}
+						<a href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
 						{% endif %}
 					</li>
 					<li class="active">Detalles</li>
@@ -44,13 +46,12 @@
 
 <blockquote class="text-center">
 	<div class="item-meta">
-		<h5>{{object.titulo}}</h5> 
-		<span class="small-text highlight">{{object.usuario.organizacion}}</span> 
+		<h5 class="highlight">{{object.titulo}}</h5> 
 	</div>
 </blockquote>
 
 
-<section class="ls section_padding_top_90 section_padding_bottom_90 columns_padding_30">
+<section class="ls section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">
@@ -64,7 +65,10 @@
 					</div>
 					<div class="item-content">
 						<header class="entry-header">
-							<h1 class="entry-title small bottommargin_0"> {{object.tematica}} </h1> <span class="small-text highlight">{{object.usuario.organizacion.siglas}} - {{object.usuario}}</span> 
+							<h1 class="entry-title small "> {{object.tematica}} </h1>
+							<span class="small-text highlight"><i class="fa fa-users highlight rightpadding_5"></i>{{object.usuario.organizacion.siglas}} <i class="leftpadding_10 fa fa-pencil-square-o highlight rightpadding_5"></i> {{object.usuario}}
+							</span>
+
 						</header>
 					</div>
 				</article>

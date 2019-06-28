@@ -4,10 +4,19 @@ from .models import *
 from evento.models import *
 import datetime
 import collections
+from django.db.models import Q
 
 # Create your views here.
 def index_galeriasImagenes(request, template = 'list_galeria.html'):
-	list_galeria = GaleriaImagenes.objects.order_by('-id')
+	if request.GET.get('buscador'):
+		q = request.GET['buscador']
+		list_galeria = GaleriaImagenes.objects.filter(
+												Q(titulo__icontains = q) |
+												Q(tematica__nombre__icontains = q)).order_by('-id')
+
+	else:
+		list_galeria = GaleriaImagenes.objects.order_by('-id')
+
 	list_tematica = collections.OrderedDict()
 	for x in Temas.objects.all():
 		galeria = GaleriaImagenes.objects.filter(tematica = x).count()
@@ -34,7 +43,15 @@ def filtro_temas_img(request,tema,template="list_galeria.html"):
 
 
 def index_galeriaVideos(request,template = 'list_galeria.html'):
-	list_galeria = GaleriaVideos.objects.order_by('-id')
+	if request.GET.get('buscador'):
+		q = request.GET['buscador']
+		list_galeria = GaleriaVideos.objects.filter(
+												Q(titulo__icontains = q) |
+												Q(tematica__nombre__icontains = q)).order_by('-id')
+
+	else:
+		list_galeria = GaleriaVideos.objects.order_by('-id')
+		
 	list_tematica = collections.OrderedDict()
 	for x in Temas.objects.all():
 		galeria = GaleriaVideos.objects.filter(tematica = x).count()

@@ -277,7 +277,12 @@ img.b_avatar {
   display: none;
 }
 
+@media only screen and (max-width:960px){
+ #mobile_menu{
+ display:block;
 
+}
+}
 @media only screen and (max-width:960px){
   #show_services {
   display: none;
@@ -324,3 +329,38 @@ img.b_avatar {
     color: #e85242 !important;
 }
 
+.customcard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 15px;
+  background-color: #FFF;
+  border-radius: 15px;
+}
+
+.customcard .header {
+  color: #444;
+  padding: 20px 20px 10px 20px;
+  position: relative;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.customcard .header h2 {
+  font-size: 1.2rem;
+  color: #444;
+  position: relative;
+  font-weight: 500;
+}
+.customcard .header .header-dropdown {
+  position: absolute;
+  top: 14px;
+  right: 15px;
+  list-style: none;
+}
+.customcard .header .header-dropdown li a {
+  padding: 5px 10px;
+}
+.customcard .body {
+  color: #444;
+  padding: 10px 20px;
+  font-weight: 400;
+}

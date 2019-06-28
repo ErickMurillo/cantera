@@ -22,7 +22,7 @@ class SiteConfiguration(SingletonModel):
 		return "Configuracion imagenes del sitio"
 
 	class Meta:
-		verbose_name_plural = "Configuracion imagenes del sitio"
+		verbose_name = "Configuracion imagenes del sitio"
 
 class Slider(SingletonModel):
 	texto_1 = models.CharField(max_length=60,verbose_name='Texto')
@@ -41,4 +41,4 @@ class Slider(SingletonModel):
 		return u"Slider"
 
 	class Meta:
-		verbose_name_plural = "Slider inicio"
+		verbose_name = "Slider inicio"

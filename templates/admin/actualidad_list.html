@@ -1,5 +1,9 @@
 {% extends "admin/base_admin.html" %}
 
+{% block extra_css %}
+	<link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
+{% endblock extra_css %}
+
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -70,3 +74,19 @@
 
 
 {% endblock content %}
+
+{% block extra_js %}
+	<script src="/static/js/jquery.fancybox.min.js"></script>
+
+	<script>
+		$('.fancybox').fancybox({ 
+			afterShow: function(){     
+				$('.fancybox-iframe').contents().find('input').click(function(){
+					window.parent.location.reload();
+					window.parent.$.fancybox.close();
+				}); 
+			}
+		});
+	</script>
+	
+{% endblock extra_js %}

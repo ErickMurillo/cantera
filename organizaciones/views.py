@@ -44,13 +44,9 @@ def org_editar(request,id, template = 'admin/org_edit.html'):
 		if form.is_valid() and formset.is_valid():
 			form_uncommited = form.save(commit=False)
 			form_uncommited.user = request.user
-			form_uncommited.save()
+			form_uncommited.save()			
 
-			instances = formset.save(commit=False)
-			for instance in instances:
-				instance.organizacion = form_uncommited
-				instance.save()
-				
+			formset.save()	
 			return HttpResponseRedirect('/accounts/profile/')
 			
 	else:
@@ -304,23 +300,11 @@ def publicacion_editar(request, id, template = 'admin/publicaciones.html'):
 			form_uncommited = form.save()
 			form_uncommited.save()
 
-			instances = formset.save(commit=False)
-			for instance in instances:
-				instance.publicacion = form_uncommited
-				instance.save()
-			formset.save_m2m()
+			formset.save()
 
-			instances2 = formset2.save(commit=False)
-			for instance in instances2:
-				instance.publicacion = form_uncommited
-				instance.save()
-			formset2.save_m2m()
+			formset2.save()
 
-			instances3 = formset3.save(commit=False)
-			for instance in instances3:
-				instance.publicacion = form_uncommited
-				instance.save()
-			formset3.save_m2m()
+			formset3.save()
 
 			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
 	else:

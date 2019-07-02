@@ -13,7 +13,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="card">
+			<div class="customcard">
 				<div class="header bg-none">
 					<h3 class="">Modificar Organización</h3>
 				</div>
@@ -24,34 +24,41 @@
 						{{form.errors}}
 						{{form|crispy}}
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-6 pt-10"  style="background-color:#FFAF92">
 								<h4 class="blog-details__title">Redes</h4>
 								<hr>
-							</div>
 							 
-							{{ formset.management_form }}
-							<div id="form_set">
-								{% for form in formset.forms %}
-								    {{form.non_field_errors}}
-									{{form.errors}}
-							        <div class='no_error'>
-							            
-							            {{form.as_p}}
-							        </div>
-							    {% endfor %}
-							</div>
-							<br>
-							<input class="theme_button color2 min_width_button margin_0" type="button" value="Agregar red adicional" id="add_more">
-							<div id="empty_form" style="display:none">
-							    <div class='no_error'>
-							        {{ formset.empty_form }}
-							    	
-							    </div>
+								{{ formset.management_form }}
+								<div id="form_set">
+									{% for form in formset.forms %}
+									    {{form.non_field_errors}}
+										{{form.errors}}
+								        <div class='no_error'>
+								            
+								            {{form.as_p}}
+								        </div>
+								        <hr>
+								    {% endfor %}
+								</div>
+								<br>
+
+								<a class="btn-add row" type="button" id="add_more">
+									<span class="fa fa-plus"> </span>
+									Agregar red adicional
+								</a>
+
+								<div id="empty_form" style="display:none">
+								    <div class='no_error'>
+								        {{ formset.empty_form }}
+								    	
+								    </div>
+								</div>
 							</div>
 						</div>
 						<br>
 								
 						<input class="theme_button color2 min_width_button margin_0" type="submit" name="guardar" value="Guardar">	
+
 					</form>
 
 				</div>

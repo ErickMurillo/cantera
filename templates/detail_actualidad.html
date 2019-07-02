@@ -2,6 +2,31 @@
 {% load thumbnail %}
 {% load disqus_tags %}
 
+{% block extra_head %}
+<meta property="al:android:url" content="generoymetodologias:/{{request.path}}">
+<meta property="al:android:package" content="com.facebook.samples.sharesample">
+<meta property="al:android:app_name" content="ShareSample">
+
+<meta property="og:title" content="{{object.tittle}}" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://generoymetodologias.org/media/{{object.photo}}">
+
+
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />
+<meta property="og:description" content="{{object.content|striptags}}" />
+<meta property="og:url" content="https://generoymetodologias.org{{request.path}}" />
+<meta property="og:locale" content="es_ES" />
+
+<!-- twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{object.tittle|truncatechars:70}}">
+<meta name="twitter:description" content="{{object.content|striptags|truncatechars:200}}">
+<meta name="twitter:image" content="https://generoymetodologias.org/media/{{object.photo}}">
+
+<meta name="twitter:domain" content="https://generoymetodologias.org">
+{% endblock extra_head %}
+
 {% block extra_css %}
 <style type="text/css">
 .page_breadcrumbs.background_cover {
@@ -67,8 +92,26 @@
 				</div>
 				<!-- .item-content -->
 			</article>
-			<div class="post-share"> <a target="_blank" href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="social-icon color-bg-icon socicon-facebook"></a> <a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+			
+			<!-- Compartir post en pantallas mayores a 700px-->
+			<div id="sharesocialweb" class="post-share"> 
+				<a target="blank" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="social-icon color-bg-icon socicon-twitter">
+				</a> 
+				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+				</a>
+				<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
 			</div>
+
+			<!-- Compartir post en celulares con las apps-->
+			<div id="sharesocialmov" class="post-share"> 
+				<a target="blank" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="social-icon color-bg-icon socicon-twitter">
+				</a> 
+				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+				</a>
+				<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+			</div>
+
+
 
 			<div class="topmargin_30">
 				{% disqus_show_comments %}
@@ -136,6 +179,7 @@
 				{% endfor %}
 
 			</div>
+			
 		</div>
 
 	</aside>
@@ -145,3 +189,20 @@
 </div>
 </section>
 {% endblock content %}
+
+
+{% block extra_js %}
+<script>
+	$( document ).ready(function() {      
+    var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    if (isMobile) {
+        $('#sharesocialweb').addClass('hidden');
+    }
+    else {
+    	$('#sharesocialmov').addClass('hidden');
+    }
+ });
+</script>
+	
+{% endblock extra_js %}

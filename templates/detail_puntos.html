@@ -15,6 +15,8 @@
 {% endblock extra_css %}
 
 {% block content %}
+
+
 <section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
 	<div class="container">
 		<div class="row">
@@ -62,9 +64,10 @@
 
 						</div>
 					</div>
-					<!-- .item-content -->
+					<!-- .item-content 
+					<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
 				</article>
-				<div class="post-share"> <a href="#" class="social-icon color-bg-icon socicon-twitter"></a> <a href="#" class="social-icon color-bg-icon socicon-facebook"></a> <a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> </div>
+				<div class="post-share"> <a target="blank" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="social-icon color-bg-icon socicon-twitter"></a> <a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook"></a> <a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> </div>
 			</div>
 			<!--eof .col-sm-8 (main content)-->
 			<!-- sidebar -->

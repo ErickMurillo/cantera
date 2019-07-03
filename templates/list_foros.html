@@ -183,13 +183,20 @@
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-foro' destacado.slug %}"></a> </div>
 							</div>
 							<div class="item-content">
-								<h5 class="bottommargin_0"> <a href="{% url 'detalle-foro' destacado.slug %}">{{destacado.nombre}}</a> </h5> <span class="entry-meta greylinks">
+								<h5 class="bottommargin_0"> <a href="{% url 'detalle-foro' destacado.slug %}">{{destacado.nombre}}</a> </h5> 
+								<span class="entry-meta greylinks rightpadding_20">
 									<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
 									<a href="{% url 'detalle-foro' destacado.slug %}">
 										<time datetime="2017-10-03T08:50:40+00:00">
 										{{destacado.creacion|date:"d N, Y"}}</time>
 									</a>
-								</span> 
+								</span>
+								<span class="entry-meta greylinks">
+									<i class="fa fa-pencil-square-o highlight"></i>
+									<a href="{% url 'detalle-foro' destacado.slug %}">
+										{{destacado.usuario}}
+									</a>
+								</span>  
 							</div>
 						</div>
 						{% endfor %}

@@ -54,7 +54,7 @@
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
-									<div class="categories-links small-text highlightlinks"> <a href="#"> {{obj.get_category_display}}</a> 
+									<div class="categories-links small-text highlightlinks"> <a> {{obj.get_category_display}}</a> 
 									</div>
 
 
@@ -65,9 +65,11 @@
 										</span>
 									</div>
 
-									<h3 class="entry-title small bottommargin_0" style="height:52px;"> <a href="{% url 'detalle-actualidad' obj.slug %}" rel="bookmark">
+									<h3 class="entry-title small bottommargin_0" style="height:52px;"> 
+										<a href="{% url 'detalle-actualidad' obj.slug %}" rel="bookmark">
 										{{obj.tittle|striptags|truncatechars:52}}
-									</a> </h3>
+										</a> 
+									</h3>
 								</header>
 								<p class="content-3lines-ellipsis">{{obj.content|safe|striptags|truncatechars:100}} ...<a href="{% url 'detalle-actualidad' obj.slug %}" class="more-link"> Leer más</a> </p>
 							</div>

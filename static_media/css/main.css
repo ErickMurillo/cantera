@@ -17046,15 +17046,15 @@ a[class*="socicon-"].socicon-pocket:hover {
 }
 
 .color-bg-icon.socicon-pocket, a.socicon-pocket.bg-icon:hover, .socicon-pocket.color-icon.border-icon:hover {
-	background-color: #545252;
+	background-color: #827e7e;
 }
 
 a.social-icon {
-	color: #b2b2b2;
+	color: #827e7e;
 }
 
 a.border-icon {
-	border: 1px solid #545252;
+	border: 1px solid #827e7e;
 	padding: 11px 12px;
 	margin-bottom: 4px;
 	margin-top: 4px;

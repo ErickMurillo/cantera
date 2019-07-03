@@ -40,6 +40,9 @@
 {% endblock extra_css %}
 
 {% block content %}
+
+<div id="fb-root"></div>
+
 <section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
 	<div class="container">
 		<div class="row">
@@ -95,16 +98,19 @@
 			
 			<!-- Compartir post en pantallas mayores a 700px-->
 			<div id="sharesocialweb" class="post-share"> 
-				<a target="blank" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="social-icon color-bg-icon socicon-twitter">
-				</a> 
+				<a target="blank" href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+				</a>
+				<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
+
 				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
 				</a>
+
 				<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
 			</div>
 
 			<!-- Compartir post en celulares con las apps-->
 			<div id="sharesocialmov" class="post-share"> 
-				<a target="blank" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="social-icon color-bg-icon socicon-twitter">
+				<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
 				</a> 
 				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
 				</a>
@@ -204,5 +210,5 @@
     }
  });
 </script>
-	
+
 {% endblock extra_js %}

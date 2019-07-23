@@ -144,6 +144,20 @@
 						</ul>
 					</div>
 				</div>
+
+				<!-- paises -->
+				<div class="widget">
+					<h4 class="widget-title">Paises</h4>
+					<div class="">
+						<ul>
+							{% for pais in list_paises %}
+								<li>
+									<a href="{% url 'filtro_pais_camp' pais.slug %}">{{pais.nombre}}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
 				
 				<!-- tags -->
 				<div class="widget">

@@ -4,6 +4,7 @@ from actualidad.models import *
 import datetime
 from taggit.models import *
 from django.db.models import Q
+from organizaciones.models import Pais
 
 
 # Create your views here.
@@ -47,6 +48,8 @@ def indexCampanias(request,template='list_campanias.html'):
 										category__in = ['campanas']).order_by('created_on')
 	else:
 		list_object = Actualidad.objects.filter(category__in = ['campanas']).order_by('created_on')
+
+	list_paises = Pais.objects.order_by('nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
@@ -55,6 +58,8 @@ def indexCampanias(request,template='list_campanias.html'):
 def detailCampanias(request,slug,template='detail_campanas.html'):
 	object = Actualidad.objects.get(slug = slug)
 	list_object = Actualidad.objects.filter(category__in = ['campanas']).order_by('created_on')
+	
+	list_paises = Pais.objects.order_by('nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
@@ -71,6 +76,7 @@ def indexConcursos(request, template="list_concursos.html"):
 	else:
 		list_object = Actualidad.objects.filter(category__in = ['concursos']).order_by('created_on')
 
+	list_paises = Pais.objects.order_by('nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
@@ -78,6 +84,7 @@ def indexConcursos(request, template="list_concursos.html"):
 
 def detailConcursos(request,slug,template='detail_concursos.html'):
 	object = Actualidad.objects.get(slug = slug)
+	list_paises = Pais.objects.order_by('nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	return render(request,template,locals())
@@ -93,12 +100,42 @@ def filtro_tag_concurso(request,slug,template='list_concursos.html'):
 		
 	else:
 		list_object = Actualidad.objects.filter(category__in = ['concursos'],tags__slug = slug).order_by('created_on')
-	
+	list_paises = Pais.objects.order_by('nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
 
 	return render(request, template, locals())
+
+def filtro_pais_conc(request,slug,template='list_campanias.html'):
+	if request.GET.get('buscador'):
+		q = request.GET['buscador']
+		list_object = Actualidad.objects.filter(
+										Q(pais__icontains = q),
+										category__in = ['concursos']).order_by('created_on')
+	else:
+		list_object = Actualidad.objects.filter(pais__slug = slug, category__in = ['concursos']).order_by('created_on')
+		
+	list_paises = Pais.objects.order_by('nombre')
+	hoy = datetime.date.today()
+	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
+	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
+	return render(request,template,locals())
+
+def filtro_pais_camp(request,slug,template='list_campanias.html'):
+	if request.GET.get('buscador'):
+		q = request.GET['buscador']
+		list_object = Actualidad.objects.filter(
+										Q(pais__icontains = q),
+										category__in = ['campanas']).order_by('created_on')
+	else:
+		list_object = Actualidad.objects.filter(pais__slug = slug, category__in = ['campanas']).order_by('created_on')
+
+	list_paises = Pais.objects.order_by('nombre')
+	hoy = datetime.date.today()
+	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
+	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
+	return render(request,template,locals())
 
 def filtro_tag_campanias(request,slug,template='list_campanias.html'):
 	if request.GET.get('buscador'):
@@ -111,7 +148,7 @@ def filtro_tag_campanias(request,slug,template='list_campanias.html'):
 		
 	else:
 		list_object = Actualidad.objects.filter(category__in = ['campanas'],tags__slug = slug).order_by('created_on')
-	
+	list_paises = Pais.objects.order_by('nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]

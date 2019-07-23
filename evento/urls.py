@@ -10,6 +10,8 @@ urlpatterns = [
 	path('campanias/tag/<slug>/',views.filtro_tag_campanias, name='filtro-tag-camp'),
 	path('concursos/',views.indexConcursos, name = 'indexConcursos'),
 	path('concursos/<slug>', views.detailConcursos, name = 'detailConcursos'),
+	path('pais/<slug>/campania/', views.filtro_pais_camp, name = 'filtro_pais_camp'),
+	path('pais/<slug>/concurso/',views.filtro_pais_conc,name='filtro_pais_conc'),
 	path('concurso/tag/<slug>/',views.filtro_tag_concurso, name='filtro_tag_concurso'),
 
 ]

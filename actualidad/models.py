@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 from sorl.thumbnail import ImageField
 from users.models import User
 from taggit_autosuggest.managers import TaggableManager
+from organizaciones.models import Pais
 
 # Create your models here.
 
@@ -27,6 +28,7 @@ Types_actualidad = (
 class Actualidad(models.Model):
 	tittle = models.CharField('Título',max_length=200, unique=True)
 	category = models.CharField('Categoría',choices=Types_actualidad, max_length=50)
+	pais = models.ForeignKey(Pais,on_delete = models.DO_NOTHING)
 	photo = ImageField('Foto',upload_to='actualidad/')
 	content = RichTextUploadingField(verbose_name='Contenido')
 	created_on = models.DateField('Fecha de publicación', auto_now_add=True)

@@ -11,8 +11,8 @@ Types_actualidad = (
 )
 
 class ActualidadForms(forms.ModelForm):
-	content = forms.CharField(widget=CKEditorUploadingWidget())
-	category = forms.ChoiceField(choices = Types_actualidad)
+	content = forms.CharField(label='Contenido',widget=CKEditorUploadingWidget())
+	category = forms.ChoiceField(label='Categoría',choices = Types_actualidad)
 	
 	class Meta:
 		model = Actualidad

@@ -38,7 +38,8 @@ def filtro_pais(request,slug,category,template='list_actualidad.html'):
 	list_paises = Pais.objects.order_by('nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
-	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
+	ids = list_object.values_list('id',flat=True)
+	tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
 
 	return render(request, template, locals())
 
@@ -58,11 +59,8 @@ def filtro_categoria(request,category,template='list_actualidad.html'):
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 
-	id_cat = list_object.annotate(num_times=Count('tags__name')).order_by('-num_times').values('tags__name')
-	print(id_cat)
-	#tags = Actualidad.tags.most_common(min_count=1, extra_filters={'id__in': id_cat})[:6]
-	#tags = Tag.objects.filter(id__in = id_cat).annotate(num_times=Count('name')).order_by('num_times')
-	#print(tags.values_list('num_times'))
+	ids = list_object.values_list('id',flat=True)
+	tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
 
 	return render(request, template, locals())
 
@@ -81,7 +79,8 @@ def filtro_tag(request,slug,category,template='list_actualidad.html'):
 	list_paises = Pais.objects.order_by('nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
-	tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
+	ids = list_object.values_list('id',flat=True)
+	tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
 
 	return render(request, template, locals())
 
@@ -102,6 +101,7 @@ def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
 		list_paises = Pais.objects.order_by('nombre')
 		hoy = datetime.date.today()
 		prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
-		tags = Actualidad.tags.most_common( extra_filters={'id__in': list_object})[:6]
+		ids = list_object.values_list('id',flat=True)
+		tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
 
 		return render(request, template, locals())

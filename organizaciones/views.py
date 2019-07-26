@@ -379,20 +379,20 @@ def publicacion_eliminar(request,id):
 
 @login_required
 def galeria_img_crear(request,template = 'admin/galeria_img.html'):
-	FormSetInit = inlineformset_factory(GaleriaImagenes, Imagenes, form=ImagenesForm,extra=1)
+	# FormSetInit = inlineformset_factory(GaleriaImagenes, Imagenes, form=ImagenesForm,extra=1)
 	if request.method == 'POST':
 		form = GaleriaImagenesForm(request.POST, request.FILES)
-		formset = FormSetInit(request.POST,request.FILES)
-		if form.is_valid() and formset.is_valid():
+		# formset = FormSetInit(request.POST,request.FILES)
+		if form.is_valid():# and formset.is_valid():
 			galeria = form.save(commit=False)
 			galeria.usuario = request.user
 			galeria.save()
 
-			instances = formset.save(commit=False)
-			for instance in instances:
-				instance.imagenes = galeria
-				instance.save()
-			formset.save_m2m()
+			# instances = formset.save(commit=False)
+			# for instance in instances:
+			# 	instance.imagenes = galeria
+			# 	instance.save()
+			# formset.save_m2m()
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
@@ -410,27 +410,27 @@ def galeria_img_crear(request,template = 'admin/galeria_img.html'):
 				pass
 	else:
 		form = GaleriaImagenesForm()
-		formset = FormSetInit()
+		# formset = FormSetInit()
 
 	return render(request, template, locals())
 
 @login_required
 def galeria_img_editar(request, id, template = 'admin/galeria_img.html'):
 	object = get_object_or_404(GaleriaImagenes, id=id)
-	FormSetInit = inlineformset_factory(GaleriaImagenes, Imagenes, form=ImagenesForm,extra=1)
+	# FormSetInit = inlineformset_factory(GaleriaImagenes, Imagenes, form=ImagenesForm,extra=1)
 	if request.method == 'POST':
 		form = GaleriaImagenesForm(data=request.POST,instance=object,files=request.FILES)
-		formset = FormSetInit(request.POST,request.FILES,instance=object)
+		# formset = FormSetInit(request.POST,request.FILES,instance=object)
 
-		if form.is_valid() and formset.is_valid():
+		if form.is_valid(): # and formset.is_valid():
 			form_uncommited = form.save(commit=False)
 			form_uncommited.save()
 
-			formset.save()
+			# formset.save()
 			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
 	else:
 		form = GaleriaImagenesForm(instance=object)
-		formset = FormSetInit(instance=object)
+		# formset = FormSetInit(instance=object)
 
 	return render(request, template, locals())
 

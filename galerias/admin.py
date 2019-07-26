@@ -9,5 +9,5 @@ class ImagenesInline(admin.TabularInline):
 class GaleriaImagenesAdmin(admin.ModelAdmin):
 	inlines = [ImagenesInline,]
 
-admin.site.register(GaleriaImagenes, GaleriaImagenesAdmin)
+admin.site.register(GaleriaImagenes)
 admin.site.register(GaleriaVideos)

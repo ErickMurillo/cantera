@@ -7,7 +7,7 @@ from actualidad.models import *
 
 class GaleriaImagenes(models.Model):
 	titulo = models.CharField(max_length=200)
-	portada = ImageField(upload_to='galerias/')
+	portada = ImageField(upload_to='galerias/',verbose_name='Imagen')
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING)
 	slug = models.SlugField(max_length=200,editable=False)

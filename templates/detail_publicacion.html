@@ -72,6 +72,7 @@
 						</header>
 					</div>
 				</article>
+
 			</div>
 			<div class="col-sm-7">
 				<p>{{object.resumen|safe}}</p>
@@ -91,19 +92,19 @@
 							
 							{% if object.audiospublicacion_set.all %}
 								<li> <a href="#vertical-tab2" role="tab" data-toggle="tab">
-								<i class="rt-icon2-file-sound-o"></i> Audio
+								<i class="rt-icon2-file-sound-o"></i> Audios
 							</a> </li>
 							{% endif %}
 							{% if object.videospublicacion_set.all %}
 								<li> <a href="#vertical-tab3" role="tab" data-toggle="tab">
-								<i class="rt-icon2-file-video"></i> Video
+								<i class="rt-icon2-file-video"></i> Videos
 							</a> </li>
 							{% endif %}
 							
 						</ul>
 					</div>
 					<div class="col-sm-8">
-						<!-- Tab panes -->
+						<!-- Tab pane -->
 						<div class="tab-content">
 							<div class="tab-pane fade in active" id="vertical-tab1">
 								<ul style="list-style-type:none;">
@@ -144,12 +145,43 @@
 				</div>
 			</div>
 		</div>
+		<div id="sharesocialweb" class="post-share"> 
+			<a target="blank" href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+			</a>
+			<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
+
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+			</a>
+
+			<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+		</div>
+
+		<!-- Compartir post en celulares con las apps-->
+		<div id="sharesocialmov" class="post-share"> 
+			<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+			</a> 
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+			</a>
+			<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+		</div>
 	</div>
 </section>
 
 {% endblock content %}
 
 {% block extra_js %}
+<script>
+	$( document ).ready(function() {      
+    var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    if (isMobile) {
+        $('#sharesocialweb').addClass('hidden');
+    }
+    else {
+    	$('#sharesocialmov').addClass('hidden');
+    }
+ });
+</script>
 <script src="/static/js/jquery.fancybox.min.js"></script>
 
 <script>

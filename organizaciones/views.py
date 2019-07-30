@@ -70,7 +70,7 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 			form.save_m2m()
 			
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/correo.txt', {'obj': actualidad,})
 
 				html_content = render_to_string('email/correo.txt', {'obj': actualidad,})
@@ -125,7 +125,7 @@ def foros_crear(request,template = 'admin/foro.html'):
 			form.save_m2m()
 			
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/foro.txt', {'obj': foro,})
 
 				html_content = render_to_string('email/foro.txt', {'obj': foro,})
@@ -182,7 +182,7 @@ def events_crear(request,template = 'admin/event.html'):
 			form.save_m2m()
 			
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/evento.txt', {'obj': event,})
 
 				html_content = render_to_string('email/evento.txt', {'obj': event,})
@@ -263,7 +263,7 @@ def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 			formset3.save_m2m()
 
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/publicacion.txt', {'obj': form_uncommited,})
 
 				html_content = render_to_string('email/publicacion.txt', {'obj': form_uncommited,})
@@ -350,7 +350,7 @@ def guia_agregar(request, template = 'admin/publicaciones.html'):
 			formset3.save_m2m()
 
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/guia.txt', {'obj': form_uncommited,})
 
 				html_content = render_to_string('email/guia.txt', {'obj': form_uncommited,})
@@ -395,7 +395,7 @@ def galeria_img_crear(request,template = 'admin/galeria_img.html'):
 			# formset.save_m2m()
 
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/galeria.txt', {'obj': galeria,})
 
 				html_content = render_to_string('email/galeria.txt', {'obj': galeria,})
@@ -449,7 +449,7 @@ def galeria_vid_crear(request,template = 'admin/galeria_vid.html'):
 			video.save()
 
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/video.txt', {'obj': video,})
 
 				html_content = render_to_string('email/video.txt', {'obj': video,})
@@ -501,7 +501,7 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 			punto.save()
 
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/punto.txt', {'obj': punto,})
 
 				html_content = render_to_string('email/punto.txt', {'obj': punto,})
@@ -551,7 +551,7 @@ def campanias_crear(request,template = 'admin/actualidad.html'):
 			form.save_m2m()
 			
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/campanias.txt', {'obj': campanias,})
 
 				html_content = render_to_string('email/campanias.txt', {'obj': campanias,})
@@ -601,7 +601,7 @@ def concursos_crear(request,template = 'admin/actualidad.html'):
 			form.save_m2m()
 
 			try:
-				subject, from_email = 'Plataforma Género y Metodologías', 'mail@mail.com'
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/campanias.txt', {'obj': campanias,})
 
 				html_content = render_to_string('email/campanias.txt', {'obj': campanias,})

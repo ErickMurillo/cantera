@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'el_pagination',
     'crispy_forms',
     'disqus',
+    'compressor',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -261,3 +262,14 @@ ACCOUNT_FORMS = {
 AUTH_USER_MODEL = 'users.User'
 DISQUS_API_KEY = '2dwFxEqkNjZtNAxRr9Sa4jfknLONQrwXL5zl5fleL0od7Vhdyl2WRo9rZsbhDMwE'
 DISQUS_WEBSITE_SHORTNAME = 'https-generoymetodologias-org'
+
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = STATIC_ROOT
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+

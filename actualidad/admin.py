@@ -2,7 +2,14 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
-admin.site.register(Actualidad)
+class GaleriaInline(admin.TabularInline):
+	model = Galeria
+	extra = 1
+
+class ActualidadAdmin(admin.ModelAdmin):
+	inlines = [GaleriaInline,]
+
+admin.site.register(Actualidad,ActualidadAdmin)
 admin.site.register(Temas)
 
 #paginas estaticas

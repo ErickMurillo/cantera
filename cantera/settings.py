@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'disqus',
     'compressor',
+    'nested_admin',
 ]
 
 AUTH_USER_MODEL = 'users.User'

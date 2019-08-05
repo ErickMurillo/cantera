@@ -91,6 +91,15 @@
 					</header>
 					<div class="entry-content">
 						{{object.content|safe}}
+						
+						<!-- galeria -->
+						{% if object.galeria_set.all %}
+							{% for img in object.galeria_set.all %}
+								{% thumbnail img.imagen "300x200" crop="center" as im %}
+								<img src="{{ im.url }}" alt="">
+								{% endthumbnail %}
+							{% endfor %}
+						{% endif %}
 					</div>
 				</div>
 				<!-- .item-content -->
@@ -141,7 +150,7 @@
 			<h4 class="widget-title"><a href="/actualidad">Actualidad</a></h4>
 			<div class="">
 				<ul>
-					<li><a href="/actualidad/noticias/">Noticas</a></li>									
+					<li><a href="/actualidad/noticias/">Noticias</a></li>									
 					<li><a href="/actualidad/situacion-regional-genero/">Situación regional de género</a></li>
 				</ul>
 			</div>
@@ -154,7 +163,7 @@
 				<ul>
 					{% for pais in list_paises %}
 					<li>
-						<a href="{% url 'filtro_pais' pais.slug object.category %}">{{pais.nombre}}</a>
+						<a href="{% url 'filtro_pais' pais.1 object.category %}">{{pais.0}}</a>
 					</li>
 					{% endfor %}
 				</ul>

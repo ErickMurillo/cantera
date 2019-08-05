@@ -10,14 +10,19 @@ Types_actualidad = (
 	('situacion-regional-genero','Situación regional de género'),
 )
 
+class GaleriaForm(forms.ModelForm):
+	class Meta:
+		model = Galeria
+		fields = '__all__'
+
 class ActualidadForms(forms.ModelForm):
 	content = forms.CharField(label='Contenido',widget=CKEditorUploadingWidget())
-	category = forms.ChoiceField(label='Categoría',choices = Types_actualidad)
+	# category = forms.ChoiceField(label='Categoría',choices = Types_actualidad)
 	
 	class Meta:
 		model = Actualidad
 		fields = '__all__'
-		exclude = ('slug','created_on','author',)
+		exclude = ('slug','created_on','author','category')
 
 class Actualidad2Forms(forms.ModelForm):
 	content = forms.CharField(widget=CKEditorUploadingWidget())

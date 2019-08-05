@@ -61,13 +61,22 @@ def actualidad_list(request, template = 'admin/actualidad_list.html'):
 
 @login_required
 def actualidad_crear(request,template = 'admin/actualidad.html'):
+	FormSetInit = inlineformset_factory(Actualidad,Galeria,form=GaleriaForm,extra=1)
 	if request.method == 'POST':
 		form = ActualidadForms(request.POST, request.FILES)
-		if form.is_valid():
+		formset = FormSetInit(request.POST, request.FILES)
+		if form.is_valid() and formset.is_valid():
 			actualidad = form.save(commit=False)
 			actualidad.author = request.user
+			actualidad.category = 'noticias'
 			actualidad.save()
 			form.save_m2m()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.actualidad = actualidad
+				instance.save()
+			formset.save_m2m()
 			
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
@@ -85,21 +94,27 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 				pass
 	else:
 		form = ActualidadForms()
+		formset = FormSetInit()
 
 	return render(request, template, locals())
 
 @login_required
 def actualidad_editar(request, id, template = 'admin/actualidad.html'):
 	object = get_object_or_404(Actualidad, id=id)
+	FormSetInit = inlineformset_factory(Actualidad,Galeria,form=GaleriaForm,extra=1)
 	if request.method == 'POST':
 		form = ActualidadForms(request.POST, request.FILES, instance=object)
-		if form.is_valid():
+		formset = FormSetInit(request.POST, request.FILES, instance=object)
+		if form.is_valid() and formset.is_valid():
 			form_uncommited = form.save()
 			form_uncommited.author = request.user
 			form_uncommited.save()
+
+			formset.save()
 			return HttpResponseRedirect('/alianzas/actualidad/')
 	else:
 		form = ActualidadForms(instance=object)
+		formset = FormSetInit(instance=object)
 	return render(request, template, locals())
 
 @login_required

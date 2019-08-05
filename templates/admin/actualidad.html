@@ -20,6 +20,35 @@
 						{{form.media}}
 						{{form.errors}}
 						{{form|crispy}}
+						<br>
+
+						<div class="row">
+							<div class="col-md-6 pt-10"  style="background-color:#FFAF92">
+								<h4>Galería</h4>
+								<hr>
+								{{ formset.management_form }}
+								<div id="form_set">
+									{% for form in formset.forms %}
+									    {{form.non_field_errors}}
+										{{form.errors}}
+								        <div class='no_error'>
+								            {{ form }}
+								        </div>
+								    {% endfor %}
+								</div>
+
+								<a class="btn-add row" type="button" id="add_more">
+									<span class="fa fa-plus"> </span>
+									Agregar archivo adicional
+								</a>
+								<div id="empty_form" style="display:none">
+								    <div class='no_error'>
+								        {{ formset.empty_form }}
+								    </div>
+								</div>
+							</div>
+						</div>
+
 						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Agregar" value="{% if '/editar/' in request.path %}Modificar{% else %}Agregar{% endif %}">
 					</form>
 				</div>
@@ -28,3 +57,14 @@
 	</div>
 </div>
 {% endblock content %}
+
+{% block extra_js %}
+<script>
+$('#add_more').click(function() {
+	var form_idx = $('#id_galeria_set-TOTAL_FORMS').val();
+	$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+	$('#id_galeria_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+});
+</script>
+
+{% endblock extra_js %}

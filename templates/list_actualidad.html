@@ -146,7 +146,7 @@
 					<h4 class="widget-title">Categorías</h4>
 					<div class="">
 						<ul>
-							<li><a href="/actualidad/noticias/">Noticas</a></li>									
+							<li><a href="/actualidad/noticias/">Noticias</a></li>									
 							<li><a href="/actualidad/situacion-regional-genero/">Situación regional de género</a></li>
 						</ul>
 					</div>
@@ -159,7 +159,7 @@
 						<ul>
 							{% for pais in list_paises %}
 								<li>
-									<a href="{% url 'filtro_pais' pais.slug category %}">{{pais.nombre}}</a>
+									<a href="{% url 'filtro_pais' pais.1 category %}">{{pais.0}}</a>
 								</li>
 							{% endfor %}
 						</ul>

@@ -31,11 +31,11 @@ def filtro_pais(request,slug,category,template='list_actualidad.html'):
 		q = request.GET['buscador']
 		list_object = Actualidad.objects.filter(
 										Q(pais__icontains = q),
-										category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
+										category = category).order_by('created_on')
 	else:
 		list_object = Actualidad.objects.filter(pais__slug = slug, category = category).order_by('created_on')
 
-	list_paises = Pais.objects.order_by('nombre')
+	list_paises = Actualidad.objects.values_list('pais__nombre','pais__slug').order_by('pais__nombre').distinct('pais')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	ids = list_object.values_list('id',flat=True)
@@ -50,12 +50,13 @@ def filtro_categoria(request,category,template='list_actualidad.html'):
 										Q(tittle__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
+										category = category).order_by('created_on')
 		
 	else:
 		list_object = Actualidad.objects.filter(category = category).order_by('created_on')
 
-	list_paises = Pais.objects.order_by('nombre')
+	list_paises = Actualidad.objects.values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
+
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 
@@ -75,8 +76,8 @@ def filtro_tag(request,slug,category,template='list_actualidad.html'):
 		
 	else:
 		list_object = Actualidad.objects.filter(category = category,tags__slug = slug).order_by('created_on')
-		print(list_object)
-	list_paises = Pais.objects.order_by('nombre')
+
+	list_paises = Actualidad.objects.values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	ids = list_object.values_list('id',flat=True)
@@ -98,7 +99,7 @@ def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
 		list_object = Actualidad.objects.filter(category__in = ['noticias','situacion-regional-genero']).order_by('created_on')
 		object = Actualidad.objects.get(slug = slug)
 
-		list_paises = Pais.objects.order_by('nombre')
+		list_paises = Actualidad.objects.values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
 		hoy = datetime.date.today()
 		prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 		ids = list_object.values_list('id',flat=True)

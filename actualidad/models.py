@@ -49,6 +49,11 @@ class Actualidad(models.Model):
 	def save(self,*args,**kwargs):
 		self.slug = slugify(self.tittle)
 		return super(Actualidad,self).save(*args,*kwargs)
+
+class Galeria(models.Model):
+	actualidad = models.ForeignKey(Actualidad,on_delete=models.CASCADE)
+	nombre = models.CharField(max_length=90)
+	imagen = ImageField(upload_to='galerias/actualidad/')
 			
 
 		

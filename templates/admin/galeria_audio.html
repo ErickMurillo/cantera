@@ -12,7 +12,7 @@
 							Editar
 						{% else %}
 							Nuevo
-						{% endif %} Video</h2>
+						{% endif %} Audios</h2>
 				</div>
 				<div class="body">
 					<form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
@@ -22,7 +22,7 @@
 
 						<div class="row">
 							<div class="col-md-6 pt-10"  style="background-color:#FFAF92">
-								<h4>Lista Videos</h4>
+								<h4>Lista Audios</h4>
 								<hr>
 								{{ formset.management_form }}
 								<div id="form_set">
@@ -58,9 +58,9 @@
 {% block extra_js %}
 <script>
 $('#add_more').click(function() {
-	var form_idx = $('#id_listvideos_set-TOTAL_FORMS').val();
+	var form_idx = $('#id_listaudios_set-TOTAL_FORMS').val();
 	$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
-	$('#id_listvideos_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+	$('#id_listaudios_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
 });
 </script>
 

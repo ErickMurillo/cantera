@@ -9,7 +9,7 @@ class ForoForm(forms.ModelForm):
 	contenido = forms.CharField(widget=CKEditorUploadingWidget())
 	class Meta:
 		model = Foros
-		exclude = ('slug','usuario','usuarios_siguiendo')
+		exclude = ('slug','usuario','usuarios_siguiendo','aprobado')
 
 class AporteForm(forms.ModelForm):
 	contenido = forms.CharField(widget=CKEditorUploadingWidget())

@@ -20,8 +20,11 @@
 						<a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Galería de videos</a>
 					</li>
 					<li role="presentation" >
-						<a href="#imagenes" aria-controls="imagenes" role="tab" data-toggle="tab">Galería de imágenes</a>
+						<a href="#audios" aria-controls="audios" role="tab" data-toggle="tab">Audios</a>
 					</li>
+					<!--<li role="presentation" >
+						<a href="#imagenes" aria-controls="imagenes" role="tab" data-toggle="tab">Galería de imágenes</a>
+					</li>-->
 					
 					
 				</ul>
@@ -40,8 +43,8 @@
 
 											<tr>
 												<th>Nombre</th>
-												
 												<th>Temática</th>
+												<th>Estado</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
@@ -53,6 +56,7 @@
 												</td>
 												
 												<td>{{pub.tematica}}</td>
+												<td>{% if pub.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 												<td>
 													<div class="action-btn">
 														<a class="btn btn-sm btn-success" href="{% url 'publicacion_editar' pub.id %}">
@@ -157,6 +161,7 @@
 											<tr>
 												<th>Nombre</th>
 												<th>Temática</th>
+												<th>Estado</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
@@ -168,6 +173,7 @@
 														<h6>{{video}}</h6>
 													</td>
 													<td>{{video.tematica}}</td>
+													<td>{% if video.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 													<td>
 														<div class="action-btn">
 															<a class="btn btn-sm btn-success" href="{% url 'galeria_vid_editar' video.id %}">
@@ -189,6 +195,67 @@
 											        <p>
 											            
 											            <a class="btn btn-sm btn-danger" href="{% url 'galeria_vid_eliminar' video.id %}">Eliminar</a>
+											            
+											        </p>
+											    </div>
+											{% endfor %}
+
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="audios">
+						<div class="customcard">
+							<div class="header">
+								<ul class="header-dropdown">
+									<li><a href="{% url 'galeria_audio_crear' %}" class="btn btn-azul text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+								</ul>
+							</div>
+							<div class="body">
+								<div class="table-responsive">
+									<table class="table table-custom">
+										<thead class="bg-actualidad">
+
+											<tr>
+												<th>Nombre</th>
+												<th>Temática</th>
+												<th>Estado</th>
+												<th>Acciones</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											{% for audio in list_objects_audio %}
+												<tr>
+													<td>
+														<h6>{{audio}}</h6>
+													</td>
+													<td>{{audio.tematica}}</td>
+													<td>{% if audio.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
+													<td>
+														<div class="action-btn">
+															<a class="btn btn-sm btn-success" href="{% url 'galeria_audio_editar' audio.id %}">
+																<i class="fa fa-pencil"></i>
+															</a>
+															<a data-fancybox data-src="#modalaudio-{{audio.id}}" class="btn btn-sm btn-danger" href="javascript:;">
+																<i class="fa fa-trash"></i>
+															</a>
+														</div>
+													</td>
+												</tr>
+												<div id="modalaudio-{{audio.id}}" class="p-5" style="display: none;max-width:600px;">
+											        <h5>
+											            Eliminar audio
+											        </h5>
+											        <p>
+											           Se eliminará "{{audio}}" permanentemente.<br>¿Esta seguro que desea eliminar?
+											        </p>
+											        <p>
+											            
+											            <a class="btn btn-sm btn-danger" href="{% url 'galeria_audio_eliminar' audio.id %}">Eliminar</a>
 											            
 											        </p>
 											    </div>

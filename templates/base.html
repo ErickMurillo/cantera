@@ -169,7 +169,7 @@
                                     		</a>
                                     		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     			{% if user.organizacion %}
-                                                   <li><a href="{% url 'perfil' %}">Organización</a></li> 
+                                                   <li><a href="{% url 'perfil' %}">Administrador</a></li> 
                                                 {% endif %}
 
 												<li><a href="{% url 'editar_perfil' user.id %}?next={{ request.path }}">Editar perfil</a></li>

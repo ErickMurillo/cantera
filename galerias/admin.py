@@ -9,5 +9,20 @@ class ImagenesInline(admin.TabularInline):
 class GaleriaImagenesAdmin(admin.ModelAdmin):
 	inlines = [ImagenesInline,]
 
-admin.site.register(GaleriaImagenes)
-admin.site.register(GaleriaVideos)
+class ListVideosInline(admin.TabularInline):
+	model = ListVideos
+	extra = 1
+
+class GaleriaVideosAdmin(admin.ModelAdmin):
+	inlines = [ListVideosInline]
+
+class ListAudiosInline(admin.TabularInline):
+	model = ListAudios
+	extra = 1
+
+class AudiosAdmin(admin.ModelAdmin):
+	inlines = [ListAudiosInline]
+
+# admin.site.register(GaleriaImagenes)
+admin.site.register(GaleriaVideos,GaleriaVideosAdmin)
+admin.site.register(Audios,AudiosAdmin)

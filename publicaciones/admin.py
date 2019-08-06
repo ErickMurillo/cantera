@@ -15,7 +15,7 @@ class VideosPublicacionInline(admin.TabularInline):
 	extra = 1
 
 class PublicacionAdmin(admin.ModelAdmin):
-	inlines = [ArchivosPublicacionInline,AudiosPublicacionInline,VideosPublicacionInline]
+	inlines = [ArchivosPublicacionInline,]
 	
 	def save_model(self,request,obj,form,change):
 		obj.usuario = request.user

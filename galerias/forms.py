@@ -6,7 +6,7 @@ from django import forms
 class GaleriaImagenesForm(forms.ModelForm):
 	class Meta:
 		model = GaleriaImagenes
-		exclude = ('usuario','slug',)
+		exclude = ('usuario','slug','aprobado')
 
 class ImagenesForm(forms.ModelForm):
 	class Meta:
@@ -16,4 +16,19 @@ class ImagenesForm(forms.ModelForm):
 class GaleriaVideosForm(forms.ModelForm):
 	class Meta:
 		model = GaleriaVideos
-		exclude = ('usuario','slug',)
+		exclude = ('usuario','slug','aprobado')
+
+class ListVideosForm(forms.ModelForm):
+	class Meta:
+		model = ListVideos
+		fields = '__all__'
+
+class AudiosForm(forms.ModelForm):
+	class Meta:
+		model = Audios
+		exclude = ('usuario','slug','aprobado')
+
+class ListAudiosForm(forms.ModelForm):
+	class Meta:
+		model = ListAudios
+		fields = '__all__'

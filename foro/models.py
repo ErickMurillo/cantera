@@ -17,6 +17,7 @@ class Foros(models.Model):
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING)
 	usuarios_siguiendo = models.ManyToManyField(User,blank=True,related_name='siguiendo')
 	slug = models.SlugField(max_length=200,editable=False)
+	aprobado = models.BooleanField()
 
 	class Meta:
 		verbose_name_plural = "Foros"
@@ -39,7 +40,7 @@ class Aportes(models.Model):
 		verbose_name_plural = "Aportes"
 
 	def __str__(self):
-		return self.foro.nombre
+		return '%s - %s' % (self.foro.nombre,self.usuario)
 
 class Comentarios(models.Model):
 	fecha = models.DateField(auto_now_add=True)
@@ -51,4 +52,4 @@ class Comentarios(models.Model):
 		verbose_name_plural = "Comentarios"
 
 	def __str__(self):
-		return self.usuario.username
+		return '%s - %s' % (self.aporte.foro,self.usuario)

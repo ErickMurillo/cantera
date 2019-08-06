@@ -25,6 +25,7 @@
 								<tr>
 									<th>Nombre</th>
 									<th>Temática</th>
+									<th>Estado</th>
 									<th>Acciones</th>
 								</tr>
 							</thead>
@@ -40,6 +41,7 @@
 										<td>
 											{{obj.tematica}}
 										</td>
+										<td>{% if obj.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 										<td>
 											<div class="action-btn">
 												<a class="btn btn-sm btn-success" href="{% url 'foros_editar' obj.id %}">

@@ -35,8 +35,8 @@ class Actualidad(models.Model):
 	tematica = models.ManyToManyField(Temas)
 	tags = TaggableManager("Tags",help_text='Separar elementos con "," ', blank=True)
 	slug = models.SlugField(max_length=200, editable=False)
-
-	author = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+	author = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
+	aprobado = models.BooleanField()
 
 	class Meta:
 		verbose_name='Actualidad'

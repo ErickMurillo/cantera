@@ -28,6 +28,10 @@ urlpatterns = [
 	path('recursos-metodologicos/galerias/videos/agregar/', views.galeria_vid_crear, name = 'galeria_vid_crear'),
 	path('recursos-metodologicos/galerias/videos/editar/<id>/', views.galeria_vid_editar, name = 'galeria_vid_editar'),
 	path('recursos-metodologicos/galerias/videos/eliminar<id>/', views.galeria_vid_eliminar, name = 'galeria_vid_eliminar'),
+	#galeria-audios
+	path('recursos-metodologicos/galerias/audios/agregar/', views.galeria_audio_crear, name = 'galeria_audio_crear'),
+	path('recursos-metodologicos/galerias/audios/editar/<id>/', views.galeria_audio_editar, name = 'galeria_audio_editar'),
+	path('recursos-metodologicos/galerias/audios/eliminar<id>/', views.galeria_audio_eliminar, name = 'galeria_audio_eliminar'),
 	#publicaciones
 	path('recursos-metodologicos/publicaciones/agregar/', views.publicacion_agregar, name = 'publicacion_agregar'),
 	path('recursos-metodologicos/publicaciones/editar/<id>/', views.publicacion_editar, name = 'publicacion_editar'),

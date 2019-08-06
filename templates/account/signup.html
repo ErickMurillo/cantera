@@ -16,6 +16,8 @@
 					</div>
 					<div class="body">
 						<form class="checkout with_padding form-horizontal" method="POST" action="/accounts/signup/">{% csrf_token %}
+							{{form.errors}}
+							{{form.organizacion}}
 						
 							<div class="form-group">
 								<label class="label-control" for="">Nombre de usuario: </label>

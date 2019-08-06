@@ -24,7 +24,7 @@ from django.template.loader import render_to_string
 
 #GENERAL VIEWS
 def index_org(request, template = 'list_org.html'):
-	list_object = Contraparte.objects.order_by('nombre')
+	list_object = Contraparte.objects.exclude(nombre = 'Particular').order_by('nombre')
 	return render(request,template,locals())
 
 def detalles_org(request, slug, template = 'detail_org.html'):
@@ -69,6 +69,7 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 			actualidad = form.save(commit=False)
 			actualidad.author = request.user
 			actualidad.category = 'noticias'
+			actualidad.aprobado = False
 			actualidad.save()
 			form.save_m2m()
 
@@ -115,6 +116,7 @@ def actualidad_editar(request, id, template = 'admin/actualidad.html'):
 	else:
 		form = ActualidadForms(instance=object)
 		formset = FormSetInit(instance=object)
+
 	return render(request, template, locals())
 
 @login_required
@@ -135,6 +137,7 @@ def foros_crear(request,template = 'admin/foro.html'):
 		if form.is_valid():
 			foro = form.save(commit=False)
 			foro.usuario = request.user
+			foro.aprobado = False
 			foro.save()
 			foro.usuarios_siguiendo.set(usuarios)
 			form.save_m2m()
@@ -193,6 +196,7 @@ def events_crear(request,template = 'admin/event.html'):
 		if form.is_valid():
 			event = form.save(commit=False)
 			event.author = request.user
+			event.aprobado = False
 			event.save()
 			form.save_m2m()
 			
@@ -238,6 +242,7 @@ def events_eliminar(request, id):
 def recursos_list(request,template='admin/recursos.html'):
 	list_objects_imagenes = GaleriaImagenes.objects.filter(usuario = request.user.id)
 	list_objects_video = GaleriaVideos.objects.filter(usuario = request.user.id)
+	list_objects_audio = Audios.objects.filter(usuario = request.user.id)
 	publicaciones = Publicacion.objects.filter(usuario = request.user.id, tipo = 1)
 	guias = Publicacion.objects.filter(usuario = request.user.id, tipo = 2)
 
@@ -246,17 +251,18 @@ def recursos_list(request,template='admin/recursos.html'):
 @login_required
 def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 	FormSetInit = inlineformset_factory(Publicacion,ArchivosPublicacion,form=ArchivosPublicacionForm,extra=1)
-	FormSetInit2 = inlineformset_factory(Publicacion,AudiosPublicacion,form=AudiosPublicacionForm,extra=1)
-	FormSetInit3 = inlineformset_factory(Publicacion,VideosPublicacion,form=VideosPublicacionForm,extra=1)
+	# FormSetInit2 = inlineformset_factory(Publicacion,AudiosPublicacion,form=AudiosPublicacionForm,extra=1)
+	# FormSetInit3 = inlineformset_factory(Publicacion,VideosPublicacion,form=VideosPublicacionForm,extra=1)
 	if request.method == 'POST':
 		form = PublicacionForm(request.POST, request.FILES)
 		formset = FormSetInit(request.POST,request.FILES)
-		formset2 = FormSetInit2(request.POST,request.FILES)
-		formset3 = FormSetInit3(request.POST)
-		if form.is_valid() and formset.is_valid() and formset2.is_valid() and formset3.is_valid():
+		# formset2 = FormSetInit2(request.POST,request.FILES)
+		# formset3 = FormSetInit3(request.POST)
+		if form.is_valid() and formset.is_valid(): # and formset2.is_valid() and formset3.is_valid():
 			form_uncommited = form.save(commit=False)
 			form_uncommited.usuario = request.user
 			form_uncommited.tipo = 1
+			form_uncommited.aprobado = False
 			form_uncommited.save()
 
 			instances = formset.save(commit=False)
@@ -265,17 +271,17 @@ def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 				instance.save()
 			formset.save_m2m()
 
-			instances2 = formset2.save(commit=False)
-			for instance in instances2:
-				instance.publicacion = form_uncommited
-				instance.save()
-			formset2.save_m2m()
+			# instances2 = formset2.save(commit=False)
+			# for instance in instances2:
+			# 	instance.publicacion = form_uncommited
+			# 	instance.save()
+			# formset2.save_m2m()
 
-			instances3 = formset3.save(commit=False)
-			for instance in instances3:
-				instance.publicacion = form_uncommited
-				instance.save()
-			formset3.save_m2m()
+			# instances3 = formset3.save(commit=False)
+			# for instance in instances3:
+			# 	instance.publicacion = form_uncommited
+			# 	instance.save()
+			# formset3.save_m2m()
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
@@ -295,8 +301,8 @@ def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 	else:
 		form = PublicacionForm()
 		formset = FormSetInit()
-		formset2 = FormSetInit2()
-		formset3 = FormSetInit3()
+		# formset2 = FormSetInit2()
+		# formset3 = FormSetInit3()
 
 	return render(request,template,locals())
 
@@ -304,29 +310,29 @@ def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 def publicacion_editar(request, id, template = 'admin/publicaciones.html'):
 	object = get_object_or_404(Publicacion, id=id)
 	FormSetInit = inlineformset_factory(Publicacion,ArchivosPublicacion,form=ArchivosPublicacionForm,extra=1)
-	FormSetInit2 = inlineformset_factory(Publicacion,AudiosPublicacion,form=AudiosPublicacionForm,extra=1)
-	FormSetInit3 = inlineformset_factory(Publicacion,VideosPublicacion,form=VideosPublicacionForm,extra=1)
+	# FormSetInit2 = inlineformset_factory(Publicacion,AudiosPublicacion,form=AudiosPublicacionForm,extra=1)
+	# FormSetInit3 = inlineformset_factory(Publicacion,VideosPublicacion,form=VideosPublicacionForm,extra=1)
 	if request.method == 'POST':
 		form = PublicacionForm(request.POST, request.FILES, instance=object)
 		formset = FormSetInit(request.POST,request.FILES, instance=object)
-		formset2 = FormSetInit2(request.POST,request.FILES, instance=object)
-		formset3 = FormSetInit3(request.POST, instance=object)
-		if form.is_valid() and formset.is_valid() and formset2.is_valid() and formset3.is_valid():
+		# formset2 = FormSetInit2(request.POST,request.FILES, instance=object)
+		# formset3 = FormSetInit3(request.POST, instance=object)
+		if form.is_valid() and formset.is_valid(): # and formset2.is_valid() and formset3.is_valid():
 			form_uncommited = form.save()
 			form_uncommited.save()
 
 			formset.save()
 
-			formset2.save()
+			# formset2.save()
 
-			formset3.save()
+			# formset3.save()
 
 			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
 	else:
 		form = PublicacionForm(instance=object)
 		formset = FormSetInit(instance=object)
-		formset2 = FormSetInit2(instance=object)
-		formset3 = FormSetInit3(instance=object)
+		# formset2 = FormSetInit2(instance=object)
+		# formset3 = FormSetInit3(instance=object)
 
 	return render(request,template,locals())
 
@@ -456,12 +462,21 @@ def galeria_img_eliminar(request,id):
 
 @login_required
 def galeria_vid_crear(request,template = 'admin/galeria_vid.html'):
+	FormSetInit = inlineformset_factory(GaleriaVideos, ListVideos, form=ListVideosForm,extra=1)
 	if request.method == 'POST':
 		form = GaleriaVideosForm(request.POST, request.FILES)
-		if form.is_valid():
+		formset = FormSetInit(request.POST,request.FILES)
+		if form.is_valid() and formset.is_valid():
 			video = form.save(commit=False)
 			video.usuario = request.user
+			video.aprobado = False
 			video.save()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.videos = video
+				instance.save()
+			formset.save_m2m()
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
@@ -480,24 +495,96 @@ def galeria_vid_crear(request,template = 'admin/galeria_vid.html'):
 
 	else:
 		form = GaleriaVideosForm()
+		formset = FormSetInit()
+
 	return render(request, template, locals())
 
 @login_required
 def galeria_vid_editar(request, id, template = 'admin/galeria_vid.html'):
 	object = get_object_or_404(GaleriaVideos, id=id)
+	FormSetInit = inlineformset_factory(GaleriaVideos, ListVideos, form=ListVideosForm,extra=1)
 	if request.method == 'POST':
 		form = GaleriaVideosForm(request.POST, request.FILES, instance=object)
-		if form.is_valid():
+		formset = FormSetInit(request.POST,request.FILES, instance=object)
+		if form.is_valid() and formset.is_valid():
 			video = form.save(commit=False)
 			video.save()
+
+			formset.save()
+
 			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
 	else:
 		form = GaleriaVideosForm(instance=object)
+		formset = FormSetInit(instance=object)
 	return render(request,template,locals())
 
 @login_required
 def galeria_vid_eliminar(request,id):
 	galeria_vid = GaleriaVideos.objects.get(id=id).delete()
+	return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+
+@login_required
+def galeria_audio_crear(request,template = 'admin/galeria_audio.html'):
+	FormSetInit = inlineformset_factory(Audios, ListAudios, form=ListAudiosForm,extra=1)
+	if request.method == 'POST':
+		form = AudiosForm(request.POST, request.FILES)
+		formset = FormSetInit(request.POST,request.FILES)
+		if form.is_valid() and formset.is_valid():
+			audio = form.save(commit=False)
+			audio.usuario = request.user
+			audio.aprobado = False
+			audio.save()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.audios = audio
+				instance.save()
+			formset.save_m2m()
+
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
+				text_content =  render_to_string('email/video.txt', {'obj': audio,})
+
+				html_content = render_to_string('email/video.txt', {'obj': audio,})
+
+				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			except:
+				pass
+
+	else:
+		form = AudiosForm()
+		formset = FormSetInit()
+
+	return render(request, template, locals())
+
+@login_required
+def galeria_audio_editar(request, id, template = 'admin/galeria_audio.html'):
+	object = get_object_or_404(Audios, id=id)
+	FormSetInit = inlineformset_factory(Audios, ListAudios, form=ListAudiosForm,extra=1)
+	if request.method == 'POST':
+		form = AudiosForm(request.POST, request.FILES, instance=object)
+		formset = FormSetInit(request.POST,request.FILES, instance=object)
+		if form.is_valid() and formset.is_valid():
+			audio = form.save(commit=False)
+			audio.save()
+
+			formset.save()
+
+			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+	else:
+		form = AudiosForm(instance=object)
+		formset = FormSetInit(instance=object)
+
+	return render(request,template,locals())
+
+@login_required
+def galeria_audio_eliminar(request,id):
+	galeria_vid = Audios.objects.get(id=id).delete()
 	return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
 
 #Puntos de vista
@@ -555,15 +642,24 @@ def puntos_vista_eliminar(request,id):
 
 @login_required
 def campanias_crear(request,template = 'admin/actualidad.html'):
+	FormSetInit = inlineformset_factory(Actualidad,Galeria,form=GaleriaForm,extra=1)		
 	if request.method == 'POST':
 		form = Actualidad2Forms(request.POST, request.FILES)
-
-		if form.is_valid():
+		formset = FormSetInit(request.POST, request.FILES)
+		if form.is_valid() and formset.is_valid():
 			campanias = form.save(commit=False)
 			campanias.author = request.user
 			campanias.category = 'campanas'
+			campanias.aprobado = False
 			campanias.save()
 			form.save_m2m()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.actualidad = campanias
+				instance.save()
+			formset.save_m2m()
+
 			
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
@@ -581,6 +677,7 @@ def campanias_crear(request,template = 'admin/actualidad.html'):
 				pass
 	else:
 		form = Actualidad2Forms()
+		formset = FormSetInit()
 
 	return render(request, template, locals())
 
@@ -605,15 +702,23 @@ def eliminar_campania(request, id):
 
 @login_required
 def concursos_crear(request,template = 'admin/actualidad.html'):
+	FormSetInit = inlineformset_factory(Actualidad,Galeria,form=GaleriaForm,extra=1)
 	if request.method == 'POST':
 		form = Actualidad2Forms(request.POST, request.FILES)
-
-		if form.is_valid():
+		formset = FormSetInit(request.POST, request.FILES)
+		if form.is_valid() and form.is_valid():
 			campanias = form.save(commit=False)
 			campanias.author = request.user
 			campanias.category = 'concursos'
+			campanias.aprobado = False
 			campanias.save()
 			form.save_m2m()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.actualidad = campanias
+				instance.save()
+			formset.save_m2m()
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
@@ -631,6 +736,7 @@ def concursos_crear(request,template = 'admin/actualidad.html'):
 				pass
 	else:
 		form = Actualidad2Forms()
+		formset = FormSetInit()
 
 	return render(request, template, locals())
 

@@ -53,7 +53,7 @@
 						Inicio
 					</a> </li>
 					<li class=" white-color"> <a href="/actualidad/">Actualidad</a> </li>
-					<li class="active">{{object.tittle}}</li>
+					<li class="active">{{object.get_category_display}}</li>
 				</ol>
 			</div>
 		</div>
@@ -175,7 +175,7 @@
 			<h4 class="widget-title">Tags</h4>
 			<div class="tagcloud">
 				{% for tag in tags %}
-				<a href="{% url 'filtro-tag' tag.slug %}">{{tag}}</a>
+				<a href="{% url 'filtro-tag' tag.slug object.category %}">{{tag}}</a>
 				{% endfor %}
 			</div>
 		</div>

@@ -37,6 +37,7 @@
 
 											<tr>
 												<th>Nombre</th>
+												<th>Estado</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
@@ -48,6 +49,7 @@
 														<h6>{{camp.tittle}}</h6>
 														<small>{{camp.created_on}}</small>
 													</td>
+													<td>{% if camp.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 													<td>
 														<div class="action-btn">
 															<a class="btn btn-sm btn-success" href="{% url 'campanias_editar' camp.id %}">
@@ -95,6 +97,7 @@
 												<th>Nombre</th>
 												<th>Fecha</th>
 												<th>Hora</th>
+												<th>Estado</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
@@ -116,6 +119,7 @@
 														<p>Inicio: {{obj.hora_inicio}}</p>
 														<p>Final: {{obj.hora_fin}}	</p>
 													</td>
+													<td>{% if obj.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 													<td>
 														<div class="action-btn">
 															<a class="btn btn-sm btn-success" href="{% url 'events_editar' obj.id %}">
@@ -163,6 +167,7 @@
 
 											<tr>
 												<th>Nombre</th>
+												<th>Estado</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
@@ -174,6 +179,7 @@
 														<h6>{{con.tittle}}</h6>
 														<small>{{con.created_on}}</small>
 													</td>
+													<td>{% if con.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 													<td>
 														<div class="action-btn">
 															<a class="btn btn-sm btn-success" href="{% url 'concursos_editar' con.id %}">

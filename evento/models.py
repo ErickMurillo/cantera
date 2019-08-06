@@ -20,7 +20,8 @@ class Evento(models.Model):
 	position = PlainLocationField(based_fields=['city'], zoom=7,verbose_name='Posición')
 	slug = models.SlugField(max_length=200, editable=False)
 	tags = TaggableManager("Tags",help_text='Separar elementos con "," ', blank=True)
-	author = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+	author = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
+	aprobado = models.BooleanField()
 
 	class Meta:
 		verbose_name_plural = 'Eventos'

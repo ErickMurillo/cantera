@@ -12,6 +12,12 @@ class User(AbstractUser):
 	def __str__(self):
 		return self.username
 
+	def save(self, *args, **kwargs):
+		particular = Contraparte.objects.get(nombre = 'Particular')
+		if self.organizacion == None:
+			self.organizacion = particular
+		super(User, self).save(*args, **kwargs)
+
 	class Meta(object):
 		unique_together = ('email',)
 		verbose_name = 'Usuario'

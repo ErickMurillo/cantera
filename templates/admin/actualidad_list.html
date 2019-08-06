@@ -23,6 +23,7 @@
 								<tr>
 									<th>Nombre</th>
 									<th>Categoría</th>
+									<th>Estado</th>
 									<th>Acciones</th>
 								</tr>
 							</thead>
@@ -35,6 +36,7 @@
 											<small>{{obj.created_on}}</small>
 										</td>
 										<td>{{obj.get_category_display}}</td>
+										<td>{% if obj.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 										<td>
 											<div class="action-btn">
 												<a class="btn btn-sm btn-success" href="{% url 'actualidad_editar' obj.id %}">

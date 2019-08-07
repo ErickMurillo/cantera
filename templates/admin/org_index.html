@@ -1,10 +1,12 @@
 {% extends "admin/base_admin.html" %}
 {% load thumbnail %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
 <section id ="detail_alianza" class="ls section_padding_top_100 section_padding_bottom_80 columns_padding_30">
 	<div class="container">
+		{% if not organizacion.nombre == 'Particular' %}
 		<div class="row">
 			<div class="col-sm-5">
 				<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
@@ -74,7 +76,7 @@
 				<h3>{{organizacion.nombre|safe}}</h3>
 
 				<div>
-					<a href="{% url 'org_editar' organizacion.id %}" class="theme_button min_width_button color1 inverse"><i class="fa fa-edit rightpadding_5"></i> Editar org </a> </div>
+					<a href="{% url 'org_editar' organizacion.id %}" class="theme_button min_width_button color1 inverse"><i class="fa fa-edit rightpadding_5"></i> Editar</a> </div>
 
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
@@ -95,8 +97,27 @@
 					</div>
 				</div>
 			</div>
+		
+		{% else %}
+		<div class="row">
+			{% if solicitud_peniente or solicitud_nueva_org %}
+				tienen solicitudes pendientes, favor esperar a que se aprueben
+			{% else %}
+				solicitar unirse a una Alianza
+				<form action="." method="POST" class="form-inline" enctype="multipart/form-data">{% csrf_token %}
+					{{form|crispy}}
+					<input class="theme_button color2 min_width_button margin_0" type="submit" name="solicitar" value="Enviar solicitud">
+				</form>
+
+				solicitar crear Alianza
+				<form action="." method="POST" class="form-inline" enctype="multipart/form-data">{% csrf_token %}
+					{{form2|crispy}}
+					<input class="theme_button color2 min_width_button margin_0" type="submit" name="solicitar" value="Enviar solicitud">
+				</form>
+			{% endif %}
+			
 		</div>
-	</section>
-
-
-	{% endblock content %}
+		{% endif %}
+	</div>
+</section>
+{% endblock content %}

@@ -11,7 +11,7 @@ Nombre del evento: {{obj.tittle}}  <br>
 Lugar: {{obj.city}}
 </p>
 <p>Diríjase a la siguiente dirección: <br>
-https://generoymetodologias.org/iniciativas-destacadas/eventos/{{obj.slug}}/</p>
+https://generoymetodologias.org/admin/evento/evento/{{obj.id}}/change/</p>
 
 Plataforma Género y Metodologías
 </body>

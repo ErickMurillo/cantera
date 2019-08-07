@@ -7,6 +7,7 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib.auth.models import User
 from django.forms.fields import DateField, ChoiceField, MultipleChoiceField
 from django.forms.widgets import RadioSelect, CheckboxSelectMultiple, SelectDateWidget
+from solicitudes.models import *
 
 class ContraparteForms(forms.ModelForm):
 	temas = forms.CharField(widget=CKEditorUploadingWidget())
@@ -27,3 +28,16 @@ class RedesFrom(forms.ModelForm):
 		model = Redes
 		fields = '__all__'
 		exclude = ['organizacion',]
+
+class SolicitudOrgForm(forms.ModelForm):
+	organizacion = forms.ModelChoiceField(queryset=Contraparte.objects.exclude(nombre = 'Particular').order_by('nombre'))
+	class Meta:
+		model = SolicitudesOrg
+		fields = '__all__'
+		exclude = ['aprobado','usuario']
+		
+class SolicitudesNuevasOrgForm(forms.ModelForm):
+	class Meta:
+		model = SolicitudesNuevasOrg
+		fields = '__all__'
+		exclude = ['aprobado','usuario']

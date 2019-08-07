@@ -35,7 +35,7 @@ def filtro_pais(request,slug,category,template='list_actualidad.html'):
 	else:
 		list_object = Actualidad.objects.filter(pais__slug = slug, category = category,aprobado = True).order_by('created_on')
 
-	list_paises = Actualidad.objects.values_list('pais__nombre','pais__slug').order_by('pais__nombre').distinct('pais')
+	list_paises = Actualidad.objects.filter(category = category).values_list('pais__nombre','pais__slug').order_by('pais__nombre').distinct('pais')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('inicio')[:3]
 	ids = list_object.values_list('id',flat=True)
@@ -55,7 +55,7 @@ def filtro_categoria(request,category,template='list_actualidad.html'):
 	else:
 		list_object = Actualidad.objects.filter(category = category,aprobado = True).order_by('created_on')
 
-	list_paises = Actualidad.objects.values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
+	list_paises = Actualidad.objects.filter(category = category).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
 
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('inicio')[:3]
@@ -77,7 +77,7 @@ def filtro_tag(request,slug,category,template='list_actualidad.html'):
 	else:
 		list_object = Actualidad.objects.filter(category = category,tags__slug = slug,aprobado = True).order_by('created_on')
 
-	list_paises = Actualidad.objects.values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
+	list_paises = Actualidad.objects.filter(category = category).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('inicio')[:3]
 	ids = list_object.values_list('id',flat=True)
@@ -100,7 +100,7 @@ def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
 		object = Actualidad.objects.get(slug = slug)
 		list_object = Actualidad.objects.filter(category = object.category,aprobado = True).order_by('created_on')
 	
-		list_paises = Actualidad.objects.values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
+		list_paises = Actualidad.objects.filter(category = category).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
 		hoy = datetime.date.today()
 		prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 		ids = list_object.values_list('id',flat=True)

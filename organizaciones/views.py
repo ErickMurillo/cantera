@@ -85,7 +85,7 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 
 				html_content = render_to_string('email/correo.txt', {'obj': actualidad,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -148,7 +148,7 @@ def foros_crear(request,template = 'admin/foro.html'):
 
 				html_content = render_to_string('email/foro.txt', {'obj': foro,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -206,7 +206,7 @@ def events_crear(request,template = 'admin/event.html'):
 
 				html_content = render_to_string('email/evento.txt', {'obj': event,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -289,7 +289,7 @@ def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 
 				html_content = render_to_string('email/publicacion.txt', {'obj': form_uncommited,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -484,7 +484,7 @@ def galeria_vid_crear(request,template = 'admin/galeria_vid.html'):
 
 				html_content = render_to_string('email/video.txt', {'obj': video,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -543,11 +543,11 @@ def galeria_audio_crear(request,template = 'admin/galeria_audio.html'):
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
-				text_content =  render_to_string('email/video.txt', {'obj': audio,})
+				text_content =  render_to_string('email/audio.txt', {'obj': audio,})
 
-				html_content = render_to_string('email/video.txt', {'obj': audio,})
+				html_content = render_to_string('email/audio.txt', {'obj': audio,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -608,7 +608,7 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 
 				html_content = render_to_string('email/punto.txt', {'obj': punto,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -667,7 +667,7 @@ def campanias_crear(request,template = 'admin/actualidad.html'):
 
 				html_content = render_to_string('email/campanias.txt', {'obj': campanias,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
@@ -707,26 +707,26 @@ def concursos_crear(request,template = 'admin/actualidad.html'):
 		form = Actualidad2Forms(request.POST, request.FILES)
 		formset = FormSetInit(request.POST, request.FILES)
 		if form.is_valid() and form.is_valid():
-			campanias = form.save(commit=False)
-			campanias.author = request.user
-			campanias.category = 'concursos'
-			campanias.aprobado = False
-			campanias.save()
+			concurso = form.save(commit=False)
+			concurso.author = request.user
+			concurso.category = 'concursos'
+			concurso.aprobado = False
+			concurso.save()
 			form.save_m2m()
 
 			instances = formset.save(commit=False)
 			for instance in instances:
-				instance.actualidad = campanias
+				instance.actualidad = concurso
 				instance.save()
 			formset.save_m2m()
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
-				text_content =  render_to_string('email/campanias.txt', {'obj': campanias,})
+				text_content =  render_to_string('email/concursos.txt', {'obj': concurso,})
 
-				html_content = render_to_string('email/campanias.txt', {'obj': campanias,})
+				html_content = render_to_string('email/concursos.txt', {'obj': concurso,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")

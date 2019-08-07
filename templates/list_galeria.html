@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
 <style type="text/css">
 .page_breadcrumbs.background_cover {
-	{% if '/imagenes/' in request.path %}
-	{% thumbnail foto_galerias_imagenes.0 "1350x230" crop="center" as im %}
+	{% if '/audios/' in request.path %}
+	{% thumbnail foto_galerias_audios.0 "1350x230" crop="center" as im %}
 	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
 	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
 	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
@@ -30,13 +30,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
-				<h2 class="white-color">{% if '/imagenes/' in request.path %}Imágenes{% else %}Videos{% endif %}</h2>
+				<h2 class="white-color">{% if '/imagenes/' in request.path %}Imágenes{% elif '/videos/' in request.path %}Videos{% else %}Audios{% endif %}</h2>
 				<ol class="breadcrumb white-color">
 					<li> <a href="/">
 						Inicio
 					</a> </li>
 					<li class="">Galería</li>
-					<li class="active">{% if request.path == '/recursos-metodologicos/galerias/imagenes/' %}Imágenes{%else%}Videos{% endif %}  </li>
+					<li class="active">{% if '/imagenes/' in request.path %}Imágenes{% elif '/videos/' in request.path %}Videos{% else %}Audios{% endif %}  </li>
 				</ol>
 			</div>
 		</div>
@@ -49,61 +49,42 @@
 	<div class="container">
 		<div class="row">
 			{% if list_galeria %}
-				
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
 					{% paginate 6 list_galeria %}
-					{% for obj in  list_galeria %}
+					{% for obj in list_galeria %}
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">
 						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
 							<div class="item-media">
-								{% if '/recursos-metodologicos/galerias/imagenes/' in request.path   %}
-								{% thumbnail obj.portada "365x243" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
-								{% empty %}
-								<img src="http://via.placeholder.com/365x243" alt="">
-
-								{% endthumbnail %}
-								<!--<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle_galeriaImagenes' obj.slug %}"></a> </div>-->
-								
-								{% thumbnail obj.portada "800x600" crop="center" as im %}
-									<div class="media-links"><a class="abs-link" data-fancybox href="{{ im.url }}">
-									</a></div>
-								{% endthumbnail %}
-
+								{% if '/videos/' in request.path %}
+									{% if obj.portada %}
+										{% thumbnail obj.portada "365x229" crop="center" as im %}
+										<img src="{{ im.url }}" alt="">
+										{% endthumbnail %}
+									{% elif obj.listvideos_set.all %}
+										{% video obj.listvideos_set.first.url as my_video %}
+											{% thumbnail my_video.thumbnail "365x243" crop="center" as im %}
+												<img src="{{ im.url }}" alt="">
+											{% endthumbnail %}
+										{% endvideo %}
+									{% else %}
+										<img src="http://via.placeholder.com/365x229" alt="">
+									{% endif %}
+									<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle_galeria_vid' obj.slug %}"></a> </div>
 								{% else %}
-								{% video obj.url as my_video %}
-								{% thumbnail my_video.thumbnail "365x243" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
-								{% endthumbnail %}
-								{% endvideo %}
-								
-								{% endif %}
-
-								
+									{% thumbnail obj.portada "365x229" crop="center" as im %}
+									<img src="{{ im.url }}" alt="">
+									{% empty %}
+									<img src="http://via.placeholder.com/365x229" alt="">
+									{% endthumbnail %}
+									<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle_galeria_audio' obj.slug %}"></a> </div>
+								{% endif %}	
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
 									<div class="categories-links small-text highlightlinks"> <span class="highlight">{{obj.tematica}}</span> </div>
 									<h3 class="entry-title small bottommargin_0">
-										{% if '/recursos-metodologicos/galerias/imagenes/' in request.path  %}
-										<!--<a rel="bookmark" href="{% url 'detalle_galeriaImagenes' obj.slug %}">{{obj}}</a>-->
-										
-										{% thumbnail obj.portada "800x600" crop="center" as im %}
-											<a data-fancybox href="{{ im.url }}">
-											{{obj}}
-											</a>
-										{% endthumbnail %}
-										{% else %}
-
-										<a data-fancybox href="{{obj.url}}&amp;autoplay=1&amp;rel=0&amp;controls=1&amp;showinfo=0">
-											{{obj}}
-										</a>
-										
-										<!--<a class="fancybox" data-fancybox data-type="iframe" data-src="{% url 'detalle_galeria_vid' obj.slug %}" data-options='{"iframe" : {"css" : {"height" : "600px"}}}' href="javascript:;">
-											{{obj}}
-										</a>-->
-										{% endif %}
+										<a rel="bookmark" href="{% if '/videos/' in request.path %}{% url 'detalle_galeria_vid' obj.slug %}{% else %}{% url 'detalle_galeria_audio' obj.slug %}{% endif %}">{{obj}}</a>
 									</h3>
 								</header>
 								
@@ -179,8 +160,9 @@
 							<ul>
 								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
 								<!--<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>-->
-								<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>	
-								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>	
+								<!--<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>-->	
+								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>
+								<li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>	
 							</ul>
 						</div>
 					</div>
@@ -190,10 +172,12 @@
 					<div class="tagcloud">
 						{% for x in list_tematica.keys %}
 							{% if forloop.counter < 7 %}
-								{% if '/recursos-metodologicos/galerias/imagenes/' in request.path %}
+								{% if '/imagenes/' in request.path %}
 									<a href="{% url 'filtro_temas_img' x.id %}">{{x}}</a>
-								{% else %}
+								{% elif '/videos/' in request.path %}
 									<a href="{% url 'filtro_temas_vid' x.id %}">{{x}}</a>
+								{% else %}
+									<a href="{% url 'filtro_temas_audio' x.id %}">{{x}}</a>
 								{% endif %}
 								
 							{% endif %}

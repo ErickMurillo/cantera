@@ -3,13 +3,13 @@
 	<title></title>
 </head>
 <body>
-<p>El usuario {{obj.usuario}} ha publicado una nuevo punto de vista en <br>
+<p>El usuario {{obj.usuario}} ha publicado un nuevo punto de vista en <br>
 la Plataforma Género y Metodologías</p>
 
 <p>Nombre: {{obj.titulo}}</p>
 
-<p>Diríjase a la siguiente dirección: <br>
-https://generoymetodologias.org/puntos-vista/{{obj.slug}}/</p>
+<p>Diríjase a la siguiente dirección para revisar el punto de vista: <br>
+https://generoymetodologias.org/admin/puntosvista/puntos/{{obj.slug}}/change/</p>
 
 Plataforma Género y Metodologías
 </body>

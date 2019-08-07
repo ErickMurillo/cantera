@@ -3,13 +3,13 @@
 	<title></title>
 </head>
 <body>
-<p>El usuario {{obj.author}} ha publicado una nueva {{obj.get_category_display}} en <br>
+<p>El usuario {{obj.author}} ha publicado una nueva nota en <br>
 la Plataforma Género y Metodologías</p>
 
 <p>Fecha: {{obj.created_on|date:"D d M Y"}} <br>
 Titulo: {{obj.tittle}}</p>
-<p>Diríjase a la siguiente dirección: <br>
-https://generoymetodologias.org/actualidad/detalle/{{obj.slug}}/</p>
+<p>Diríjase a la siguiente dirección para revisar la nota: <br>
+https://generoymetodologias.org/admin/actualidad/actualidad/{{obj.id}}/change/</p>
 
 Plataforma Género y Metodologías
 </body>

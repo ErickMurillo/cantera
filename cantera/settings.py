@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'puntosvista',
     'users.apps.UsersConfig',
     'configuracion',
+    'solicitudes',
 
     #aplicaciones de terceros
     'sorl.thumbnail',

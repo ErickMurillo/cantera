@@ -1,48 +1,114 @@
-{% load embed_video_tags %}
+{% extends "base.html" %}
 {% load thumbnail %}
+{% load embed_video_tags %}
 
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
+<style type="text/css">
+.page_breadcrumbs.background_cover {
+	{% thumbnail foto_galerias_videos.0 "1350x230" crop="center" as im %}
+	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	{% endthumbnail %}
+	
+}
+</style>
+{% endblock extra_css %}
 
-<head>
-	<title>Plataforma Regional Género y Metodologías</title>
-	<meta charset="utf-8">
-	<!--[if IE]>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<![endif]-->
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/static/css/main.css" class="color-switcher-link">
-	<link rel="stylesheet" href="/static/css/maincustom.css" class="color-switcher-link">
-	<script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
-	<!--[if lt IE 9]>
-		<script src="js/vendor/html5shiv.min.js"></script>
-		<script src="js/vendor/respond.min.js"></script>
-		<script src="js/vendor/jquery-1.12.4.min.js"></script>
-	<![endif]-->
-</head>
-<body>
-	<h3 class="content-header text-center">
-		{{object.titulo}}
-	</h3>
-	<!--{% load embed_video_tags %}-->
+{% block content %}
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
 	<div class="container">
 		<div class="row">
-			<div>
-				{% video object.url '100% x 480px' %}
+			<div class="col-sm-12 text-center">
+				<h2 class="white-color">{{object.titulo}}</h2>
+				<ol class="breadcrumb white-color">
+					<li> <a href="/">
+						Inicio
+					</a> </li>
+					<li class="">Galería</li>
+					<li>{% if '/videos/' in request.path %}Videos{%else%}Audios{% endif %}</li>
+					<li class="active">Detalle</li>
+				</ol>
 			</div>
 		</div>
 	</div>
+</section>
 
-</div>
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/main.js"></script>
-</body>
-</html>
+<section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7 col-md-8 col-lg-8">
+				{{object.titulo}}
+
+				{% if object.portada %}
+					{% thumbnail object.portada "365x229" crop="center" as im %}
+					<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
+					{% endthumbnail %}
+				{% endif %}
+
+				{{object.descripcion|safe}}
+				{{object.tematica}}
+				
+				{% if '/videos/' in request.path %}
+					{% for vid in object.listvideos_set.all %}
+						<br>{{vid.nombre}} - {% video vid.url '400x300' %}
+					{% endfor %}
+				{%else%}
+					{% for audio in object.listaudios_set.all %}
+						<br>{{audio.nombre}} - <audio controls><source src="/media/{{audio.archivo}}"></audio>
+					{% endfor %}
+				{% endif %}
+
+				
+			</div>
+			<!--eof .col-sm-8 (main content)-->
+			<!-- sidebar -->
+			<aside class="col-sm-5 col-md-4 col-lg-4">
+				<div class="widget widget_search">
+					<form class="" action='.' method='GET'>
+						<div class="form-group margin_0"> 
+							<label class="sr-only" for="widget-search">Buscar:</label> 
+							<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+						</div> 
+						<button type="submit" class="theme_button color1">Search</button>	
+					</form>
+				</div>
+
+				<!-- categorias -->
+					<div class="widget">
+						<h4 class="widget-title">Categorías</h4>
+						<div class="">
+							<ul>
+								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
+								<!--<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>-->
+								<!--<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>-->	
+								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>
+								<li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>	
+							</ul>
+						</div>
+					</div>
+
+				<div class="widget">
+					<h4 class="widget-title">Temáticas</h4>
+					<div class="tagcloud">
+						{% for x in list_tematica.keys %}
+							{% if forloop.counter < 7 %}
+								{% if '/imagenes/' in request.path %}
+									<a href="{% url 'filtro_temas_img' x.id %}">{{x}}</a>
+								{% elif '/videos/' in request.path %}
+									<a href="{% url 'filtro_temas_vid' x.id %}">{{x}}</a>
+								{% else %}
+									<a href="{% url 'filtro_temas_audio' x.id %}">{{x}}</a>
+								{% endif %}
+								
+							{% endif %}
+						{% endfor %}
+
+					</div>
+				</div>
+			</aside>
+
+		</section>
+
+{% endblock content %}

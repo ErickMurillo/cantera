@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>El usuario {{obj.usuario}} ha publicado un nuevo audio en <br>
+la Plataforma Género y Metodologías</p>
+
+<p>Nombre de la video: {{obj.titulo}}</p>
+
+<p>Diríjase a la siguiente dirección para revisar el audio: <br>
+https://generoymetodologias.org/admin/galerias/audios/{{obj.id}}/change/</p>
+
+Plataforma Género y Metodologías
+</body>
+</html>

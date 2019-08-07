@@ -8,8 +8,8 @@ la Plataforma Género y Metodologías</p>
 
 <p>Fecha: {{obj.created_on|date:"D d M Y"}} <br>
 Titulo: {{obj.tittle}}</p>
-<p>Diríjase a la siguiente dirección: <br>
-https://generoymetodologias.org/iniciativas-destacadas/concursos/{{obj.slug}}/</p>
+<p>Diríjase a la siguiente dirección para revisar el concurso: <br>
+https://generoymetodologias.org/admin/actualidad/actualidad/{{obj.id}}/change/</p>
 
 Plataforma Género y Metodologías
 </body>

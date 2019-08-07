@@ -8,7 +8,7 @@ class SiteConfiguration(SingletonModel):
 	foto_actualidad = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 	foto_eventos = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 	foto_galerias_videos = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
-	foto_galerias_imagenes = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
+	foto_galerias_audios = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 	foto_foros = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 	foto_puntos_vista = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')
 	foto_quienes_somos = ImageField(upload_to='configuracion/',blank=True,null=True,help_text='1350x230')

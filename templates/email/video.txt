@@ -8,8 +8,8 @@ la Plataforma Género y Metodologías</p>
 
 <p>Nombre de la video: {{obj.titulo}}</p>
 
-<p>Diríjase a la siguiente dirección: <br>
-https://generoymetodologias.org/recursos-metodologicos/galerias/videos/</p>
+<p>Diríjase a la siguiente dirección para revisar el video: <br>
+https://generoymetodologias.org/admin/galerias/galeriavideos/{{obj.id}}/change/</p>
 
 Plataforma Género y Metodologías
 </body>

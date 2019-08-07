@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>Su usuario {{obj.username}} ha sido vinculado a la Alianza {{obj.organizacion}} en <br>
+la Plataforma Género y Metodologías</p>
+
+<p>Diríjase a la siguiente dirección para verificar la vinculación: <br>
+https://generoymetodologias.org/accounts/profile/</p>
+
+Plataforma Género y Metodologías
+</body>
+</html>

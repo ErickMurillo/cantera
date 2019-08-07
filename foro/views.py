@@ -14,11 +14,11 @@ def list_foros(request, template='list_foros.html'):
 		object_list = Foros.objects.filter(
 										Q(nombre__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
-										Q(contenido__icontains = q)).order_by('-creacion')
+										Q(contenido__icontains = q),aprobado = True).order_by('-creacion')
 	else:
-		object_list = Foros.objects.order_by('-creacion')
+		object_list = Foros.objects.filter(aprobado = True).order_by('-creacion')
 
-	foros_destacados = Foros.objects.annotate(count_aportes = Count('aportes')).order_by('-count_aportes')[:3]
+	foros_destacados = Foros.objects.filter(aprobado = True).annotate(count_aportes = Count('aportes')).order_by('-count_aportes')[:3]
 	
 	return render(request,template,locals())
 
@@ -28,11 +28,11 @@ def detail_foro(request, slug, template = 'detail_foro.html'):
 		object_list = Foros.objects.filter(
 										Q(nombre__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
-										Q(contenido__icontains = q)).order_by('creacion')
+										Q(contenido__icontains = q),aprobado = True).order_by('creacion')
 		return render(request,'list_foros.html',locals())
 	else:
 		object = Foros.objects.get(slug = slug)
-		foros_destacados = Foros.objects.annotate(count_aportes = Count('aportes')).exclude(id = object.id).order_by('-count_aportes')[:3]
+		foros_destacados = Foros.objects.filter(aprobado = True).annotate(count_aportes = Count('aportes')).exclude(id = object.id).order_by('-count_aportes')[:3]
 
 		if request.method == 'POST':
 			form = AporteForm(request.POST, request.FILES)

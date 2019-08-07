@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>El usuario {{obj.usuario}} ha solicitado vincularse a la Alianza {{obj.organizacion}} en <br>
+la Plataforma Género y Metodologías</p>
+
+<p>Diríjase a la siguiente dirección para realizar la vinculación: <br>
+https://generoymetodologias.org/admin/solicitudes/solicitudesorg/{{obj.id}}/change/</p>
+
+Plataforma Género y Metodologías
+</body>
+</html>

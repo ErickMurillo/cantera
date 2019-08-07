@@ -8,8 +8,8 @@ la Plataforma Género y Metodologías</p>
 
 <p>Fecha: {{obj.creacion|date:"D d M Y"}} <br>
 Titulo: {{obj.nombre}}</p>
-<p>Diríjase a la siguiente dirección: <br>
-https://generoymetodologias.org/foros/{{obj.slug}}/</p>
+<p>Diríjase a la siguiente dirección para revisar el foro: <br>
+https://generoymetodologias.org/admin/foro/foros/{{obj.id}}/change/</p>
 
 Plataforma Género y Metodologías
 </body>

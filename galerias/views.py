@@ -50,7 +50,7 @@ def index_galeriaVideos(request,template = 'list_galeria.html'):
 												Q(tematica__nombre__icontains = q),aprobado = True).order_by('-id')
 
 	else:
-		list_galeria = GaleriaVideos.filter(aprobado = True).objects.order_by('-id')
+		list_galeria = GaleriaVideos.objects.filter(aprobado = True).order_by('-id')
 		
 	list_tematica = collections.OrderedDict()
 	for x in Temas.objects.all():

@@ -10,4 +10,4 @@ class PuntosForms(forms.ModelForm):
 	class Meta:
 		model = Puntos
 		fields = '__all__'
-		exclude = ('slug', 'usuario',)
+		exclude = ('slug', 'usuario','aprobado')

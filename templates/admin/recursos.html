@@ -10,26 +10,25 @@
 		<div class="col-lg-12">
 			<div class="admin-tabs tab-azul">
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active">
+					<li role="presentation" class="{% if 'publicaciones' in request.get_full_path or request.get_full_path == '/alianzas/recursos-metodologicos/' %}active{% endif %}">
 						<a href="#publicaciones" aria-controls="publicaciones" role="tab" data-toggle="tab">Publicaciones</a>
 					</li>
 					<!--<li role="presentation">
 						<a href="#guias" aria-controls="guias" role="tab" data-toggle="tab">Guías metodológicas</a>
 					</li>-->
-					<li role="presentation">
-						<a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Galería de videos</a>
+					<li role="presentation" class="{% if 'videos' in request.get_full_path %}active{% endif %}">
+						<a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a>
 					</li>
-					<li role="presentation" >
+					<li role="presentation" class="{% if 'audios' in request.get_full_path %}active{% endif %}">
 						<a href="#audios" aria-controls="audios" role="tab" data-toggle="tab">Audios</a>
 					</li>
-					<!--<li role="presentation" >
-						<a href="#imagenes" aria-controls="imagenes" role="tab" data-toggle="tab">Galería de imágenes</a>
-					</li>-->
-					
-					
+					<li role="presentation" class="{% if 'imagenes' in request.get_full_path %}active{% endif %}">
+						<a href="#imagenes" aria-controls="imagenes" role="tab" data-toggle="tab">Imágenes</a>
+					</li>
 				</ul>
-				<div class="tab-content ">
-					<div role="tabpanel" class="tab-pane active" id="publicaciones">
+
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane {% if 'publicaciones' in request.get_full_path or request.get_full_path == '/alianzas/recursos-metodologicos/'%}active{% endif %}" id="publicaciones">
 						<div class="customcard">
 							<div class="header">
 								<ul class="header-dropdown">
@@ -40,7 +39,6 @@
 								<div class="table-responsive">
 									<table class="table table-custom">
 										<thead class="bg-actualidad">
-
 											<tr>
 												<th>Nombre</th>
 												<th>Temática</th>
@@ -49,12 +47,9 @@
 											</tr>
 										</thead>
 										<tbody>
+											{% for pub in publicaciones %}
 											<tr>
-												{% for pub in publicaciones %}
-												<td>
-													<h6>{{pub.titulo}}</h6>
-												</td>
-												
+												<td><h6>{{pub.titulo}}</h6></td>
 												<td>{{pub.tematica}}</td>
 												<td>{% if pub.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 												<td>
@@ -88,7 +83,7 @@
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="guias">
+					<div role="tabpanel" class="tab-pane {% if 'guias' in request.get_full_path %}active{% endif %}" id="guias">
 						<div class="customcard">
 							<div class="header">
 								<ul class="header-dropdown">
@@ -102,8 +97,8 @@
 
 											<tr>
 												<th>Nombre</th>
-												
 												<th>Temática</th>
+												<th>Estado</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
@@ -113,8 +108,8 @@
 													<td>
 														<h6>{{guia.titulo}}</h6>
 													</td>
-													
 													<td>{{guia.tematica}}</td>
+													<td></td>
 													<td>
 														<div class="action-btn">
 															<a class="btn btn-sm btn-success" href="{% url 'guias_editar' guia.id %}">
@@ -146,7 +141,7 @@
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="videos">
+					<div role="tabpanel" class="tab-pane {% if 'videos' in request.get_full_path %}active{% endif %}" id="videos">
 						<div class="customcard">
 							<div class="header">
 								<ul class="header-dropdown">
@@ -207,7 +202,7 @@
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="audios">
+					<div role="tabpanel" class="tab-pane {% if 'audios' in request.get_full_path %}active{% endif %}" id="audios">
 						<div class="customcard">
 							<div class="header">
 								<ul class="header-dropdown">
@@ -268,7 +263,7 @@
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="imagenes">
+					<div role="tabpanel" class="tab-pane {% if 'imagenes' in request.get_full_path %}active{% endif %}" id="imagenes">
 						<div class="customcard">
 							<div class="header">
 								<ul class="header-dropdown">
@@ -283,6 +278,7 @@
 											<tr>
 												<th>Nombre</th>
 												<th>Temática</th>
+												<th>Estado</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
@@ -294,6 +290,7 @@
 														<h6>{{obj}}</h6>
 													</td>
 													<td>{{obj.tematica}}</td>
+													<td>{% if ob.aprobado == False %}En revisión{% else %}Aprobado{% endif %}</td>
 													<td>
 														<div class="action-btn">
 															<a class="btn btn-sm btn-success" href="{% url 'galeria_img_editar' obj.id %}">
@@ -337,17 +334,14 @@
 {% endblock content %}
 
 {% block extra_js %}
-	<script src="/static/js/jquery.fancybox.min.js"></script>
-
-	<script>
-		$('.fancybox').fancybox({ 
-			afterShow: function(){     
-				$('.fancybox-iframe').contents().find('input').click(function(){
-					window.parent.location.reload();
-					window.parent.$.fancybox.close();
-				}); 
-			}
-		});
-	</script>
-	
+<script>
+	$('.fancybox').fancybox({ 
+		afterShow: function(){     
+			$('.fancybox-iframe').contents().find('input').click(function(){
+				window.parent.location.reload();
+				window.parent.$.fancybox.close();
+			}); 
+		}
+	});
+</script>
 {% endblock extra_js %}

@@ -3,7 +3,7 @@
 
 
 {% block extra_css %}
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/static/css/jquery-ui.css">
 <link rel="stylesheet" href="/static/css/jquery.timepicker.min.css">
 {% endblock extra_css %}
 
@@ -25,6 +25,9 @@
 				<div class="body">
 					<form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
 						{{form.errors}}
+						{% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 						{{form|crispy}}
 						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Agregar" value="Agregar Evento">
 
@@ -36,13 +39,16 @@
 </div>
 {% endblock content %}
 
-{% block extra_js %}
+{% block location_field %}
 {{form.media}}
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock location_field %}
+
+{% block extra_js %}
+<script src="/static/js/jquery-ui.js"></script>
 <script src="/static/js/datepicker-es.js"></script>
 <script src="/static/js/jquery.timepicker.min.js"></script>
 <script>
-$('#id_position').prop('disabled', true);
+// $('#id_position').hide();
 $('#id_inicio').datepicker({format: 'dd/mm/yyyy',});
 $('#id_final').datepicker({format: 'dd/mm/yyyy',});
 $('#id_hora_inicio').timepicker({ 'timeFormat': 'HH:mm:ss' , 

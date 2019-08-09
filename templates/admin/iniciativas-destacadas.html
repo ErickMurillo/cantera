@@ -12,18 +12,18 @@
 		<div class="col-lg-12">
 			<div class="admin-tabs tab-amarillo">
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active">
+					<li role="presentation" class="{% if 'campana' in request.get_full_path or request.get_full_path == '/alianzas/iniciativas-destacadas/' %}active{% endif %}">
 						<a href="#campana" aria-controls="campana" role="tab" data-toggle="tab">Campañas</a>
 					</li>
-					<li role="presentation">
+					<li role="presentation" class="{% if 'eventos' in request.get_full_path %}active{% endif %}">
 						<a href="#eventos" aria-controls="eventos" role="tab" data-toggle="tab">Eventos</a>
 					</li>
-					<li role="presentation" >
+					<li role="presentation" class="{% if 'concursos' in request.get_full_path %}active{% endif %}">
 						<a href="#concursos" aria-controls="concursos" role="tab" data-toggle="tab">Concursos</a>
 					</li>					
 				</ul>
 				<div class="tab-content ">
-					<div role="tabpanel" class="tab-pane active" id="campana">
+					<div role="tabpanel" class="tab-pane {% if 'campana' in request.get_full_path or request.get_full_path == '/alianzas/iniciativas-destacadas/' %}active{% endif %}" id="campana">
 						<div class="customcard">
 							<div class="header">
 								<ul class="header-dropdown">
@@ -81,11 +81,11 @@
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="eventos">
+					<div role="tabpanel" class="tab-pane {% if 'eventos' in request.get_full_path %}active{% endif %}" id="eventos">
 						<div class="customcard">
 							<div class="header">
 								<ul class="header-dropdown">
-									<li><a href="" class="btn btn-amarillo text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
+									<li><a href="{% url 'events_crear' %}" class="btn btn-amarillo text-white" ><span class="fa fa-plus"></span> Agregar</a></a></li>
 								</ul>
 							</div>
 							<div class="body">
@@ -153,7 +153,7 @@
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="concursos">
+					<div role="tabpanel" class="tab-pane {% if 'concursos' in request.get_full_path %}active{% endif %}" id="concursos">
 						<div class="customcard">
 							<div class="header">
 								<ul class="header-dropdown">

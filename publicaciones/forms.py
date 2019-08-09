@@ -9,7 +9,7 @@ class PublicacionForm(forms.ModelForm):
 
 	class Meta:
 		model = Publicacion
-		exclude = ('slug','usuario','tipo')
+		exclude = ('slug','usuario','tipo','aprobado')
 
 class ArchivosPublicacionForm(forms.ModelForm):
 	class Meta:

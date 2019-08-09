@@ -4,6 +4,7 @@ from actualidad.forms import *
 def imagenes(request):
 	foto_eventos = SiteConfiguration.objects.values_list('foto_eventos',flat=True)
 	foto_actualidad = SiteConfiguration.objects.values_list('foto_actualidad',flat=True)
+	foto_galerias_imagenes = SiteConfiguration.objects.values_list('foto_galerias_imagenes',flat=True)
 	foto_galerias_videos = SiteConfiguration.objects.values_list('foto_galerias_videos',flat=True)
 	foto_galerias_audios = SiteConfiguration.objects.values_list('foto_galerias_audios',flat=True)
 	foto_foros = SiteConfiguration.objects.values_list('foto_foros',flat=True)
@@ -21,4 +22,5 @@ def imagenes(request):
 			'foto_quienes_somos':foto_quienes_somos,'foto_guias_metodologicas':foto_guias_metodologicas,
 			'foto_publicaciones':foto_publicaciones,'foto_campanias':foto_campanias,
 			'foto_concursos':foto_concursos,'foto_alianzas':foto_alianzas,
+			'foto_galerias_imagenes':foto_galerias_imagenes,
 			}

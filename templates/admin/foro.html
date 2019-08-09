@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/static/css/jquery-ui.css">
 {% endblock extra_css %}
 
 {% block content %}
@@ -34,7 +34,7 @@
 {% endblock content %}
 
 {% block extra_js %}
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/static/js/jquery-ui.js"></script>
 <script src="/static/js/datepicker-es.js"></script>
 <script>
 $('#id_apertura').datepicker({format: 'dd/mm/yyyy',});

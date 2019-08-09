@@ -12,14 +12,14 @@ def index_galeriasImagenes(request, template = 'list_galeria.html'):
 		q = request.GET['buscador']
 		list_galeria = GaleriaImagenes.objects.filter(
 												Q(titulo__icontains = q) |
-												Q(tematica__nombre__icontains = q)).order_by('-id')
+												Q(tematica__nombre__icontains = q),aprobado = True).order_by('-id')
 
 	else:
-		list_galeria = GaleriaImagenes.objects.order_by('-id')
+		list_galeria = GaleriaImagenes.objects.filter(aprobado = True).order_by('-id')
 
 	list_tematica = collections.OrderedDict()
 	for x in Temas.objects.all():
-		galeria = GaleriaImagenes.objects.filter(tematica = x).count()
+		galeria = GaleriaImagenes.objects.filter(tematica = x,aprobado = True).count()
 		if galeria:
 			list_tematica[x] = galeria
 
@@ -27,15 +27,15 @@ def index_galeriasImagenes(request, template = 'list_galeria.html'):
 
 def detalle_galeriaImagenes(request, slug, template = 'detail_galeria.html'):
 	object = GaleriaImagenes.objects.get(slug = slug)
-	related_gal = GaleriaImagenes.objects.filter(tematica = object.tematica.id).exclude(id=object.id).order_by('-id')[:3]
-	latest_gal = GaleriaImagenes.objects.exclude(id=object.id).order_by('-id')[:3]
+	related_gal = GaleriaImagenes.objects.filter(tematica = object.tematica.id,aprobado = True).exclude(id=object.id).order_by('-id')[:3]
+	latest_gal = GaleriaImagenes.objects.filter(aprobado = True).exclude(id=object.id).order_by('-id')[:3]
 	return render(request, template, locals())
 
 def filtro_temas_img(request,tema,template="list_galeria.html"):
-	list_galeria = GaleriaImagenes.objects.filter(tematica = tema).order_by('-id')
+	list_galeria = GaleriaImagenes.objects.filter(tematica = tema,aprobado = True).order_by('-id')
 	list_tematica = collections.OrderedDict()
 	for x in Temas.objects.exclude(id = tema):
-		galeria = GaleriaImagenes.objects.filter(tematica = x).count()
+		galeria = GaleriaImagenes.objects.filter(tematica = x,aprobado = True).count()
 		if galeria:
 			list_tematica[x] = galeria
 

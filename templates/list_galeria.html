@@ -13,6 +13,12 @@
 	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
 	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
 	{% endthumbnail %}
+	{% elif '/imagenes/' in request.path %}
+	{% thumbnail foto_galerias_imagenes.0 "1350x230" crop="center" as im %}
+	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
+	{% endthumbnail %}
 	{% elif '/videos/' in request.path %}
 	{% thumbnail foto_galerias_videos.0 "1350x230" crop="center" as im %}
 	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
@@ -77,14 +83,14 @@
 									{% empty %}
 									<img src="http://via.placeholder.com/365x229" alt="">
 									{% endthumbnail %}
-									<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle_galeria_audio' obj.slug %}"></a> </div>
+									<div class="media-links"> <a class="abs-link" title="" href="{% if '/imagenes/' in request.path %}{% url 'detalle_galeriaImagenes' obj.slug %}{% else %}{% url 'detalle_galeria_audio' obj.slug %}{% endif %}"></a> </div>
 								{% endif %}	
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
 									<div class="categories-links small-text highlightlinks"> <span class="highlight">{{obj.tematica}}</span> </div>
 									<h3 class="entry-title small bottommargin_0">
-										<a rel="bookmark" href="{% if '/videos/' in request.path %}{% url 'detalle_galeria_vid' obj.slug %}{% else %}{% url 'detalle_galeria_audio' obj.slug %}{% endif %}">{{obj}}</a>
+										<a rel="bookmark" href="{% if '/videos/' in request.path %}{% url 'detalle_galeria_vid' obj.slug %}{% elif '/imagenes/' in request.path %}{% url 'detalle_galeriaImagenes' obj.slug %}{% else %}{% url 'detalle_galeria_audio' obj.slug %}{% endif %}">{{obj}}</a>
 									</h3>
 								</header>
 								
@@ -160,7 +166,7 @@
 							<ul>
 								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
 								<!--<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>-->
-								<!--<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>-->	
+								<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>	
 								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>
 								<li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>	
 							</ul>

@@ -336,10 +336,8 @@
 	        </section>
 		</div>
 	</div>
-
-	<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
+	
 	{% compress js %}
-
 	<script src="/static/js/jquery.min.js"></script>
 	<script src="/static/js/compressed.js"></script>
 	{% if '/alianzas/editar/' not in request.path %}
@@ -348,6 +346,10 @@
 	<!--<script src="/static/js/selectize.min.js"></script>-->
 	<script src="/static/js/main.js"></script>
 	<script src="/static/js/jquery.fancybox.min.js"></script>
+	{% block extra_js %}{% endblock extra_js %}
+	{% endcompress %}
+
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('.table').DataTable( {
@@ -357,7 +359,8 @@
 		    } );
 		} );
 	</script>
-	{% block extra_js %}{% endblock extra_js %}
-	{% endcompress %}
+	{% block location_field %}
+		
+	{% endblock location_field %}
 	</body>
 </html>

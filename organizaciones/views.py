@@ -211,7 +211,7 @@ def events_crear(request,template = 'admin/event.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
+				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=eventos')
 			except:
 				pass
 	else:
@@ -227,7 +227,7 @@ def events_editar(request, id, template = 'admin/event.html'):
 			form_uncommited = form.save()
 			form_uncommited.author = request.user
 			form_uncommited.save()
-			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/eventos/')
+			return redirect('/alianzas/iniciativas-destacadas/'+'?tab=eventos')
 	else:
 		form = EventsForms(instance=object)
 
@@ -236,7 +236,7 @@ def events_editar(request, id, template = 'admin/event.html'):
 @login_required
 def events_eliminar(request, id):
 	nota = Evento.objects.get(id = id).delete()
-	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+	return redirect('/alianzas/iniciativas-destacadas/'+'?tab=eventos')
 
 @login_required
 def recursos_list(request,template='admin/recursos.html'):
@@ -294,7 +294,7 @@ def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+				return redirect('/alianzas/recursos-metodologicos/'+'?tab=publicaciones')
 			except:
 				pass
 
@@ -327,7 +327,7 @@ def publicacion_editar(request, id, template = 'admin/publicaciones.html'):
 
 			# formset3.save()
 
-			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			return redirect('/alianzas/recursos-metodologicos/'+'?tab=publicaciones')
 	else:
 		form = PublicacionForm(instance=object)
 		formset = FormSetInit(instance=object)
@@ -396,24 +396,25 @@ def guia_agregar(request, template = 'admin/publicaciones.html'):
 @login_required
 def publicacion_eliminar(request,id):
 	publicacion = Publicacion.objects.get(id=id).delete()
-	return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+	return redirect('/alianzas/recursos-metodologicos/'+'?tab=publicaciones')
 
 @login_required
 def galeria_img_crear(request,template = 'admin/galeria_img.html'):
-	# FormSetInit = inlineformset_factory(GaleriaImagenes, Imagenes, form=ImagenesForm,extra=1)
+	FormSetInit = inlineformset_factory(GaleriaImagenes, Imagenes, form=ImagenesForm,extra=1)
 	if request.method == 'POST':
 		form = GaleriaImagenesForm(request.POST, request.FILES)
-		# formset = FormSetInit(request.POST,request.FILES)
-		if form.is_valid():# and formset.is_valid():
+		formset = FormSetInit(request.POST,request.FILES)
+		if form.is_valid() and formset.is_valid():
 			galeria = form.save(commit=False)
 			galeria.usuario = request.user
+			galeria.aprobado = False
 			galeria.save()
 
-			# instances = formset.save(commit=False)
-			# for instance in instances:
-			# 	instance.imagenes = galeria
-			# 	instance.save()
-			# formset.save_m2m()
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.imagenes = galeria
+				instance.save()
+			formset.save_m2m()
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
@@ -421,44 +422,44 @@ def galeria_img_crear(request,template = 'admin/galeria_img.html'):
 
 				html_content = render_to_string('email/galeria.txt', {'obj': galeria,})
 
-				list_mail = User.objects.filter(organizacion__isnull = False).exclude(id = request.user.id).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+				return redirect('/alianzas/recursos-metodologicos/''?tab=imagenes')
 			except:
 				pass
 	else:
 		form = GaleriaImagenesForm()
-		# formset = FormSetInit()
+		formset = FormSetInit()
 
 	return render(request, template, locals())
 
 @login_required
 def galeria_img_editar(request, id, template = 'admin/galeria_img.html'):
 	object = get_object_or_404(GaleriaImagenes, id=id)
-	# FormSetInit = inlineformset_factory(GaleriaImagenes, Imagenes, form=ImagenesForm,extra=1)
+	FormSetInit = inlineformset_factory(GaleriaImagenes, Imagenes, form=ImagenesForm,extra=1)
 	if request.method == 'POST':
 		form = GaleriaImagenesForm(data=request.POST,instance=object,files=request.FILES)
-		# formset = FormSetInit(request.POST,request.FILES,instance=object)
+		formset = FormSetInit(request.POST,request.FILES,instance=object)
 
-		if form.is_valid(): # and formset.is_valid():
+		if form.is_valid() and formset.is_valid():
 			form_uncommited = form.save(commit=False)
 			form_uncommited.save()
 
-			# formset.save()
-			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			formset.save()
+			return redirect('/alianzas/recursos-metodologicos/'+'?tab=imagenes')
 	else:
 		form = GaleriaImagenesForm(instance=object)
-		# formset = FormSetInit(instance=object)
+		formset = FormSetInit(instance=object)
 
 	return render(request, template, locals())
 
 @login_required
 def galeria_img_eliminar(request,id):
 	galeria_img = GaleriaImagenes.objects.get(id=id).delete()
-	return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+	return redirect('/alianzas/recursos-metodologicos/'+'?tab=imagenes')
 
 @login_required
 def galeria_vid_crear(request,template = 'admin/galeria_vid.html'):
@@ -489,7 +490,7 @@ def galeria_vid_crear(request,template = 'admin/galeria_vid.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+				return redirect('/alianzas/recursos-metodologicos/'+'?tab=videos')
 			except:
 				pass
 
@@ -512,7 +513,7 @@ def galeria_vid_editar(request, id, template = 'admin/galeria_vid.html'):
 
 			formset.save()
 
-			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			return redirect('/alianzas/recursos-metodologicos/'+'?tab=videos')
 	else:
 		form = GaleriaVideosForm(instance=object)
 		formset = FormSetInit(instance=object)
@@ -521,7 +522,7 @@ def galeria_vid_editar(request, id, template = 'admin/galeria_vid.html'):
 @login_required
 def galeria_vid_eliminar(request,id):
 	galeria_vid = GaleriaVideos.objects.get(id=id).delete()
-	return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+	return redirect('/alianzas/recursos-metodologicos/'+'?tab=videos')
 
 @login_required
 def galeria_audio_crear(request,template = 'admin/galeria_audio.html'):
@@ -552,7 +553,7 @@ def galeria_audio_crear(request,template = 'admin/galeria_audio.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+				return redirect('/alianzas/recursos-metodologicos/'+'?tab=audios')
 			except:
 				pass
 
@@ -575,7 +576,7 @@ def galeria_audio_editar(request, id, template = 'admin/galeria_audio.html'):
 
 			formset.save()
 
-			return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+			return redirect('/alianzas/recursos-metodologicos/'+'?tab=audios')
 	else:
 		form = AudiosForm(instance=object)
 		formset = FormSetInit(instance=object)
@@ -585,7 +586,7 @@ def galeria_audio_editar(request, id, template = 'admin/galeria_audio.html'):
 @login_required
 def galeria_audio_eliminar(request,id):
 	galeria_vid = Audios.objects.get(id=id).delete()
-	return HttpResponseRedirect('/alianzas/recursos-metodologicos/')
+	return redirect('/alianzas/recursos-metodologicos/'+'?tab=audios')
 
 #Puntos de vista
 @login_required
@@ -672,7 +673,7 @@ def campanias_crear(request,template = 'admin/actualidad.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=campana')
 			except:
 				pass
 	else:
@@ -690,7 +691,7 @@ def campanias_editar(request, id, template = 'admin/actualidad.html'):
 			form_uncommited = form.save()
 			form_uncommited.author = request.user
 			form_uncommited.save()
-			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+			return redirect('/alianzas/iniciativas-destacadas/'+'?tab=campana')
 	else:
 		form = Actualidad2Forms(instance=object)
 	return render(request, template, locals())
@@ -698,7 +699,7 @@ def campanias_editar(request, id, template = 'admin/actualidad.html'):
 @login_required
 def eliminar_campania(request, id):
 	camp = Actualidad.objects.get(id = id).delete()
-	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+	return redirect('/alianzas/iniciativas-destacadas/'+'?tab=campana')
 
 @login_required
 def concursos_crear(request,template = 'admin/actualidad.html'):
@@ -731,7 +732,7 @@ def concursos_crear(request,template = 'admin/actualidad.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=concursos')
 			except:
 				pass
 	else:
@@ -749,7 +750,7 @@ def concursos_editar(request, id, template = 'admin/actualidad.html'):
 			form_uncommited = form.save()
 			form_uncommited.author = request.user
 			form_uncommited.save()
-			return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+			return redirect('/alianzas/iniciativas-destacadas/'+'?tab=concursos')
 	else:
 		form = Actualidad2Forms(instance=object)
 	return render(request, template, locals())
@@ -757,5 +758,5 @@ def concursos_editar(request, id, template = 'admin/actualidad.html'):
 @login_required
 def eliminar_concursos(request, id):
 	concurso = Actualidad.objects.get(id = id).delete()
-	return HttpResponseRedirect('/alianzas/iniciativas-destacadas/')
+	return redirect('/alianzas/iniciativas-destacadas/'+'?tab=concursos')
 

@@ -435,9 +435,9 @@ function windowLoadInit() {
 		jQuery('.carousel').carousel();
 	}
 	//bootstrap tab - show first tab 
-	jQuery('.nav-tabs').each(function() {
-		jQuery(this).find('a').first().tab('show');
-	});
+	// jQuery('.nav-tabs').each(function() {
+	// 	jQuery(this).find('a').first().tab('show');
+	// });
 	jQuery('.tab-content').each(function() {
 		jQuery(this).find('.tab-pane').first().addClass('fade in');
 	});

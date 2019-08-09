@@ -8,8 +8,8 @@ la Plataforma Género y Metodologías</p>
 
 <p>Nombre de la galería: {{obj.titulo}}</p>
 
-<p>Diríjase a la siguiente dirección: <br>
-https://generoymetodologias.org/recursos-metodologicos/galerias/imagenes/{{obj.slug}}/</p>
+<p>Diríjase a la siguiente dirección para revisar la galería: <br>
+https://generoymetodologias.org/admin/galerias/galeriaimagenes/{{obj.id}}/change/</p>
 
 Plataforma Género y Metodologías
 </body>

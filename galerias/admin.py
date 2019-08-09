@@ -23,6 +23,6 @@ class ListAudiosInline(admin.TabularInline):
 class AudiosAdmin(admin.ModelAdmin):
 	inlines = [ListAudiosInline]
 
-# admin.site.register(GaleriaImagenes)
+admin.site.register(GaleriaImagenes,GaleriaImagenesAdmin)
 admin.site.register(GaleriaVideos,GaleriaVideosAdmin)
 admin.site.register(Audios,AudiosAdmin)

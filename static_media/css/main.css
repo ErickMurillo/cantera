@@ -11765,7 +11765,7 @@ body.active-side-header.slide-right .page_header_side {
 
 @media (min-width: 768px) {
 	.intro_section h2 {
-		font-size: 60px;
+		font-size: 45px;
 	}
 
 	.transparent_wrapper + .page_mainslider .slide_description_wrapper {
@@ -11797,7 +11797,7 @@ body.active-side-header.slide-right .page_header_side {
 
 @media (min-width: 1200px) {
 	.intro_section h2 {
-		font-size: 80px;
+		font-size: 50px;
 	}
 
 	.intro_section.all-scr-cover .slide_description_wrapper {

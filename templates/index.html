@@ -40,7 +40,79 @@
 				</div>
 				<!-- eof .container -->
 			</li>
-
+			
+			{% if obj.foto_2 %}
+			<li>
+				<div class="slide-image-wrap"> 
+					{% thumbnail obj.foto_2 "1350x810" crop="center" as im %}
+					<img src="{{ im.url }}" alt="">
+					{% empty %}
+					<img src="http://via.placeholder.com/1350x810" alt="">
+					{% endthumbnail %}
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<div class="slide_description_wrapper">
+								<div class="slide_description">
+									<div class="intro-layer" data-animation="fadeInRight"><span class="bgtext">Plataforma regional género y metodologías</span> </div>
+									<div class="intro-layer" data-animation="fadeInLeft">
+										<h2 class="bgtext"> <span class="highlight3">“{{obj.texto_2}}”</span></h2>
+									</div>
+									<div class="intro-layer" data-animation="fadeInRight">
+										<p class="thin "><em class="bgtext">- {{obj.credito_2}}</em></p>
+									</div>
+								</div>
+								<!-- eof .slide_description -->
+							</div>
+							<!-- eof .slide_description_wrapper -->
+						</div>
+						<!-- eof .col-* -->
+					</div>
+					<!-- eof .row -->
+				</div>
+				<!-- eof .container -->
+			</li>
+			{% endif %}
+			
+			
+			{% if obj.foto_3 %}
+			<li>
+				<div class="slide-image-wrap"> 
+					{% thumbnail obj.foto_3 "1350x810" crop="center" as im %}
+					<img src="{{ im.url }}" alt="">
+					{% empty %}
+					<img src="http://via.placeholder.com/1350x810" alt="">
+					{% endthumbnail %}
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<div class="slide_description_wrapper">
+								<div class="slide_description">
+									<div class="intro-layer" data-animation="fadeInRight"><span class="bgtext">Plataforma regional género y metodologías</span> </div>
+									<div class="intro-layer" data-animation="fadeInLeft">
+										<h2 class="bgtext"> <span class="highlight3">“{{obj.texto_3}}”</span></h2>
+									</div>
+									<div class="intro-layer" data-animation="fadeInRight">
+										<p class="thin "><em class="bgtext">- {{obj.credito_3}}</em></p>
+									</div>
+									<!--<div class="intro-layer" data-animation="fadeInUp">
+										<div class="slide_buttons"> <a href="/contactenos" class="theme_button color1 min_width_button">Contáctanos</a> </div>
+									</div>-->
+								</div>
+								<!-- eof .slide_description -->
+							</div>
+							<!-- eof .slide_description_wrapper -->
+						</div>
+						<!-- eof .col-* -->
+					</div>
+					<!-- eof .row -->
+				</div>
+				<!-- eof .container -->
+			</li>
+			{% endif %}
+			
 			{% endfor %}
 
 		</ul>

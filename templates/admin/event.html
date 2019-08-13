@@ -26,8 +26,8 @@
 					<form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
 						{{form.errors}}
 						{% load static %}
-<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+						<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+						<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 						{{form|crispy}}
 						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Agregar" value="Agregar Evento">
 

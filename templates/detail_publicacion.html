@@ -57,10 +57,10 @@
 			<div class="col-sm-5">
 				<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
 					<div class="item-media">
-						{% thumbnail object.imagen "365x370" crop="center" as im %}
+						{% thumbnail object.imagen "612x792" crop="center" as im %}
 						<img src="{{ im.url }}" alt="">
 						{% empty %}
-						<img src="http://via.placeholder.com/365x370" alt="">
+						<img src="http://via.placeholder.com/612x792" alt="">
 						{% endthumbnail %}
 					</div>
 					<div class="item-content">
@@ -75,74 +75,18 @@
 
 			</div>
 			<div class="col-sm-7">
-				<p>{{object.resumen|safe}}</p>
+				<h4>Descripción</h4>
 				<hr>
-
-				<!-- Nav vertical tabs -->
-				<div class="row vertical-tabs color2">
-					<div class="col-sm-4">
-						<!-- Nav tabs -->
-						<ul class="nav" role="tablist">
-							{% if object.archivospublicacion_set.all %}
-								<li class="active"> <a href="#vertical-tab1" role="tab" data-toggle="tab">
-								<i class="rt-icon2-files"></i> Archivos
-							</a> </li>
-							{% endif %}
-							
-							
-							{% if object.audiospublicacion_set.all %}
-								<li> <a href="#vertical-tab2" role="tab" data-toggle="tab">
-								<i class="rt-icon2-file-sound-o"></i> Audios
-							</a> </li>
-							{% endif %}
-							{% if object.videospublicacion_set.all %}
-								<li> <a href="#vertical-tab3" role="tab" data-toggle="tab">
-								<i class="rt-icon2-file-video"></i> Videos
-							</a> </li>
-							{% endif %}
-							
-						</ul>
-					</div>
-					<div class="col-sm-8">
-						<!-- Tab pane -->
-						<div class="tab-content">
-							<div class="tab-pane fade in active" id="vertical-tab1">
-								<ul style="list-style-type:none;">
-									{% for pdf in object.archivospublicacion_set.all %}
-									<li>
-										<a href="/media/{{pdf.archivo_pdf}}" class="base-color" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{pdf.nombre}}</a>
-									</li>
-									{% endfor %}
-								</ul>
-							</div>
-							<div class="tab-pane fade" id="vertical-tab2">
-								<ul style="list-style-type:none;">
-									{% for audio in object.audiospublicacion_set.all %}        					
-									<li><a href="/media/{{audio.archivo_audio}}" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> {{audio.nombre}}</a></li>
-									{% endfor %}
-								</ul>
-							</div>
-							<div class="tab-pane fade" id="vertical-tab3">
-								<ul style="list-style-type:none;">
-									{% for video in object.videospublicacion_set.all %}
-									<li>
-										<a data-fancybox href="{{video.url}}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
-											<i class="fa fa-youtube-play" aria-hidden="true"></i> {{video}}
-										</a>
-									</li>
-									{% endfor %}
-								</ul>
-								<!--<div>
-									{% for video in object.videospublicacion_set.all %}
-									<div class="col-md-6">
-										{% video video.url '100% x 240px' %}
-									</div>
-									{% endfor %}
-								</div>-->
-							</div>
-						</div>
-					</div>
-				</div>
+				<p>{{object.resumen|safe}}</p>
+				<h4>Lista de Archivos</h4>
+				<hr>
+				<ul style="list-style-type:none;">
+					{% for pdf in object.archivospublicacion_set.all %}
+					<li>
+						<a href="/media/{{pdf.archivo_pdf}}" class="base-color" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{pdf.nombre}}</a>
+					</li>
+					{% endfor %}
+				</ul>
 			</div>
 		</div>
 		<div id="sharesocialweb" class="post-share"> 

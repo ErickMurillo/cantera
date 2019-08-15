@@ -49,7 +49,12 @@
 					</div>
 					<div class="item-content">
 						<header class="entry-header">
-							<h3 class="entry-title small bottommargin_0"> <a href="{% url 'detalles_organizaciones' obj.slug %}">{{obj.siglas}}</a> </h3> <div class=" text-left">{{obj.generalidades|safe|striptags|truncatechars:109}}<a href="{% url 'detalles_organizaciones' obj.slug %}" class="more-link"> Leer más</a></div> 
+							<h3 class="entry-title small bottommargin_0" style="height: 53px;overflow: hidden;"> 
+								<a href="{% url 'detalles_organizaciones' obj.slug %}">{{obj.siglas}}</a> 
+							</h3> 
+							<div class=" text-left">{{obj.generalidades|safe|striptags|truncatechars:109}}
+								<a href="{% url 'detalles_organizaciones' obj.slug %}" class="more-link"> Leer más</a>
+							</div> 
 						</header>
 						<p class="member-social greylinks">
 							{% for red in obj.redes_set.all|slice:":3" %}

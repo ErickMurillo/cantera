@@ -66,9 +66,9 @@
 				<article class="event-single vertical-item content-padding big-padding with_border bottom_color_border color2">
 					<div class="item-media entry-thumbnail text-center">
 						{% thumbnail object.photo "965x550" crop="center" as im %}
-						<img src="{{ im.url }}" alt="">
+						<img src="{{ im.url }}" alt="{{object.tittle}}" width="100%">
 						{% empty %}
-						<img src="http://via.placeholder.com/965x550" alt="">
+						<img src="http://via.placeholder.com/965x550" alt="{{object.tittle}}" width="100%">
 						{% endthumbnail %}
 					</div>
 

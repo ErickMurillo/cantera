@@ -60,7 +60,7 @@
 					{% paginate 6 list_galeria %}
 					{% for obj in list_galeria %}
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">
-						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color">
 							<div class="item-media">
 								{% if '/videos/' in request.path %}
 									{% if obj.portada %}
@@ -69,7 +69,7 @@
 										{% endthumbnail %}
 									{% elif obj.listvideos_set.all %}
 										{% video obj.listvideos_set.first.url as my_video %}
-											{% thumbnail my_video.thumbnail "365x243" crop="center" as im %}
+											{% thumbnail my_video.thumbnail "365x229" crop="center" as im %}
 												<img src="{{ im.url }}" alt="">
 											{% endthumbnail %}
 										{% endvideo %}
@@ -89,8 +89,10 @@
 							<div class="item-content">
 								<header class="entry-header">
 									<div class="categories-links small-text highlightlinks"> <span class="highlight">{{obj.tematica}}</span> </div>
-									<h3 class="entry-title small bottommargin_0">
-										<a rel="bookmark" href="{% if '/videos/' in request.path %}{% url 'detalle_galeria_vid' obj.slug %}{% elif '/imagenes/' in request.path %}{% url 'detalle_galeriaImagenes' obj.slug %}{% else %}{% url 'detalle_galeria_audio' obj.slug %}{% endif %}">{{obj}}</a>
+									<h3 class="entry-title small bottommargin_0" style="height:52px;overflow:hidden;">
+										<a rel='bookmark' href="{% if '/videos/' in request.path %}{% url 'detalle_galeria_vid' obj.slug %}{% elif '/imagenes/' in request.path %}{% url 'detalle_galeriaImagenes' obj.slug %}{% else %}{% url 'detalle_galeria_audio' obj.slug %}{% endif %}">
+											<span class="small-text">{{obj|striptags|truncatechars:52}}</span>	
+										</a>
 									</h3>
 								</header>
 								
@@ -175,28 +177,21 @@
 
 				<div class="widget">
 					<h4 class="widget-title">Temáticas</h4>
-					<div class="tagcloud">
+					<div class="">
 						{% for x in list_tematica.keys %}
 							{% if forloop.counter < 7 %}
+							<ul>
 								{% if '/imagenes/' in request.path %}
-									<a href="{% url 'filtro_temas_img' x.id %}">{{x}}</a>
+									<li><a href="{% url 'filtro_temas_img' x.id %}">{{x}}</a></li>
 								{% elif '/videos/' in request.path %}
-									<a href="{% url 'filtro_temas_vid' x.id %}">{{x}}</a>
+									<li><a href="{% url 'filtro_temas_vid' x.id %}">{{x}}</a></li>
 								{% else %}
-									<a href="{% url 'filtro_temas_audio' x.id %}">{{x}}</a>
+									<li><a href="{% url 'filtro_temas_audio' x.id %}">{{x}}</a></li>
 								{% endif %}
-								
+							</ul>	
 							{% endif %}
 						{% endfor %}
 						
-						<!--{% for x,y in dic_temas.items %}
-						<a href="{% if '/recursos-metodologicos/galerias/imagenes/' in request.path %}
-						{% url 'filtro_temas_img' x.id %}
-						{% else %}
-						{% url 'filtro_temas_vid' x.id %}
-						{% endif %}
-						" class="pdr10 filter-options__item filter" data-filter=".{{x.id}}"><i class="fa fa-tags"></i> {{x}}</a>
-						{% endfor %}-->
 
 					</div>
 				</div>

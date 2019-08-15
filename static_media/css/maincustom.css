@@ -364,4 +364,20 @@ img.b_avatar {
   padding: 10px 20px;
   font-weight: 400;
 }
-  
+  /*lista de audio*/
+  .audiojs{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .audiojs .play-pause{
+    width: 10% !important;
+  }
+  .audiojs .scrubber{
+    width: 60% !important;
+  }
+  .audiojs .time{
+    width: 20% !important;
+  }
+  .list-group-item.active a{
+    color: white;
+  }

@@ -97,9 +97,11 @@
 			}
 		});
 		//abrir modal
+		{% if 'actualidad' in request.get_full_path %}
 		$.fancybox.open({ // FancyBox 3
 			src: '#mensaje-save', 
 		});
+		{% endif %}
 	</script>
 	
 	

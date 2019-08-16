@@ -16,6 +16,13 @@ class CustomUserCreationForm(UserCreationForm):
         self.fields['organizacion'].initial = particular.id
         self.fields['organizacion'].widget = forms.HiddenInput()
 
+class CustomUserCreationForm2(UserCreationForm):
+    email = forms.CharField(required=True,label='Correo electrónico')
+
+    class Meta(UserCreationForm):
+        model = User
+        fields = ('username', 'email','organizacion')
+
 class CustomUserChangeForm(UserChangeForm):
     email = forms.CharField(required=True,label='Correo electrónico')
     class Meta:

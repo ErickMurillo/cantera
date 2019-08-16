@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>Se ha aprobado "{{obj.tittle}}" en <br>
+la Plataforma Género y Metodologías</p>
+
+<p>Diríjase a la siguiente dirección: <br>
+https://generoymetodologias.org/alianzas/actualidad/</p>
+
+Plataforma Género y Metodologías
+</body>
+</html>

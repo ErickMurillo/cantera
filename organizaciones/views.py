@@ -90,7 +90,7 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/actualidad/')
+				return redirect('/alianzas/actualidad/'+'?new=actualidad')
 			except:
 				pass
 	else:
@@ -153,7 +153,7 @@ def foros_crear(request,template = 'admin/foro.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/foros/')
+				return redirect('/alianzas/foros/'+'?new=foro_nuevo')
 			except:
 				pass
 	else:
@@ -211,7 +211,7 @@ def events_crear(request,template = 'admin/event.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=eventos')
+				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=eventos'+'?new=new_evento')
 			except:
 				pass
 	else:
@@ -294,7 +294,7 @@ def publicacion_agregar(request, template = 'admin/publicaciones.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return redirect('/alianzas/recursos-metodologicos/'+'?tab=publicaciones')
+				return redirect('/alianzas/recursos-metodologicos/'+'?tab=publicaciones'+'?new=new_pub')
 			except:
 				pass
 
@@ -427,7 +427,7 @@ def galeria_img_crear(request,template = 'admin/galeria_img.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return redirect('/alianzas/recursos-metodologicos/''?tab=imagenes')
+				return redirect('/alianzas/recursos-metodologicos/'+'?tab=imagenes'+'?new=new_img')
 			except:
 				pass
 	else:
@@ -490,7 +490,7 @@ def galeria_vid_crear(request,template = 'admin/galeria_vid.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return redirect('/alianzas/recursos-metodologicos/'+'?tab=videos')
+				return redirect('/alianzas/recursos-metodologicos/'+'?tab=videos'+'?new=new_vid')
 			except:
 				pass
 
@@ -553,7 +553,7 @@ def galeria_audio_crear(request,template = 'admin/galeria_audio.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return redirect('/alianzas/recursos-metodologicos/'+'?tab=audios')
+				return redirect('/alianzas/recursos-metodologicos/'+'?tab=audios'+'?new=new_aud')
 			except:
 				pass
 
@@ -615,7 +615,7 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return HttpResponseRedirect('/alianzas/puntos-vista/')
+				return redirect('/alianzas/puntos-vista/'+'?new=punto_nuevo')
 			except:
 				pass
 			
@@ -674,7 +674,7 @@ def campanias_crear(request,template = 'admin/actualidad.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=campana')
+				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=campana'+'?new=new_camp')
 			except:
 				pass
 	else:
@@ -733,7 +733,7 @@ def concursos_crear(request,template = 'admin/actualidad.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=concursos')
+				return redirect('/alianzas/iniciativas-destacadas/'+'?tab=concursos'+'?new=new_conc')
 			except:
 				pass
 	else:

@@ -218,7 +218,12 @@
 		</div>
 	</div>
 </div>
-
+<div style="display: none;" id="mensaje-save">
+	<h2>Gracias por su aporte</h2>
+	<p>El contenido ingresado esta en revision por los adminitradores, 
+		<br>se le notificará por correo si este es aprobado.
+	</p>
+</div>
 {% endblock content %}
 
 {% block extra_js %}
@@ -233,6 +238,13 @@
 				}); 
 			}
 		});
+
+		//abrir modal
+		{% if 'new_evento' in request.get_full_path or 'new_camp' in request.get_full_path or 'new_conc' in request.get_full_path %}
+		$.fancybox.open({ // FancyBox 3
+			src: '#mensaje-save', 
+		});
+		{% endif %}
 	</script>
 	
 {% endblock extra_js %}

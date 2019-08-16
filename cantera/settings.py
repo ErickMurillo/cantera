@@ -280,4 +280,4 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-
+FILE_UPLOAD_PERMISSIONS = 0o644

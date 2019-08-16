@@ -43,12 +43,12 @@
 						<div class="col-md-5">
 							<div class="item-media"> 
 								{% thumbnail obj.foto "317x196" crop="center" padding=True as im %}
-								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="{{obj.tittle}}">
 								{% empty %}
-								<img src="http://via.placeholder.com/286x196" alt="">
+								<img src="http://via.placeholder.com/286x196" alt="{{obj.tittle}}">
 								{% endthumbnail %}
 
-								<div class="media-links"> <a class="abs-link" title="" href="{% url 'point_details' obj.slug %}"></a> </div>
+								<div class="media-links"> <a class="abs-link" title="{{obj.tittle}}" href="{% url 'point_details' obj.slug %}"></a> </div>
 							</div>
 						</div>
 						<div class="col-md-7">

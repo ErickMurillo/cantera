@@ -601,6 +601,7 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 		if form.is_valid():
 			punto = form.save(commit=False)
 			punto.usuario = request.user
+			punto.aprobado = False
 			punto.save()
 
 			try:

@@ -46,45 +46,47 @@
 			{% if list_pub %}
 					
 			<div class="col-sm-7 col-md-8 col-lg-8">
-				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
+				
 					{% paginate 4 list_pub %}
 					{% for obj in list_pub %}
-					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">
+				
 						
-						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
-							<div class="item-media"> 
-								{% thumbnail obj.imagen "365x370" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
-								{% empty %}
-								<img src="http://via.placeholder.com/365x370" alt="">
-								{% endthumbnail %}
-								
-							</div>
-							<div class="item-content">
-								<header class="entry-header">
-									<div class="categories-links small-text highlightlinks">
-
-										<a href="#">{{obj.tematica}}</a> </div>
-										<h3 class="entry-title small bottommargin_0">
-											{% if request.path == '/recursos-metodologicos/publicaciones/' %}
-											<a href="{% url 'detail_publicacion' obj.slug %}" rel="bookmark">
-												{{obj.titulo|striptags|truncatechars:50}}
-											</a> 
-											{% else %}
-											<a href="{% url 'detail_guias' obj.slug %}" rel="bookmark">
-												{{obj.titulo|striptags|truncatechars:50}}
-											</a> 
-											{% endif %}
-
-											
-										</h3>
-									</header>
+						
+						<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
+								<div class="row">
+									<div class="col-md-5">
+										<div class="item-media"> 
+											{% thumbnail obj.imagen "612" crop="center" as im %}
+											<img src="{{ im.url }}" alt="{{obj.titulo}}">
+											{% empty %}
+											<img src="http://via.placeholder.com/612" alt="{{obj.titulo}}">
+											{% endthumbnail %}
+											<div class="media-links"> <a class="abs-link" title="{{obj.titulo}}" href="{% url 'detail_publicacion' obj.slug %}"></a> </div>
+										</div>
+									</div>
+									<div class="col-md-7">
+										<div class="item-content">
+											<header class="entry-header">
+												<h3 class="entry-title small"><a href="{% url 'detail_publicacion' obj.slug %}">{{obj.titulo}}</a> </h3>
+												<div class="entry-meta greylinks inline-content">
+													<span>
+														<i class="fa fa-users highlight" aria-hidden="true"></i>
+														{{obj.usuario.organizacion.siglas}}
+													</span> 
+													<span>
+														<i class="fa fa-pencil-square-o highlight" aria-hidden="true"></i>
+														{{obj.usuario}}
+													</span> 
+												</div>									
+											</header>
+											<p>{{obj.resumen|safe|striptags|truncatechars:200}} <a href="{% url 'detail_publicacion' obj.slug %}" class="more-link">Ver más</a></p>
+										</div>
+									</div>
 								</div>
 							</article>
 
-						</div>
 						{% endfor %}
-					</div>
+					
 					<div class="row">
 						<div class="col-sm-12 text-center">
 							<div class="topmargin_20">
@@ -150,7 +152,8 @@
 								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
 								<!--<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>-->
 								<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>	
-								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>	
+								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>
+								<li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>
 							</ul>
 						</div>
 					</div>

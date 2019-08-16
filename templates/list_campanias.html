@@ -42,7 +42,7 @@
 					{% paginate 2 list_object %}
 					{% for obj in list_object %}
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">			
-						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color">
 							<div class="item-media"> 
 								{% thumbnail obj.photo "365x229" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
@@ -63,9 +63,11 @@
 
 
 
-									<h3 class="entry-title small bottommargin_0"> <a href="{% url 'detail_campanias' obj.slug %}" rel="bookmark">
-										{{obj.tittle}}
-									</a> </h3>
+									<h3 class="entry-title small bottommargin_0" style="height:52px;overflow: hidden;"> 
+										<a href="{% url 'detail_campanias' obj.slug %}" rel="bookmark">
+											<span class="small-text">{{obj.tittle|striptags|truncatechars:52}}</span>
+										</a> 
+									</h3>
 								</header>
 								<p class="content-3lines-ellipsis">{{obj.content|safe|striptags|truncatechars:100}} ...<a href="{% url 'detail_campanias' obj.slug %}" class="more-link"> Leer más</a> </p>
 							</div>

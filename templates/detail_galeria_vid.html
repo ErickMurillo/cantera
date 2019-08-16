@@ -13,6 +13,7 @@
 	{% endthumbnail %}
 	
 }
+
 </style>
 {% endblock extra_css %}
 
@@ -39,26 +40,108 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-7 col-md-8 col-lg-8">
-				{{object.titulo}}
-
-				{% if object.portada %}
-					{% thumbnail object.portada "365x229" crop="center" as im %}
-					<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
-					{% endthumbnail %}
-				{% endif %}
-
-				{{object.descripcion|safe}}
-				{{object.tematica}}
+					<article class="event-single vertical-item content-padding big-padding with_border bottom_color_border color2">
+						<div class="item-media entry-thumbnail text-center">
+							{% if '/videos/' in request.path %}
+							
+								{% if object.listvideos_set.all|length == 1 %}
+									{% for vid in object.listvideos_set.all %}
+										{% video vid.url '770x430' %}
+									{% endfor %}
+									{%else%}
+									{% thumbnail object.portada "770x430" crop="center" as im %}
+									<img src="{{ im.url }}" alt="{{object.titulo}}" width="100%">
+									{% empty %}
+									<img src="http://via.placeholder.com/770x430" alt="{{object.titulo}}" width="100%">
+									{% endthumbnail %}
+								{% endif %}
+								
+								
+							{%else%}
+							{% thumbnail object.portada "770x430" crop="center" as im %}
+							<img src="{{ im.url }}" alt="{{object.titulo}}" width="100%">
+							{% empty %}
+							<img src="http://via.placeholder.com/770x430" alt="{{object.titulo}}" width="100%">
+							{% endthumbnail %}
+							{% endif %}
+						</div>
+						<div class="item-content">
+							<header class="entry-header">
+								<div class="categories-links small-text highlightlinks"> <span class="highlight">{{object.tematica}}</span> </div>
+								<h1 class="entry-title"> {{object.titulo}} </h1>
+							</header>
+							<div class="entry-content">
+								{{object.descripcion|safe}}
+							</div>
+							{% if '/videos/' in request.path %}
+								{% if object.listvideos_set.all|length > 1 %}
+								<h3>Lista de videos</h3>
+								<hr>
+								<div class="row">
+									{% for vid in object.listvideos_set.all %}
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="item-video">
+											{% video vid.url '770x430' %}
+										</div>
+										<h4>{{vid.nombre}}</h4>
+										
+									</div>
+									{% endfor %}
+									
+								</div>
+															
+								{%endif%}
+							{% else %}
+							<h3>Lista de audios</h3>
+							<hr>
+							<div>
+								<audio preload autoplay="true"></audio>
+								<ul class="list-audio list-group">
+									{% for audio in object.listaudios_set.all %}
+									<li class="list-group-item">
+										
+										<a href="#" data-src="/media/{{audio.archivo}}">
+											<span class="fa fa-music"></span> {{audio.nombre}}
+										</a>
+										
+									</li>
+									{% endfor %}
+								</ul>
+								
+							</div>
+							{%endif%}
+						</div>
+					</article>
+					<!-- Compartir post en pantallas mayores a 700px-->
+					<div id="sharesocialweb" class="post-share"> 
+						<a target="blank" href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+						</a>
+						<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
+		
+						<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+						</a>
+		
+						<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+					</div>
+		
+					<!-- Compartir post en celulares con las apps-->
+					<div id="sharesocialmov" class="post-share"> 
+						<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+						</a> 
+						<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+						</a>
+						<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+					</div>
 				
-				{% if '/videos/' in request.path %}
-					{% for vid in object.listvideos_set.all %}
-						<br>{{vid.nombre}} - {% video vid.url '400x300' %}
-					{% endfor %}
-				{%else%}
-					{% for audio in object.listaudios_set.all %}
-						<br>{{audio.nombre}} - <audio controls><source src="/media/{{audio.archivo}}"></audio>
-					{% endfor %}
-				{% endif %}
+
+	
+
+				
+				
+				
+				
+
+					
 
 				
 			</div>
@@ -82,7 +165,7 @@
 							<ul>
 								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
 								<!--<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>-->
-								<!--<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>-->	
+								<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>	
 								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>
 								<li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>	
 							</ul>
@@ -91,17 +174,18 @@
 
 				<div class="widget">
 					<h4 class="widget-title">Temáticas</h4>
-					<div class="tagcloud">
+					<div class="">
 						{% for x in list_tematica.keys %}
 							{% if forloop.counter < 7 %}
+							<ul>
 								{% if '/imagenes/' in request.path %}
-									<a href="{% url 'filtro_temas_img' x.id %}">{{x}}</a>
+									<li><a href="{% url 'filtro_temas_img' x.id %}">{{x}}</a></li>
 								{% elif '/videos/' in request.path %}
-									<a href="{% url 'filtro_temas_vid' x.id %}">{{x}}</a>
+									<li><a href="{% url 'filtro_temas_vid' x.id %}">{{x}}</a></li>
 								{% else %}
-									<a href="{% url 'filtro_temas_audio' x.id %}">{{x}}</a>
+									<li><a href="{% url 'filtro_temas_audio' x.id %}">{{x}}</a></li>
 								{% endif %}
-								
+							</ul>	
 							{% endif %}
 						{% endfor %}
 
@@ -111,4 +195,66 @@
 
 		</section>
 
-{% endblock content %}
+{% endblock content %}`
+{% block extra_js %}
+
+<script src="/static/js/audiojs/audio.min.js"></script>
+<script>
+  $(function() { 
+	// Setup the player to autoplay the next track
+	var a = audiojs.createAll({
+	  trackEnded: function() {
+		var next = $('.list-audio li.playing').next();
+		if (!next.length) next = $('.list-audio li').first();
+		next.addClass('playing').siblings().removeClass('playing active');
+		audio.load($('a', next).attr('data-src'));
+		audio.play();
+	  }
+	});
+	
+	// Load in the first track
+	var audio = a[0];
+		first = $('.list-audio a').attr('data-src');
+	$('.list-audio li').first().addClass('playing active');
+	audio.load(first);
+
+	// Load in a track on click
+	$('.list-audio li').click(function(e) {
+	  e.preventDefault();
+	  $(this).addClass('playing active').siblings().removeClass('playing active');
+	  audio.load($('a', this).attr('data-src'));
+	  audio.play();
+	});
+	// Keyboard shortcuts
+	$(document).keydown(function(e) {
+	  var unicode = e.charCode ? e.charCode : e.keyCode;
+		 // right arrow
+	  if (unicode == 39) {
+		var next = $('li.playing').next();
+		if (!next.length) next = $('.list-audio li').first();
+		next.click();
+		// back arrow
+	  } else if (unicode == 37) {
+		var prev = $('li.playing').prev();
+		if (!prev.length) prev = $('.list-audio li').last();
+		prev.click();
+		// spacebar
+	  } else if (unicode == 32) {
+		audio.playPause();
+	  }
+	})
+  });
+</script>
+<script>
+	$( document ).ready(function() {      
+	var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+	if (isMobile) {
+		$('#sharesocialweb').addClass('hidden');
+	}
+	else {
+		$('#sharesocialmov').addClass('hidden');
+	}
+	});
+</script>
+{% endblock extra_js %}

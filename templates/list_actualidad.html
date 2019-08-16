@@ -39,11 +39,16 @@
 			{% if list_object.count > 0 %}
 
 			<div class="col-sm-7 col-md-8 col-lg-8">
+				
+				<div class="alert alert-success">
+					<strong>Filtro</strong> de actualidad {{pais}}
+				</div>
+				
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
 					{% paginate 6 list_object %}
 					{% for obj in list_object %}
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">			
-						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
+						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color">
 							<div class="item-media"> 
 								{% thumbnail obj.photo "365x229" crop="center" as im %}
 								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
@@ -65,9 +70,9 @@
 										</span>
 									</div>
 
-									<h3 class="entry-title small bottommargin_0" style="height:52px;"> 
+									<h3 class="entry-title small bottommargin_0" style="height:52px;overflow: hidden;"> 
 										<a href="{% url 'detalle-actualidad' obj.slug %}" rel="bookmark">
-										{{obj.tittle|striptags|truncatechars:52}}
+										<span class="small-text">{{obj.tittle|striptags|truncatechars:52}}</span>
 										</a> 
 									</h3>
 								</header>

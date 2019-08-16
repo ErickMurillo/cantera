@@ -73,8 +73,15 @@
 	</div>
 </div>
 
-
-
+<div style="display: none;" id="mensaje-save">
+	<h2>Gracias por su aporte</h2>
+	<p>El contenido ingresado esta en revision por los adminitradores, 
+		<br>se le notificará por correo si este es aprobado.
+	</p>
+</div>
+<!-- <a data-fancybox data-src="#mensaje-save" href="javascript:;">
+	Trigger the fancybox
+</a> -->
 {% endblock content %}
 
 {% block extra_js %}
@@ -89,6 +96,11 @@
 				}); 
 			}
 		});
+		//abrir modal
+		$.fancybox.open({ // FancyBox 3
+			src: '#mensaje-save', 
+		});
 	</script>
+	
 	
 {% endblock extra_js %}

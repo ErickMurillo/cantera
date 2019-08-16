@@ -6764,9 +6764,9 @@ a.underline-link {
 }
 
 .small-text {
-	font-family: 'Ubuntu', sans-serif;
-	font-weight: 500;
-	font-size: 14px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 600;
+	font-size: 15px;
 	text-transform: uppercase;
 }
 
@@ -7137,11 +7137,17 @@ a.underline-link {
 	.vertical-item.content-padding .item-content {
 		padding: 35px 40px;
 	}
+	article iframe{
+		height: 230px !important;
+	}
 }
 
 @media (min-width: 1200px) {
 	.vertical-item.big-padding .item-content {
 		padding: 55px;
+	}
+	article iframe{
+		height: 430px !important;
 	}
 }
 

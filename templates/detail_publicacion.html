@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load embed_video_tags %}
+{% load disqus_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
@@ -107,6 +108,9 @@
 			<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
 			</a>
 			<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+		</div>
+		<div class="topmargin_30">
+			{% disqus_show_comments %}
 		</div>
 	</div>
 </section>

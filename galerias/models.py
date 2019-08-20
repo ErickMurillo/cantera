@@ -9,6 +9,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class GaleriaImagenes(models.Model):
 	titulo = models.CharField(max_length=200)
 	portada = ImageField(upload_to='galerias/',verbose_name='Imagen')
+	descripcion = RichTextUploadingField()
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
 	slug = models.SlugField(max_length=200,editable=False)

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 <!--{% load embed_video_tags %}-->
+{% load disqus_tags %}
 
 {% block extra_css %}
 <style type="text/css">
@@ -38,6 +39,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
+					{{object.descripcion|safe}}
 					{% for galeria in object.imagenes_set.all %}
 
 					<div class="isotope-item col-lg-4 col-md-6 col-sm-12 category-1">
@@ -64,6 +66,9 @@
 
 
 				</div>
+			</div>
+			<div class="topmargin_30">
+				{% disqus_show_comments %}
 			</div>
 		</div>
 	</div>

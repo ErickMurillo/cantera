@@ -26,9 +26,17 @@ def index_galeriasImagenes(request, template = 'list_galeria.html'):
 	return render(request,template,locals())
 
 def detalle_galeriaImagenes(request, slug, template = 'detail_galeria.html'):
+
 	object = GaleriaImagenes.objects.get(slug = slug)
 	related_gal = GaleriaImagenes.objects.filter(tematica = object.tematica.id,aprobado = True).exclude(id=object.id).order_by('-id')[:3]
 	latest_gal = GaleriaImagenes.objects.filter(aprobado = True).exclude(id=object.id).order_by('-id')[:3]
+
+	list_tematica = collections.OrderedDict()
+	for x in Temas.objects.all():
+		galeria = GaleriaImagenes.objects.filter(tematica = x,aprobado = True).count()
+		if galeria:
+			list_tematica[x] = galeria
+
 	return render(request, template, locals())
 
 def filtro_temas_img(request,tema,template="list_galeria.html"):

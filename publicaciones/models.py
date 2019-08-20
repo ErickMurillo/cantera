@@ -15,7 +15,7 @@ class Publicacion(models.Model):
 	resumen = RichTextUploadingField()
 	tipo =  models.IntegerField(choices=TIPO_CHOICES,default=1,editable=False)
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
-	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,editable=False,verbose_name='Autor')
+	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
 	slug = models.SlugField(max_length=250,editable=False)
 	aprobado = models.BooleanField()
 

@@ -114,7 +114,7 @@
 						</div>
 					</article>
 					<!-- Compartir post en pantallas mayores a 700px-->
-					<div id="sharesocialweb" class="post-share"> 
+					<div id="sharesocialweb" class="post-share hidden-xs"> 
 						<a target="blank" href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
 						</a>
 						<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
@@ -126,7 +126,7 @@
 					</div>
 		
 					<!-- Compartir post en celulares con las apps-->
-					<div id="sharesocialmov" class="post-share"> 
+					<div id="sharesocialmov" class="post-share visible-xs"> 
 						<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
 						</a> 
 						<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">

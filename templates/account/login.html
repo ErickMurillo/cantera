@@ -39,7 +39,9 @@
 							{% if form.errors %}
 							{{form.errors}}
 							{% endif %}
-							<div class="form-group"> 
+							
+							<div class="form-group">
+								<div class="lost_password"> <a href="{{ signup_url }}">Registrarse</a> </div>
 								<label for="username" class="col-sm-3 control-label">
 									<span class="grey">Usuario:</span> 
 									<span class="required">*</span>
@@ -67,7 +69,7 @@
 									<br>
 									<br>
 									<div class="lost_password"> <a href="{% url 'account_reset_password' %}">¿Olvidó su contraseña?</a> </div>
-									<div class="lost_password"> <a href="{{ signup_url }}">Registrarse</a> </div>
+									
 									{% if redirect_field_value %}
 									<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 									{% endif %}

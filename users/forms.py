@@ -8,7 +8,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = User
-        fields = ('username', 'email','organizacion')
+        fields = ('username', 'email','organizacion','pais')
 
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
@@ -21,7 +21,7 @@ class CustomUserCreationForm2(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = User
-        fields = ('username', 'email','organizacion')
+        fields = ('username', 'email','organizacion','pais')
 
 class CustomUserChangeForm(UserChangeForm):
     email = forms.CharField(required=True,label='Correo electrónico')
@@ -32,5 +32,5 @@ class CustomUserChangeForm(UserChangeForm):
 class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username','first_name', 'last_name', 'email', 'avatar',)
+        fields = ('username','first_name', 'last_name', 'email', 'avatar','pais')
         exclude = ('password',)

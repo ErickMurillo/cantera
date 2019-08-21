@@ -16,7 +16,6 @@
 					</div>
 					<div class="body">
 						<form class="checkout with_padding form-horizontal" method="POST" action="/accounts/signup/">{% csrf_token %}
-							{{form.errors}}
 							{{form.organizacion}}
 						
 							<div class="form-group">
@@ -41,6 +40,12 @@
 								{{form.password2}}
 								{{form.password2.errors}}
 								{{form.password2.help}}
+							</div>
+							<div class="form-group">
+								<label class="label-control" for="">Pais: </label>
+								{{form.pais}}
+								{{form.pais.errors}}
+								{{form.pais.help}}
 							</div>
 
 							<button class="theme_button color2 min_width_button margin_0" type="submit">{% trans "Sign Up" %}</button>

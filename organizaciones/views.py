@@ -90,7 +90,7 @@ def actualidad_crear(request,template = 'admin/actualidad.html'):
 				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
-				return redirect('/alianzas/actualidad/'+'?new=actualidad')
+				return redirect('/alianzas/actualidad/'+'?new=new_act')
 			except:
 				pass
 	else:

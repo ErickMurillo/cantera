@@ -39,7 +39,7 @@ class Actualidad(models.Model):
 	aprobado = models.BooleanField()
 
 	class Meta:
-		verbose_name='Actualidad'
+		verbose_name = 'Actualidad'
 		verbose_name_plural = "Actualidades"
 		ordering = "-created_on", "-id"
 

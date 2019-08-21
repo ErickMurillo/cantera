@@ -88,13 +88,15 @@
 							</div>
 							<div class="item-content">
 								<header class="entry-header">
-									<div class="categories-links small-text highlightlinks"> <span class="highlight">{{obj.tematica}}</span> </div>
+									<div class="categories-links small-text highlightlinks"> 
+										<span class="highlight">{{obj.tematica}}</span> 
+									</div>
 									<h3 class="entry-title small bottommargin_0" style="height:52px;overflow:hidden;">
 										<a rel='bookmark' href="{% if '/videos/' in request.path %}{% url 'detalle_galeria_vid' obj.slug %}{% elif '/imagenes/' in request.path %}{% url 'detalle_galeriaImagenes' obj.slug %}{% else %}{% url 'detalle_galeria_audio' obj.slug %}{% endif %}">
 											<span class="small-text">{{obj|striptags|truncatechars:52}}</span>	
 										</a>
 									</h3>
-									<p>{{obj.descripcion|safe}}</p>
+									<div style="height:90px;overflow:hidden;margin-top: 10px;">{{obj.descripcion|safe|truncatechars:120}}</div>
 								</header>
 								
 							</div>

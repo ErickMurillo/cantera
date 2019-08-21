@@ -216,22 +216,55 @@
                                     <li> <a class="{% if request.path == '/quienes-somos' %} active {% endif %}" href="/quienes-somos/">¿Quiénes Somos?</a>
                                     </li>
 
-                                    <!-- eof pages -->
+                                    
                                     <li> <a class="{% if '/alianzas' in request.path %} active {% endif %}" href="/alianzas">Alianzas y Colaboraciones</a>
 
                                     </li>
+                                    <!-- <li > <a href="#">Actualidad</a>
+                                        <ul>
+                                            <li> <a href="/actualidad/noticias">Noticias</a> </li>
+                                            <li> <a href="/actualidad/situacion-regional-genero">Situación regional de género</a> </li>
+                                        </ul>
+                                    </li>
+                                    <li> 
+                                        <a href="/puntos-vista">Puntos de vista</a>
+                                    </li>
+
+                                    <li> 
+                                        <a href="/foros">Foros</a>
+                                    </li>
+                                    <li> <a href="#">Recursos metodológicos</a>
+                                        <ul>
+                                                <li> <a href="/recursos-metodologicos/publicaciones">Publicaciones</a> </li>
+                                                <li> <a href="/recursos-metodologicos/galerias/imagenes">Imágenes</a> </li>
+                                                <li> <a href="/recursos-metodologicos/galerias/videos">Videos</a> </li>
+                                                <li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+
+                                        <a>
+                                            Iniciativas destacadas
+                                        </a>
+                                        <ul>
+                                            <li> <a href="/iniciativas-destacadas/campanias/">Campañas</a> </li>
+                                            <li> <a href="/iniciativas-destacadas/eventos/">Eventos</a> </li>
+                                            <li> <a href="/iniciativas-destacadas/concursos/">Concursos</a> </li>
+                                        </ul>
+                                    </li> -->
 
                                     <div id="mobile_menu" class="nav">
                                         <hr>
-
                                         <li class="">
 
-                                            <span>Actualidad</span>
-                                            <ul>
-                                                <li> <a href="/actualidad/noticias">Noticias</a> </li>
-                                                <li> <a href="/actualidad/situacion-regional-genero">Situación regional de género</a> </li>
-                                            </ul>
-                                        </li>
+                                                <a>
+                                                    <span>Actualidad</span>
+                                                </a>
+                                                <ul>
+                                                    <li> <a href="/actualidad/noticias">Noticias</a> </li>
+                                                    <li> <a href="/actualidad/situacion-regional-genero">Situación regional de género</a> </li>
+                                                </ul>
+                                            </li>
 
                                         <li> 
                                             <a href="/puntos-vista">Puntos de vista</a>
@@ -248,10 +281,9 @@
                                             </a>
                                             <ul>
                                                 <li> <a href="/recursos-metodologicos/publicaciones">Publicaciones</a> </li>
-                                                <li> <a href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a> </li>
                                                 <li> <a href="/recursos-metodologicos/galerias/imagenes">Imágenes</a> </li>
                                                 <li> <a href="/recursos-metodologicos/galerias/videos">Videos</a> </li>
-                                                <li><a href="#">Audios</a></li>
+                                                <li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>
                                             </ul>
                                         </li>
 
@@ -266,6 +298,7 @@
                                                 <li> <a href="/iniciativas-destacadas/concursos/">Concursos</a> </li>
                                             </ul>
                                         </li>
+                                        
                                     </div>
 
                                 </ul>
@@ -310,24 +343,32 @@
                         <div class="widget widget_text widget_media_margin">
                             <h3 class="widget-title">Explorar</h3>
                             <ul class="list1 no-bullets no-top-border no-bottom-border greylinks">
+                                <li> 
+                                    <a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span>Actualidad</span> <i class="icofont-caret-down rotate"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a id="bg-drop-footer" class="dropdown-item" href="/actualidad/noticias">Noticias</a>
+                                        <a id="bg-drop-footer" class="dropdown-item" href="/actualidad/situacion-regional-genero">Situación regional de género</a>
+                                    </div> 
+                                </li>
+                                <li> <a href="/puntos-vista" target="_blank">Puntos de vista</a> </li>
+                                <li> <a href="/foros" target="_blank">Foros</a> </li>
+                                <li> 
+                                    <a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a id="bg-drop-footer" class="dropdown-item" href="/recursos-metodologicos/publicaciones">Publicaciones</a>
+                                        <!--<a class="dropdown-item" href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>-->
+                                        <a class="dropdown-header">Galeria</a>
+                                        <a class="dropdown-item" href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a>
+                                        <a class="dropdown-item" href="/recursos-metodologicos/galerias/videos">Videos</a>
 
-                                <li> <a href="/actualidad" target="_blank">Actualidad</a> </li>
-                                <li> <a href="/puntos-vista/" target="_blank">Puntos de vista</a> </li>
-                                <li> <a href="/foros/" target="_blank">Foros</a> </li>
-                                <li> <a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a id="bg-drop-footer" class="dropdown-item" href="/recursos-metodologicos/publicaciones">Publicaciones</a>
-                                    <!--<a class="dropdown-item" href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>-->
-                                    <a class="dropdown-header">Galeria</a>
-                                    <a class="dropdown-item" href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a>
-                                    <a class="dropdown-item" href="/recursos-metodologicos/galerias/videos/">Videos</a>
 
-
-                                    <a class="dropdown-item" href="/recursos-metodologicos/galerias/audios/">Audios</a>
-                                </div> </li>
-
+                                        <a class="dropdown-item" href="/recursos-metodologicos/galerias/audios/">Audios</a>
+                                    </div> 
+                                </li>
                                 <li>
                                     <a class="visible_hover"  id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i></a>
                                     <div class="dropdown-menu highlight" aria-labelledby="dropdownMenuButton12">

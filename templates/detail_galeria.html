@@ -37,9 +37,18 @@
 <section class="ls page_portfolio section_padding_top_100 section_padding_bottom_100">
 	<div class="container">
 		<div class="row">
+			
+			{% if object.descripcion %}
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<h4>Descripción</h4>
+					{{object.descripcion|safe}}
+					<hr>
+				</div>
+			{% endif %}
+				
 			<div class="col-sm-12">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
-					{{object.descripcion|safe}}
+					
 					{% for galeria in object.imagenes_set.all %}
 
 					<div class="isotope-item col-lg-4 col-md-6 col-sm-12 category-1">
@@ -67,15 +76,13 @@
 
 				</div>
 			</div>
-			<div class="topmargin_30">
-				{% disqus_show_comments %}
-			</div>
+			
 		</div>
 	</div>
 </section>
 
 
-<section class="ls section_padding_top_100 section_padding_bottom_100 columns_margin_bottom_20">
+<section class="ls columns_margin_bottom_20">
 	<div class="container">
 		<div class="row">
 			<h4><i class="fa fa-tags highlight3 rightpadding_5" aria-hidden="true"></i>Galerias Relacionadas</h4>
@@ -116,6 +123,10 @@
 		</div>
 	</div>
 </section>
-
+<section class="ls section_padding_top_25 section_padding_bottom_50 columns_margin_bottom_20">
+	<div class="container">
+		{% disqus_show_comments %}
+	</div>	
+</section>
 
 {% endblock content %}

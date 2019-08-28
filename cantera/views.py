@@ -18,7 +18,7 @@ from django.template.loader import render_to_string
 
 def index(request,template='index.html'):
 	# actualidad = Actualidad.objects.order_by('-created_on')[:6]
-	actualidad = Actualidad.objects.filter(category__in = ['noticias','situacion-regional-genero'],aprobado = True).order_by('created_on')
+	actualidad = Actualidad.objects.filter(category__in = ['noticias','situacion-regional-genero'],aprobado = True).order_by('created_on')[:6]
 	hoy = datetime.date.today()
 	eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio','-hora_inicio')[:3]
 	foros = Foros.objects.filter(aprobado = True).annotate(conteo = Count('aportes')).order_by('-conteo','-aportes__fecha')[:3]

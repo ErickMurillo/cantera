@@ -381,3 +381,7 @@ img.b_avatar {
   .list-group-item.active a{
     color: white;
   }
+
+  .background_cover {
+    background-size: cover;
+  }

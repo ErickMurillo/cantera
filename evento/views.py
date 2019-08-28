@@ -91,6 +91,7 @@ def detailConcursos(request,slug,template='detail_concursos.html'):
 	list_paises = Actualidad.objects.filter(category = 'concursos').values_list('pais__nombre','pais__slug').order_by('pais__nombre').distinct('pais__nombre')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('inicio')[:3]
+	list_object = Actualidad.objects.filter(category__in = ['concursos'],aprobado = True).order_by('created_on')
 	ids = list_object.values_list('id',flat=True)
 	tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
 	return render(request,template,locals())

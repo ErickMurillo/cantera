@@ -71,7 +71,7 @@
 								</div>
 								<div class="entry-content-wrap">
 									<header class="entry-header" style="height: 35px;">
-										<h3 class="entry-title"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre|truncatechars:27}}</a> </h3>
+										<h3 class="entry-title small"> <a href="{% url 'detalle-foro' obj.slug %}">{{obj.nombre|truncatechars:27}}</a> </h3>
 									</header>
 									<div class="entry-content">
 										<p>{{obj.contenido|safe|striptags|truncatechars:39}} <a href="{% url 'detalle-foro' obj.slug %}" class="more-link">Leer más</a></p>

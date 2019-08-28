@@ -36,16 +36,16 @@
 
 <section class="ls page_portfolio section_padding_top_100 section_padding_bottom_100">
 	<div class="container">
-		<div class="row">
-			
-			{% if object.descripcion %}
+		{% if object.descripcion %}
+			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<h4>Descripción</h4>
 					{{object.descripcion|safe}}
 					<hr>
 				</div>
-			{% endif %}
-				
+			</div>
+		{% endif %}
+		<div class="row">			
 			<div class="col-sm-12">
 				<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
 					

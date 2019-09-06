@@ -3,6 +3,31 @@
 <!--{% load embed_video_tags %}-->
 {% load disqus_tags %}
 
+{% block extra_head %}
+<meta property="al:android:url" content="generoymetodologias:/{{request.path}}">
+<meta property="al:android:package" content="com.facebook.samples.sharesample">
+<meta property="al:android:app_name" content="ShareSample">
+
+<meta property="og:title" content="{{object.titulo}}" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://generoymetodologias.org/media/{{object.imagen}}">
+
+
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />
+<meta property="og:description" content="{{object.contenido|striptags}}" />
+<meta property="og:url" content="https://generoymetodologias.org{{request.path}}" />
+<meta property="og:locale" content="es_ES" />
+
+<!-- twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{object.titulo|truncatechars:70}}">
+<meta name="twitter:description" content="{{object.contenido|striptags|truncatechars:200}}">
+<meta name="twitter:image" content="https://generoymetodologias.org/media/{{object.imagen}}">
+
+<meta name="twitter:domain" content="https://generoymetodologias.org">
+{% endblock extra_head %}
+
 {% block extra_css %}
 <style type="text/css">
 .page_breadcrumbs.background_cover {

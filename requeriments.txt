@@ -5,6 +5,7 @@ Django==2.1.7
 django-allauth==0.39.1
 django-appconf==1.0.3
 django-ckeditor==5.7.0
+django-colorfield==0.1.15
 django-compressor==2.3
 django-crispy-forms==1.7.2
 django-disqus==0.5
@@ -24,6 +25,7 @@ markdown2==2.3.7
 mock==3.0.5
 oauthlib==3.0.1
 Pillow==6.0.0
+pkg-resources==0.0.0
 psycopg2-binary==2.8.2
 python-monkey-business==1.0.0
 python3-openid==3.1.0

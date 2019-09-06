@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'disqus',
     'compressor',
     'nested_admin',
+    'colorfield',
 ]
 
 AUTH_USER_MODEL = 'users.User'

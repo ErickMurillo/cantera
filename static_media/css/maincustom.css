@@ -145,12 +145,14 @@ display block {
   color: #514550;
   font-weight: 800;
 }
-
-a.actual_content:hover:before {
+.xxs-media-left a {
+  display: block;
+}
+.actual_content:hover a:before {
   color: #FFFFFF !important;
     content: "Informate";
 }
-a.actual_content:hover span {
+.actual_content:hover a span {
     display: none;
 }
 

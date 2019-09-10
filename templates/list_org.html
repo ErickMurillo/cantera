@@ -40,10 +40,10 @@
 				
 				<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center fixed-height">
 					<div class="item-media"> 
-						{% thumbnail obj.logo "238x166" format='PNG' as im %}
+						{% thumbnail obj.logo "240x170" format='PNG' as im %}
 						<img src="{{ im.url }}" alt="">
 						{% empty %}
-						<img src="http://via.placeholder.com/256x166" alt="">
+						<img src="http://via.placeholder.com/240x170" alt="">
 						{% endthumbnail %}
 
 						<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalles_organizaciones' obj.slug %}"></a> </div>

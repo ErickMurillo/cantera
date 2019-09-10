@@ -46,10 +46,10 @@
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">			
 						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color">
 							<div class="item-media"> 
-								{% thumbnail obj.photo "365x229" crop="center" as im %}
+								{% thumbnail obj.photo "830x620" crop="center" as im %}
 								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/365x229" alt="">
+								<img src="http://via.placeholder.com/830x620" alt="">
 								{% endthumbnail %}
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-actualidad' obj.slug %}"></a> </div>								
 							</div>
@@ -62,7 +62,7 @@
 									<div class="entry-meta greylinks color4 inline-content"> 
 										<span>
 											<i class="fa fa-calendar highlight1 rightpadding_5" aria-hidden="true"></i>
-											<time datetime="2017-10-03T08:50:40+00:00">{{obj.created_on|date:"d N, Y"}}</time>
+											<time datetime="{{obj.created_on|date:'d N, Y'}}">{{obj.created_on|date:"d N, Y"}}</time>
 										</span>
 									</div>
 
@@ -183,10 +183,10 @@
 						{% for obj in prox_eventos %}
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
-								{% thumbnail obj.foto "350x279" crop="center" as im %}
+								{% thumbnail obj.foto "830x620" crop="center" as im %}
 								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/350x279" alt="">
+								<img src="http://via.placeholder.com/830x620" alt="">
 								{% endthumbnail %}
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
 							</div>

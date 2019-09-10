@@ -65,10 +65,10 @@
 				<article class="vertical-item content-padding big-padding with_border single-post post">
 
 					<div class="item-media entry-thumbnail"> 
-						{% thumbnail object.foto "760x507" crop="center" as im %}
+						{% thumbnail object.foto "830x620" crop="center" as im %}
 						<img src="{{ im.url }}" alt="">
 						{% empty %}
-						<img src="http://via.placeholder.com/728x640" alt="">
+						<img src="http://via.placeholder.com/830x620" alt="">
 						{% endthumbnail %}
 					</div>
 
@@ -128,25 +128,25 @@
 				<!-- .item-content -->
 			</article>
 			<!-- Compartir post en pantallas mayores a 700px-->
-			<div id="sharesocialweb" class="post-share"> 
-				<a target="blank" href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
-				</a>
-				<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
-
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
-				</a>
-
-				<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
-			</div>
-
-			<!-- Compartir post en celulares con las apps-->
-			<div id="sharesocialmov" class="post-share"> 
-				<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
-				</a> 
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
-				</a>
-				<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
-			</div>
+				<div  class="post-share hidden-xs compu"> 
+					<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+					</a>
+					<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
+	
+					<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+					</a>
+	
+					<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+				</div>
+	
+				<!-- Compartir post en celulares con las apps-->
+				<div class="post-share visible-xs movil"> 
+					<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+					</a> 
+					<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+					</a>
+					<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+				</div>
 
 			<div class="comments-area" id="comments">
 				<h3>{{object.aportes_set.all.count}} Aportes en este foro</h3>
@@ -344,10 +344,10 @@
 					{% for destacado in foros_destacados %}
 					<div class="vertical-item content-padding with_border">
 						<div class="item-media"> 
-							{% thumbnail destacado.foto "350x279" crop="center" as im %}
+							{% thumbnail destacado.foto "830x620" crop="center" as im %}
 							<img src="{{ im.url }}" alt="">
 							{% empty %}
-							<img src="http://via.placeholder.com/350x279" alt="">
+							<img src="http://via.placeholder.com/830x620" alt="">
 							{% endthumbnail %}
 							<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-foro' destacado.slug %}"></a> </div>
 						</div>

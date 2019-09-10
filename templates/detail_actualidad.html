@@ -3,6 +3,15 @@
 {% load disqus_tags %}
 
 {% block extra_head %}
+
+<!-- twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{object.tittle|truncatechars:70}}">
+<meta name="twitter:description" content="{{object.content|striptags|truncatechars:200}}">
+<meta name="twitter:image" content="https://generoymetodologias.org/media/{{object.photo}}">
+
+<meta name="twitter:domain" content="https://generoymetodologias.org">
+<!-- Facebook -->
 <meta property="al:android:url" content="generoymetodologias:/{{request.path}}">
 <meta property="al:android:package" content="com.facebook.samples.sharesample">
 <meta property="al:android:app_name" content="ShareSample">
@@ -18,13 +27,7 @@
 <meta property="og:url" content="https://generoymetodologias.org{{request.path}}" />
 <meta property="og:locale" content="es_ES" />
 
-<!-- twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{object.tittle|truncatechars:70}}">
-<meta name="twitter:description" content="{{object.content|striptags|truncatechars:200}}">
-<meta name="twitter:image" content="https://generoymetodologias.org/media/{{object.photo}}">
 
-<meta name="twitter:domain" content="https://generoymetodologias.org">
 {% endblock extra_head %}
 
 {% block extra_css %}
@@ -65,10 +68,10 @@
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<article class="event-single vertical-item content-padding big-padding with_border bottom_color_border color2">
 					<div class="item-media entry-thumbnail text-center">
-						{% thumbnail object.photo "965x550" crop="center" as im %}
+						{% thumbnail object.photo "830x620" crop="center" as im %}
 						<img src="{{ im.url }}" alt="{{object.tittle}}" width="100%">
 						{% empty %}
-						<img src="http://via.placeholder.com/965x550" alt="{{object.tittle}}" width="100%">
+						<img src="http://via.placeholder.com/830x620" alt="{{object.tittle}}" width="100%">
 						{% endthumbnail %}
 					</div>
 
@@ -106,22 +109,22 @@
 			</article>
 			
 			<!-- Compartir post en pantallas mayores a 700px-->
-			<div id="sharesocialweb" class="post-share"> 
-				<a target="blank" href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+			<div  class="post-share hidden-xs compu"> 
+				<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
 				</a>
 				<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
 
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+				<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
 				</a>
 
 				<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
 			</div>
 
 			<!-- Compartir post en celulares con las apps-->
-			<div id="sharesocialmov" class="post-share"> 
+			<div class="post-share visible-xs movil"> 
 				<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
 				</a> 
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+				<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
 				</a>
 				<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
 			</div>
@@ -186,10 +189,10 @@
 				{% for obj in prox_eventos %}
 				<div class="vertical-item content-padding with_border">
 					<div class="item-media"> 
-						{% thumbnail obj.foto "350x279" crop="center" as im %}
+						{% thumbnail obj.foto "830x620" crop="center" as im %}
 						<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 						{% empty %}
-						<img src="http://via.placeholder.com/350x279" alt="">
+						<img src="http://via.placeholder.com/830x620" alt="">
 						{% endthumbnail %}
 						<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
 					</div>

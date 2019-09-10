@@ -44,10 +44,10 @@
 					<div class="isotope-item col-lg-6 col-md-12 col-sm-12 category-1">			
 						<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color">
 							<div class="item-media"> 
-								{% thumbnail obj.photo "365x229" crop="center" as im %}
+								{% thumbnail obj.photo "830x620" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/333x229" alt="">
+								<img src="http://via.placeholder.com/830x620" alt="">
 								{% endthumbnail %}
 								
 							</div>
@@ -177,10 +177,10 @@
 						{% for obj in prox_eventos %}
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
-								{% thumbnail obj.foto "350x279" crop="center" as im %}
+								{% thumbnail obj.foto "830x620" crop="center" as im %}
 								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/318x279" srcset="{{ im.url }} {{ im.x }}w" alt="">
+								<img src="http://via.placeholder.com/830x620" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% endthumbnail %}
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
 							</div>

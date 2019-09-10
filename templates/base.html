@@ -210,7 +210,7 @@
                             <nav class="mainmenu_wrapper">
                                 <ul class="mainmenu nav sf-menu">
                                     
-                                    {% if request.path == '/' or request.path == '/index/' %}
+                                
                                         <li class="{% if request.path == '/' %} active {% endif %}"> <a href="/">Inicio</a>
 
                                         </li>
@@ -222,8 +222,9 @@
                                         <li> <a class="{% if '/alianzas' in request.path %} active {% endif %}" href="/alianzas">Alianzas y Colaboraciones</a>
 
                                         </li>
-                                    {% else %}
-                                        <li > <a href="#">Actualidad</a>
+                                    
+                                        <!-- <li> 
+                                            <a href="#">Actualidad</a>
                                             <ul>
                                                 <li> <a href="/actualidad/noticias">Noticias</a> </li>
                                                 <li> <a href="/actualidad/situacion-regional-genero">Situación regional de género</a> </li>
@@ -254,8 +255,8 @@
                                                 <li> <a href="/iniciativas-destacadas/eventos/">Eventos</a> </li>
                                                 <li> <a href="/iniciativas-destacadas/concursos/">Concursos</a> </li>
                                             </ul>
-                                        </li>
-                                    {% endif %}
+                                        </li> -->
+                                 
                                         
                                     
                                     
@@ -322,11 +323,125 @@
                 	</div>
             	</div>
         	</div>
-    	</header>   
+        </header>
+        {% if request.path != '/' %}
+        <section  id="services" class="hidden-xs ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0">
+            <div id="show_services prueba" class="container-fluid">
+                <div class="row flex-wrap v-center-content">
+        
+                    <div class="col-lg-20 col-sm-6 col-xs-12 to_animate actual_content" data-animation="fadeInUp">
+                        <div class="teaser main_bg_color transp with_padding big-padding margin_0">
+                            <div class="xxs-media-left">        
+                                <div class="dropdown text-center">
+                                    <a class="orangefont visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/actualidad" >
+                                        <span>Actualidad</span> <i class="icofont-caret-down rotate"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <!--<a class="dropdown-item" href="/actualidad">Actualidad</a>-->
+                                        <a class="dropdown-item" href="/actualidad/noticias"> Noticias</a>
+                                        <a class="dropdown-item" href="/actualidad/situacion-regional-genero"> Situación regional de género</a>
+                                    </div>
+                                </div>
+                                <div class="media-body media-middle text-center">
+                                    
+                                    <h4>
+                                    </h4>
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+                        <div class="teaser bg_customgreen transp with_padding big-padding margin_0" id="p_vista">
+                            <a href="/puntos-vista">
+                                <div class="xxs-media-left">
+                                    <div class="media-body media-middle text-center">
+                                        <div class="text-center">
+                                            <a class="visible_hover white-color puntos_content" href="/puntos-vista" aria-haspopup="true" aria-expanded="false">
+                                                <span id ="txtpuntos">Puntos de vista</span>
+                                            </a>
+                                        </div>
+            
+                                        <div class="media-body media-middle text-center">
+                                            <h4 class="white-color"></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+                        <div class="teaser main_bg_color2 transp with_padding big-padding margin_0">
+                            <a href="/foros">
+                                <div class="xxs-media-left">        
+                                    <div class="text-center">
+                                        <a class="visible_hover white-color foro_content" href="/foros" aria-haspopup="true" aria-expanded="false"><span>Foros</span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle text-center">
+                                        <h4></h4>
+        
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+                        <div class="teaser main_bg_color4 transp with_padding big-padding margin_0">
+                            <div class="xxs-media-left">
+       
+                                <div class="dropdown text-center">
+                                    <a class="visible_hover white-color recurso_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                        <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="/recursos-metodologicos/galerias/audios/">Audios</a>
+                                        <a class="dropdown-item" href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a>
+                                        <a class="dropdown-item" href="/recursos-metodologicos/publicaciones/">Publicaciones</a>
+                                        <a class="dropdown-item" href="/recursos-metodologicos/galerias/videos/">Videos</a>
+                                        
+                                    </div>
+                                </div>
+        
+                                <div class="media-body media-middle text-center">
+                                    <h5><a href="#0"> </a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
+                        <div class="teaser main_bg_color3 transp with_padding big-padding margin_0">
+                            <div class="xxs-media-left">
+                                <div class="dropdown text-center">
+                                    <a class="visible_hover white-color iniciativa_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                        <span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="/iniciativas-destacadas/campanias">Campañas</a>
+                                        <a class="dropdown-item" href="/iniciativas-destacadas/eventos">Eventos</a>
+                                        <a class="dropdown-item" href="/iniciativas-destacadas/concursos">Concursos</a>
+                                    </div>
+                                </div>
+        
+                                <div class="media-body media-middle text-center">
+        
+                                    <h4>
+                                    </h4>
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  
+        {% endif %}
+              
 
 
-            {% block content %}{% endblock content %}
-
+        {% block content %}{% endblock content %}
+   
         <footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">
             <div class="container">
                 <div class="row">
@@ -359,8 +474,8 @@
                                         <a id="bg-drop-footer" class="dropdown-item" href="/actualidad/situacion-regional-genero">Situación regional de género</a>
                                     </div> 
                                 </li>
-                                <li> <a href="/puntos-vista/">Puntos de vista</a> </li>
-                                <li> <a href="/foros/">Foros</a> </li>
+                                <li> <a class="visible_hover" href="/puntos-vista/"><span>Puntos de vista</span</a> </li>
+                                <li> <a class="visible_hover" href="/foros/"><span>Foros</span></a> </li>
                                 <li> 
                                     <a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
@@ -384,6 +499,8 @@
                                         <a class="dropdown-item highlight-font" href="/iniciativas-destacadas/concursos">Concursos</a>
                                     </div>
                                 </li>
+                                <li> <a class="visible_hover" href="/quienes-somos/"><span>¿Quiénes Somos?</span></a> </li>
+                                    <li> <a class="visible_hover" href="/alianzas/"><span>Alianzas y Colaboraciones</span></a> </li>
                             </ul>
                         </div>
                     </div>
@@ -431,6 +548,7 @@
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/compressed.js"></script>
 <script src="/static/js/selectize.min.js"></script>
+<script src="/static/js/social.js"></script>
 <script src="/static/js/main.js"></script>
 
 {% block extra_js %}{% endblock extra_js %}

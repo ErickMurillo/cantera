@@ -64,24 +64,24 @@
 							<div class="item-media">
 								{% if '/videos/' in request.path %}
 									{% if obj.portada %}
-										{% thumbnail obj.portada "365x229" crop="center" as im %}
+										{% thumbnail obj.portada "830x620" crop="center" as im %}
 										<img src="{{ im.url }}" alt="">
 										{% endthumbnail %}
 									{% elif obj.listvideos_set.all %}
 										{% video obj.listvideos_set.first.url as my_video %}
-											{% thumbnail my_video.thumbnail "365x229" crop="center" as im %}
+											{% thumbnail my_video.thumbnail "830x620" crop="center" as im %}
 												<img src="{{ im.url }}" alt="">
 											{% endthumbnail %}
 										{% endvideo %}
 									{% else %}
-										<img src="http://via.placeholder.com/365x229" alt="">
+										<img src="http://via.placeholder.com/830x620" alt="">
 									{% endif %}
 									<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle_galeria_vid' obj.slug %}"></a> </div>
 								{% else %}
-									{% thumbnail obj.portada "365x229" crop="center" as im %}
+									{% thumbnail obj.portada "830x620" crop="center" as im %}
 									<img src="{{ im.url }}" alt="">
 									{% empty %}
-									<img src="http://via.placeholder.com/365x229" alt="">
+									<img src="http://via.placeholder.com/830x620" alt="">
 									{% endthumbnail %}
 									<div class="media-links"> <a class="abs-link" title="" href="{% if '/imagenes/' in request.path %}{% url 'detalle_galeriaImagenes' obj.slug %}{% else %}{% url 'detalle_galeria_audio' obj.slug %}{% endif %}"></a> </div>
 								{% endif %}	

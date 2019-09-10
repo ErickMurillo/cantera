@@ -44,10 +44,10 @@
 					<div class="row">
 						<div class="col-md-5">
 							<div class="item-media"></div>
-							{% thumbnail obj.foto "286x196" crop="center" padding=True as im %}
+							{% thumbnail obj.foto "830x620" crop="center" padding=True as im %}
 							<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 							{% empty %}
-							<img src="http://via.placeholder.com/286x196" alt="">
+							<img src="http://via.placeholder.com/830x620" alt="">
 							{% endthumbnail %}
 							<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-foro' obj.slug %}"></a> </div>
 
@@ -175,10 +175,10 @@
 						{% for destacado in foros_destacados %}
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
-								{% thumbnail destacado.foto "350x279" crop="center" as im %}
+								{% thumbnail destacado.foto "830x620" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/350x279" alt="">
+								<img src="http://via.placeholder.com/830x620" alt="">
 								{% endthumbnail %}
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-foro' destacado.slug %}"></a> </div>
 							</div>

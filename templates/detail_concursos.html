@@ -62,10 +62,10 @@
 			<div class="col-sm-7 col-md-8 col-lg-8">
 				<article class="event-single vertical-item content-padding big-padding with_border bottom_color_border color2">
 					<div class="item-media entry-thumbnail text-center">
-						{% thumbnail object.photo "965x550" crop="center" as im %}
+						{% thumbnail object.photo "830x620" crop="center" as im %}
 						<img src="{{ im.url }}" alt="">
 						{% empty %}
-						<img src="http://via.placeholder.com/800x550" alt="">
+						<img src="http://via.placeholder.com/830x620" alt="">
 						{% endthumbnail %}
 					</div>
 
@@ -91,25 +91,25 @@
 					<!-- .item-content -->
 				</article>
 				<!-- Compartir post en pantallas mayores a 700px-->
-			<div id="sharesocialweb" class="post-share"> 
-				<a target="blank" href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
-				</a>
-				<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
-
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
-				</a>
-
-				<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
-			</div>
-
-			<!-- Compartir post en celulares con las apps-->
-			<div id="sharesocialmov" class="post-share"> 
-				<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
-				</a> 
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
-				</a>
-				<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
-			</div>
+					<div  class="post-share hidden-xs compu"> 
+						<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+						</a>
+						<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
+		
+						<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+						</a>
+		
+						<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+					</div>
+		
+					<!-- Compartir post en celulares con las apps-->
+					<div class="post-share visible-xs movil"> 
+						<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+						</a> 
+						<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+						</a>
+						<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+					</div>
 
 
 				<!-- #respond -->
@@ -168,10 +168,10 @@
 						{% for obj in prox_eventos %}
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
-								{% thumbnail obj.foto "350x279" crop="center" as im %}
+								{% thumbnail obj.foto "830x620" crop="center" as im %}
 								<img src="{{ im.url }}" alt="">
 								{% empty %}
-								<img src="http://via.placeholder.com/350x279" alt="">
+								<img src="http://via.placeholder.com/830x620" alt="">
 								{% endthumbnail %}
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detailEventos' obj.slug %}"></a> </div>
 							</div>
@@ -196,17 +196,5 @@
 {% endblock content %}
 
 {% block extra_js %}
-<script>
-	$( document ).ready(function() {      
-    var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
-
-    if (isMobile) {
-        $('#sharesocialweb').addClass('hidden');
-    }
-    else {
-    	$('#sharesocialmov').addClass('hidden');
-    }
- });
-</script>
 
 {% endblock extra_js %}

@@ -145,10 +145,14 @@ display block {
   color: #514550;
   font-weight: 800;
 }
-
+.xxs-media-left a {
+  display: block;
+}
 a.actual_content:hover:before {
   color: #FFFFFF !important;
     content: "Informate";
+    font-size: 16px;
+    font-weight: 600;
 }
 a.actual_content:hover span {
     display: none;
@@ -157,6 +161,8 @@ a.actual_content:hover span {
 a.puntos_content:hover:before {
   color: #FFFFFF !important;
     content: "Opina";
+    font-size: 16px;
+    font-weight: 600;
 }
 a.puntos_content:hover span {
   color: #FFFFFF !important;
@@ -166,6 +172,8 @@ a.puntos_content:hover span {
 a.foro_content:hover:before {
   color: #FFFFFF !important;
     content: "Participa";
+    font-size: 16px;
+    font-weight: 600;
 }
 a.foro_content:hover span {
     display: none;
@@ -174,7 +182,9 @@ a.foro_content:hover span {
 a.recurso_content:hover:before{
   color: #FFFFFF !important;
     content: "Comparte";
-}
+
+font-size16px;
+font-weight: 600;  }
 a.recurso_content:hover span{
     display: none;
 }
@@ -182,7 +192,9 @@ a.recurso_content:hover span{
 a.iniciativa_content:hover:before{
   color: #FFFFFF !important;
     content: "Únete";
-}
+
+font-size16px;
+font-weight: 600;  }
 a.iniciativa_content:hover span {
     display: none;
 }
@@ -384,4 +396,12 @@ img.b_avatar {
 
   .background_cover {
     background-size: cover;
+  }
+
+  .visible_hover span{
+      font-size: 17px;
+      font-weight: 600;
+  }
+  .sf-menu a{
+    font-size: 16px;
   }

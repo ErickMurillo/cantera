@@ -11,3 +11,6 @@ class PuntosForms(forms.ModelForm):
 		model = Puntos
 		fields = '__all__'
 		exclude = ('slug', 'usuario','aprobado')
+		help_texts = {
+			'foto': 'Tamaño de imagen recomendado: 830x620',
+		}

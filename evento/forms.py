@@ -12,3 +12,6 @@ class EventsForms(forms.ModelForm):
 		model = Evento
 		fields = '__all__'
 		exclude = ('slug', 'author','aprobado')
+		help_texts = {
+			'foto': 'Tamaño de imagen recomendado: 830x620',
+		}

@@ -10,6 +10,9 @@ class ForoForm(forms.ModelForm):
 	class Meta:
 		model = Foros
 		exclude = ('slug','usuario','usuarios_siguiendo','aprobado')
+		help_texts = {
+			'foto': 'Tamaño de imagen recomendado: 830x620',
+		}
 
 class AporteForm(forms.ModelForm):
 	contenido = forms.CharField(widget=CKEditorUploadingWidget())

@@ -11,7 +11,7 @@ TIPO_CHOICES = ((1,'Publicaciones'),(2,'Guías metodológicas'))
 
 class Publicacion(models.Model):
 	titulo = models.CharField(max_length=250)
-	imagen = ImageField(upload_to='publicaciones/img/',null=True, blank=True)
+	imagen = ImageField(upload_to='publicaciones/img/',null=True, blank=True,help_text=' 612px de ancho')
 	resumen = RichTextUploadingField()
 	tipo =  models.IntegerField(choices=TIPO_CHOICES,default=1,editable=False)
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)

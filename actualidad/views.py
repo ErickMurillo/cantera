@@ -51,10 +51,10 @@ def filtro_categoria(request,category,template='list_actualidad.html'):
 										Q(tittle__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										category = category,aprobado = True).order_by('created_on')
+										category = category,aprobado = True).order_by('-created_on')
 		
 	else:
-		list_object = Actualidad.objects.filter(category = category,aprobado = True).order_by('created_on')
+		list_object = Actualidad.objects.filter(category = category,aprobado = True).order_by('-created_on')
 
 	list_paises = Actualidad.objects.filter(category = category).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
 

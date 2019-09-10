@@ -169,16 +169,5 @@
 
 {% block extra_js %}
 <script src="/static/js/leaflet.js"></script>
-<script>
-$( document ).ready(function() {      
-	var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
-	if (isMobile) {
-		$('#sharesocialweb').addClass('hidden');
-	}
-	else {
-		$('#sharesocialmov').addClass('hidden');
-	}
-});
-</script>
 {% endblock extra_js %}

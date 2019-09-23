@@ -28,6 +28,7 @@
 {% endblock extra_head %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="/static/css/jquery.fancybox.min.css">
 <link rel = "stylesheet" href = "/static/css/leaflet.css"/>
 <style type="text/css">
 .page_breadcrumbs.background_cover {
@@ -90,17 +91,24 @@
 						</header>
 						<div class="entry-content">
 							{{object.contenido|safe}}
-
-							<!-- galeria -->
-							{% if object.galeriapuntos_set.all %}
-								{% for img in object.galeriapuntos_set.all %}
-									{% thumbnail img.imagen "300x200" crop="center" as im %}
-									<img src="{{ im.url }}" alt="">
-									{% endthumbnail %}
-								{% endfor %}
-							{% endif %}
-
 						</div>
+						<!-- galeria -->
+						{% if object.galeriapuntos_set.all %}
+						<h4 class="" > Galería de fotos </h4>
+						<hr>		
+						<div class="owl-carousel owl-theme">
+							{% for img in object.galeriapuntos_set.all %}
+								
+							<div cldivss="item">
+								<a class="fancybox" href="/media/{{img.imagen}}">
+								{% thumbnail img.imagen "300x200" crop="center" as im %}
+								<img src="{{ im.url }}" alt="">
+								{% endthumbnail %}
+								</a>
+							</div>
+							{% endfor %}
+						</div>
+						{% endif %}
 					</div>
 					
 				</article>
@@ -178,5 +186,45 @@
 
 {% block extra_js %}
 <script src="/static/js/leaflet.js"></script>
+<script src="/static/js/vendor/owl.carousel.min.js"></script>
+<script>
 
+	$( document ).ready(function() {      
+    var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    if (isMobile) {
+        $('#sharesocialweb').addClass('hidden');
+    }
+    else {
+    	$('#sharesocialmov').addClass('hidden');
+    }
+ });
+
+ $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:3
+        }
+    }
+});
+$(".fancybox")
+    .attr('rel', 'gallery')
+    .fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none',
+        nextEffect  : 'none',
+        prevEffect  : 'none',
+        padding     : 0,
+        margin      : [20, 60, 20, 60] // Increase left/right margin
+    });
+</script>
 {% endblock extra_js %}

@@ -967,7 +967,7 @@ function windowLoadInit() {
 						$carousel.find("a[data-gal^='prettyPhoto']").prettyPhoto({
 							hook: 'data-gal',
 							theme: 'facebook', /* light_rounded / dark_rounded / light_square / dark_square / facebook / pp_default*/
-							social_tools: false
+							social_tools: true
 						});
 					}
 				});
@@ -1023,7 +1023,7 @@ function windowLoadInit() {
 					jQuery("a[data-gal^='prettyPhoto']").prettyPhoto({
 						hook: 'data-gal',
 						theme: 'facebook', /* light_rounded / dark_rounded / light_square / dark_square / facebook / pp_default*/
-						social_tools: false
+						social_tools: true
 					});
 				}
 			})

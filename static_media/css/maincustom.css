@@ -409,4 +409,9 @@ img.b_avatar {
   .entry-content img{
 		height: auto !important;
 		max-width: 100%;
-	}
+  }
+  
+  [class*="-item"] .links-wrap a.download:before {
+    font-family: 'FontAwesome';
+    content: "\f019" !important;
+}

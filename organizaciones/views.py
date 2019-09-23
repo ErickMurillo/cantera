@@ -191,14 +191,22 @@ def events_list(request,template = 'admin/iniciativas-destacadas.html'):
 
 @login_required
 def events_crear(request,template = 'admin/event.html'):
+	FormSetInit = inlineformset_factory(Evento,GaleriaEventos,form=GaleriaEventosForm,extra=1)
 	if request.method == 'POST':
 		form = EventsForms(request.POST, request.FILES)
-		if form.is_valid():
+		formset = FormSetInit(request.POST, request.FILES)
+		if form.is_valid() and formset.is_valid():
 			event = form.save(commit=False)
 			event.author = request.user
 			event.aprobado = False
 			event.save()
 			form.save_m2m()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.evento = event
+				instance.save()
+			formset.save_m2m()
 			
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
@@ -216,20 +224,26 @@ def events_crear(request,template = 'admin/event.html'):
 				pass
 	else:
 		form = EventsForms()
+		formset = FormSetInit()
+
 	return render(request, template, locals())
 
 @login_required
 def events_editar(request, id, template = 'admin/event.html'):
 	object = get_object_or_404(Evento, id=id)
+	FormSetInit = inlineformset_factory(Evento,GaleriaEventos,form=GaleriaEventosForm,extra=1)
 	if request.method == 'POST':
 		form = EventsForms(request.POST, request.FILES, instance=object)
-		if form.is_valid():
+		formset = FormSetInit(request.POST, request.FILES, instance=object)
+		if form.is_valid() and formset.is_valid():
 			form_uncommited = form.save()
 			form_uncommited.author = request.user
 			form_uncommited.save()
+			formset.save()
 			return redirect('/alianzas/iniciativas-destacadas/'+'?tab=eventos')
 	else:
 		form = EventsForms(instance=object)
+		formset = FormSetInit(instance=object)
 
 	return render(request, template, locals())
 
@@ -596,13 +610,21 @@ def puntos_vista_list(request,template = 'admin/puntos_list.html'):
 
 @login_required
 def puntos_vista_crear(request,template = 'admin/punto.html'):
+	FormSetInit = inlineformset_factory(Puntos,GaleriaPuntos,form=GaleriaPuntosForm,extra=1)
 	if request.method == 'POST':
 		form = PuntosForms(request.POST, request.FILES)
-		if form.is_valid():
+		formset = FormSetInit(request.POST, request.FILES)
+		if form.is_valid() and formset.is_valid():
 			punto = form.save(commit=False)
 			punto.usuario = request.user
 			punto.aprobado = False
 			punto.save()
+
+			instances = formset.save(commit=False)
+			for instance in instances:
+				instance.punto = punto
+				instance.save()
+			formset.save_m2m()
 
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
@@ -621,20 +643,27 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 			
 	else:
 		form = PuntosForms()
+		formset = FormSetInit()
+
 	return render(request, template, locals())
 
 @login_required
 def puntos_vista_edit(request,slug,template = 'admin/punto.html'):
 	object = get_object_or_404(Puntos, slug=slug)
+	FormSetInit = inlineformset_factory(Puntos,GaleriaPuntos,form=GaleriaPuntosForm,extra=1)
 	if request.method == 'POST':
 		form = PuntosForms(request.POST, request.FILES, instance = object)
-		if form.is_valid():
+		formset = FormSetInit(request.POST, request.FILES, instance=object)
+		if form.is_valid() and formset.is_valid():
 			puntos = form.save()
 			puntos.usuario = request.user
 			puntos.save()
+			formset.save()
 			return HttpResponseRedirect('/alianzas/puntos-vista/')
 	else:
 		form = PuntosForms(instance = object)
+		formset = FormSetInit(instance = object)
+
 	return render(request,template,locals())
 
 @login_required

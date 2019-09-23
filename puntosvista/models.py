@@ -25,3 +25,7 @@ class Puntos(models.Model):
 		self.slug = slugify(self.tittle)
 		return super(Puntos,self).save(*args,*kwargs)
 
+class GaleriaPuntos(models.Model):
+	punto = models.ForeignKey(Puntos,on_delete=models.CASCADE)
+	nombre = models.CharField(max_length=90)
+	imagen = ImageField(upload_to='galerias/puntos/')

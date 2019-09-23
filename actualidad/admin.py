@@ -10,7 +10,7 @@ class GaleriaInline(admin.TabularInline):
 	extra = 1
 
 class ActualidadAdmin(admin.ModelAdmin):
-	# inlines = [GaleriaInline,]
+	inlines = [GaleriaInline,]
 
 	def save_model(self, request, obj, form, change):
 		if obj.aprobado == True and obj.author != request.user and obj.category != 'situacion-regional-genero':

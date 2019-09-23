@@ -29,6 +29,34 @@
 						<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 						<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 						{{form|crispy}}
+						<br>
+
+						<div class="row">
+							<div class="col-md-6 pt-10"  style="background-color:#FFAF92">
+								<h4>Galería</h4>
+								<hr>
+								{{ formset.management_form }}
+								<div id="form_set">
+									{% for form in formset.forms %}
+									    {{form.non_field_errors}}
+										{{form.errors}}
+								        <div class='no_error'>
+								            {{ form }}
+								        </div>
+								    {% endfor %}
+								</div>
+
+								<a class="btn-add row" type="button" id="add_more">
+									<span class="fa fa-plus"> </span>
+									Agregar imagen adicional
+								</a>
+								<div id="empty_form" style="display:none">
+								    <div class='no_error'>
+								        {{ formset.empty_form }}
+								    </div>
+								</div>
+							</div>
+						</div>
 						<input class="theme_button color2 min_width_button margin_0" type="submit" name="Agregar" value="Agregar Evento">
 
 					</form>
@@ -44,6 +72,13 @@
 {% endblock location_field %}
 
 {% block extra_js %}
+<script>
+$('#add_more').click(function() {
+	var form_idx = $('#id_galeriaeventos_set-TOTAL_FORMS').val();
+	$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+	$('#id_galeriaeventos_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+});
+</script>
 <script src="/static/js/jquery-ui.js"></script>
 <script src="/static/js/datepicker-es.js"></script>
 <script src="/static/js/jquery.timepicker.min.js"></script>

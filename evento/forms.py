@@ -15,3 +15,8 @@ class EventsForms(forms.ModelForm):
 		help_texts = {
 			'foto': 'Tamaño de imagen recomendado: 830x620',
 		}
+
+class GaleriaEventosForm(forms.ModelForm):
+	class Meta:
+		model = GaleriaEventos
+		fields = '__all__'

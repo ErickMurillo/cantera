@@ -5,7 +5,13 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 
 # Register your models here.
+class GaleriaInline(admin.TabularInline):
+	model = GaleriaEventos
+	extra = 1
+
 class EventoAdmin(admin.ModelAdmin):
+	inlines = [GaleriaInline,]
+	
 	def save_model(self,request,obj,form,change):
 		if obj.aprobado == True and obj.author != request.user:
 			try:

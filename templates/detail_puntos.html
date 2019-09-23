@@ -91,6 +91,15 @@
 						<div class="entry-content">
 							{{object.contenido|safe}}
 
+							<!-- galeria -->
+							{% if object.galeriapuntos_set.all %}
+								{% for img in object.galeriapuntos_set.all %}
+									{% thumbnail img.imagen "300x200" crop="center" as im %}
+									<img src="{{ im.url }}" alt="">
+									{% endthumbnail %}
+								{% endfor %}
+							{% endif %}
+
 						</div>
 					</div>
 					

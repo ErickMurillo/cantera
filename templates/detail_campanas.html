@@ -91,6 +91,15 @@
 						</header>
 						<div class="entry-content">
 							{{object.content|safe}}
+							
+							<!-- galeria -->
+							{% if object.galeria_set.all %}
+								{% for img in object.galeria_set.all %}
+									{% thumbnail img.imagen "300x200" crop="center" as im %}
+									<img src="{{ im.url }}" alt="">
+									{% endthumbnail %}
+								{% endfor %}
+							{% endif %}
 						</div>
 					</div>
 					<!-- .item-content -->

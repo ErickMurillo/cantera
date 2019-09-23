@@ -14,3 +14,8 @@ class PuntosForms(forms.ModelForm):
 		help_texts = {
 			'foto': 'Tamaño de imagen recomendado: 830x620',
 		}
+
+class GaleriaPuntosForm(forms.ModelForm):
+	class Meta:
+		model = GaleriaPuntos
+		fields = '__all__'

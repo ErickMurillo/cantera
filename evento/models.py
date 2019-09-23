@@ -32,3 +32,8 @@ class Evento(models.Model):
 	def save(self,*args,**kwargs):
 		self.slug = slugify(self.tittle)
 		return super(Evento,self).save(*args,*kwargs)
+
+class GaleriaEventos(models.Model):
+	evento = models.ForeignKey(Evento,on_delete=models.CASCADE)
+	nombre = models.CharField(max_length=90)
+	imagen = ImageField(upload_to='galerias/evento/')

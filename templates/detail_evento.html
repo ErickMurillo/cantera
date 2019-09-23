@@ -95,6 +95,15 @@
 					</header>
 					<div class="entry-content">
 						{{object.descripcion|safe}}
+
+						<!-- galeria -->
+						{% if object.galeriaeventos_set.all %}
+							{% for img in object.galeriaeventos_set.all %}
+								{% thumbnail img.imagen "300x200" crop="center" as im %}
+								<img src="{{ im.url }}" alt="">
+								{% endthumbnail %}
+							{% endfor %}
+						{% endif %}
 						
 						{% if object.position %}
 							<div id="map"></div>

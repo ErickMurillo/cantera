@@ -49,7 +49,7 @@ REDES_CHOICES = (('Sitio web','Sitio web'),('Facebook','Facebook'),('Twitter','T
 					('Flickr','Flickr'),('Pinterest','Pinterest'),('Vimeo','Vimeo'),('Otra','Otra'),)
 
 class Redes(models.Model):
-	organizacion = models.ForeignKey(Contraparte,on_delete=models.DO_NOTHING)
+	organizacion = models.ForeignKey(Contraparte,on_delete=models.CASCADE)
 	opcion = models.CharField(max_length=25,choices=REDES_CHOICES)
 	url = models.URLField()
 

@@ -48,7 +48,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
-				<h2 class="white-color">{{object.titulo}}</h2>
+				<h2 class="white-color">{% if '/videos/' in request.path %}Videos{%else%}Audios{% endif %}</h2>
 				<ol class="breadcrumb white-color">
 					<li> <a href="/">
 						Inicio

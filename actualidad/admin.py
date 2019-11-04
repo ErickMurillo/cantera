@@ -14,29 +14,29 @@ class ActualidadAdmin(admin.ModelAdmin):
 
 	def save_model(self, request, obj, form, change):
 		if obj.aprobado == True and obj.category != 'situacion-regional-genero':
-			# try:
-			subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
-			if obj.category == 'noticias':
-				text_content =  render_to_string('email/aprobacion.txt', {'obj': obj,})
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
+				if obj.category == 'noticias':
+					text_content =  render_to_string('email/aprobacion.txt', {'obj': obj,})
 
-				html_content = render_to_string('email/aprobacion.txt', {'obj': obj,})
-			elif obj.category == 'campanas':
-				text_content =  render_to_string('email/aprobacion_camp.txt', {'obj': obj,})
+					html_content = render_to_string('email/aprobacion.txt', {'obj': obj,})
+				elif obj.category == 'campanas':
+					text_content =  render_to_string('email/aprobacion_camp.txt', {'obj': obj,})
 
-				html_content = render_to_string('email/aprobacion_camp.txt', {'obj': obj,})
-			elif obj.category == 'concursos':
-				text_content =  render_to_string('email/aprobacion_conc.txt', {'obj': obj,})
+					html_content = render_to_string('email/aprobacion_camp.txt', {'obj': obj,})
+				elif obj.category == 'concursos':
+					text_content =  render_to_string('email/aprobacion_conc.txt', {'obj': obj,})
 
-				html_content = render_to_string('email/aprobacion_conc.txt', {'obj': obj,})
+					html_content = render_to_string('email/aprobacion_conc.txt', {'obj': obj,})
 
-			user = User.objects.get(id = obj.author.id)
-			list_mail = [user.email,]
+				user = User.objects.get(id = obj.author.id)
+				list_mail = [user.email,]
 
-			msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
-			msg.attach_alternative(html_content, "text/html")
-			msg.send()
-			# except:
-			# 	pass
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+			except:
+				pass
 		super().save_model(request, obj, form, change)
 
 admin.site.register(Actualidad,ActualidadAdmin)

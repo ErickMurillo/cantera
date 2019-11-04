@@ -14,7 +14,7 @@ class Evento(models.Model):
 	descripcion = RichTextUploadingField('Descripción')
 	inicio = models.DateField('Fecha de Inicio')
 	final = models.DateField('Fecha de Finalización',null=True, blank=True)
-	hora_inicio = models.TimeField('Hora inicio')
+	hora_inicio = models.TimeField('Hora inicio',null=True, blank=True)
 	hora_fin = models.TimeField('Hora fin',null=True, blank=True)
 	city = models.CharField('Dirección', max_length=100,null=True,blank=True)
 	position = PlainLocationField(based_fields=['city'], zoom=7,verbose_name='Posición',null=True,blank=True)

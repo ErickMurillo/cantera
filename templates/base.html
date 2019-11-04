@@ -325,15 +325,15 @@
         	</div>
         </header>
         {% if request.path != '/' %}
-        <section  id="services" class="hidden-xs ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0">
-            <div id="show_services prueba" class="container-fluid">
+        <section id="services" class="hidden-xs ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0 mt-10">
+            <div id="show_services" class="container-fluid">
                 <div class="row flex-wrap v-center-content">
-        
-                    <div class="col-lg-20 col-sm-6 col-xs-12 to_animate actual_content" data-animation="fadeInUp">
+
+                    <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
                         <div class="teaser main_bg_color transp with_padding big-padding margin_0">
-                            <div class="xxs-media-left">        
+                            <div class="xxs-media-left">
                                 <div class="dropdown text-center">
-                                    <a class="orangefont visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/actualidad" >
+                                    <a class="orangefont visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/actualidad">
                                         <span>Actualidad</span> <i class="icofont-caret-down rotate"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -346,7 +346,7 @@
                                     
                                     <h4>
                                     </h4>
-        
+
                                 </div>
                             </div>
                         </div>
@@ -355,16 +355,14 @@
                         <div class="teaser bg_customgreen transp with_padding big-padding margin_0" id="p_vista">
                             <a href="/puntos-vista">
                                 <div class="xxs-media-left">
+                                    <div class="text-center">
+                                        <a class="visible_hover white-color puntos_content" href="/puntos-vista" aria-haspopup="true" aria-expanded="false">
+                                            <span id ="txtpuntos">Puntos de vista</span>
+                                        </a>
+                                    </div>
+
                                     <div class="media-body media-middle text-center">
-                                        <div class="text-center">
-                                            <a class="visible_hover white-color puntos_content" href="/puntos-vista" aria-haspopup="true" aria-expanded="false">
-                                                <span id ="txtpuntos">Puntos de vista</span>
-                                            </a>
-                                        </div>
-            
-                                        <div class="media-body media-middle text-center">
-                                            <h4 class="white-color"></h4>
-                                        </div>
+                                        <h4 class="white-color"></h4>
                                     </div>
                                 </div>
                             </a>
@@ -373,14 +371,15 @@
                     <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
                         <div class="teaser main_bg_color2 transp with_padding big-padding margin_0">
                             <a href="/foros">
-                                <div class="xxs-media-left">        
+                                <div class="xxs-media-left">
+
                                     <div class="text-center">
                                         <a class="visible_hover white-color foro_content" href="/foros" aria-haspopup="true" aria-expanded="false"><span>Foros</span>
                                         </a>
                                     </div>
                                     <div class="media-body media-middle text-center">
                                         <h4></h4>
-        
+
                                     </div>
                                 </div>
                             </a>
@@ -389,9 +388,9 @@
                     <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
                         <div class="teaser main_bg_color4 transp with_padding big-padding margin_0">
                             <div class="xxs-media-left">
-       
+
                                 <div class="dropdown text-center">
-                                    <a class="visible_hover white-color recurso_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                    <a class="visible_hover white-color recurso_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -402,7 +401,7 @@
                                         
                                     </div>
                                 </div>
-        
+
                                 <div class="media-body media-middle text-center">
                                     <h5><a href="#0"> </a></h5>
                                 </div>
@@ -412,8 +411,9 @@
                     <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
                         <div class="teaser main_bg_color3 transp with_padding big-padding margin_0">
                             <div class="xxs-media-left">
+
                                 <div class="dropdown text-center">
-                                    <a class="visible_hover white-color iniciativa_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                    <a class="visible_hover white-color iniciativa_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -422,12 +422,12 @@
                                         <a class="dropdown-item" href="/iniciativas-destacadas/concursos">Concursos</a>
                                     </div>
                                 </div>
-        
+
                                 <div class="media-body media-middle text-center">
-        
+
                                     <h4>
                                     </h4>
-        
+
                                 </div>
                             </div>
                         </div>
@@ -435,7 +435,6 @@
                 </div>
             </div>
         </section>
-  
         {% endif %}
               
 

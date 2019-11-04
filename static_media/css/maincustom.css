@@ -289,10 +289,16 @@ img.b_avatar {
   display: none;
 }
 
-@media only screen and (max-width:960px){
+@media only screen and (max-width: 1199px){
  #mobile_menu{
  display:block;
 
+}
+.mainmenu_wrapper{
+  z-index: 3000;
+}
+#services{
+ display: none;
 }
 }
 @media only screen and (max-width:960px){
@@ -414,4 +420,13 @@ img.b_avatar {
   [class*="-item"] .links-wrap a.download:before {
     font-family: 'FontAwesome';
     content: "\f019" !important;
+}
+.page_header{
+  position: initial;
+}
+.mt-10{
+  margin-top: 10px;
+}
+.page_breadcrumbs .text-center{
+ position: initial;
 }

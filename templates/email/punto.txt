@@ -9,7 +9,7 @@ la Plataforma Género y Metodologías</p>
 <p>Nombre: {{obj.titulo}}</p>
 
 <p>Diríjase a la siguiente dirección para revisar el punto de vista: <br>
-https://generoymetodologias.org/admin/puntosvista/puntos/{{obj.slug}}/change/</p>
+https://generoymetodologias.org/admin/puntosvista/puntos/{{obj.id}}/change/</p>
 
 Plataforma Género y Metodologías
 </body>

@@ -626,20 +626,22 @@ def puntos_vista_crear(request,template = 'admin/punto.html'):
 				instance.save()
 			formset.save_m2m()
 
-			# try:
-			subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
-			text_content =  render_to_string('email/punto.txt', {'obj': punto,})
+			try:
+				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
+				text_content =  render_to_string('email/punto.txt', {'obj': punto,})
 
-			html_content = render_to_string('email/punto.txt', {'obj': punto,})
+				html_content = render_to_string('email/punto.txt', {'obj': punto,})
 
-			list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
+				list_mail = User.objects.filter(is_superuser = True).values_list('email',flat=True)
 
-			msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
-			msg.attach_alternative(html_content, "text/html")
-			msg.send()
+				msg = EmailMultiAlternatives(subject, text_content, from_email, list_mail)
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				
+			except:
+				pass
+				
 			return redirect('/alianzas/puntos-vista/'+'?new=punto_nuevo')
-			# except:
-			# 	pass
 			
 	else:
 		form = PuntosForms()

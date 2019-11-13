@@ -11771,7 +11771,7 @@ body.active-side-header.slide-right .page_header_side {
 
 @media (min-width: 768px) {
 	.intro_section h2 {
-		font-size: 45px;
+		font-size: 40px;
 	}
 
 	.intro_section .slides{
@@ -11809,7 +11809,7 @@ body.active-side-header.slide-right .page_header_side {
 
 @media (min-width: 1200px) {
 	.intro_section h2 {
-		font-size: 50px;
+		font-size: 45px;
 	}
 	.intro_section .slides{
 		height: 500px;
@@ -11857,7 +11857,7 @@ body.active-side-header.slide-right .page_header_side {
 	}
 
 	.intro_section h2 {
-		font-size: 100px;
+		font-size: 50px;
 	}
 
 	.transparent_wrapper + .page_mainslider .slide_description_wrapper {

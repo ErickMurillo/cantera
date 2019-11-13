@@ -148,12 +148,18 @@
 							<div class="slide_description_wrapper">
 								<div class="slide_description">
 									
+									{% if obj.texto_1 %}
 									<div class="intro-layer" data-animation="fadeInLeft">
 										<h2 class="bgtext"> <span class="highlight3" style="color:{{obj.color_texto_1}}">“{{obj.texto_1}}”</span></h2>
 									</div>
+									{% endif %}
+									
+									{% if obj.credito_1 %}
 									<div class="intro-layer" data-animation="fadeInRight">
 										<p class="thin "><em class="bgtext">- {{obj.credito_1}}</em></p>
 									</div>
+									{% endif %}
+									
 									<!--<div class="intro-layer" data-animation="fadeInUp">
 										<div class="slide_buttons"> <a href="/contactenos" class="theme_button color1 min_width_button">Contáctanos</a> </div>
 									</div>-->
@@ -184,12 +190,17 @@
 							<div class="slide_description_wrapper">
 								<div class="slide_description">
 									
+									{% if obj.texto_2 %}
 									<div class="intro-layer" data-animation="fadeInLeft">
 										<h2 class="bgtext"> <span class="highlight3" style="color:{{obj.color_texto_2}}">“{{obj.texto_2}}”</span></h2>
 									</div>
+									{% endif %}
+									
+									{% if obj.credito_2 %}
 									<div class="intro-layer" data-animation="fadeInRight">
 										<p class="thin "><em class="bgtext">- {{obj.credito_2}}</em></p>
 									</div>
+									{% endif %}
 								</div>
 								<!-- eof .slide_description -->
 							</div>
@@ -219,12 +230,17 @@
 							<div class="slide_description_wrapper">
 								<div class="slide_description">
 									
+									{% if obj.texto_3 %}
 									<div class="intro-layer" data-animation="fadeInLeft">
 										<h2 class="bgtext"> <span class="highlight3" style="color:{{obj.color_texto_3}}">“{{obj.texto_3}}”</span></h2>
 									</div>
+									{% endif %}
+									
+									{% if obj.credito_3 %}
 									<div class="intro-layer" data-animation="fadeInRight">
 										<p class="thin "><em class="bgtext">- {{obj.credito_3}}</em></p>
 									</div>
+									{% endif %}
 									<!--<div class="intro-layer" data-animation="fadeInUp">
 										<div class="slide_buttons"> <a href="/contactenos" class="theme_button color1 min_width_button">Contáctanos</a> </div>
 									</div>-->

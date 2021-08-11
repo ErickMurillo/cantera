@@ -133,7 +133,7 @@
 						</div>
 					</div>
 
-					<div class="widget widget_slider widget_recent_posts">
+					<!--<div class="widget widget_slider widget_recent_posts">
 						<h4 class="widget-title"> Próximos Eventos </h4>
 						<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
 							{% for obj in prox_eventos %}
@@ -161,7 +161,7 @@
 							{% endfor %}
 							
 						</div>
-					</div>
+					</div>-->
 				</aside>
 
 			</div>
@@ -171,4 +171,11 @@
 
 
 
-	{% endblock content %}
+{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  $("#id_q").addClass("form-control");
+  $("#id_q").attr( "placeholder", "Buscar" );
+</script>
+{% endblock extra_js %}

@@ -197,4 +197,11 @@
 
 
 
-	{% endblock content %}
+{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  $("#id_q").addClass("form-control");
+  $("#id_q").attr( "placeholder", "Buscar" );
+</script>
+{% endblock extra_js %}

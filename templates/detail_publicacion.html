@@ -121,7 +121,7 @@
 					<h4 class="widget-title">Palabras claves</h4>
 					<div class="tagcloud">
 						{% for tag in object.palabras_claves.all %}
-						<a href="">{{tag}}</a>
+						<a href="{% url 'filtro_publicacion_tags' tag.slug %}">{{tag}}</a>
 						{% endfor %}
 					</div>
 				</div>

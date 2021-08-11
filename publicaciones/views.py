@@ -35,6 +35,12 @@ def detail_guias(request,slug,template='detail_publicacion.html'):
 
 	return render(request,template,locals())
 
+def filtro_tags(request,template='list_publicacion.html',tag=None):
+	list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True,palabras_claves__slug = tag).order_by('-id')
+	hoy = datetime.date.today()
+	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
+	return render(request,template,locals())
+
 
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView, search_view_factory

@@ -1,6 +1,11 @@
 from configuracion.models import *
 from actualidad.forms import *
 
+class BuscadorForm(forms.Form):
+	def __init__(self, *args, **kwargs):
+		super(BuscadorForm, self).__init__(*args, **kwargs)
+		self.fields['q'] = forms.CharField()
+
 def imagenes(request):
 	foto_eventos = SiteConfiguration.objects.values_list('foto_eventos',flat=True)
 	foto_actualidad = SiteConfiguration.objects.values_list('foto_actualidad',flat=True)
@@ -16,6 +21,8 @@ def imagenes(request):
 	foto_concursos = SiteConfiguration.objects.values_list('foto_concursos',flat=True)
 	foto_alianzas = SiteConfiguration.objects.values_list('foto_alianzas',flat=True)
 
+	search = BuscadorForm()
+
 	return {'foto_actualidad':foto_actualidad, 'foto_puntos_vista':foto_puntos_vista,
 			'foto_eventos':foto_eventos,'foto_galerias_videos':foto_galerias_videos,
 			'foto_galerias_audios':foto_galerias_audios,'foto_foros':foto_foros,
@@ -23,4 +30,6 @@ def imagenes(request):
 			'foto_publicaciones':foto_publicaciones,'foto_campanias':foto_campanias,
 			'foto_concursos':foto_concursos,'foto_alianzas':foto_alianzas,
 			'foto_galerias_imagenes':foto_galerias_imagenes,
+			'search': search
 			}
+

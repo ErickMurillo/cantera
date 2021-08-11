@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'compressor',
     'nested_admin',
     'colorfield',
+    'haystack', 
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -139,8 +140,6 @@ TIME_ZONE = 'America/Managua'
 USE_I18N = True
 
 USE_L10N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -282,3 +281,18 @@ STATICFILES_FINDERS = (
 )
 
 FILE_UPLOAD_PERMISSIONS = 0o644
+
+TAGGIT_CASE_INSENSITIVE = True
+
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 12
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+WHOOSH_INDEX = os.path.join(BASE_DIR, 'whoosh/')
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': WHOOSH_INDEX,
+    },
+}

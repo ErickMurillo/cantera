@@ -7,7 +7,7 @@ from django.db.models import Q
 # Create your views here.
 
 def index_publicaciones(request,template='list_publicacion.html'):
-	list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True).order_by('id')
+	list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True).order_by('-id')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
 
@@ -22,7 +22,7 @@ def detail_publicacion(request,slug,template='detail_publicacion.html'):
 	return render(request,template, locals())
 
 def index_guias(request,template='list_publicacion.html'):
-	list_pub = Publicacion.objects.filter(tipo__in = [2],aprobado = True).order_by('id')
+	list_pub = Publicacion.objects.filter(tipo__in = [2],aprobado = True).order_by('-id')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
 
@@ -34,3 +34,19 @@ def detail_guias(request,slug,template='detail_publicacion.html'):
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
 
 	return render(request,template,locals())
+
+
+from haystack.query import SearchQuerySet
+from haystack.views import SearchView, search_view_factory
+from haystack.forms import ModelSearchForm
+
+def search_publicacion(request):
+	sqs = SearchQuerySet().models(Publicacion).order_by('-id')
+	view = search_view_factory(
+		view_class=SearchView,
+		template='search/search_publicacion.html',
+		searchqueryset=sqs,
+		form_class=ModelSearchForm,
+		results_per_page=10
+		)
+	return view(request)

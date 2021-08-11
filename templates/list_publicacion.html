@@ -135,10 +135,11 @@
 				<!--aaside-->
 				<aside class="col-sm-5 col-md-4 col-lg-4">
 					<div class="widget widget_search">
-						<form class="" action='.' method='GET'>
+						<form class="" action="{% url 'search-publicacion' %}" method='GET'>
 							<div class="form-group margin_0"> 
 								<label class="sr-only" for="widget-search">Search for:</label> 
-								<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
+								<!--<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar...">-->
+								{{search.q}}
 							</div> 
 							<button type="submit" class="theme_button color1">Search</button>	
 						</form>

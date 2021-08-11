@@ -97,6 +97,7 @@
 
 						</header>
 					</div>
+					
 				</article>
 
 			</div>
@@ -113,6 +114,18 @@
 					</li>
 					{% endfor %}
 				</ul>
+				
+				
+				{% if object.palabras_claves.all %}
+				<div class="widget">
+					<h4 class="widget-title">Palabras claves</h4>
+					<div class="tagcloud">
+						{% for tag in object.palabras_claves.all %}
+						<a href="">{{tag}}</a>
+						{% endfor %}
+					</div>
+				</div>
+				{% endif %}
 			</div>
 		</div>
 		<div  class="post-share hidden-xs compu"> 

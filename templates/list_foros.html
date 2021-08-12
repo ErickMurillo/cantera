@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load el_pagination_tags %}
 {% load thumbnail %}
+{% load embed_video_tags %}
 
 {% block extra_css %}
 <style type="text/css">
@@ -44,11 +45,24 @@
 					<div class="row">
 						<div class="col-md-5">
 							<div class="item-media"></div>
-							{% thumbnail obj.foto "830x620" crop="center" padding=True as im %}
-							<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
-							{% empty %}
-							<img src="http://via.placeholder.com/830x620" alt="">
-							{% endthumbnail %}
+							
+							{% if obj.tipo == 1 %}
+								{% thumbnail obj.foto "830x620" crop="center" padding=True as im %}
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
+								{% empty %}
+								<img src="http://via.placeholder.com/830x620" alt="">
+								{% endthumbnail %}
+							{% else %}
+								{% video obj.url_video as my_video %}
+									{% thumbnail my_video.thumbnail "830x620" crop="center" padding=True as im %}
+									<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
+									{% empty %}
+									<img src="http://via.placeholder.com/830x620" alt="">
+									{% endthumbnail %}
+								{% endvideo %}
+							{% endif %}
+								
+							
 							<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-foro' obj.slug %}"></a> </div>
 
 						</div>
@@ -111,7 +125,7 @@
 				<div class="topmargin_60">
 					<ul class="pagination">
 
-						{% get_pages %}
+						<!--{% get_pages %}
 
 						{% if pages.paginated %}
 						<li class="page-item">
@@ -140,7 +154,8 @@
 							</a>
 						</li>
 
-						{% endif %}
+						{% endif %}-->
+						{% show_pages %}
 					</ul>
 				</div>
 			</div>
@@ -175,11 +190,21 @@
 						{% for destacado in foros_destacados %}
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
-								{% thumbnail destacado.foto "830x620" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
-								{% empty %}
-								<img src="http://via.placeholder.com/830x620" alt="">
-								{% endthumbnail %}
+								{% if destacado.tipo == 1 %}
+									{% thumbnail destacado.foto "830x620" crop="center" padding=True as im %}
+									<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
+									{% empty %}
+									<img src="http://via.placeholder.com/830x620" alt="">
+									{% endthumbnail %}
+								{% else %}
+									{% video destacado.url_video as my_video %}
+										{% thumbnail my_video.thumbnail "830x620" crop="center" padding=True as im %}
+										<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
+										{% empty %}
+										<img src="http://via.placeholder.com/830x620" alt="">
+										{% endthumbnail %}
+									{% endvideo %}
+								{% endif %}
 								<div class="media-links"> <a class="abs-link" title="" href="{% url 'detalle-foro' destacado.slug %}"></a> </div>
 							</div>
 							<div class="item-content">
@@ -209,3 +234,11 @@
 	</div>
 </section>
 {% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  $(".endless_page_current").addClass("active");
+  $('.endless_page_link').wrap('<li></li>');
+  $('.endless_page_current').wrap('<li class="active"></li>');
+</script>
+{% endblock extra_js %}

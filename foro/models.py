@@ -4,14 +4,19 @@ from django.template.defaultfilters import slugify
 from sorl.thumbnail import ImageField
 from users.models import User
 from actualidad.models import *
+from embed_video.fields import EmbedVideoField
 
 # Create your models here.
+PORTADA_CHOICES = ((1,'Foto'),(2,'Video'))
+
 class Foros(models.Model):
 	nombre = models.CharField(max_length=200, unique=True)
 	creacion = models.DateField(auto_now_add=True)
 	# apertura = models.DateField('Apertura y recepción de aportes')
 	# cierre = models.DateField('Cierre de aportes')
-	foto = ImageField('Foto',upload_to='foros/')
+	tipo_portada = models.IntegerField(choices = PORTADA_CHOICES)
+	foto = ImageField('Foto',upload_to='foros/',null = True, blank = True)
+	url_video = EmbedVideoField(null = True, blank = True)
 	contenido = RichTextUploadingField()
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING)

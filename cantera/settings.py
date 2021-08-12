@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'configuracion',
     'solicitudes',
+    'compromisos',
 
     #aplicaciones de terceros
     'sorl.thumbnail',

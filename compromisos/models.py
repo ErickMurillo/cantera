@@ -1,5 +1,5 @@
 from django.db import models
-from sorl.thumbnail import ImageField
+from sorl.thumbnail import ImageField, get_thumbnail
 from . import dataCountries as data
 
 # Create your models here.
@@ -21,7 +21,12 @@ class Compromiso(models.Model):
 
 class FotosCompromisos(models.Model):
 	compromiso = models.ForeignKey(Compromiso, on_delete=models.CASCADE)
-	foto = ImageField()
+	foto = ImageField(upload_to='compromisos/')
 
 	class Meta:
 		verbose_name_plural = 'Fotos'
+	
+	@property
+	def cached_img(self):
+		im = get_thumbnail(self.foto, '1000', crop='center', quality=99)
+		return im.url

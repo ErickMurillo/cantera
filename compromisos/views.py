@@ -15,6 +15,11 @@ def get_compromisos(request):
 		dict['value'] = comp.total
 		dict['hombres'] = comp.conteo_hombres
 		dict['mujeres'] = comp.conteo_mujeres
+		list_fotos = []
+		for foto in comp.fotoscompromisos_set.all():
+			list_fotos.append(str(foto.cached_img))
+		dict['fotos'] = list_fotos
+
 		lista.append(dict)
 
 	return HttpResponse(simplejson.dumps(list(lista)), content_type = 'application/json')

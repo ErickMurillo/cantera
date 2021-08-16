@@ -5,6 +5,7 @@ from sorl.thumbnail import ImageField
 from users.models import User
 from taggit_autosuggest.managers import TaggableManager
 from organizaciones.models import Pais
+from django.urls import reverse
 
 # Create your models here.
 
@@ -45,6 +46,9 @@ class Actualidad(models.Model):
 
 	def __str__(self):
 		return self.tittle
+	
+	def get_absolute_url(self):
+		return reverse('detalle-actualidad',kwargs={'slug': self.slug})
 
 	def save(self,*args,**kwargs):
 		self.slug = slugify(self.tittle)

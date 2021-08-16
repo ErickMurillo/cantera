@@ -5,7 +5,7 @@ from actualidad.models import *
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from embed_video.fields import EmbedVideoField
-from taggit.managers import TaggableManager
+from taggit_autosuggest.managers import TaggableManager
 
 # Create your models here.
 TIPO_CHOICES = ((1,'Publicaciones'),(2,'Guías metodológicas'))
@@ -19,7 +19,7 @@ class Publicacion(models.Model):
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
 	slug = models.SlugField(max_length=250,editable=False)
 	aprobado = models.BooleanField()
-	palabras_claves = TaggableManager('Palabras claves')
+	palabras_claves = TaggableManager("Palabras claves",help_text='Separar elementos con "," ', blank=True)
 
 	def __str__(self):
 		return u'%s' % self.titulo

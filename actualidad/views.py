@@ -106,5 +106,6 @@ def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
 		prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 		ids = list_object.values_list('id',flat=True)
 		tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
+		print(object.tags.all())
 
 		return render(request, template, locals())

@@ -10,7 +10,9 @@
 <!--<![endif]-->
 
 <head>
-    <title>Plataforma Regional Género y Metodologías</title>
+    {% block title %}
+        <title>Plataforma Regional Género y Metodologías</title>
+    {% endblock title %}
     <meta charset="utf-8">
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,6 +40,41 @@
     {% compress js %}
     <script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
     {% endcompress %}
+
+     <!-- Metas GEO -->
+     <meta name="copyright" content="Plataforma Regional Género y Metodologías" />
+     <meta name="geo.region" content="NI-MN" />
+     <meta name="DC.title" content="Plataforma Regional Género y Metodologías" />
+     <meta name="geo.placename" content="Managua" />
+     <meta name="geo.position" content="12.1283402, -86.2609456" />
+     <meta name="ICBM" content="12.1283402, -86.2609456" /> 
+     <!-- Metas DC -->
+      <meta name="author" content="Plataforma Regional Género y Metodologías" />
+     <meta name="publisher" content="Plataforma Regional Género y Metodologías" />
+     <meta name="DC.creator" content="Plataforma Regional Género y Metodologías" />
+     <meta name="DC.publisher" content="Plataforma Regional Género y Metodologías" />
+     <meta name="DC.language" scheme="RFC1766" content="es" />
+
+     <!-- robots -->
+     <meta name="robots" content="index,follow" />
+     <meta name="robots" content="noodp,noydir"/> 
+     <!-- /robots -->
+
+     {% block meta_keywords %}
+    <meta name="keywords" content="" />
+    {% endblock meta_keywords %}
+
+    {% block meta_keywords_google %}
+    <meta name="keywords" content="" />
+    {% endblock meta_keywords_google %}
+
+    {% block meta_description %}
+    <meta name="description" content="La Plataforma Regional Género y Metodologías es un espacio de comunicación e intercambio cuyo propósito es contribuir a fortalecer los procesos de cambio hacia relaciones de género justas y sostenibles en la región centroamericana." />
+    {% endblock meta_description %}
+
+    {% block canonical %}
+    <link rel="canonical" href='https://generoymetodologias.org/'>
+    {% endblock canonical %} 
 
     <!--[if lt IE 9]>
         <script src="js/vendor/html5shiv.min.js"></script>

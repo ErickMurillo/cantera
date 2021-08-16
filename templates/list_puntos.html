@@ -78,7 +78,11 @@
 					<div class="col-sm-12 text-center">
 						<ul class="pagination">
 
+<<<<<<< HEAD
 							{% get_pages %}
+=======
+							<!--{% get_pages %}
+>>>>>>> ce4e5a86fc0fdb9d0db5777fde1e3d0623975bd9
 
 							{% if pages.paginated %}
 							<li class="page-item">
@@ -107,7 +111,12 @@
 								</a>
 							</li>
 
+<<<<<<< HEAD
 							{% endif %}
+=======
+							{% endif %}-->
+							{% show_pages %}
+>>>>>>> ce4e5a86fc0fdb9d0db5777fde1e3d0623975bd9
 						</ul>
 					</div>
 				</div>
@@ -164,4 +173,16 @@
 	</div>
 </section>
 
+<<<<<<< HEAD
 {% endblock content %}
+=======
+{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  $(".endless_page_current").addClass("active");
+  $('.endless_page_link').wrap('<li></li>');
+  $('.endless_page_current').wrap('<li class="active"></li>');
+</script>
+{% endblock extra_js %}
+>>>>>>> ce4e5a86fc0fdb9d0db5777fde1e3d0623975bd9

@@ -82,7 +82,7 @@
 							
 							<ul class="pagination">
 								
-								{% get_pages %}
+								<!--{% get_pages %}
 
 								{% if pages.paginated %}
 								<li class="page-item">
@@ -110,8 +110,8 @@
 										<span class="sr-only">Next</span>
 									</a>
 								</li>
-
-								{% endif %}
+								{% endif %}-->
+								{% show_pages %}
 							</ul>
 						</div>
 					</div>
@@ -208,3 +208,10 @@
 </section>
 {% endblock content %}
 
+{% block extra_js %}
+<script type="text/javascript">
+  $(".endless_page_current").addClass("active");
+  $('.endless_page_link').wrap('<li></li>');
+  $('.endless_page_current').wrap('<li class="active"></li>');
+</script>
+{% endblock extra_js %}

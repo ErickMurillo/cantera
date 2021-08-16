@@ -45,4 +45,6 @@ urlpatterns = [
     path('pages/', include('django.contrib.flatpages.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
     path('nested_admin/', include('nested_admin.urls')),
+    path('search/', include('haystack.urls')),
+    path('compromisos/', include('compromisos.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

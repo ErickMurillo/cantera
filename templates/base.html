@@ -58,6 +58,9 @@
 </head>
 
 <body>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v11.0&appId=321664011858070&autoLogAppEvents=1" nonce="VOtMd9SS"></script>
     <!--[if lt IE 9]>
         <div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
     <![endif]-->
@@ -186,6 +189,20 @@
                                         <a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
                                     </li>
                                     {% endif%}
+
+                                        <li><div id="google_translate_element"></div></li>
+                                            <script type="text/javascript">
+                                                function googleTranslateElementInit() {
+                                                    new google.translate.TranslateElement({
+                                                        pageLanguage: 'es',
+                                                        includedLanguages: 'en,fr',
+                                                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                                        gaTrack: true},
+                                                        'google_translate_element'
+                                                        );
+                                                    }
+                                            </script>
+                                            <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                                 </ul>
                                
                             </div>

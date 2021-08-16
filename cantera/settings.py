@@ -63,10 +63,7 @@ INSTALLED_APPS = [
     'compressor',
     'nested_admin',
     'colorfield',
-<<<<<<< HEAD
-=======
     'haystack', 
->>>>>>> ce4e5a86fc0fdb9d0db5777fde1e3d0623975bd9
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -144,12 +141,6 @@ TIME_ZONE = 'America/Managua'
 USE_I18N = True
 
 USE_L10N = True
-
-<<<<<<< HEAD
-USE_TZ = True
-
-=======
->>>>>>> ce4e5a86fc0fdb9d0db5777fde1e3d0623975bd9
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -290,8 +281,6 @@ STATICFILES_FINDERS = (
 )
 
 FILE_UPLOAD_PERMISSIONS = 0o644
-<<<<<<< HEAD
-=======
 
 TAGGIT_CASE_INSENSITIVE = True
 
@@ -307,4 +296,3 @@ HAYSTACK_CONNECTIONS = {
         'PATH': WHOOSH_INDEX,
     },
 }
->>>>>>> ce4e5a86fc0fdb9d0db5777fde1e3d0623975bd9

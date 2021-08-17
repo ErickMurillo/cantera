@@ -1,0 +1,107 @@
+User-agent: *
+Disallow: /admin
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: googlebot-news
+Disallow:
+
+User-agent: googlebot-image
+Disallow:
+
+User-agent: Slurp
+Disallow:
+
+User-agent: msnbot
+Disallow:
+
+User-agent: bingbot
+Disallow:
+
+User-agent: Alexabot
+Disallow:
+
+User-agent: YandexBot
+Disallow:
+
+User-agent: googlebot-mobile
+Disallow:
+
+User-agent: googlebot-video
+Disallow:
+
+User-agent: Twitterbot
+Disallow:
+
+User-agent: msnbot-media
+Disallow:
+
+User-agent: msnbot-media
+Disallow:
+
+User-agent: adidxbot
+Disallow:
+
+User-agent: BingPreview
+Disallow:
+
+User-agent: gigabot
+Disallow:
+
+User-agent: Scooter
+Disallow:
+
+User-agent: Sosospider
+Disallow:
+
+User-agent: MJ12bot
+Disallow:
+
+User-agent: Teoma
+Disallow:
+
+User-agent: twiceler
+Disallow:
+
+User-agent: Gigabot
+Disallow:
+
+User-agent: Scrubby
+Disallow:
+
+User-agent: Robozilla
+Disallow: /
+
+User-agent: Nutch
+Disallow:
+
+User-agent: ia_archiver
+Disallow:
+
+User-agent: baiduspider
+Disallow:
+
+User-agent: naverbot
+Disallow:
+
+User-agent: yeti
+Disallow:
+
+User-agent: yahoo-mmcrawler
+Disallow:
+
+User-agent: psbot
+Disallow:
+
+User-agent: asterias
+Disallow:
+
+User-agent: yahoo-mmcrawler
+Disallow:
+
+User-agent: yahoo-blogs
+Disallow:
+
+
+Sitemap: https://generoymetodologias.org/sitemap.xml

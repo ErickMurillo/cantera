@@ -27,8 +27,28 @@
 <meta property="og:url" content="https://generoymetodologias.org{{request.path}}" />
 <meta property="og:locale" content="es_ES" />
 
-
 {% endblock extra_head %}
+
+{% block title %}
+<title>{{object.tittle}}</title>
+{% endblock title %}
+
+{% block meta_description %}
+<meta name="description" content="{{object.content|striptags|truncatewords:20}} " />
+{% endblock meta_description %}
+
+{% block meta_keywords %}
+<meta name="keywords" itemprop="keywords" content="{% for tag in object.tags.all %}{{tag}}{% if not forloop.last %},{% endif %}{% endfor %}" />
+{% endblock meta_keywords %}
+
+{% block meta_keywords_google %}
+<meta name="news_keywords" content="{% for tag in object.tags.all %}{{tag}}{% if not forloop.last %},{% endif %}{% endfor %}" />
+
+{% endblock meta_keywords_google %}
+
+{% block canonical %}
+    <link rel="canonical" href='https://generoymetodologias.org{{object.get_absolute_url}}' />
+{% endblock canonical %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css">
@@ -189,7 +209,7 @@
 		<div class="widget">
 			<h4 class="widget-title">Tags</h4>
 			<div class="tagcloud">
-				{% for tag in tags %}
+				{% for tag in object.tags.all %}
 				<a href="{% url 'filtro-tag' tag.slug object.category %}">{{tag}}</a>
 				{% endfor %}
 			</div>

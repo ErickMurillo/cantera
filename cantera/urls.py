@@ -19,6 +19,7 @@ from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from .sitemaps import *
 
 admin.site.site_header = 'Administración Cantera'
 admin.site.site_title = 'Cantera'
@@ -47,4 +48,8 @@ urlpatterns = [
     path('nested_admin/', include('nested_admin.urls')),
     path('search/', include('haystack.urls')),
     path('compromisos/', include('compromisos.urls')),
+    path('sitemap.xml', views.index, {'sitemaps': sitemaps}),
+    path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps,'template_name': 'custom_sitemap.html'},
+        name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', TemplateView.as_view(template_name='robots.txt',content_type="text/plain")),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

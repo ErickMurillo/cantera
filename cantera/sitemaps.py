@@ -1,6 +1,6 @@
 from actualidad.models import Actualidad
 from puntosvista.models import Puntos
-# from publicaciones.models import Publicacion
+from galerias.models import *
 from django.contrib.sitemaps import Sitemap, views
 
 class NoticiaSitemap(Sitemap):
@@ -57,6 +57,30 @@ class PuntosSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.fecha_creacion
+    
+class GaleriaImagenesSitemap(Sitemap):
+    changefreq = "never"
+    priority = 0.5
+    protocol = 'https'
+
+    def items(self):
+        return GaleriaImagenes.objects.filter(aprobado = True)
+
+class GaleriaVideosSitemap(Sitemap):
+    changefreq = "never"
+    priority = 0.5
+    protocol = 'https'
+
+    def items(self):
+        return GaleriaVideos.objects.filter(aprobado = True)
+
+class AudiosSitemap(Sitemap):
+    changefreq = "never"
+    priority = 0.5
+    protocol = 'https'
+
+    def items(self):
+        return Audios.objects.filter(aprobado = True)
 
 sitemaps = {
     'noticias': NoticiaSitemap,
@@ -64,4 +88,7 @@ sitemaps = {
     'campanias': CampanasSitemap,
     'concursos': ConcursosSitemap,
     'puntos-vista': PuntosSitemap,
+    'galerias-imagenes': GaleriaImagenesSitemap,
+    'galerias-videos': GaleriaVideosSitemap,
+    'galerias-audios': AudiosSitemap,
 }

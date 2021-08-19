@@ -32,7 +32,7 @@
 {% endblock extra_css %}
 
 {% block content %}
-<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+<section class="page_breadcrumbs background_cover ds section_padding_top_65 section_padding_bottom_65">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
@@ -96,7 +96,7 @@
 											<span class="small-text">{{obj|striptags|truncatechars:52}}</span>	
 										</a>
 									</h3>
-									<div style="height:90px;overflow:hidden;margin-top: 10px;">{{obj.descripcion|safe|truncatechars:120}}</div>
+									<div style="height:90px;overflow:hidden;margin-top: 10px;">{{obj.descripcion|safe|striptags|truncatechars:120}}</div>
 								</header>
 								
 							</div>
@@ -171,8 +171,7 @@
 						<h4 class="widget-title">Categorías</h4>
 						<div class="">
 							<ul>
-								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
-								<!--<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>-->
+								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>
 								<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>	
 								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>
 								<li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>	

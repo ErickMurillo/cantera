@@ -10869,10 +10869,6 @@ body.active-side-header.slide-right .page_header_side {
 	}
 }
 
-.page_breadcrumbs.background_cover {
-	background-image: url(../img/parallax/breadcrumbs.jpg);
-}
-
 .page_footer.parallax,
 .page_footer .parallax.parallax,
 .page_copyright.parallax,
@@ -12955,7 +12951,6 @@ article.post + article.post.topmargin_30,
 /* share buttons */
 .post-share {
 	display: -ms-flexbox;
-	display: flex;
 }
 
 .post-share .social-icon {
@@ -12968,11 +12963,12 @@ article.post + article.post.topmargin_30,
 	margin-left: 1px !important;
 }
 
-@media (min-width: 992px) {
-	.post-share a.color-bg-icon {
-		padding: 22px 14px;
-	}
+
+.post-share a.color-bg-icon {
+	padding: 15px;
+	border-radius: 50px;
 }
+
 
 .entry-meta-corner {
 	position: absolute;
@@ -17117,8 +17113,8 @@ a.color-bg-icon {
 }
 
 a.color-bg-icon:before {
-	font-size: 14px;
-	line-height: 16px;
+	font-size: 20px;
+	line-height: 20px;
 }
 
 a.social-icon.color-bg-icon:hover {

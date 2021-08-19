@@ -54,7 +54,7 @@
 						
 						<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
 								<div class="row">
-									<div class="col-md-5">
+									<div class="col-md-4">
 										<div class="item-media"> 
 											{% thumbnail obj.imagen "612" crop="center" as im %}
 											<img src="{{ im.url }}" alt="{{obj.titulo}}">
@@ -64,7 +64,7 @@
 											<div class="media-links"> <a class="abs-link" title="{{obj.titulo}}" href="{% url 'detail_publicacion' obj.slug %}"></a> </div>
 										</div>
 									</div>
-									<div class="col-md-7">
+									<div class="col-md-8">
 										<div class="item-content">
 											<header class="entry-header">
 												<h3 class="entry-title small"><a href="{% url 'detail_publicacion' obj.slug %}">{{obj.titulo}}</a> </h3>
@@ -152,8 +152,7 @@
 						<h4 class="widget-title">Categorías</h4>
 						<div class="">
 							<ul>
-								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>									
-								<!--<li><a href="/recursos-metodologicos/guias-metodologicas/">Guías metodológicas</a></li>-->
+								<li><a href="/recursos-metodologicos/publicaciones/">Publicaciones</a></li>
 								<li><a href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a></li>	
 								<li><a href="/recursos-metodologicos/galerias/videos/">Videos</a></li>
 								<li><a href="/recursos-metodologicos/galerias/audios/">Audios</a></li>

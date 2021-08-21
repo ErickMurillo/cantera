@@ -5,6 +5,7 @@ from embed_video.fields import EmbedVideoField
 from django.template.defaultfilters import slugify
 from actualidad.models import *
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.urls import reverse
 
 class GaleriaImagenes(models.Model):
 	titulo = models.CharField(max_length=200)
@@ -21,6 +22,9 @@ class GaleriaImagenes(models.Model):
 	class Meta:
 		verbose_name = 'Galería imagenes'
 		verbose_name_plural = 'Galerías imagenes'
+	
+	def get_absolute_url(self):
+		return reverse('detalle_galeriaImagenes',kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.titulo)
@@ -49,6 +53,9 @@ class GaleriaVideos(models.Model):
 	class Meta:
 		verbose_name = 'Galería videos'
 		verbose_name_plural = 'Galerías videos'
+	
+	def get_absolute_url(self):
+		return reverse('detalle_galeria_vid',kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.titulo)
@@ -78,6 +85,9 @@ class Audios(models.Model):
 	class Meta:
 		verbose_name = 'Galería audios'
 		verbose_name_plural = 'Galerías audios'
+	
+	def get_absolute_url(self):
+		return reverse('detalle_galeria_audio',kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.titulo)

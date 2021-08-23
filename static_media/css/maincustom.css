@@ -1,5 +1,5 @@
 .logo img {
-	max-width: 210px;
+	max-width: 190px;
 }
 
 .size_small {
@@ -408,9 +408,9 @@ img.b_avatar {
       font-size: 17px;
       font-weight: 600;
   }
-  .sf-menu a{
+  /* .sf-menu a{
     font-size: 16px;
-  }
+  } */
 
   .entry-content img{
 		height: auto !important;
@@ -429,4 +429,10 @@ img.b_avatar {
 }
 .page_breadcrumbs .text-center{
  position: initial;
+}
+/*Mapa*/
+.conteo_map{
+	font-size: 50px;
+	color: #1da1f2;
+	font-weight: bold;
 }

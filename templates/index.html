@@ -564,17 +564,18 @@ Highcharts.getJSON('/compromisos/get-json/', function (data) {
         },
 
         tooltip: {
-            backgroundColor: 'none',
+            // backgroundColor: 'none',
             borderWidth: 0,
             shadow: false,
             useHTML: true,
             padding: 0,
             pointFormat: '<span class="f32"><span class="flag {point.properties.hc-key}">' +
                 '</span></span> {point.name}<br>' +
-                '<span style="font-size:30px">{point.value}</span>',
-            positioner: function () {
-                return { x: 0, y: 250 };
-            }
+                '<span style="font-size:30px">{point.value}</span><br>' + 
+				'{point.fotos}',
+            // positioner: function () {
+            //     return { x: 0, y: 250 };
+            // }
         },
 
         colorAxis: {

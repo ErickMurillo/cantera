@@ -1,6 +1,31 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% block extra_head %}
 
+<!-- twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{detail_object.nombre|truncatechars:70}}">
+<meta name="twitter:description" content="{{detail_object.generalidades|striptags|truncatechars:200}}">
+<meta name="twitter:image" content="https://generoymetodologias.org/media/{{detail_object.logo}}">
+
+<meta name="twitter:domain" content="https://generoymetodologias.org">
+<!-- Facebook -->
+<meta property="al:android:url" content="generoymetodologias:/{{request.path}}">
+<meta property="al:android:package" content="com.facebook.samples.sharesample">
+<meta property="al:android:app_name" content="ShareSample">
+
+<meta property="og:title" content="{{detail_object.nombre}}" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://generoymetodologias.org/media/{{detail_object.logo}}">
+
+
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />
+<meta property="og:description" content="{{detail_object.generalidades|striptags}}" />
+<meta property="og:url" content="https://generoymetodologias.org{{request.path}}" />
+<meta property="og:locale" content="es_ES" />
+
+{% endblock extra_head %}
 {% block extra_css %}
 <style type="text/css">
 .page_breadcrumbs.background_cover {
@@ -48,9 +73,9 @@
 						<header class="entry-header">
 							<h1 class="entry-title small bottommargin_0 highlight"> {{detail_object.siglas}} </h1>
 						</header>
-						<p class="member-social greylinks"> 
+						<ul class="social-org">
 							{% for red in detail_object.redes_set.all %}
-							<a target="_blank" style="margin-left:25px;" class="{% if red.opcion == 'Sitio web' %}
+							<li><a target="_blank" class="{% if red.opcion == 'Sitio web' %}
 							fa fa-globe
 							{% elif red.opcion == 'Facebook' %}
 							socicon-facebook
@@ -70,14 +95,14 @@
 							socicon-vimeo
 							{% elif red.opcion == 'Otra' %}
 							fa fa-link
-							{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a>
+							{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a></li>
 							{% endfor %}
-						</p>
+						</ul>
 					</div>
 				</article>
 				<br>
 
-				<article id ="contact_alliance" class="vertical-item content-padding big-padding with_border bottom_color_border">
+				<article id ="contact_alliance" class="vertical-item content-padding big-padding with_border bottom_color_border margin_bottom_30">
 					<div class="item-content">
 						{% if detail_object.contacto %}
 						<p class="entry-title "><a><i class="icofont-contact-add font-alliance"></i></a> {{detail_object.contacto}}</p>
@@ -98,6 +123,45 @@
 
 					</div>
 				</article>
+				
+				<!-- Compartir post en pantallas mayores a 700px-->
+				<section class='section_padding_top_30 section_padding_bottom_30 hidden-xs with_border bottom_color_border'>
+					<div class="container">
+						<div  class="post-share  compu row">
+							<div class="col-md-12 text-center margin_bottom_20">
+								<h5 class='widget-title text-base'>Comparte este contenido tus en las redes sociales</h5 class='widget-title'>
+							</div>
+							<div class="col-md-12 text-center">
+								<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter customer share">
+								</a>
+								<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}" target="blank" class="social-icon color-bg-icon socicon-facebook customer share">
+								</a>
+								<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+							</div>
+							
+						</div>
+					</div>
+				</section>
+
+				<!-- Compartir post en celulares con las apps-->
+				<section class='section_padding_top_30 section_padding_bottom_30 visible-xs with_border bottom_color_border'>
+					<div class="container">
+						<div  class="post-share movil row">
+							<div class="col-md-12 text-center margin_bottom_20">
+								<h5 class='widget-title text-base'>Comparte este contenido tus en las redes sociales</h5 class='widget-title'>
+							</div>
+							<div class="col-md-12 text-center">
+								<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+								</a> 
+								<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+								</a>
+								<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+							</div>
+							
+						</div>
+					</div>
+				</section>
+
 			</div>
 			<div class="col-sm-7">
 				<h3>{{detail_object.nombre|safe}}</h3>

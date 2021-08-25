@@ -12968,8 +12968,9 @@ article.post + article.post.topmargin_30,
 
 
 .post-share a.color-bg-icon {
-	padding: 15px;
+	padding: 16px;
 	border-radius: 50px;
+	margin: 0 5px;
 }
 
 

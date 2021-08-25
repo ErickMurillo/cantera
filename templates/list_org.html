@@ -57,9 +57,9 @@
 								<a href="{% url 'detalles_organizaciones' obj.slug %}" class="more-link"> Leer más</a>
 							</div> 
 						</header>
-						<p class="member-social greylinks">
-							{% for red in obj.redes_set.all|slice:":3" %}
-							<a target="_blank" style="margin-left:25px;" class="{% if red.opcion == 'Sitio web' %}
+						<ul class="social-org">
+							{% for red in obj.redes_set.all|slice:":6" %}
+							<li><a target="_blank" class="{% if red.opcion == 'Sitio web' %}
 							fa fa-globe
 							{% elif red.opcion == 'Facebook' %}
 							socicon-facebook
@@ -79,7 +79,7 @@
 							socicon-vimeo
 							{% elif red.opcion == 'Otra' %}
 							fa fa-link
-							{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a>
+							{% endif %}" href="{{red.url}}" title="{{red.opcion}}"></a></li>
 							{% endfor %}
 
 						</p>

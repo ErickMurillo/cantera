@@ -15,7 +15,7 @@
 {% endblock extra_css %}
 
 {% block content %}
-<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+<section class="page_breadcrumbs ds background_cover banner_seccion">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
@@ -54,7 +54,7 @@
 						
 						<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<div class="item-media"> 
 											{% thumbnail obj.imagen "612" crop="center" as im %}
 											<img src="{{ im.url }}" alt="{{obj.titulo}}">
@@ -64,7 +64,7 @@
 											<div class="media-links"> <a class="abs-link" title="{{obj.titulo}}" href="{% url 'detail_publicacion' obj.slug %}"></a> </div>
 										</div>
 									</div>
-									<div class="col-md-8">
+									<div class="col-md-9">
 										<div class="item-content">
 											<header class="entry-header">
 												<h3 class="entry-title small"><a href="{% url 'detail_publicacion' obj.slug %}">{{obj.titulo}}</a> </h3>
@@ -206,4 +206,16 @@
   $('.endless_page_link').wrap('<li></li>');
   $('.endless_page_current').wrap('<li class="active"></li>');
 </script>
+<!-- <script>
+
+var height = document.querySelector('.fondo').offsetHeight
+alert(height);
+
+var style = document.createElement('style');
+  document.head.appendChild(style);
+  style.sheet.insertRule('.page_breadcrumbs{'+
+	  'height: '+height+'px !important;'+
+	  'height: '+height+'px !important;'+
+	'}');
+</script> -->
 {% endblock extra_js %}

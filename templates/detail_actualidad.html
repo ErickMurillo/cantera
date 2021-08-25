@@ -99,65 +99,83 @@
 
 					<div class="item-content">
 						<header class="entry-header">
-							<div class="entry-meta greylinks color4 inline-content"> <span>
-								<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
-								<time datetime="2017-10-03T08:50:40+00:00">{{object.created_on|date:"d N, Y"}}</time>
-							</span> 
-							<span class=""><i class="fa fa-sitemap highlight4 rightpadding_5" aria-hidden="true"></i>{{object.get_category_display}}</span>
-							<span>
-								<i class="fa fa-users highlight4 rightpadding_5"></i>{{object.author.organizacion.siglas}}
-							</span>
-							<span>
-								<i class="fa fa-pencil-square-o highlight4 rightpadding_5"></i>{{object.author}}
-							</span>
+							<div class="entry-meta greylinks color4 inline-content"> 
+								<span>
+									<i class="fa fa-calendar highlight4 rightpadding_5" aria-hidden="true"></i>
+									<time datetime="2017-10-03T08:50:40+00:00">{{object.created_on|date:"d N, Y"}}</time>
+								</span> 
+								<span class=""><i class="fa fa-sitemap highlight4 rightpadding_5" aria-hidden="true"></i>{{object.get_category_display}}</span>
+								<span>
+									<i class="fa fa-users highlight4 rightpadding_5"></i>{{object.author.organizacion.siglas}}
+								</span>
+								<span>
+									<i class="fa fa-pencil-square-o highlight4 rightpadding_5"></i>{{object.author}}
+								</span>
 
+							</div>
+							<h1 class="entry-title"> {{object.tittle}} </h1>
+						</header>
+						<div class="entry-content">
+							{{object.content|safe}}
 						</div>
-						<h1 class="entry-title"> {{object.tittle}} </h1>
-					</header>
-					<div class="entry-content">
-						{{object.content|safe}}
-					</div>
-					<!-- galeria -->
-					{% if object.galeria_set.all %}
-					<h4 class="" > Galería de fotos </h4>
-					<hr>		
-					<div class="owl-carousel owl-theme">
-						{% for img in object.galeria_set.all %}
-							
-						<div class="item">
-							<a data-fancybox="gallery" href="/media/{{img.imagen}}">
-							{% thumbnail img.imagen "300x200" crop="center" as im %}
-							<img src="{{ im.url }}" alt="">
-							{% endthumbnail %}
-							</a>
+						<!-- galeria -->
+						{% if object.galeria_set.all %}
+						<h4 class="" > Galería de fotos </h4>
+						<hr>		
+						<div class="owl-carousel owl-theme">
+							{% for img in object.galeria_set.all %}
+								
+							<div class="item">
+								<a data-fancybox="gallery" href="/media/{{img.imagen}}">
+								{% thumbnail img.imagen "300x200" crop="center" as im %}
+								<img src="{{ im.url }}" alt="">
+								{% endthumbnail %}
+								</a>
+							</div>
+							{% endfor %}
 						</div>
-						{% endfor %}
+						{% endif %}
 					</div>
-					{% endif %}
-				</div>
 				<!-- .item-content -->
-			</article>
+				</article>
 			
-			<!-- Compartir post en pantallas mayores a 700px-->
-			<div  class="post-share hidden-xs compu"> 
-				<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter customer share">
-				</a>
-				
+				<!-- Compartir post en pantallas mayores a 700px-->
+				<section class='section_padding_top_30 section_padding_bottom_30 hidden-xs'>
+					<div class="container">
+						<div  class="post-share  compu row">
+							<div class="col-md-6">
+								<h5 class='widget-title text-base'>Comparte este contenido tus en las redes sociales</h5 class='widget-title'>
+							</div>
+							<div class="col-md-6 compartir">
+								<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter customer share">
+								</a>
+								<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}" target="blank" class="social-icon color-bg-icon socicon-facebook customer share">
+								</a>
+								<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+							</div>
+							
+						</div>
+					</div>
+				</section>
 
-				<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}" target="blank" class="social-icon color-bg-icon socicon-facebook customer share">
-				</a>
-
-				<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
-			</div>
-
-			<!-- Compartir post en celulares con las apps-->
-			<div class="post-share visible-xs movil"> 
-				<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
-				</a> 
-				<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
-				</a>
-				<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
-			</div>
+				<!-- Compartir post en celulares con las apps-->
+				<section class='section_padding_top_30 section_padding_bottom_30 visible-xs'>
+					<div class="container">
+						<div  class="post-share movil row">
+							<div class="col-md-6">
+								<h5 class='widget-title text-base'>Comparte este contenido tus en las redes sociales</h5 class='widget-title'>
+							</div>
+							<div class="col-md-6 compartir">
+								<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+								</a> 
+								<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+								</a>
+								<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+							</div>
+							
+						</div>
+					</div>
+				</section>
 
 
 

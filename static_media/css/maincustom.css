@@ -228,7 +228,7 @@ h3.entry-title.minismall {
 }
 
 .fixed-height {
-  height: 417px !important;
+  height: 460px !important;
 }
 
 #contact_alliance i.font-alliance {
@@ -495,4 +495,144 @@ img.b_avatar {
     display: none;
   }
 
+}
+
+.text-black{
+  color: #1D1D1B !important;
+}
+.text-base{
+  color: #e85242 !important;
+  line-height: 1.4em;
+}
+
+/*Compartir*/
+.post-share.compu  .compartir{
+  text-align: right;
+}
+@media (max-width: 991px){
+  .post-share.compu  .compartir{
+    padding-top: 10px;
+    text-align: left;
+  }
+
+}
+
+
+
+
+/*banner seccion*/
+.banner_seccion{
+  padding: 4rem 0;
+}
+
+.margin_bottom_30{
+  margin-bottom: 30px;
+}
+.margin_bottom_20{
+  margin-bottom: 20px;
+}
+.margin_bottom_10{
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1200px){
+  .banner_seccion{
+    padding: 75px 0;
+  }
+
+}
+
+/*social org*/
+.social-org{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-org li{
+  align-self: center;
+}
+.social-org li a{
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  color: white;
+  align-items:center;
+  justify-content: center;
+  margin: 0 5px 5px 5px ;
+}
+
+
+
+a[class*="fa-"].fa-globe:hover{
+  color: #eea642;
+  background-color: rgba(120, 120, 120, 0.2);
+}
+a[class*="socicon-"].socicon-facebook:hover{
+  color: #1877f2;
+  background-color: rgba(120, 120, 120, 0.2);
+}
+a[class*="socicon-"].socicon-twitter:hover{
+  color: #1da1f2;
+  background-color: rgba(120, 120, 120, 0.2);
+}
+a[class*="socicon-"].socicon-youtube:hover{
+  background-color: rgba(120, 120, 120, 0.2);
+}
+a[class*="socicon-"].socicon-instagram:hover{
+  color: #833ab4;
+  background-color: rgba(120, 120, 120, 0.2);
+}
+a[class*="socicon-"].socicon-linkedin:hover{
+  color: #0077b5;
+  background-color: rgba(120, 120, 120, 0.2);
+}
+a[class*="socicon-"].socicon-flickr:hover{
+  color: #0077b5;
+  background-color: rgba(120, 120, 120, 0.2);
+}
+a[class*="socicon-"].socicon-pinterest:hover{
+  color: #e60023;
+  background-color: rgba(120, 120, 120, 0.2);
+}
+a[class*="socicon-"].socicon-vimeo:hover{
+  color: #1ab7ea;
+  background-color: rgba(120, 120, 120, 0.2);
+}
+
+
+.social-org li a.socicon-facebook{
+  background-color: #1877f2;
+}
+.social-org li a.fa-globe{
+  background-color: #eea642;
+}
+.social-org li a.socicon-twitter{
+  background-color: #1da1f2;
+}
+.social-org li a.socicon-youtube{
+  background-color: #ff0000;
+}
+.social-org li a.socicon-instagram{
+  background-color: #833ab4;
+}
+.social-org li a.socicon-linkedin{
+  background-color: #0077b5;
+}
+.social-org li a.socicon-flickr{
+  background-color: #0063dc;
+}
+.social-org li a.socicon-pinterest{
+  background-color: #e60023;
+}
+.social-org li a.socicon-vimeo{
+  background-color: #1ab7ea;
+}
+.social-org li a.socicon-link{
+  background-color: #4d4f53;
 }

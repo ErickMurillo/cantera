@@ -16,9 +16,10 @@ def get_compromisos(request):
 		dict['hombres'] = comp.conteo_hombres
 		dict['mujeres'] = comp.conteo_mujeres
 		list_fotos = []
+		html = ''
 		for foto in comp.fotoscompromisos_set.all():
-			list_fotos.append(str(foto.cached_img))
-		dict['fotos'] = list_fotos
+			html += '<img style="width: 100%; height: 100px;" src='+str(foto.cached_img)+' alt=''><br/>'
+		dict['fotos'] = html
 
 		lista.append(dict)
 

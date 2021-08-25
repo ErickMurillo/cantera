@@ -99,6 +99,37 @@
     </head>
 
     <body>
+
+        <style>
+            .goog-te-gadget-simple{
+                background: Transparent !important;
+                border: none;
+            }
+            .goog-te-gadget-simple::after{
+                content: "\ea67";
+                font-family: IcoFont!important;
+                font-weight: 400;
+                font-size: 16px;
+                color: white !important;
+            }
+            .goog-te-gadget img {
+                display: none;
+            }
+            .goog-te-gadget-simple .goog-te-menu-value span:first-child{
+                font-size: 16px !important;
+                font-family: 'Lato', sans-serif;
+                line-height: 19px !important;
+                color: white !important;
+                border-color: white !important;
+            }
+            .goog-te-gadget-simple .goog-te-menu-value span:last-child{
+                display: none;
+            }
+            
+            .goog-te-gadget-simple .goog-te-menu-value span{
+                border: none !important;
+            }
+        </style>
         <div id="canvas">
             <div id="box_wrapper">
                 <!-- template sections -->
@@ -318,7 +349,7 @@
                         </div>
                     </div>
                 </header>
-                {% if request.path != '/' %}
+                {% comment %} {% if request.path != '/' %}
                 <section id="services" class="hidden-xs ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0 mt-10">
                     <div id="show_services" class="container-fluid">
                         <div class="row flex-wrap v-center-content">
@@ -429,13 +460,13 @@
                         </div>
                     </div>
                 </section>
-                {% endif %}
+                {% endif %} {% endcomment %}
                     
 
 
                 {% block content %}{% endblock content %}
         
-                <footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">
+                {% comment %} <footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">
                     <div class="container">
                         <div class="row">
 
@@ -522,14 +553,15 @@
 
                         </div>
                     </div>
-                </footer>
-
-                <section class="ds ms parallax page_copyright overlay_color section_padding_top_30 section_padding_bottom_30">
+                </footer> {% endcomment %}
+                <section class="page_copyright ds ms section_padding_top_5 section_padding_bottom_5 table_section table_section_sm">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-12 text-center justify-content-center align-items-center">
-                                <p> Copyright &copy; 2019. Todos los derechos reservados</p>
-
+                            <div class="col-sm-6 text-center text-sm-left">
+                                <div class="logo logo_with_text"> <img src="static/img/logo.png" alt=""></div>
+                            </div>
+                            <div class="col-sm-6 text-center text-sm-right">
+                                <p class="small-text">© Copyright 2021. Todos los derechos reservados</p>
                             </div>
                         </div>
                     </div>

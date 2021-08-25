@@ -6202,6 +6202,9 @@ a.underline-link {
 .main_bg_color4.transp {
 	background-color: rgba(3, 168, 203, 0.89);
 }
+.main_bg_color5.transp {
+	background-color: rgba(110, 157, 51, 0.89);
+}
 
 .dark_bg_color {
 	background-color: #1f232b;
@@ -10229,7 +10232,7 @@ body.active-side-header.slide-right .page_header_side {
 */
 .cs.main_color2,
 .cs.main_bg_color2 {
-	background-color: #f3702b;
+	background-color: #FF7909;
 }
 
 .cs.main_color2 .highlight,
@@ -11932,8 +11935,8 @@ body.active-side-header.slide-right .page_header_side {
 .sf-menu a {
 	font-size: 14px;
 	text-transform: uppercase;
-	font-weight: 500;
-	font-family: 'Ubuntu', sans-serif;
+	font-weight: 600;
+	font-family: 'Lato', sans-serif;
 }
 
 /* Desktop menu - (min 992px) styles */
@@ -15859,7 +15862,7 @@ p.stars.selected a:not(.active):before {
 /* layout */
 a[class*='socicon-']:before {
 	font-family: 'socicon';
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 1;
 }
 

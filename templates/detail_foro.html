@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% load embed_video_tags %}
 
 {% block extra_head %}
 <meta property="al:android:url" content="generoymetodologias:/{{request.path}}">
@@ -65,11 +66,17 @@
 				<article class="vertical-item content-padding big-padding with_border single-post post">
 
 					<div class="item-media entry-thumbnail"> 
-						{% thumbnail object.foto "830x620" crop="center" as im %}
-						<img src="{{ im.url }}" alt="">
-						{% empty %}
-						<img src="http://via.placeholder.com/830x620" alt="">
-						{% endthumbnail %}
+						{% if object.tipo == 1 %}
+							{% thumbnail object.foto "830x620" crop="center" as im %}
+							<img src="{{ im.url }}" alt="">
+							{% empty %}
+							<img src="http://via.placeholder.com/830x620" alt="">
+							{% endthumbnail %}
+						{% else %}
+							{% video object.url_video as my_video %}
+								{% video my_video '830x620' %}
+							{% endvideo %}
+						{% endif %}
 					</div>
 
 					<div class="item-content">

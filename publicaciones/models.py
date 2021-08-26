@@ -19,7 +19,7 @@ class Publicacion(models.Model):
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
 	slug = models.SlugField(max_length=250,editable=False)
 	aprobado = models.BooleanField()
-	palabras_claves = TaggableManager("Palabras claves",help_text='Separar elementos con "," ', blank=True)
+	tags = TaggableManager("Palabras claves",help_text='Separar elementos con "," ', blank=True)
 
 	def __str__(self):
 		return u'%s' % self.titulo

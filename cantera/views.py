@@ -9,12 +9,13 @@ from evento.models import *
 from configuracion.models import *
 from foro.models import *
 import datetime
-from django.db.models import Count
+from django.db.models import Count, Sum
 from users.models import *
 from users.forms import *
 from solicitudes.models import *
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
+from compromisos.models import *
 
 def index(request,template='index.html'):
 	# actualidad = Actualidad.objects.order_by('-created_on')[:6]
@@ -24,6 +25,7 @@ def index(request,template='index.html'):
 	foros = Foros.objects.filter(aprobado = True).annotate(conteo = Count('aportes')).order_by('-conteo','-aportes__fecha')[:3]
 	alianzas = Contraparte.objects.order_by('nombre').exclude(nombre = 'Particular')
 	slider = Slider.objects.all()
+	compromisos = Compromiso.objects.aggregate(total = Sum('conteo_hombres') + Sum('conteo_mujeres'))['total']
 
 	return render(request, template,locals())
 
@@ -40,7 +42,6 @@ def perfil(request,template='admin/org_index.html'):
 			solicitud.aprobado = False
 			solicitud.save()
 
-			
 			try:
 				subject, from_email = 'Plataforma Género y Metodologías', 'generoymetodologias@gmail.com'
 				text_content =  render_to_string('email/vincular_org.txt', {'obj': solicitud,})

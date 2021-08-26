@@ -167,11 +167,11 @@
 					</div>
 				</section>			
 				
-				{% if object.palabras_claves.all %}
+				{% if object.tags.all %}
 				<div class="widget">
-					<h4 class="widget-title">Palabras claves</h4>
+					<h4 class="widget-title">Tags</h4>
 					<div class="tagcloud">
-						{% for tag in object.palabras_claves.all %}
+						{% for tag in object.tags.all %}
 						<a href="{% url 'filtro_publicacion_tags' tag.slug %}">{{tag}}</a>
 						{% endfor %}
 					</div>

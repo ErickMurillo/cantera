@@ -561,20 +561,26 @@
                                 <div class="logo logo_with_text"> <img src="/static/img/logo.png" alt=""></div>
                             </div>
                             <div class="col-sm-6 text-center text-sm-right">
-                                <p class="small-text">© Copyright 2021. Todos los derechos reservados</p>
+                                <p class="small-text">© Copyright <span id="year"></span>. Todos los derechos reservados</p>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-        </div>
 
-    {% compress js %}
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/compressed.js"></script>
-    <script src="/static/js/selectize.min.js"></script>
-    <script src="/static/js/social.js"></script>
-    <script src="/static/js/main.js"></script>
+        
+    </div>
+</div>
+
+{% compress js %}
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/compressed.js"></script>
+<script src="/static/js/selectize.min.js"></script>
+<script src="/static/js/social.js"></script>
+<script src="/static/js/main.js"></script>
+<script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
 
     {% block extra_js %}{% endblock extra_js %}
     {% endcompress %}

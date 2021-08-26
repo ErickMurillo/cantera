@@ -98,7 +98,8 @@
 						</header>
 					</div>
 				</article>
-				<div class="vertical-item content-padding big-padding text-center descargas_archivos">
+				
+				<div class="vertical-item content-padding big-padding text-center descargas_archivos margin_bottom_30">
 					
 					{% if object.archivospublicacion_set.count == 1 %}
 					<ul style="list-style-type:none;">
@@ -122,6 +123,21 @@
 						</ul>
 					</div>
 					{% endif %}
+				</div>
+
+				<div class="vertical-item content-padding big-padding text-center descargas_archivos margin_bottom_30">
+					{% if object.palabras_claves.all %}
+					<div class="widget">
+						<h4 class="widget-title text-left">Palabras claves</h4>
+						<hr>
+						<div class="tagcloud text-left">
+							{% for tag in object.palabras_claves.all %}
+							<a href="{% url 'filtro_publicacion_tags' tag.slug %}">{{tag}}</a>
+							{% endfor %}
+						</div>
+					</div>
+					{% endif %}
+
 				</div>
 			</div>
 			<div class="col-sm-7">
@@ -167,16 +183,7 @@
 					</div>
 				</section>			
 				
-				{% if object.palabras_claves.all %}
-				<div class="widget">
-					<h4 class="widget-title">Palabras claves</h4>
-					<div class="tagcloud">
-						{% for tag in object.palabras_claves.all %}
-						<a href="{% url 'filtro_publicacion_tags' tag.slug %}">{{tag}}</a>
-						{% endfor %}
-					</div>
-				</div>
-				{% endif %}
+				
 			</div>
 		</div>
 		<div class="topmargin_30">

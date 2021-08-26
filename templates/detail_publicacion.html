@@ -81,7 +81,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">
-				<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
+				<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center margin_bottom_30">
 					<div class="item-media">
 						{% thumbnail object.imagen "612x792" crop="center" as im %}
 						<img src="{{ im.url }}" alt="">
@@ -98,21 +98,74 @@
 						</header>
 					</div>
 				</article>
-
+				<div class="vertical-item content-padding big-padding text-center descargas_archivos">
+					
+					{% if object.archivospublicacion_set.count == 1 %}
+					<ul style="list-style-type:none;">
+						{% for pdf in object.archivospublicacion_set.all %}
+						<li>
+							<a class="theme_button color4" href="/media/{{pdf.archivo_pdf}}" target="_blank">Descargar Documento <span class="fa fa-download"></span></a>
+						</li>
+						{% endfor %}
+					</ul>
+					{% else %}
+					<div class="btn-group">
+						<button type="button" class="theme_button color4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Descargar Documento <span class="fa fa-download"></span>
+						</button>
+						<ul class="dropdown-menu">
+							{% for pdf in object.archivospublicacion_set.all %}
+							<li>
+								<a href="/media/{{pdf.archivo_pdf}}" target="_blank">Descargar Documento {{ forloop.counter }}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% endif %}
+				</div>
 			</div>
 			<div class="col-sm-7">
 				<h4>Descripción</h4>
 				<hr>
 				<p>{{object.resumen|safe}}</p>
-				<h4>Lista de Archivos</h4>
 				<hr>
-				<ul style="list-style-type:none;">
-					{% for pdf in object.archivospublicacion_set.all %}
-					<li>
-						<a href="/media/{{pdf.archivo_pdf}}" class="base-color" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{pdf.nombre}}</a>
-					</li>
-					{% endfor %}
-				</ul>			
+				<!-- Compartir post en pantallas mayores a 700px-->
+				<section class='section_padding_top_30 section_padding_bottom_30 hidden-xs'>
+					<div class="container">
+						<div  class="post-share  compu row">
+							<div class="col-md-6">
+								<h5 class='widget-title text-base'>Comparte este contenido tus en las redes sociales</h5 class='widget-title'>
+							</div>
+							<div class="col-md-6 compartir">
+								<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+								</a>
+								<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+								</a>
+								<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+							</div>
+							
+						</div>
+					</div>
+				</section>
+
+				<!-- Compartir post en celulares con las apps-->
+				<section class='section_padding_top_30 section_padding_bottom_30 visible-xs'>
+					<div class="container">
+						<div  class="post-share movil row">
+							<div class="col-md-6">
+								<h5 class='widget-title text-base'>Comparte este contenido tus en las redes sociales</h5 class='widget-title'>
+							</div>
+							<div class="col-md-6 compartir">
+								<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
+								</a> 
+								<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
+								</a>
+								<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+							</div>
+							
+						</div>
+					</div>
+				</section>			
 				
 				{% if object.palabras_claves.all %}
 				<div class="widget">
@@ -125,25 +178,6 @@
 				</div>
 				{% endif %}
 			</div>
-		</div>
-		<div  class="post-share hidden-xs compu"> 
-				<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
-				</a>
-				<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
-
-				<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
-				</a>
-
-				<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
-			</div>
-
-			<!-- Compartir post en celulares con las apps-->
-			<div class="post-share visible-xs movil"> 
-				<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
-				</a> 
-				<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}&amp;src=sdkpreparse" target="blank" class="social-icon color-bg-icon socicon-facebook">
-				</a>
-				<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
 		</div>
 		<div class="topmargin_30">
 			<!-- {% disqus_show_comments %} -->

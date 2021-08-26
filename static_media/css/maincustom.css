@@ -636,3 +636,27 @@ a[class*="socicon-"].socicon-vimeo:hover{
 .social-org li a.socicon-link{
   background-color: #4d4f53;
 }
+
+
+.descargas_archivos .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle){
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.descargas_archivos .btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child){
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.descargas_archivos  .btn-group>.dropdown-toggle .caret{
+  line-height: 19px;
+}
+
+
+
+.descargas_archivos .theme_buttons[class*="color"]:hover,
+.descargas_archivos .theme_buttons[class*="color"]:focus, 
+.descargas_archivos .theme_buttons[class*="color"]:active, 
+.descargas_archivos .theme_button[class*="color"]:hover, 
+.descargas_archivos .theme_button[class*="color"]:focus, 
+.descargas_archivos .theme_button[class*="color"]:active {
+  color: #fff;
+}

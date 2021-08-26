@@ -138,26 +138,40 @@
 							{%endif%}
 						</div>
 					</article>
+					
 					<!-- Compartir post en pantallas mayores a 700px-->
-					<div  class="post-share hidden-xs compu"> 
-							<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter customer share">
-							</a>
-							<!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false"></a>-->
-			
-							<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}" target="blank" class="social-icon color-bg-icon socicon-facebook customer share">
-							</a>
-			
-							<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+					<section class='section_padding_top_30 section_padding_bottom_30 hidden-xs'>
+						<div class="container">
+							<div  class="post-share  compu row">
+								<div class="col-md-6">
+									<h5 class='widget-title text-base'>Comparte este contenido tus en las redes sociales</h5 class='widget-title'>
+								</div>
+								<div class="col-md-6 compartir">
+									<a target="blank" href="https://twitter.com/share?url={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter customer share"></a>
+									<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}" target="blank" class="social-icon color-bg-icon socicon-facebook customer share"></a>
+									<a href=" https://wa.me/?text={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a>
+								</div>
+								
+							</div>
 						</div>
-			
-						<!-- Compartir post en celulares con las apps-->
-						<div class="post-share visible-xs movil"> 
-							<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter">
-							</a> 
-							<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}" target="blank" class="social-icon color-bg-icon socicon-facebook">
-							</a>
-							<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
-					</div>	
+					</section>
+
+					<!-- Compartir post en celulares con las apps-->
+					<section class='section_padding_top_30 section_padding_bottom_30 visible-xs'>
+						<div class="container">
+							<div  class="post-share movil row">
+								<div class="col-md-6">
+									<h5 class='widget-title text-base'>Comparte este contenido tus en las redes sociales</h5 class='widget-title'>
+								</div>
+								<div class="col-md-6 compartir">
+									<a target="blank" href="twitter://post?message={{request.build_absolute_uri}}" class="social-icon color-bg-icon socicon-twitter"></a> 
+									<a href="https://www.facebook.com/sharer.php?u=https://generoymetodologias.org/{{request.get_full_path}}" target="blank" class="social-icon color-bg-icon socicon-facebook"></a>
+									<a id="wpMovil" href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share" class="social-icon color-bg-icon socicon-whatsapp" target="_blank"></a> 
+								</div>
+								
+							</div>
+						</div>
+					</section>
 					<div class="topmargin_30">
 						<!-- {% disqus_show_comments %} -->
 						<div class="fb-comments" data-href="https://generoymetodologias.org/" data-width="100%" data-numposts="20"></div>

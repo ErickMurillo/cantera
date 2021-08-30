@@ -660,3 +660,49 @@ a[class*="socicon-"].socicon-vimeo:hover{
 .descargas_archivos .theme_button[class*="color"]:active {
   color: #fff;
 }
+
+
+.popup_item{
+  display: block;
+  max-width: 300px;
+  position: fixed;
+  bottom: 130px;
+  right: 10px;
+  z-index: 9999;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+}
+.popup_item .entry-header{
+  margin-bottom: 10px;
+}
+.popup_item h5.entry-title{
+  font-family: 'Lato', sans-serif;
+  height: 67px;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f232b;
+  line-height: 1.4em;
+}
+.popup_item:hover h5.entry-title{
+  color: #e85242;
+}
+.popup_item p{
+  font-size: 14px;
+  font-weight: bold;
+  color: #e85242;
+}
+.popup_item:hover p{
+  color: #1f232b;
+}
+.popup_item .xbutton{
+  display: block;
+  text-align: right;
+  padding: 0 10px;
+}
+

@@ -350,9 +350,9 @@
 						</div>
 						<div class="item-content">
 							<header class="entry-header">
-								<h3 class="entry-title small bottommargin_0" style="
-								height: 52px;
-								"> <a href="{% url 'detalle-actualidad' obj.slug %}"><span class="small-text">{{obj.tittle|striptags|truncatechars:71}}</span></a>
+								<h3 class="entry-title small bottommargin_0" style="height: 52px;"> 
+									<a href="{% url 'detalle-actualidad' obj.slug %}"><span class="small-text">{{obj.tittle|striptags|truncatechars:71}}</span></a>
+								</h3>
 							</header>
 							<p>
 								<a href="{% url 'detalle-actualidad' obj.slug %}" class="more-link">Leer más</a>
@@ -466,6 +466,27 @@
 	</div>
 </section>
 
+<div class="vertical-item content-padding big-padding with_border bottom_color_border popup_item">
+	<div>
+		<a class="xbutton"><span class="fa fa-close"></span></a>
+	</div>
+	<a href="">
+		<div class="item-media">
+			<img src="https://picsum.photos/300/224" alt="">
+		</div>
+		<div class="item-content">
+			<header class="entry-header">
+				<h5 class="entry-title small bottommargin_0">
+					¡Las mujeres hacen historia en Tokio! Serán los Olímpicos con la may...
+				</h5>
+			</header>
+			<p>
+				Leer más
+			</p>
+		</div>
+	</a>
+	
+</div>
 {% endblock content %}
 
 {% block extra_js %}
@@ -475,6 +496,15 @@
 <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
 <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+<script>
+	(function ($) {
+            $('.xbutton').click(function(){
+                $(".popup_item").fadeOut("normal", function() {
+                    $(this).remove();
+                });
+            });
+        })(jQuery);
+</script>
 <script>
 	Highcharts.getJSON('/compromisos/get-json/', function (data) {
 

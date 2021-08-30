@@ -16,7 +16,7 @@ section#services{
 }
 {% endif %}
 </style>
-<section id ="detail_alianza" class="ls section_padding_top_100 section_padding_bottom_80 columns_padding_30">
+<section id ="detail_alianza" class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
 	<div class="container">
 		{% if not organizacion.nombre == 'Particular' %}
 		<div class="row">
@@ -62,7 +62,7 @@ section#services{
 					</div>
 				</article>
 				<br>
-				<article id ="contact_alliance" class="vertical-item content-padding big-padding with_border bottom_color_border">
+				<article id ="contact_alliance" class="vertical-item content-padding with_border bottom_color_border">
 					<div class="item-content">
 						{% if organizacion.contacto %}
 						<p class="entry-title "><a><i class="icofont-contact-add font-alliance"></i></a> {{organizacion.contacto}}</p>
@@ -86,27 +86,30 @@ section#services{
 			</div>
 			<div class="col-sm-7">
 				<h3>{{organizacion.nombre|safe}}</h3>
-				<a href="{% url 'org_editar' organizacion.id %}" class="theme_button min_width_button color1 inverse"><i class="fa fa-edit rightpadding_5"></i> Editar</a> 
-			</div>
-			<div>
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
-					<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Generalidades</a></li>
-					<li><a href="#tab2" role="tab" data-toggle="tab">Temas</a></li>
+				<a href="{% url 'org_editar' organizacion.id %}" class="theme_button min_width_button color1 inverse"><i class="fa fa-edit rightpadding_5"></i> Editar</a>
+				<div class="row">
+					<div class="col-md-12">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs color2 topmargin_40" role="tablist">
+							<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Generalidades</a></li>
+							<li><a href="#tab2" role="tab" data-toggle="tab">Temas</a></li>
 
-				</ul>
-				<!-- Tab panes -->
-				<div class="tab-content big-padding top-color-border color2 bottommargin_40">
-					<div class="tab-pane fade in active" id="tab1">
-						{{organizacion.generalidades|safe}}
+						</ul>
+						<!-- Tab panes -->
+						<div class="tab-content top-color-border color2 bottommargin_40">
+							<div class="tab-pane fade in active" id="tab1">
+								{{organizacion.generalidades|safe}}
+							</div>
+
+							<div class="tab-pane fade" id="tab2">
+								{{organizacion.temas|safe}}
+							</div>
+
+						</div>
 					</div>
-
-					<div class="tab-pane fade" id="tab2">
-						{{organizacion.temas|safe}}
-					</div>
-
 				</div>
 			</div>
+			
 		</div>
 		
 		{% else %}

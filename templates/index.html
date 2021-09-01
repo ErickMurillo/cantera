@@ -595,19 +595,23 @@
 				text: ''
 			},
 
+			// legend: {
+			// 	title: {
+			// 		text: 'Compromisos por país',
+			// 		style: {
+			// 			color: ( // theme
+			// 				Highcharts.defaultOptions &&
+			// 				Highcharts.defaultOptions.legend &&
+			// 				Highcharts.defaultOptions.legend.title &&
+			// 				Highcharts.defaultOptions.legend.title.style &&
+			// 				Highcharts.defaultOptions.legend.title.style.color
+			// 			) || 'black'
+			// 		}
+			// 	}
+			// },
+
 			legend: {
-				title: {
-					text: 'Compromisos por país',
-					style: {
-						color: ( // theme
-							Highcharts.defaultOptions &&
-							Highcharts.defaultOptions.legend &&
-							Highcharts.defaultOptions.legend.title &&
-							Highcharts.defaultOptions.legend.title.style &&
-							Highcharts.defaultOptions.legend.title.style.color
-						) || 'black'
-					}
-				}
+				enabled: false
 			},
 
 			mapNavigation: {
@@ -625,27 +629,23 @@
 				useHTML: true,
 				padding: 0,
 				pointFormat: '{point.fotos}',
-				// positioner: function () {
-				//     return { x: 0, y: 250 };
-				// }
+				positioner: function () {
+				    return { x: 0, y: 150 };
+				}
 			},
 
-			colorAxis: {
-				min: 1,
-				max: 1000,
-				type: 'logarithmic',
-				// minColor: '#EEEEFF',
-				// maxColor: '#000022',
+			legend: {
+				enabled: false
 			},
 
 			series: [{
 				data: data,
 				joinBy: ['iso-a3', 'code3'],
 				name: 'Compromisos',
-				color: '#E0E0E0',
+				color: '#e85242',
 				states: {
 					hover: {
-						color: '#a4edba'
+						color: '#03a8cb'
 					}
 				}
 			}]

@@ -18,9 +18,9 @@ def get_compromisos(request):
 		list_fotos = []
 		fotos = ''
 		for foto in comp.fotoscompromisos_set.all():
-			fotos += '<div class="item-media"><a data-fancybox="gallery" href=""><img src='+str(foto.cached_img)+' alt=""></a></div>'
+			fotos += '<div class="item-media"><img src='+str(foto.cached_img)+' alt=""></div>'
 
-		html = '<div class="vertical-item content-padding big-padding with_border bottom_color_border tooltip_map" style="width: 300px;"><h5 class="">'+comp.get_pais_display()+'</h5><div class="owl-carousel owl-theme owl-map">'+fotos+'</div><div class="item-content"><div class="value main_value" akhi="200">'+str(comp.total)+'</div><h5 class="">Compromisos</h5><ul class="sex_value"><li>Mujeres: <span class="value" akhi="200">'+str(comp.conteo_mujeres)+'</span></li><li>Hombres: <span class="value" akhi="200">'+str(comp.conteo_hombres)+'</span></li></ul></div></div>'
+		html = '<div class="vertical-item content-padding big-padding with_border bottom_color_border tooltip_map" style="width: 250px;"><h5 class="">'+comp.get_pais_display()+'</h5><div class="">'+fotos+'</div><div class="item-content"><div class="value main_value" akhi="200">'+str(comp.total)+'</div><h5 class="">Compromisos</h5><ul class="sex_value"><li>Mujeres: <span class="value" akhi="200">'+str(comp.conteo_mujeres)+'</span></li><li>Hombres: <span class="value" akhi="200">'+str(comp.conteo_hombres)+'</span></li></ul></div></div>'
 
 		dict['fotos'] = html
 

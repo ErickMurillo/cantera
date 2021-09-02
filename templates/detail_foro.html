@@ -66,7 +66,7 @@
 				<article class="vertical-item content-padding big-padding with_border single-post post">
 
 					<div class="item-media entry-thumbnail"> 
-						{% if object.tipo == 1 %}
+						{% if object.tipo_portada == 1 %}
 							{% thumbnail object.foto "830x620" crop="center" as im %}
 							<img src="{{ im.url }}" alt="">
 							{% empty %}

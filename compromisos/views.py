@@ -15,12 +15,8 @@ def get_compromisos(request):
 		dict['value'] = comp.total
 		dict['hombres'] = comp.conteo_hombres
 		dict['mujeres'] = comp.conteo_mujeres
-		list_fotos = []
-		fotos = ''
-		for foto in comp.fotoscompromisos_set.all()[:1]:
-			fotos += '<div class="item-media"><img src='+str(foto.cached_img)+' alt=""></div>'
 
-		html = '<div class="vertical-item content-padding big-padding with_border bottom_color_border tooltip_map" style="width: 250px;"><h5 class="">'+comp.get_pais_display()+'</h5><div class="">'+fotos+'</div><div class="item-content"><div class="value main_value" akhi="200">'+str(comp.total)+'</div><h5 class="">Compromisos</h5><ul class="sex_value"><li>Mujeres: <span class="value" akhi="200">'+str(comp.conteo_mujeres)+'</span></li><li>Hombres: <span class="value" akhi="200">'+str(comp.conteo_hombres)+'</span></li></ul></div></div>'
+		html = '<div class="vertical-item content-padding big-padding with_border bottom_color_border tooltip_map" style="width: 250px;"><h5 class="">'+comp.get_pais_display()+'</h5><div class=""><div class="item-media"><img src='+str(comp.cached_img)+' alt=""></div></div><div class="item-content"><div class="value main_value" akhi="200">'+str(comp.total)+'</div><h5 class="">Compromisos</h5><ul class="sex_value"><li>Mujeres: <span class="value" akhi="200">'+str(comp.conteo_mujeres)+'</span></li><li>Hombres: <span class="value" akhi="200">'+str(comp.conteo_hombres)+'</span></li></ul></div></div>'
 
 		dict['fotos'] = html
 

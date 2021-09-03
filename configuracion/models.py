@@ -47,3 +47,12 @@ class Slider(SingletonModel):
 
 	class Meta:
 		verbose_name = "Slider inicio"
+
+class InformacionDestacada(SingletonModel):
+	imagen = ImageField('Foto',upload_to='destacado/')
+	titulo = models.CharField(max_length=250)
+	link = models.URLField()
+	activo = models.BooleanField(default=True)
+
+	class Meta:
+		verbose_name = 'Información destacada'

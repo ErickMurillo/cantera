@@ -507,7 +507,7 @@
 							</div>
 							<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f9ee6697eedd09648e66786f4_0aa105c44f" tabindex="-1" value=""></div>
 							<div class="clear margin_top_20">
-								<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"class="theme_button color2">
+								<input type="submit" value="Suscríbete" name="subscribe" id="mc-embedded-subscribe"class="theme_button color2">
 							</div>
 						</div>
 					</form>
@@ -518,18 +518,24 @@
 	</div>
 </section>
 
+
+{% if info.activo %}
 <div class="vertical-item content-padding big-padding with_border bottom_color_border popup_item">
 	<div>
 		<a class="xbutton"><span class="fa fa-close"></span></a>
 	</div>
-	<a href="">
+	<a href="{{info.link}}">
 		<div class="item-media">
+			{% thumbnail info.imagen "300x224" crop="center" as im %}
+			<img src="{{ im.url }}" alt="">
+			{% empty %}
 			<img src="https://picsum.photos/300/224" alt="">
+			{% endthumbnail %}
 		</div>
 		<div class="item-content">
 			<header class="entry-header">
 				<h5 class="entry-title small bottommargin_0">
-					¡Las mujeres hacen historia en Tokio! Serán los Olímpicos con la may...
+					{{info.titulo}}
 				</h5>
 			</header>
 			<p>
@@ -539,6 +545,8 @@
 	</a>
 	
 </div>
+{% endif %}
+
 {% endblock content %}
 
 {% block extra_js %}

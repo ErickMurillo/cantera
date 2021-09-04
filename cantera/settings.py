@@ -297,3 +297,6 @@ HAYSTACK_CONNECTIONS = {
         'PATH': WHOOSH_INDEX,
     },
 }
+
+THUMBNAIL_ENGINE = 'sorl.thumbnail.engines.wand_engine.Engine'
+THUMBNAIL_PRESERVE_FORMAT = True

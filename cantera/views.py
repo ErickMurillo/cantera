@@ -16,6 +16,7 @@ from solicitudes.models import *
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from compromisos.models import *
+from configuracion.models import InformacionDestacada
 
 def index(request,template='index.html'):
 	# actualidad = Actualidad.objects.order_by('-created_on')[:6]
@@ -26,7 +27,8 @@ def index(request,template='index.html'):
 	alianzas = Contraparte.objects.order_by('nombre').exclude(nombre = 'Particular')
 	slider = Slider.objects.all()
 	compromisos = Compromiso.objects.aggregate(total = Sum('conteo_hombres') + Sum('conteo_mujeres'))['total']
-
+	info = InformacionDestacada.objects.get()
+	
 	return render(request, template,locals())
 
 @login_required

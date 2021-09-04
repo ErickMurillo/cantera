@@ -13,3 +13,4 @@ class SliderAdmin(SingletonModelAdmin):
 
 admin.site.register(SiteConfiguration,SingletonModelAdmin)
 admin.site.register(Slider,SliderAdmin)
+admin.site.register(InformacionDestacada,SingletonModelAdmin)

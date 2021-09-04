@@ -710,13 +710,20 @@ a[class*="socicon-"].socicon-vimeo:hover{
 }
 
 /*map*/
+.highcharts-label span > span{
+  display: none;
+}
+.tooltip_map {
+  background-color: white;
+}
+
 .tooltip_map h5{
   font-weight: 600;
   text-transform: uppercase;
   font-size: 16px;
   font-family: 'Lato', sans-serif;
   text-align: center;
-  color: #03a8cb;
+  color: #03a8cb !important;
   margin: 5px;
 }
 .vertical-item.big-padding.tooltip_map .item-content{
@@ -738,6 +745,7 @@ a[class*="socicon-"].socicon-vimeo:hover{
   font-weight: 600;
   display: flex;
   justify-content: space-between;
+  color: #1f232b !important;
 }
 
 .owl-map .owl-dots{

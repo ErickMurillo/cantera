@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load thumbnail %}
-
+{% load solo_tags %}
 	
 {% block content %}
 {% comment %} <section id="services" class="hidden-xs ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0 mt-10">
@@ -518,7 +518,7 @@
 	</div>
 </section>
 
-
+{% get_solo 'configuracion.InformacionDestacada' as info %}
 {% if info.activo %}
 <div class="vertical-item content-padding big-padding with_border bottom_color_border popup_item">
 	<div>

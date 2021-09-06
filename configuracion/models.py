@@ -49,7 +49,7 @@ class Slider(SingletonModel):
 		verbose_name = "Slider inicio"
 
 class InformacionDestacada(SingletonModel):
-	imagen = ImageField('Foto',upload_to='destacado/')
+	imagen = ImageField('Foto',upload_to='destacado/',help_text = 'Formatos compatibles: gif, jpge, png. Tamaño: 300x224')
 	titulo = models.CharField(max_length=250)
 	link = models.URLField()
 	activo = models.BooleanField(default=True)

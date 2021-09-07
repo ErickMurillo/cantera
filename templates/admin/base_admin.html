@@ -98,7 +98,38 @@
 	</div>
 <!-- eof .modal -->
 <!-- wrappers for visual page editor and boxed version of template -->
-
+	<style>
+		.goog-te-gadget-simple{
+			background: Transparent !important;
+			border: none;                
+		}
+		.goog-te-gadget-simple::after{
+			content: "\ea67";
+			font-family: IcoFont!important;
+			font-weight: 400;
+			font-size: 16px;
+			color: white !important;
+		}
+		.goog-te-gadget img {
+			display: none;
+		}
+		.goog-te-gadget-simple .goog-te-menu-value span:first-child{
+			font-size: 14px !important;
+			line-height: 19px !important;
+			color: white !important;
+			border-color: white !important;
+			font-family: 'Lato', sans-serif;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+		.goog-te-gadget-simple .goog-te-menu-value span:last-child{
+			display: none;
+		}
+		
+		.goog-te-gadget-simple .goog-te-menu-value span{
+			border: none !important;
+		}
+	</style>
 	<div id="canvas">
 		<div id="box_wrapper">
 			<!-- template sections -->
@@ -162,7 +193,19 @@
 	                                        <a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
 	                                    </li>
 	                                    {% endif%}
-
+										<li><div id="google_translate_element"></div></li>
+										<script type="text/javascript">
+											function googleTranslateElementInit() {
+												new google.translate.TranslateElement({
+													pageLanguage: 'es',
+													includedLanguages: 'en,fr',
+													layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+													gaTrack: true},
+													'google_translate_element'
+													);
+												}
+										</script>
+										<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 	                                </ul>
 	                               

@@ -104,9 +104,10 @@
             
 
         <style>
+
             .goog-te-gadget-simple{
                 background: Transparent !important;
-                border: none;
+                border: none;                
             }
             .goog-te-gadget-simple::after{
                 content: "\ea67";
@@ -119,11 +120,13 @@
                 display: none;
             }
             .goog-te-gadget-simple .goog-te-menu-value span:first-child{
-                font-size: 16px !important;
-                font-family: 'Lato', sans-serif;
+                font-size: 14px !important;
                 line-height: 19px !important;
                 color: white !important;
                 border-color: white !important;
+                font-family: 'Lato', sans-serif;
+                font-weight: 600;
+                text-transform: uppercase;
             }
             .goog-te-gadget-simple .goog-te-menu-value span:last-child{
                 display: none;
@@ -154,65 +157,20 @@
 
                                     
                                         <ul class="inline-list menu">
-                                            {% if request.user.is_authenticated %}
 
-                                            <li>
-                                                <div class="comment-author">
-                                                    {% if user.avatar %}
-                                                    {% thumbnail user.avatar "34x34" crop="center" as im %}
-                                                    <img class="" src="{{ im.url }}" alt="">
-                                                    {% endthumbnail %}
-                                                    {% elif user.socialaccount_set.all.0.get_avatar_url %}
-                                                    {% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
-                                                    <img class="" src="{{ im.url }}" alt="">
-                                                    {% endthumbnail %}
-                                                    {% else %}
-
-                                                    <span><i class="icofont-ui-user white-color"></i></span>
-
-                                                    {% endif %}
-                                                </div>
-                                            </li>
-                                            <li>
-
-                                                <div class="dropdown dp-user">
-                                                    <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                        {{user.get_full_name|default:user.username}}
-                                                        <i class="icofont-caret-down rotate"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                        
-                                                        <li><a href="{% url 'perfil' %}">Administrador</a></li> 
-                                                        
-
-                                                        <li><a href="{% url 'editar_perfil' user.id %}?next={{ request.path }}">Editar perfil</a></li>
-
-                                                        <li><a href="{% url 'account_change_password' %}">Cambiar contraseña</a></li>
-
-                                                        <li role="separator" class="divider"></li>
-                                                        <li><a href="/accounts/logout/">Cerrar Sesión</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            {% else %}
-                                            <li>
-                                                <a href="{% url 'account_login' %}?next={{ request.path }}" class="white-color small-text"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión </a> 
-                                            </li>
-                                            {% endif%}
-
-                                                <li><div id="google_translate_element"></div></li>
-                                                    <script type="text/javascript">
-                                                        function googleTranslateElementInit() {
-                                                            new google.translate.TranslateElement({
-                                                                pageLanguage: 'es',
-                                                                includedLanguages: 'en,fr',
-                                                                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                                                                gaTrack: true},
-                                                                'google_translate_element'
-                                                                );
-                                                            }
-                                                    </script>
-                                                    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                                            <li><div id="google_translate_element"></div></li>
+                                            <script type="text/javascript">
+                                                function googleTranslateElementInit() {
+                                                    new google.translate.TranslateElement({
+                                                        pageLanguage: 'es',
+                                                        includedLanguages: 'en,fr',
+                                                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                                        gaTrack: true},
+                                                        'google_translate_element'
+                                                        );
+                                                    }
+                                            </script>
+                                            <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                                         </ul>
                                     
                                     </div>
@@ -247,23 +205,23 @@
                                                 
                                                 
                                             
-                                                <li> 
-                                                    <a href="#">Actualidad</a>
+                                                <li class="menu_actualidad"> 
+                                                    <a class="main" href="#">Actualidad</a>
                                                     <ul>
                                                         <li> <a href="/actualidad/noticias">Noticias</a> </li>
                                                         <li> <a href="/actualidad/situacion-regional-genero">Situación regional de género</a> </li>
                                                     </ul>
                                                 </li>
-                                                <li> 
-                                                    <a href="/puntos-vista">Puntos de vista</a>
+                                                <li class="menu_punto"> 
+                                                    <a class="main" href="/puntos-vista">Miradas</a>
                                                 </li>
 
-                                                <li> 
-                                                    <a href="/foros">Foros</a>
+                                                <li class="menu_foro"> 
+                                                    <a class="main" href="/foros">Foros</a>
                                                 </li>
 
-                                                <li> 
-                                                    <a href="#">Recursos metodológicos</a>
+                                                <li class="menu_recurso"> 
+                                                    <a class="main" href="#">Recursos</a>
                                                     <ul>
                                                             <li> <a href="/recursos-metodologicos/publicaciones">Publicaciones</a> </li>
                                                             <li> <a href="/recursos-metodologicos/galerias/imagenes">Imágenes</a> </li>
@@ -272,8 +230,8 @@
                                                     </ul>
                                                 </li>
 
-                                                <li>
-                                                    <a>Iniciativas destacadas</a>
+                                                <li  class="menu_iniciativa">
+                                                    <a class="main">Iniciativas</a>
                                                     <ul>
                                                         <li> <a href="/iniciativas-destacadas/campanias/">Campañas</a> </li>
                                                         <li> <a href="/iniciativas-destacadas/eventos/">Eventos</a> </li>

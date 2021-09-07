@@ -317,8 +317,11 @@ img.b_avatar {
 
 /*****dropdown*****/
 .dp-user .dropdown-toggle{
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
 
 }
 .dp-user .dropdown-toggle:hover{
@@ -441,10 +444,15 @@ img.b_avatar {
 .fontsize_18{
   font-size: 18px;
 }
+
 .servicios {
   position: relative;
-  /* top: -120px; */
   z-index: 99;
+}
+.servicios .menu_service{
+  position: absolute;
+  width: 100%;
+  top: -120px;
 }
 .servicios .menu-index.sf-menu{
   display: flex;
@@ -455,11 +463,28 @@ img.b_avatar {
   width: 20%;
   white-space: normal;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items:center;
-  cursor: pointer;
 }
+
+.servicios .menu-index.sf-menu > li #dropdownMenuButton{
+  width: 100%;
+  white-space: normal;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  text-transform: capitalize; 
+
+}
+.servicios .menu-index.sf-menu > li #dropdownMenuButton h4{
+  text-transform: capitalize;
+  margin: 0;
+  color: #fff;
+}
+.servicios .menu-index.sf-menu > li #dropdownMenuButton .media-middle{
+  margin-right: 20px;
+}
+
+
 .servicios .menu-index.sf-menu > li > a{
   color: white;
   text-align: center;
@@ -477,24 +502,53 @@ img.b_avatar {
     line-height: 1.8em;
 }
 
-
-@media (min-width: 1600px){
-  .servicios .menu-index.sf-menu .teaser[class*="_bg_color"].big-padding, .teaser[class*="with_"].big-padding{
-    padding: 10px;
-  }
-
-}
-@media (min-width: 1200px){
-  .servicios .menu-index.sf-menu > li > a{
-    padding: 10px;
-  }
-
-}
 @media (max-width: 1200px){
   #mobile_menu {
     display: none;
   }
+  
+}
 
+@media (max-width: 767px) {
+  #account_login .account_info h4,
+  #account_login .account_info h5{
+    text-align: center;
+  }
+}
+
+@media (max-width: 1199px){
+  .page_breadcrumbs.section_padding_top_65.section_padding_bottom_65 > [class*="container"] {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (min-width: 1200px){
+  .servicios .menu-index.sf-menu .teaser[class*="_bg_color"].big-padding, .teaser[class*="with_"].big-padding{
+    padding: 0px;
+  }
+
+  .servicios .menu-index.sf-menu > li > a{
+    padding: 15px;
+  }
+  #account_login .account_info h4,
+  #account_login .account_info h5{
+    text-align: left;
+  }
+}
+@media (min-width: 1400px){
+  .servicios .menu-index.sf-menu .teaser[class*="_bg_color"].big-padding, .teaser[class*="with_"].big-padding{
+    padding: 0px;
+  }
+}
+@media (min-width: 1600px){
+  .servicios .menu-index.sf-menu .teaser[class*="_bg_color"].big-padding, .teaser[class*="with_"].big-padding{
+    padding: 0px;
+  }
+
+  .section_padding_top_65 > [class*="container"] {
+      padding-top: 120px;
+  }
 }
 
 .text-black{
@@ -754,4 +808,58 @@ a[class*="socicon-"].socicon-vimeo:hover{
 
 .bottom_color_border.tooltip_map:after{
   background-color: #03a8cb;
+}
+
+
+/*Menu principal*/
+.menu_punto a:hover{
+  color: rgba(110, 157, 51, 1) !important;
+}
+.menu_foro a:hover{
+  color: rgba(243, 112, 43, 1) !important;
+}
+.menu_recurso a:hover,
+.header_white .sf-menu > li.menu_recurso.sfHover > a,
+.menu_service #recurso_content ul a:hover{
+  color: rgba(3, 168, 203, 1) !important;
+}
+.menu_iniciativa a:hover,
+.header_white .sf-menu > li.menu_iniciativa.sfHover > a,
+.menu_service #iniciativa_content ul a:hover{
+  color: rgba(252, 179, 21, 1) !important;
+}
+
+.sf-menu li.menu_recurso > ul,
+.menu_service #recurso_content ul{
+  border-bottom-color: rgba(3, 168, 203, 1);
+}
+.sf-menu li.menu_iniciativa > ul,
+.menu_service #iniciativa_content ul{
+  border-bottom-color: rgba(252, 179, 21, 1);
+}
+/*login alianza*/
+#account_login .row.flex-wrap.v-center-content{
+  align-items: center;
+  justify-content: center;
+}
+
+#account_login .account_info{
+  margin: 20px;
+}
+#account_login .account_info h4,
+#account_login .account_info h5{
+  font-family: 'Lato', sans-serif;
+}
+#account_login .account_alianza{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 0;
+}
+
+#account_login .account_alianza li a{
+  padding:15px;
+  font-size: 18px;
 }

@@ -194,17 +194,11 @@
                                     <!-- main nav start -->
                                     <nav class="mainmenu_wrapper">
                                         <ul class="mainmenu nav sf-menu">
-                                            
-                                        
-                                                {% comment %} <li class="{% if request.path == '/' %} active {% endif %}"> <a href="/">Inicio</a> </li>{% endcomment %}
 
                                                 <li> 
                                                     <a class="{% if request.path == '/quienes-somos' %} active {% endif %}" href="/quienes-somos/">¿Quiénes Somos?</a>
                                                 </li>
 
-                                                
-                                                
-                                            
                                                 <li class="menu_actualidad"> 
                                                     <a class="main" href="#">Actualidad</a>
                                                     <ul>
@@ -242,11 +236,6 @@
                                                 <li>
                                                     <a class="{% if '/alianzas' in request.path %} active {% endif %}" href="/alianzas">Alianzas y Colaboraciones</a>
                                                 </li>
-                                        
-                                                
-                                            
-                                            
-
                                             <div id="mobile_menu" class="nav">
                                                 <hr>
                                                 <li class="">
@@ -310,211 +299,9 @@
                         </div>
                     </div>
                 </header>
-                {% comment %} {% if request.path != '/' %}
-                <section id="services" class="hidden-xs ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0 mt-10">
-                    <div id="show_services" class="container-fluid">
-                        <div class="row flex-wrap v-center-content">
-
-                            <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-                                <div class="teaser main_bg_color transp with_padding big-padding margin_0">
-                                    <div class="xxs-media-left">
-                                        <div class="dropdown text-center">
-                                            <a class="orangefont visible_hover white-color actual_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/actualidad">
-                                                <span>Actualidad</span> <i class="icofont-caret-down rotate"></i>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <!--<a class="dropdown-item" href="/actualidad">Actualidad</a>-->
-                                                <a class="dropdown-item" href="/actualidad/noticias"> Noticias</a>
-                                                <a class="dropdown-item" href="/actualidad/situacion-regional-genero"> Situación regional de género</a>
-                                            </div>
-                                        </div>
-                                        <div class="media-body media-middle text-center">
-                                            
-                                            <h4>
-                                            </h4>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-                                <div class="teaser bg_customgreen transp with_padding big-padding margin_0" id="p_vista">
-                                    <a href="/puntos-vista">
-                                        <div class="xxs-media-left">
-                                            <div class="text-center">
-                                                <a class="visible_hover white-color puntos_content" href="/puntos-vista" aria-haspopup="true" aria-expanded="false">
-                                                    <span id ="txtpuntos">Puntos de vista</span>
-                                                </a>
-                                            </div>
-
-                                            <div class="media-body media-middle text-center">
-                                                <h4 class="white-color"></h4>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-                                <div class="teaser main_bg_color2 transp with_padding big-padding margin_0">
-                                    <a href="/foros">
-                                        <div class="xxs-media-left">
-
-                                            <div class="text-center">
-                                                <a class="visible_hover white-color foro_content" href="/foros" aria-haspopup="true" aria-expanded="false"><span>Foros</span>
-                                                </a>
-                                            </div>
-                                            <div class="media-body media-middle text-center">
-                                                <h4></h4>
-
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-                                <div class="teaser main_bg_color4 transp with_padding big-padding margin_0">
-                                    <div class="xxs-media-left">
-
-                                        <div class="dropdown text-center">
-                                            <a class="visible_hover white-color recurso_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="/recursos-metodologicos/galerias/audios/">Audios</a>
-                                                <a class="dropdown-item" href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a>
-                                                <a class="dropdown-item" href="/recursos-metodologicos/publicaciones/">Publicaciones</a>
-                                                <a class="dropdown-item" href="/recursos-metodologicos/galerias/videos/">Videos</a>
-                                                
-                                            </div>
-                                        </div>
-
-                                        <div class="media-body media-middle text-center">
-                                            <h5><a href="#0"> </a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-20 col-sm-6 col-xs-12 to_animate" data-animation="fadeInUp">
-                                <div class="teaser main_bg_color3 transp with_padding big-padding margin_0">
-                                    <div class="xxs-media-left">
-
-                                        <div class="dropdown text-center">
-                                            <a class="visible_hover white-color iniciativa_content"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="/iniciativas-destacadas/campanias">Campañas</a>
-                                                <a class="dropdown-item" href="/iniciativas-destacadas/eventos">Eventos</a>
-                                                <a class="dropdown-item" href="/iniciativas-destacadas/concursos">Concursos</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="media-body media-middle text-center">
-
-                                            <h4>
-                                            </h4>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                {% endif %} {% endcomment %}
-                    
-
 
                 {% block content %}{% endblock content %}
-        
-                {% comment %} <footer class="page_footer template_footer ds ms parallax section_padding_top_110 section_padding_bottom_100 columns_padding_25">
-                    <div class="container">
-                        <div class="row">
 
-                            <div class="col-md-4 col-sm-12 col-md-push-4 text-center">
-                                <div class="widget widget_text">
-                                    <div class="logo logo_with_text"> <img src="/static/img/logo.png" alt=""></div>
-                                    <p>La Plataforma Regional Género y Metodologías es un espacio de comunicación e intercambio cuyo propósito es contribuir a fortalecer los procesos de cambio hacia relaciones de género justas y sostenibles en la región centroamericana. La Plataforma es administrada por Cantera Nicaragua.</p>
-                                    <p class="topmargin_25">
-                                        <a class="social-icon border-icon rounded-icon socicon-facebook" href="https://www.facebook.com/generoymetodologias/" target="_blank" title="Facebook">
-                                            
-                                        </a>
-                                        <a class="social-icon border-icon rounded-icon socicon-twitter" href="https://twitter.com/PMetodologias" target="_blank" title="Twitter">
-                                            
-                                        </a>
-                                        <a class="social-icon border-icon rounded-icon socicon-youtube" href="https://www.youtube.com/channel/UCdKHGzo0grM2e7rVpAWSR9A?view_as=subscriber" target="_blank" title="Youtube"></a>
-                                    </p>                          
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-md-pull-4 text-center">
-                                <div class="widget widget_text widget_media_margin">
-                                    <h3 class="widget-title">Explorar</h3>
-                                    <ul class="list1 no-bullets no-top-border no-bottom-border greylinks">
-                                        <li> 
-                                            <a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span>Actualidad</span> <i class="icofont-caret-down rotate"></i>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a id="bg-drop-footer" class="dropdown-item" href="/actualidad/noticias">Noticias</a>
-                                                <a id="bg-drop-footer" class="dropdown-item" href="/actualidad/situacion-regional-genero">Situación regional de género</a>
-                                            </div> 
-                                        </li>
-                                        <li> <a class="visible_hover" href="/puntos-vista/"><span>Puntos de vista</span</a> </li>
-                                        <li> <a class="visible_hover" href="/foros/"><span>Foros</span></a> </li>
-                                        <li> 
-                                            <a class="visible_hover"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span>Recursos metodológicos</span> <i class="icofont-caret-down rotate"></i>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a id="bg-drop-footer" class="dropdown-item" href="/recursos-metodologicos/publicaciones">Publicaciones</a>
-                                                <!--<a class="dropdown-item" href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>-->
-                                                <a class="dropdown-header">Galeria</a>
-                                                <a class="dropdown-item" href="/recursos-metodologicos/galerias/imagenes/">Imágenes</a>
-                                                <a class="dropdown-item" href="/recursos-metodologicos/galerias/videos">Videos</a>
-
-
-                                                <a class="dropdown-item" href="/recursos-metodologicos/galerias/audios/">Audios</a>
-                                            </div> 
-                                        </li>
-                                        <li>
-                                            <a class="visible_hover"  id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Iniciativas destacadas</span> <i class="icofont-caret-down rotate"></i></a>
-                                            <div class="dropdown-menu highlight" aria-labelledby="dropdownMenuButton12">
-                                                <a class="dropdown-item highlight" href="/iniciativas-destacadas/campanias">Campañas</a>
-                                                <a class="dropdown-item" href="/iniciativas-destacadas/eventos">Eventos</a>
-                                                <a class="dropdown-item highlight-font" href="/iniciativas-destacadas/concursos">Concursos</a>
-                                            </div>
-                                        </li>
-                                        <li> <a class="visible_hover" href="/quienes-somos/"><span>¿Quiénes Somos?</span></a> </li>
-                                            <li> <a class="visible_hover" href="/alianzas/"><span>Alianzas y Colaboraciones</span></a> </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-sm-6">
-                                <div class="widget widget_mailchimp widget_media_margin">
-                                    <h3 class="widget-title">Contáctanos</h3>
-                                    <!--<div class="media small-teaser">
-                                        <div class="media-left"> <i class="icofont-google-map highlight fontsize_24"></i> </div>
-                                        <div class="media-body"> Plaza El Sol 2c. sur 1c. arriba. Managua, Nicaragua </div>
-                                    </div>
-                                    <div class="media small-teaser">
-                                        <div class="media-left"> <i class="icofont-phone-circle highlight fontsize_24"></i> </div>
-                                        <div class="media-body"> (505) 2278-0103 </div>
-                                    </div>-->
-                                    <div class="media small-teaser">
-                                        <div class="media-left"></div>
-                                        <div class="media-body">  </div>
-                                    </div>
-                                    <div class="media small-teaser greylinks">
-                                        <div class="media-left"> <i class="icofont-email highlight fontsize_24"></i> </div>
-                                        <div class="media-body"> <a href="mailto: generoymetodologias@gmail.com"> generoymetodologias@gmail.com</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </footer> {% endcomment %}
                 <section class="page_copyright ds ms section_padding_top_5 section_padding_bottom_5 table_section table_section_sm">
                     <div class="container">
                         <div class="row">
@@ -527,22 +314,53 @@
                         </div>
                     </div>
                 </section>
+
+                {% if info.activo %}
+                <div class="vertical-item content-padding big-padding with_border bottom_color_border popup_item">
+                    <div>
+                        <a class="xbutton"><span class="fa fa-close"></span></a>
+                    </div>
+                    <a href="{{info.link}}">
+                        <div class="item-media">
+                            {% thumbnail info.imagen "300x224" crop="center" as im %}
+                            <img src="{{ im.url }}" alt="">
+                            {% empty %}
+                            <img src="https://picsum.photos/300/224" alt="">
+                            {% endthumbnail %}
+                        </div>
+                        <div class="item-content">
+                            <header class="entry-header">
+                                <h5 class="entry-title small bottommargin_0 line_2">
+                                    {{info.titulo}}
+                                </h5>
+                            </header>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+
+                
             </div>
-
-        
-    </div>
-</div>
-
-{% compress js %}
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/compressed.js"></script>
-<script src="/static/js/selectize.min.js"></script>
-<script src="/static/js/social.js"></script>
-<script src="/static/js/main.js"></script>
-<script>
-    document.getElementById("year").innerHTML = new Date().getFullYear();
-</script>
-
+        </div>
+    
+    {% compress js %}
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/compressed.js"></script>
+    <script src="/static/js/selectize.min.js"></script>
+    <script src="/static/js/social.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <script>
+        (function ($) {
+            $('.xbutton').click(function(){
+                $(".popup_item").fadeOut("normal", function() {
+                    $(this).remove();
+                });
+            });
+        })(jQuery);
+    </script>
     {% block extra_js %}{% endblock extra_js %}
     {% endcompress %}
 

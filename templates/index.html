@@ -482,33 +482,7 @@
 </section>
 
 
-{% if info.activo %}
-<div class="vertical-item content-padding big-padding with_border bottom_color_border popup_item">
-	<div>
-		<a class="xbutton"><span class="fa fa-close"></span></a>
-	</div>
-	<a href="{{info.link}}">
-		<div class="item-media">
-			{% thumbnail info.imagen "300x224" crop="center" as im %}
-			<img src="{{ im.url }}" alt="">
-			{% empty %}
-			<img src="https://picsum.photos/300/224" alt="">
-			{% endthumbnail %}
-		</div>
-		<div class="item-content">
-			<header class="entry-header">
-				<h5 class="entry-title small bottommargin_0">
-					{{info.titulo}}
-				</h5>
-			</header>
-			<p>
-				Leer más
-			</p>
-		</div>
-	</a>
-	
-</div>
-{% endif %}
+
 
 {% endblock content %}
 
@@ -519,15 +493,6 @@
 <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
 <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
-<script>
-	(function ($) {
-		$('.xbutton').click(function(){
-			$(".popup_item").fadeOut("normal", function() {
-				$(this).remove();
-			});
-		});
-	})(jQuery);
-</script>
 <script>
 	$('.owl-map').owlCarousel({
 		loop:true,

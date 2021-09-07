@@ -739,13 +739,21 @@ a[class*="socicon-"].socicon-vimeo:hover{
 }
 .popup_item h5.entry-title{
   font-family: 'Lato', sans-serif;
-  height: 67px;
   overflow: hidden;
   font-size: 16px;
   font-weight: 600;
   color: #1f232b;
   line-height: 1.4em;
 }
+
+.line_2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 .popup_item:hover h5.entry-title{
   color: #e85242;
 }

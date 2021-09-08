@@ -831,6 +831,9 @@ a[class*="socicon-"].socicon-vimeo:hover{
 .menu_service #recurso_content ul a:hover{
   color: rgba(3, 168, 203, 1) !important;
 }
+.menu_iniciativa a:hover{
+  cursor: pointer;
+}
 .menu_iniciativa a:hover,
 .header_white .sf-menu > li.menu_iniciativa.sfHover > a,
 .menu_service #iniciativa_content ul a:hover{

@@ -15,25 +15,28 @@
 {% endblock extra_css %}
 
 {% block content %}
-<section class="page_breadcrumbs ds background_cover banner_seccion">
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
-				<h2 class="white-color">{% if request.path == '/recursos-metodologicos/publicaciones/' %}
+				<h2 class="white-color">{% if '/recursos-metodologicos/publicaciones/' in request.path %}
 					Publicaciones
 					{% else %} Guías metodológicas
 				{% endif %}</h2>
-				<ol class="breadcrumb">
+				<ol class="breadcrumb white-color">
 					<li> <a href="/" class="white-color">
 						Inicio
 					</a> </li>
 					<li> <a class="white-color">Recursos Metodológicos</a> </li>
-					<li class="active wh">
-						{% if request.path == '/recursos-metodologicos/publicaciones/' %}
-						Publicaciones
-						{% else %} Guías metodológicas
+					<li class="white-color">
+						{% if '/recursos-metodologicos/publicaciones/' in request.path  %}
+						<a href="/recursos-metodologicos/publicaciones">Publicaciones</a>
+						
+						{% else %}
+						<a href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
 						{% endif %}
 					</li>
+					<li class="active">Detalle</li>
 				</ol>
 			</div>
 		</div>

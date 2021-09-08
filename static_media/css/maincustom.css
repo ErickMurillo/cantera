@@ -6,16 +6,33 @@
     font-size: 40px;
 }
 
-.ds {
-    background-color: #3a3d44;
-    color: #6c6c73;
+.ds.ms a[class*='socicon-']:before{
+  font-size: 23px;
+  line-height: 23px;
+}
+.ds.ms a.border-icon{
+  border-color: white;
+  background-color: white;
+  padding: 13px 13px;
 }
 
 .ds.ms {
-    background-color: #FFFFFF;
+    background-color: #6e9d33;
+    color: white;
+}
+.ds input[type="submit"]:hover{
+  color: #05a8cb;
+}
+.ds .form-control,
+.ds input[type="email"]{
+  border-color: white;
+}
+
+.ds .highlight, .ds .highlight1{
+  color: white;
 }
 .ds h1, .ds h2, .ds h3, .ds h4, .ds h5, .ds h6 {
-    color: #3a2f38;
+    color: white;
 }
 
 .ds .greylinks a {
@@ -67,9 +84,6 @@ i.xx-large {
     color: #938da6;
 }
 
-.ds ul.list1 li {
-    border-color: rgb(195, 180, 180);
-}
 
 .bg_customgreen {
     background: #6E9D33 !important;
@@ -873,4 +887,10 @@ a[class*="socicon-"].socicon-vimeo:hover{
 #account_login .account_alianza li a{
   padding:15px;
   font-size: 18px;
+}
+
+/*Footer*/
+.page_footer .logo img{
+  max-width: 230px;
+  margin-bottom: 10px;
 }

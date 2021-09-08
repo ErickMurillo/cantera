@@ -1,5 +1,6 @@
 {% load thumbnail %}
 {% load compress %}
+{% load solo_tags %}
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -163,7 +164,7 @@
                                                 function googleTranslateElementInit() {
                                                     new google.translate.TranslateElement({
                                                         pageLanguage: 'es',
-                                                        includedLanguages: 'en,fr',
+                                                        includedLanguages: 'en,fr,es',
                                                         layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                                                         gaTrack: true},
                                                         'google_translate_element'
@@ -315,12 +316,14 @@
                     </div>
                 </section>
 
+                {% get_solo 'configuracion.InformacionDestacada' as info %}
                 {% if info.activo %}
                 <div class="vertical-item content-padding big-padding with_border bottom_color_border popup_item">
                     <div>
                         <a class="xbutton"><span class="fa fa-close"></span></a>
                     </div>
-                    <a href="{{info.link}}">
+                    <a href="{{info.link}}" {% if info.navegacion == 1 %}target="_blank"{% endif %}
+                        >
                         <div class="item-media">
                             {% thumbnail info.imagen "300x224" crop="center" as im %}
                             <img src="{{ im.url }}" alt="">
@@ -330,12 +333,16 @@
                         </div>
                         <div class="item-content">
                             <header class="entry-header">
-                                <h5 class="entry-title small bottommargin_0 line_2">
+                                <h5 class="entry-title small bottommargin_0">
                                     {{info.titulo}}
                                 </h5>
                             </header>
+                            <p>
+                                Leer más
+                            </p>
                         </div>
                     </a>
+                    
                 </div>
                 {% endif %}
 

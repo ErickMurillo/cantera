@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load thumbnail %}
-
 	
 {% block content %}
 {% comment %} <section id="services" class="hidden-xs ls section_intro_overlap columns_padding_0 columns_margin_0 container_padding_0 mt-10">
@@ -398,7 +397,7 @@
 								<div class="col-sm-12">
 									<h4 class="text-center color2">COMPROMISOS CON LA IGUALDAD DE GÉNERO Y CONTANDO</h4>
 									<p class="text-center">Comprueba cuántos compromisos por la igualdad de género hay en tu país.</p>
-									<div class="conteo_map text-center topmargin_50 "><div class="value" akhi="{{compromisos}}">0</div></div>
+									<div class="conteo_map text-center topmargin_50 "><div class="value" akhi="{{compromisos|default:'0'}}">0</div></div>
 									
 								</div>
 							</div>
@@ -482,8 +481,6 @@
 </section>
 
 
-
-
 {% endblock content %}
 
 {% block extra_js %}
@@ -552,6 +549,10 @@
 
 			mapNavigation: {
 				enabled: true,
+				enableMouseWheelZoom: false,
+				enableTouchZoom: false,
+				mouseWheelSensitivity: 2,
+				enableDoubleClickZoomTo: false,
 				buttonOptions: {
 					verticalAlign: 'bottom'
 				}

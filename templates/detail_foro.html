@@ -2,6 +2,11 @@
 {% load thumbnail %}
 {% load embed_video_tags %}
 
+{% block fb_comments %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v11.0&appId=321664011858070&autoLogAppEvents=1" nonce="ipNfobKc"></script>
+{% endblock fb_comments %}
+
 {% block extra_head %}
 <meta property="al:android:url" content="generoymetodologias:/{{request.path}}">
 <meta property="al:android:package" content="com.facebook.samples.sharesample">
@@ -31,7 +36,7 @@
 <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css" />
 <style type="text/css">
 .page_breadcrumbs.background_cover {
-	{% thumbnail foto_foro.0 "1350x230" crop="center" as im %}
+	{% thumbnail foto_foros.0 "1350x230" crop="center" as im %}
 	background:-webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
 	background:-o-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
 	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
@@ -96,16 +101,16 @@
 								<a href="">{{object.usuario.get_full_name|default:object.usuario.username}}</a>
 							</span>							
 
-							<span>
+							<!-- <span>
 								<i class="fa fa-comment highlight4 rightpadding_5" aria-hidden="true"></i>
 								<a href="">{{object.aportes_set.all.count}} aportes</a>
-							</span>
+							</span> -->
 
 
 						</div>
 
 						
-						{% if request.user.is_authenticated %}
+						<!-- {% if request.user.is_authenticated %}
 						<div class="toppadding_30 highlight1 small-text text-right">
 							{% if request.user in object.usuarios_siguiendo.all %}
 							<div class="">
@@ -123,7 +128,7 @@
 							{% endif %}	
 							
 						</div>
-						{% endif %}
+						{% endif %} -->
 						
 						<h1 class="entry-title"> {{object.nombre}} </h1>
 					</header>
@@ -172,7 +177,7 @@
 					</div>
 				</section>
 
-			<div class="comments-area" id="comments">
+			{% comment %}<div class="comments-area" id="comments">
 				<h3>{{object.aportes_set.all.count}} Aportes en este foro</h3>
 				<ol class="comment-list">
 					{% for aporte in object.aportes_set.all %}
@@ -312,7 +317,7 @@
 					{% endfor %}
 				</ol>
 				<!-- .comment-list -->
-			</div>
+			</div>{% endcomment %}
 			<!-- #comments -->
 
 			<blockquote class="with_padding big-padding with_border">
@@ -320,7 +325,10 @@
 				</p>
 			</blockquote>
 
-			{% if request.user.is_authenticated %}
+			<div class="comments-area" id="comments">
+				<div class="fb-comments" data-href="https://generoymetodologias.org/" data-width="100%" data-numposts="20"></div>
+			</div>
+			<!-- {% if request.user.is_authenticated %}
 			<div class="comment-respond text-center" id="respond">
 				<h3>Agrega un aporte</h3>
 				<form class="comment-form" id="commentform" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
@@ -336,13 +344,13 @@
 
 			</div>
 			{% else %}
-			<br>
+			<br> 
 			
 			<div class="alert alert-info" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> <strong>Debe</strong>  <a href="/accounts/login/?next=/">iniciar sesión </a> para agregar aportes a este foro </div>
 
 
 
-			{% endif %}
+			{% endif %}-->
 			<!-- #respond -->
 
 		</div>

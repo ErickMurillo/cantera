@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
-				<h2 class="white-color">{% if '/publicaciones/' in request.path %}
+				<h2 class="white-color">{% if request.path == '/recursos-metodologicos/publicaciones/' %}
 					Publicaciones
 					{% else %} Guías metodológicas
 				{% endif %}</h2>
@@ -29,7 +29,7 @@
 					</a> </li>
 					<li> <a class="white-color">Recursos Metodológicos</a> </li>
 					<li class="active wh">
-						{% if '/publicaciones/' in request.path %}
+						{% if request.path == '/recursos-metodologicos/publicaciones/' %}
 						Publicaciones
 						{% else %} Guías metodológicas
 						{% endif %}
@@ -52,7 +52,7 @@
 						
 						<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
 								<div class="row">
-									<div class="col-md-5">
+									<div class="col-md-3">
 										<div class="item-media"> 
 											{% thumbnail result.object.imagen "612" crop="center" as im %}
 											<img src="{{ im.url }}" alt="{{result.object.titulo}}">
@@ -62,10 +62,10 @@
 											<div class="media-links"> <a class="abs-link" title="{{result.object.titulo}}" href="{% url 'detail_publicacion' result.object.slug %}"></a> </div>
 										</div>
 									</div>
-									<div class="col-md-7">
+									<div class="col-md-9">
 										<div class="item-content">
 											<header class="entry-header">
-												<h3 class="entry-title small"><a href="{% url 'detail_publicacion' result.object.slug %}">{{obj.titulo}}</a> </h3>
+												<h3 class="entry-title small"><a href="{% url 'detail_publicacion' result.object.slug %}">{{result.object.titulo}}</a> </h3>
 												<div class="entry-meta greylinks inline-content">
 													<span>
 														<i class="fa fa-users highlight" aria-hidden="true"></i>

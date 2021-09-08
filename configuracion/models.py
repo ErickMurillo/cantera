@@ -48,10 +48,13 @@ class Slider(SingletonModel):
 	class Meta:
 		verbose_name = "Slider inicio"
 
+TARGET_CHOICES = ((1,'Interna'),(2,'Externa'))
+
 class InformacionDestacada(SingletonModel):
 	imagen = ImageField('Foto',upload_to='destacado/',help_text = 'Formatos compatibles: gif, jpge, png. Tamaño: 300x224')
 	titulo = models.CharField(max_length=250)
 	link = models.URLField()
+	navegacion = models.IntegerField(choices = TARGET_CHOICES)
 	activo = models.BooleanField(default=True)
 
 	class Meta:

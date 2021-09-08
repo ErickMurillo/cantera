@@ -516,6 +516,10 @@ img.b_avatar {
     line-height: 1.8em;
 }
 
+.page_header_wrapper{
+  min-height: 125px !important;
+}
+
 @media (max-width: 1200px){
   #mobile_menu {
     display: none;
@@ -535,6 +539,9 @@ img.b_avatar {
     padding-top: 40px;
     padding-bottom: 40px;
   }
+  .page_header_wrapper{
+    min-height: 85px !important;
+  }
 }
 
 @media (min-width: 1200px){
@@ -548,6 +555,9 @@ img.b_avatar {
   #account_login .account_info h4,
   #account_login .account_info h5{
     text-align: left;
+  }
+  .page_header_wrapper{
+    min-height: 120px !important;
   }
 }
 @media (min-width: 1400px){

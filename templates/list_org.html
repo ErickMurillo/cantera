@@ -43,10 +43,11 @@
 						<img class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper" src="{{ im.url }}" width="100%">
 					{% endthumbnail %}
 					{% elif user.socialaccount_set.all.0.get_avatar_url %}
-					{% thumbnail user.socialaccount_set.all.0.get_avatar_url "34x34" crop="center" as im %}
+					{% thumbnail user.socialaccount_set.all.0.get_avatar_url "127x127" crop="center" as im %}
 						<img class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper" src="{{ im.url }}" width="100%">
 					{% endthumbnail %}
 					{% else %}
+						<img class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper" src="/static/img/unknown-profile.png" width="100%">
 					{% endif %}
 					<div class="account_info">
 						<h4 class=""> Bienvenido {{user.get_full_name|default:user.username}}</h4>

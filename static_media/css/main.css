@@ -11811,16 +11811,16 @@ body.active-side-header.slide-right .page_header_side {
 		font-size: 45px;
 	}
 	.intro_section .slides{
-		height: 500px;
+		height: 550px;
 	}
 
 	.intro_section.all-scr-cover .slide_description_wrapper {
-		padding: 8% 30px;
+		padding: 13% 30px;
 		
 	}
 
 	.intro_section.bottom-overlap-teasers .slide_description_wrapper {
-		padding-bottom: calc(10% + 194px);
+		padding-bottom: calc(13% + 194px);
 	}
 
 	.intro_section.page_mainslider .flex-direction-nav a {
@@ -11848,11 +11848,11 @@ body.active-side-header.slide-right .page_header_side {
 
 @media (min-width: 1600px) {
 	.intro_section.all-scr-cover .slide_description_wrapper {
-		padding: 18.5% 30px;
+		padding: 9.5% 30px;
 	}
 
 	.intro_section.bottom-overlap-teasers .slide_description_wrapper {
-		padding-bottom: calc(18.5% + 200px);
+		padding-bottom: calc(9.5% + 200px);
 	}
 
 	.intro_section h2 {

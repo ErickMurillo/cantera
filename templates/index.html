@@ -395,8 +395,8 @@
 						<div class="content-padding big-padding ">
 							<div class="row">
 								<div class="col-sm-12">
-									<h4 class="text-center color2">COMPROMISOS CON LA IGUALDAD DE GÉNERO Y CONTANDO</h4>
-									<p class="text-center">Comprueba cuántos compromisos por la igualdad de género hay en tu país.</p>
+									<h4 class="text-center color2">Comprueba cuántos compromisos por la igualdad de género hay en tu país.</h4>
+									<p class="text-center">NÚMERO DE COMPROMISOS DE MUJERES Y HOMBRES COMPROMETIDXS CON LA IGUALDAD DE GÉNERO:</p>
 									<div class="conteo_map text-center topmargin_50 "><div class="value" akhi="{{compromisos|default:'0'}}">0</div></div>
 									
 								</div>
@@ -534,9 +534,9 @@
 				useHTML: true,
 				padding: 0,
 				pointFormat: '{point.fotos}',
-				positioner: function () {
-				    return { x: 0, y: 150 };
-				}
+				//positioner: function () {
+				    //return { x: 0, y: 150 };
+				//}
 			},
 
 			legend: {
@@ -559,7 +559,7 @@
 </script>
 <script>
 	const counters = document.querySelectorAll('.value');
-	const speed = 200;
+	const speed = 800;
 
 	counters.forEach( counter => {
 	const animate = () => {

@@ -21,7 +21,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"ARE",
-		"United Arab Emirates"
+		"Emiratos Árabes Unidos"
 	),
 	(
 		"ARG",
@@ -33,11 +33,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"ASM",
-		"American Samoa"
+		"Samoa Americana"
 	),
 	(
 		"ATG",
-		"Antigua and Barbuda"
+		"Antigua y Barbuda"
 	),
 	(
 		"AUS",
@@ -57,7 +57,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"BEL",
-		"Belgium"
+		"Bélgica"
 	),
 	(
 		"BEN",
@@ -80,11 +80,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"BHS",
-		"Bahamas, The"	
+		"Bahamas "	
 	),
 	(
 		"BIH",
-		"Bosnia and Herzegovina"	
+		"Bosnia y Herzegovina"	
 	),
 	(
 		"BLR",
@@ -124,14 +124,14 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"CAF",
-		"Central African Republic"
+		"República Centroafricana"
 	),
 	(
 		"CAN",
 		"Canada"),
 	(
 		"CHE",
-		"Switzerland"
+		"Suiza"
 	),
 	(
 		"CHL",
@@ -143,19 +143,19 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"CIV",
-		"Cote d'Ivoire"	
+		"Costa de Marfil"	
 	),
 	(
 		"CMR",
-		"Cameroon"	
+		"Camerún"	
 	),
 	(
 		"COD",
-		"Congo, Dem. Rep."	
+		"República Democrática del Congo."	
 	),
 	(
 		"COG",
-		"Congo, Rep."	
+		"República del Congo."	
 	),
 	(
 		"COL",
@@ -163,7 +163,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"COM",
-		"Comoros"
+		"Comoras"
 	),
 	(
 		"CPV",
@@ -183,19 +183,19 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"CYM",
-		"Cayman Islands"
+		"Islas Caimán"
 	),
 	(
 		"CYP",
-		"Cyprus"
+		"Chipre"
 	),
 	(
 		"CZE",
-		"Czech Republic"
+		"República Checa"
 	),
 	(
 		"DEU",
-		"Germany"
+		"Alemania"
 	),
 	(
 		"DJI",
@@ -207,15 +207,15 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"DNK",
-		"Denmark"
+		"Dinamarca"
 	),
 	(
 		"DOM",
-		"Dominican Republic"
+		"República Dominicana"
 	),
 	(
 		"DZA",
-		"Algeria"	
+		"Argelia"	
 	),
 	(
 		"ECU",
@@ -223,11 +223,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"EGY",
-		"Egypt, Arab Rep."
+		"Egipto, Rep. Árabe"
 		),
 	(
 		"ESP",
-		"Spain"	
+		"España"	
 	),
 	(
 		"EST",
@@ -239,7 +239,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"FIN",
-		"Finland"	
+		"Finlandia"	
 	),
 	(
 		"FJI",
@@ -247,23 +247,23 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"FRA",
-		"France"
+		"Francia"
 	),
 	(
 		"FRO",
-		"Faroe Islands"	
+		"Islas Faroe"	
 	),
 	(
 		"FSM",
-		"Micronesia, Fed. Sts."
+		"Estados Federados de Micronesia"
 	),
 	(
 		"GAB",
-		"Gabon"
+		"Gabón"
 	),
 	(
 		"GBR",
-		"United Kingdom"
+		"Reino Unido"
 	),
 	(
 		"GEO",
@@ -283,7 +283,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"GMB",
-		"Gambia, The"
+		"Gambia"
 	),
 	(
 		"GNB",
@@ -291,19 +291,19 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"GNQ",
-		"Equatorial Guinea"	
+		"Guinea Ecuatorial"	
 	),
 	(
 		"GRC",
-		"Greece"	
+		"Grecia"	
 	),
 	(
 		"GRD",
-		"Grenada"
+		"Granada"
 	),
 	(
 		"GRL",
-		"Greenland"
+		"Groenlandia"
 	),
 	(
 		"GTM",
@@ -319,7 +319,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"HKG",
-		"Hong Kong SAR, China"
+		"RAE de Hong Kong, China"
 	),
 	(
 		"HND",
@@ -327,7 +327,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"HRV",
-		"Croatia"
+		"Croacia"
 	),
 	(
 		"HTI",
@@ -335,7 +335,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"HUN",
-		"Hungary"
+		"Hungria"
 	),
 	(
 		"IDN",
@@ -343,7 +343,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"IMN",
-		"Isle of Man"
+		"Isla del hombre"
 	),
 	(
 		"IND",
@@ -351,11 +351,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"IRL",
-		"Ireland"	
+		"Irlanda"	
 	),
 	(
 		"IRN",
-		"Iran, Islamic Rep."	
+		"Irán, Rep. Islámica"	
 	),
 	(
 		"IRQ",
@@ -363,7 +363,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"ISL",
-		"Iceland"
+		"Islandia"
 	),
 	(
 		"ISR",
@@ -371,7 +371,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"ITA",
-		"Italy"
+		"Italia"
 	),
 	(
 		"JAM",
@@ -383,23 +383,23 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"JPN",
-		"Japan"
+		"Japon"
 	),
 	(
 		"KAZ",
-		"Kazakhstan"
+		"Kazajstán"
 	),
 	(
 		"KEN",
-		"Kenya"
+		"Kenia"
 	),
 	(
 		"KGZ",
-		"Kyrgyz Republic"
+		"República Kirguiza"
 	),
 	(
 		"KHM",
-		"Cambodia"
+		"Camboya"
 	),
 	(
 		"KIR",
@@ -411,7 +411,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"KOR",
-		"Korea, Rep."	
+		"Rep. de Korea"	
 	),
 	(
 		"KWT",
@@ -419,11 +419,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"LAO",
-		"Lao PDR"	
+		"República Democrática Popular Lao"	
 	),
 	(
 		"LBN",
-		"Lebanon"
+		"Líbano"
 	),
 	(
 		"LBR",
@@ -431,11 +431,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"LBY",
-		"Libya"
+		"Libia"
 	),
 	(
 		"LCA",
-		"St. Lucia"
+		"Santa Lucía"
 	),
 	(
 		"LIE",
@@ -447,39 +447,39 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"LSO",
-		"Lesotho"	
+		"Lesoto"	
 	),
 	(
 		"LTU",
-		"Lithuania"	
+		"Lituania"	
 	),
 	(
 		"LUX",
-		"Luxembourg"
+		"Luxemburgo"
 	),
 	(
 		"LVA",
-		"Latvia"	
+		"Letonia"	
 	),
 	(
 		"MAC",
-		"Macao SAR, China"
+		"RAE de Macao, China"
 	),
 	(
 		"MAF",
-		"St. Martin (French part)"
+		"San Martín (parte francesa)"
 	),
 	(
 		"MAR",
-		"Morocco"	
+		"Marruecos"	
 	),
 	(
 		"MCO",
-		"Monaco"
+		"Mónaco"
 	),
 	(
 		"MDA",
-		"Moldova"
+		"Moldavia"
 	),
 	(
 		"MDG",
@@ -487,19 +487,19 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"MDV",
-		"Maldives"
+		"Maldivas"
 	),
 	(
 		"MEX",
-		"Mexico"	
+		"México"	
 	),
 	(
 		"MHL",
-		"Marshall Islands"
+		"Islas Marshall"
 	),
 	(
 		"MKD",
-		"Macedonia, FYR"	
+		"Macedonia del Norte"	
 	),
 	(
 		"MLI",
@@ -523,7 +523,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"MNP",
-		"Northern Mariana Islands"
+		"Islas Marianas del Norte"
 	),
 	(
 		"MOZ",
@@ -535,7 +535,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"MUS",
-		"Mauritius"	
+		"Mauricio"	
 	),
 	(
 		"MWI",
@@ -543,7 +543,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"MYS",
-		"Malaysia"
+		"Malasia"
 	),
 	(
 		"NAM",
@@ -551,11 +551,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"NCL",
-		"New Caledonia"	
+		"Nueva  Caledonia"	
 	),
 	(
 		"NER",
-		"Niger"	
+		"Níger"	
 	),
 	(
 		"NGA",
@@ -567,11 +567,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"NLD",
-		"Netherlands"	
+		"Países Bajos"	
 	),
 	(
 		"NOR",
-		"Norway"	
+		"Noruega"	
 	),
 	(
 		"NPL",
@@ -583,11 +583,12 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"NZL",
-		"New Zealand"	
+		"Nueva Zelanda"	
 	),
 	(
 		"OMN",
-		"Oman"),
+		"Oman"
+	),
 	(
 		"PAK",
 		"Pakistan"
@@ -602,7 +603,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"PHL",
-		"Philippines"
+		"Filipinas"
 	),
 	(
 		"PLW",
@@ -610,11 +611,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"PNG",
-		"Papua New Guinea"	
+		"Papua Nueva Guinea"	
 	),
 	(
 		"POL",
-		"Poland"
+		"Polonia"
 	),
 	(
 		"PRI",
@@ -622,7 +623,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"PRK",
-		"Korea, Dem. People’s Rep."
+		"República Popular Democrática de Corea"
 	),
 	(
 		"PRT",
@@ -634,11 +635,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"PSE",
-		"West Bank and Gaza"
+		"Cisjordania y Gaza"
 	),
 	(
 		"PYF",
-		"French Polynesia"	
+		"Polinesia Francés"	
 	),
 	(
 		"QAT",
@@ -646,11 +647,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"ROU",
-		"Romania"	
+		"Rumania"	
 	),
 	(
 		"RUS",
-		"Russian Federation"
+		"Federación Rusa"
 	),
 	(
 		"RWA",
@@ -658,7 +659,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"SAU",
-		"Saudi Arabia"	
+		"Arabia Saudi"	
 	),
 	(
 		"SDN",
@@ -674,7 +675,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"SLB",
-		"Solomon Islands"	
+		"Islas Solomon"	
 	),
 	(
 		"SLE",
@@ -698,7 +699,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"STP",
-		"Sao Tome and Principe"
+		"Santo Tomé y Príncipe"
 	),
 	(
 		"SUR",
@@ -706,23 +707,23 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"SVK",
-		"Slovak Republic"
+		"República Eslovaca"
 	),
 	(
 		"SVN",
-		"Slovenia"
+		"Eslovenia"
 	),
 	(
 		"SWE",
-		"Sweden"	
+		"Suecia"	
 	),
 	(
 		"SWZ",
-		"Swaziland"	
+		"Suazilandia"	
 	),
 	(
 		"SXM",
-		"Sint Maarten (Dutch part)"
+		"Sint Maarten (parte holandesa)"
 	),
 	(
 		"SYC",
@@ -730,11 +731,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"SYR",
-		"Syrian Arab Republic"
+		"República Árabe Siria"
 	),
 	(
 		"TCA",
-		"Turks and Caicos Islands"	
+		"Islas Turcas y Caicos"	
 	),
 	(
 		"TCD",
@@ -746,15 +747,15 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"THA",
-		"Thailand"
+		"Tailandia"
 	),
 	(
 		"TJK",
-		"Tajikistan"	
+		"Tayikistán"	
 	),
 	(
 		"TKM",
-		"Turkmenistan"	
+		"Turkmenistán"	
 	),
 	(
 		"TLS",
@@ -766,15 +767,15 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"TTO",
-		"Trinidad and Tobago"
+		"Trinidad y Tobago"
 	),
 	(
 		"TUN",
-		"Tunisia"
+		"Túnez"
 	),
 	(
 		"TUR",
-		"Turkey"
+		"Turquía"
 	),
 	(
 		"TUV",
@@ -790,7 +791,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"UKR",
-		"Ukraine"	
+		"Ucrania"	
 	),
 	(
 		"URY",
@@ -798,7 +799,7 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"USA",
-		"United States"	
+		"Estados Unidos"	
 	),
 	(
 		"UZB",
@@ -806,19 +807,19 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"VCT",
-		"St. Vincent and the Grenadines"
+		"San Vicente y las Granadinas"
 	),
 	(
 		"VEN",
-		"Venezuela, RB"	
+		"Venezuela"	
 	),
 	(
 		"VGB",
-		"British Virgin Islands"
+		"Islas Vírgenes Británicas"
 	),
 	(
 		"VIR",
-		"Virgin Islands (U.S.)"
+		"Islas Vírgenes (EE. UU.)"
 	),
 	(
 		"VNM",
@@ -834,11 +835,11 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"YEM",
-		"Yemen, Rep."	
+		"Yemen"	
 	),
 	(
 		"ZAF",
-		"South Africa"	
+		"Sudáfrica"	
 	),
 	(
 		"ZMB",
@@ -846,6 +847,6 @@ COUNTRIES_CODE_CHOICES = (
 	),
 	(
 		"ZWE",
-		"Zimbabwe"	
+		"Zimbabue"	
 	)
 )

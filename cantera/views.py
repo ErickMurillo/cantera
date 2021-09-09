@@ -27,6 +27,8 @@ def index(request,template='index.html'):
 	alianzas = Contraparte.objects.order_by('nombre').exclude(nombre = 'Particular')
 	slider = Slider.objects.all()
 	compromisos = Compromiso.objects.aggregate(total = Sum('conteo_hombres') + Sum('conteo_mujeres'))['total']
+	hombres = Compromiso.objects.aggregate(total = Sum('conteo_hombres'))['total']
+	mujeres = Compromiso.objects.aggregate(total = Sum('conteo_mujeres'))['total']
 	
 	return render(request, template,locals())
 

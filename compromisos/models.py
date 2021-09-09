@@ -22,7 +22,7 @@ class Compromiso(models.Model):
 	
 	@property
 	def cached_img(self):
-		im = get_thumbnail(self.foto, '1000', crop='center', quality=99)
+		im = get_thumbnail(self.foto, '300x224', crop='center', quality=99)
 		return im.url
 
 # class FotosCompromisos(models.Model):

@@ -445,7 +445,10 @@ img.b_avatar {
  position: initial;
 }
 /*Mapa*/
-.conteo_map{
+.section_map .conteo_map{
+  justify-content: space-between;
+}
+.section_map .conteo_map .value{
 	font-size: 50px;
 	color: #03a8cb;
 	font-weight: bold;
@@ -841,6 +844,7 @@ a[class*="socicon-"].socicon-vimeo:hover{
 .bottom_color_border.tooltip_map:after{
   background-color: #03a8cb;
 }
+
 
 
 /*Menu principal*/

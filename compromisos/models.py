@@ -8,7 +8,7 @@ class Compromiso(models.Model):
 	conteo_hombres = models.IntegerField()
 	conteo_mujeres = models.IntegerField()
 	total = models.IntegerField(editable=False)
-	foto = ImageField(upload_to='compromisos/')
+	foto = ImageField(upload_to='compromisos/',help_text = '300x224')
 
 	class Meta:
 		verbose_name_plural = 'Compromisos'

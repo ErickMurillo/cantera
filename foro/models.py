@@ -16,7 +16,7 @@ class Foros(models.Model):
 	# cierre = models.DateField('Cierre de aportes')
 
 	tipo_portada = models.IntegerField(choices = PORTADA_CHOICES)
-	foto = ImageField('Foto',upload_to='foros/')
+	foto = ImageField('Foto',upload_to='foros/',help_text = '830x620')
 	url_video = EmbedVideoField(null = True, blank = True)
 	contenido = RichTextUploadingField()
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)

@@ -9,7 +9,7 @@ from django.urls import reverse
 
 class GaleriaImagenes(models.Model):
 	titulo = models.CharField(max_length=200)
-	portada = ImageField(upload_to='galerias/',verbose_name='Imagen')
+	portada = ImageField(upload_to='galerias/',verbose_name='Imagen',help_text = '830x620')
 	descripcion = RichTextUploadingField()
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
@@ -33,13 +33,13 @@ class GaleriaImagenes(models.Model):
 class Imagenes(models.Model):
 	imagenes = models.ForeignKey(GaleriaImagenes,on_delete=models.CASCADE)
 	nombre = models.CharField(max_length=90)
-	imagen = ImageField(upload_to='galerias/')
+	imagen = ImageField(upload_to='galerias/',help_text = '830x620')
 
 ############
 
 class GaleriaVideos(models.Model):
 	titulo = models.CharField(max_length=200)
-	portada = ImageField(upload_to='galerias/',verbose_name='Imagen',blank=True,null=True)
+	portada = ImageField(upload_to='galerias/',verbose_name='Imagen',blank=True,null=True,help_text = '830x620')
 	descripcion = RichTextUploadingField()
 	# url = EmbedVideoField()
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
@@ -72,7 +72,7 @@ class ListVideos(models.Model):
 
 class Audios(models.Model):
 	titulo = models.CharField(max_length=200)
-	portada = ImageField(upload_to='galerias/',verbose_name='Imagen',blank=True,null=True)
+	portada = ImageField(upload_to='galerias/',verbose_name='Imagen',blank=True,null=True,help_text = '830x620')
 	descripcion = RichTextUploadingField()
 	tematica = models.ForeignKey(Temas,on_delete=models.DO_NOTHING)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')

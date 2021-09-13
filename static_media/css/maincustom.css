@@ -450,6 +450,11 @@ img.b_avatar {
 }
 .section_map .conteo_map .value{
 	font-size: 50px;
+	color: #e85242;
+	font-weight: bold;
+}
+.section_map .conteo_map .value.main_value{
+	font-size: 50px;
 	color: #03a8cb;
 	font-weight: bold;
 }

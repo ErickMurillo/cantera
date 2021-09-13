@@ -195,7 +195,7 @@
 						<div class="vertical-item content-padding with_border">
 							<div class="item-media"> 
 								{% thumbnail obj.foto "830x620" crop="center" as im %}
-								<img src="{{ im.url }}" alt="">
+								<img src="{{ im.url }}" srcset="{{ im.url }} {{ im.x }}w" alt="">
 								{% empty %}
 								<img src="http://via.placeholder.com/830x620" alt="">
 								{% endthumbnail %}
@@ -208,10 +208,11 @@
 										<time datetime="2017-10-03T08:50:40+00:00">
 										{{obj.inicio|date:"d N, Y"}}</time>
 									</a>
-								</span>
+								</span> 
 							</div>
 						</div>
 						{% endfor %}
+
 					</div>
 				</div>
 			</aside>
@@ -237,22 +238,7 @@
     }
  });
 
- $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:false,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:3
-        }
-    }
-});
+
 
 </script>
 {% endblock extra_js %}

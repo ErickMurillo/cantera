@@ -4,7 +4,7 @@ from . import dataCountries as data
 
 # Create your models here.
 class Compromiso(models.Model):
-	pais = models.CharField(max_length=3,choices=data.COUNTRIES_CODE_CHOICES)
+	pais = models.CharField(max_length=3,choices=data.COUNTRIES_CODE_CHOICES,unique = True)
 	conteo_hombres = models.IntegerField()
 	conteo_mujeres = models.IntegerField()
 	total = models.IntegerField(editable=False)

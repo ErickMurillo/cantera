@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'nested_admin',
     'colorfield',
     'haystack', 
+    'django_crontab',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -300,3 +301,7 @@ HAYSTACK_CONNECTIONS = {
 
 THUMBNAIL_ENGINE = 'sorl.thumbnail.engines.wand_engine.Engine'
 THUMBNAIL_PRESERVE_FORMAT = True
+
+CRONJOBS = [
+    ('0 1 * * *', 'django.core.management.call_command', ['rebuild_index']),
+]

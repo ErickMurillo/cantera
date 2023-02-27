@@ -288,7 +288,8 @@ TAGGIT_CASE_INSENSITIVE = True
 
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 12
 
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
 
 WHOOSH_INDEX = os.path.join(BASE_DIR, 'whoosh/')
 

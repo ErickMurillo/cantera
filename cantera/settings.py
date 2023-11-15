@@ -306,23 +306,3 @@ THUMBNAIL_PRESERVE_FORMAT = True
 CRONJOBS = [
     ('0 1 * * *', 'django.core.management.call_command', ['rebuild_index']),
 ]
-
-
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-
-sentry_sdk.init(
-    dsn="https://45988cd97eba4f5a9802747b5d9bcf81@o4504850509725696.ingest.sentry.io/4504850534694912",
-    integrations=[
-        DjangoIntegration(),
-    ],
-
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0,
-
-    # If you wish to associate users to errors (assuming you are using
-    # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=True
-)

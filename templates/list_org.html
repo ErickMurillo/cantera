@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load el_pagination_tags %}
+{% load solo_tags %}
 
 {% block extra_css %}
 <style type="text/css">
@@ -30,6 +31,29 @@
 		</div>
 	</div>
 </section>
+
+{% get_solo 'configuracion.InformacionAlianzas' as info %}
+{% if info.activo %}
+<section class="ls section_padding_top_100 section_map">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
+				<div class="flex-wrap v-center">
+					<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+						<h2 class="section_header color1">{{info.titulo}}</h2>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 to_animate" data-animation="fadeInUp">
+				<div class="row">
+					{{info.contenido|safe}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+
 {% if request.user.is_authenticated %}
 <section id="account_login" class="ls section_padding_top_110 columns_padding_30">
 	<div class="container">

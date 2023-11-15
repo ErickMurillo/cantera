@@ -4,7 +4,7 @@ from organizaciones.models import *
 
 # Create your models here.
 class User(AbstractUser):
-	organizacion = models.ForeignKey(Contraparte,on_delete=models.DO_NOTHING,null=True,blank=True)
+	organizacion = models.ForeignKey(Contraparte,on_delete=models.SET_NULL,null=True,blank=True)
 	avatar = ImageField(upload_to='usuario/avatar/',null=True,blank=True)
 	pais = models.ForeignKey(Pais,on_delete=models.DO_NOTHING,null=True,blank=True)
 	# USERNAME_FIELD = 'email'

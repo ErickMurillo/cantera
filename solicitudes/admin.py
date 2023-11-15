@@ -44,7 +44,10 @@ class SolicitudesOrgAdmin(admin.ModelAdmin):
 		super(SolicitudesOrgAdmin, self).save_model(request, obj, form, change)
 
 	def has_delete_permission(self, request, obj=None):
-		return False
+		if request.user.is_superuser:
+			return True
+		else:
+			return False
 
 class SolicitudesNuevasOrgAdmin(admin.ModelAdmin):
 	list_display = ('usuario','nombre_org','aprobado')
@@ -86,7 +89,10 @@ class SolicitudesNuevasOrgAdmin(admin.ModelAdmin):
 		super(SolicitudesNuevasOrgAdmin, self).save_model(request, obj, form, change)
 
 	def has_delete_permission(self, request, obj=None):
-		return False
+		if request.user.is_superuser:
+			return True
+		else:
+			return False
 
 admin.site.register(SolicitudesOrg,SolicitudesOrgAdmin)
 admin.site.register(SolicitudesNuevasOrg,SolicitudesNuevasOrgAdmin)

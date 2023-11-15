@@ -2,6 +2,7 @@ from django.db import models
 from solo.models import SingletonModel
 from sorl.thumbnail import ImageField
 from colorfield.fields import ColorField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 
@@ -59,3 +60,35 @@ class InformacionDestacada(SingletonModel):
 
 	class Meta:
 		verbose_name = 'Información destacada'
+
+class InformacionIndex(SingletonModel):
+	titulo = models.CharField('Título',max_length=200)
+	contenido = RichTextUploadingField()
+	activo = models.BooleanField(default=False)
+
+	class Meta:
+		verbose_name = 'Información Index'
+
+class InformacionAlianzas(SingletonModel):
+	titulo = models.CharField('Título',max_length=200)
+	contenido = RichTextUploadingField()
+	activo = models.BooleanField(default=False)
+
+	class Meta:
+		verbose_name = 'Información Alianzas'
+
+REDES_CHOICES = (('chrome','Sitio web'),('facebook','Facebook'),('twitter','Twitter'),('youtube','Youtube'),
+					('instagram','Instagram'),('linkedin','Linkedin'),
+					('flickr','Flickr'),('pinterest','Pinterest'),('vimeo','Vimeo'),('otra','Otra'),)
+
+class Redes(models.Model):
+	opcion = models.CharField(max_length=25,choices=REDES_CHOICES)
+	url = models.URLField()
+	activo = models.BooleanField(default=True)
+
+	def __str__(self):
+		return self.get_opcion_display()
+
+	class Meta:
+		verbose_name = 'Red'
+		verbose_name_plural = 'Redes'

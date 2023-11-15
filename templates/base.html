@@ -201,7 +201,9 @@
                                     <!-- main nav start -->
                                     <nav class="mainmenu_wrapper">
                                         <ul class="mainmenu nav sf-menu">
-
+                                                <li class="menu_punto"> 
+                                                    <a class="main" href="/">Inicio</a>
+                                                </li>
                                                 <li> 
                                                     <a class="{% if request.path == '/quienes-somos' %} active {% endif %}" href="/quienes-somos/">Nosotros </a>
                                                 </li>
@@ -330,7 +332,15 @@
                             <div class="col-md-2 col-sm-6 col-xs-12 to_animate">
                                 <div class="widget widget_text">
                                     <h3 class="widget-title">Seguinos</h3>
+                                    {% for red in redes %}
                                     <div class="media small-media">
+                                        <div class="media-left media-middle"> 
+                                            <a href="{{red.url}}" target="_blank" class="social-icon color-icon border-icon rounded-icon socicon-{{red.opcion}}"></a>
+                                         </div>
+                                        <div class="media-body media-middle"> {{red.get_opcion_display}} </div>
+                                    </div>
+                                    {% endfor %}
+                                    <!--<div class="media small-media">
                                         <div class="media-left media-middle"> 
                                             <a href="https://www.facebook.com/generoymetodologias/" target="_blank" class="social-icon color-icon border-icon rounded-icon socicon-facebook"></a>
                                          </div>
@@ -347,7 +357,7 @@
                                             <a href="https://www.youtube.com/channel/UCdKHGzo0grM2e7rVpAWSR9A?view_as=subscriber" target="_blank" class="social-icon color-icon border-icon rounded-icon socicon-youtube"></a> 
                                         </div>
                                         <div class="media-body media-middle"> Youtube </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6 col-xs-12 to_animate">

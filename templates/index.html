@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% load solo_tags %}
 	
 {% block content %}
 <section class="intro_section page_mainslider ds all-scr-cover bottom-overlap-teasers">
@@ -249,6 +250,27 @@
 	</div>
 </section>
 
+{% get_solo 'configuracion.InformacionIndex' as info_index %}
+{% if info_index.activo %}
+<section class="ls section_padding_top_100 section_map">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 bottommargin_0 to_animate" data-animation="fadeInUp">
+				<div class="flex-wrap v-center">
+					<div class="col-sm-8 to_animate" data-animation="fadeInRight">
+						<h2 class="section_header color1">{{info_index.titulo}}</h2>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 to_animate" data-animation="fadeInUp">
+				<div class="row">
+					{{info_index.contenido|safe}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}
 
 <section class="ls section_padding_top_100 section_padding_bottom_110 section_map">
 	<div class="container">

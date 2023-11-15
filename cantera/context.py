@@ -22,6 +22,8 @@ def imagenes(request):
 
 	search = BuscadorForm()
 
+	redes = Redes.objects.all()
+
 	return {'foto_actualidad':foto_actualidad, 'foto_puntos_vista':foto_puntos_vista,
 			'foto_eventos':foto_eventos,'foto_galerias_videos':foto_galerias_videos,
 			'foto_galerias_audios':foto_galerias_audios,'foto_foros':foto_foros,
@@ -29,5 +31,6 @@ def imagenes(request):
 			'foto_publicaciones':foto_publicaciones,'foto_campanias':foto_campanias,
 			'foto_concursos':foto_concursos,'foto_alianzas':foto_alianzas,
 			'foto_galerias_imagenes':foto_galerias_imagenes,
-			'search': search
+			'search': search,
+			'redes': redes
 			}

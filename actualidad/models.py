@@ -32,7 +32,7 @@ class Actualidad(models.Model):
 	pais = models.ForeignKey(Pais,on_delete = models.DO_NOTHING)
 	photo = ImageField('Foto',upload_to='actualidad/',help_text = '830x620')
 	content = RichTextUploadingField(verbose_name='Contenido')
-	created_on = models.DateField('Fecha de publicación', auto_now_add=True)
+	created_on = models.DateField('Fecha de publicación')
 	tematica = models.ManyToManyField(Temas)
 	tags = TaggableManager("Tags",help_text='Separar elementos con "," ', blank=True)
 	slug = models.SlugField(max_length=200, editable=False)

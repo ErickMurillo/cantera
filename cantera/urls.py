@@ -24,11 +24,11 @@ from .sitemaps import *
 admin.site.site_header = 'Administración Cantera'
 admin.site.site_title = 'Cantera'
 
-def trigger_error(request):
-    division_by_zero = 1 / 0
+# def trigger_error(request):
+#     division_by_zero = 1 / 0
 
 urlpatterns = [
-    path('sentry-debug/', trigger_error),
+    # path('sentry-debug/', trigger_error),
     path('admin/', admin.site.urls),
     path('', index),
     path('contactenos/',contacto),

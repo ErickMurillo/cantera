@@ -27,16 +27,17 @@ from django.db.models import Q, Count
 # 	return render(request, template, locals())
 
 def filtro_pais(request,slug,category,template='list_actualidad.html'):
+	hoy = datetime.date.today()
 	if request.GET.get('buscador'):
 		q = request.GET['buscador']
 		list_object = Actualidad.objects.filter(
 										Q(pais__icontains = q),
-										category = category,aprobado = True).order_by('created_on')
+										category = category,aprobado = True,
+										created_on__lte = hoy).order_by('created_on')
 	else:
-		list_object = Actualidad.objects.filter(pais__slug = slug, category = category,aprobado = True).order_by('created_on')
+		list_object = Actualidad.objects.filter(pais__slug = slug, category = category,aprobado = True,created_on__lte = hoy).order_by('created_on')
 
-	list_paises = Actualidad.objects.filter(category = category).values_list('pais__nombre','pais__slug').order_by('pais__nombre').distinct('pais__nombre')
-	hoy = datetime.date.today()
+	list_paises = Actualidad.objects.filter(category = category,created_on__lte = hoy).values_list('pais__nombre','pais__slug').order_by('pais__nombre').distinct('pais__nombre')
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('inicio')[:3]
 	ids = list_object.values_list('id',flat=True)
 	tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
@@ -45,20 +46,20 @@ def filtro_pais(request,slug,category,template='list_actualidad.html'):
 	return render(request, template, locals())
 
 def filtro_categoria(request,category,template='list_actualidad.html'):
+	hoy = datetime.date.today()
 	if request.GET.get('buscador'):
 		q = request.GET['buscador']
 		list_object = Actualidad.objects.filter(
 										Q(tittle__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										category = category,aprobado = True).order_by('-created_on')
+										category = category,aprobado = True,created_on__lte = hoy).order_by('-created_on')
 		
 	else:
-		list_object = Actualidad.objects.filter(category = category,aprobado = True).order_by('-created_on')
+		list_object = Actualidad.objects.filter(category = category,aprobado = True,created_on__lte = hoy).order_by('-created_on')
 
-	list_paises = Actualidad.objects.filter(category = category).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
+	list_paises = Actualidad.objects.filter(category = category,created_on__lte = hoy).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
 
-	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('inicio')[:3]
 
 	ids = list_object.values_list('id',flat=True)
@@ -67,19 +68,19 @@ def filtro_categoria(request,category,template='list_actualidad.html'):
 	return render(request, template, locals())
 
 def filtro_tag(request,slug,category,template='list_actualidad.html'):
+	hoy = datetime.date.today()
 	if request.GET.get('buscador'):
 		q = request.GET['buscador']
 		list_object = Actualidad.objects.filter(
 										Q(tittle__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										category = category,aprobado = True).order_by('created_on')
+										category = category,aprobado = True,created_on__lte = hoy).order_by('created_on')
 		
 	else:
-		list_object = Actualidad.objects.filter(category = category,tags__slug = slug,aprobado = True).order_by('created_on')
+		list_object = Actualidad.objects.filter(category = category,tags__slug = slug,aprobado = True,created_on__lte = hoy).order_by('created_on')
 
-	list_paises = Actualidad.objects.filter(category = category).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
-	hoy = datetime.date.today()
+	list_paises = Actualidad.objects.filter(category = category,created_on__lte = hoy).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('inicio')[:3]
 	ids = list_object.values_list('id',flat=True)
 	tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
@@ -87,6 +88,7 @@ def filtro_tag(request,slug,category,template='list_actualidad.html'):
 	return render(request, template, locals())
 
 def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
+	hoy = datetime.date.today()
 	if request.GET.get('buscador'):
 		q = request.GET['buscador']
 		object = Actualidad.objects.get(slug = slug)
@@ -94,7 +96,7 @@ def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
 										Q(tittle__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										category = object.category).order_by('created_on')
+										category = object.category,created_on__lte = hoy).order_by('created_on')
 		return render(request,'list_actualidad.html',locals())
 
 	else:
@@ -102,7 +104,6 @@ def detalle_actualidad(request,slug, template = 'detail_actualidad.html'):
 		list_object = Actualidad.objects.filter(category = object.category,aprobado = True).order_by('created_on')
 	
 		list_paises = Actualidad.objects.filter(category = object.category).values_list('pais__nombre','pais__slug').distinct('pais__nombre').order_by('pais__nombre')
-		hoy = datetime.date.today()
 		prox_eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 		ids = list_object.values_list('id',flat=True)
 		tags = Actualidad.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]

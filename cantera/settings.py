@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
+    'haystack',
     
     'actualidad',
     'evento',
@@ -63,8 +64,7 @@ INSTALLED_APPS = [
     'disqus',
     'compressor',
     'nested_admin',
-    'colorfield',
-    'haystack', 
+    'colorfield', 
     'django_crontab',
 ]
 

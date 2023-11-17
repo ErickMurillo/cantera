@@ -3,7 +3,7 @@ from .models import *
 from evento.models import *
 import datetime
 from taggit.models import *
-from django.db.models import Q
+from django.db.models import Q, Count
 # Create your views here.
 
 def index_publicaciones(request,template='list_publicacion.html'):
@@ -11,7 +11,7 @@ def index_publicaciones(request,template='list_publicacion.html'):
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
 	ids = list_pub.values_list('id',flat=True)
-	tags = Publicacion.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:6]
+	tags = Publicacion.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:118]
 	return render(request, template, locals())
 
 def detail_publicacion(request,slug,template='detail_publicacion.html'):
@@ -37,7 +37,9 @@ def detail_guias(request,slug,template='detail_publicacion.html'):
 	return render(request,template,locals())
 
 def filtro_tags(request,template='list_publicacion.html',tag=None):
+	print(tag)
 	list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True,tags__slug = tag).order_by('-id')
+	tags_filter = Publicacion.objects.exclude(tags__slug = tag).annotate(num_times=Count('tags', distinct=True)).order_by('-num_times').values_list('tags__name','tags__slug')[:24]
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
 	return render(request,template,locals())

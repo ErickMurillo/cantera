@@ -152,9 +152,12 @@
                             <div class="col-lg-6 text-center text-lg-left hidden-xs">
                                 <div class="inline-content big-spacing">
                                     <div class="page_social"> 
-                                        <a class="social-icon socicon-facebook white-color" href="https://www.facebook.com/generoymetodologias/" target="_blank" title="Facebook"></a> 
+                                        {% for red in redes %}
+                                        <a class="social-icon socicon-{{red.opcion}} white-color" href="{{red.url}}" target="_blank" title="{{red.get_opcion_display}}"></a>
+                                        {% endfor %}
+                                        <!-- <a class="social-icon socicon-facebook white-color" href="https://www.facebook.com/generoymetodologias/" target="_blank" title="Facebook"></a> 
                                         <a class="social-icon socicon-twitter white-color" href="https://twitter.com/PMetodologias" target="_blank" title="Twitter"></a>  
-                                        <a class="social-icon socicon-youtube white-color" href="https://www.youtube.com/channel/UCdKHGzo0grM2e7rVpAWSR9A?view_as=subscriber" target="_blank" title="Youtube"></a> 
+                                        <a class="social-icon socicon-youtube white-color" href="https://www.youtube.com/channel/UCdKHGzo0grM2e7rVpAWSR9A?view_as=subscriber" target="_blank" title="Youtube"></a>  -->
                                     </div>
                                 </div>
                             </div>

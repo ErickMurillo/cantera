@@ -167,9 +167,15 @@
 					<div class="widget">
 						<h4 class="widget-title">Tags</h4>
 						<div class="tagcloud">
+							{% if tags %}
 							{% for tag in tags %}
 							<a href="{% url 'filtro_publicacion_tags' tag.slug %}">{{tag}}</a>
 							{% endfor %}
+							{% elif tags_filter %}
+							{% for tag in tags_filter %}
+							<a href="{% url 'filtro_publicacion_tags' tag.1 %}">{{tag.0}}</a>
+							{% endfor %}
+							{% endif %}
 						</div>
 					</div>
 

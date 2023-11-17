@@ -9,7 +9,7 @@ from users.models import User
 class Puntos(models.Model):
 	tittle = models.CharField('Título',max_length=200, unique=True)
 	foto = ImageField('Foto',upload_to='puntos-vista/',help_text = '830x620')
-	fecha_creacion = models.DateField('Fecha de publicación',auto_now_add=True)
+	fecha_creacion = models.DateField('Fecha de publicación')
 	contenido =  RichTextUploadingField()
 	usuario =  models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
 	slug = models.SlugField(max_length=200, editable=False)

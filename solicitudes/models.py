@@ -6,7 +6,7 @@ from organizaciones.models import *
 
 class SolicitudesOrg(models.Model):
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING)
-	organizacion = models.ForeignKey(Contraparte,on_delete=models.DO_NOTHING)
+	organizacion = models.ForeignKey(Contraparte,on_delete=models.CASCADE)
 	aprobado = models.BooleanField()
 
 	class Meta:

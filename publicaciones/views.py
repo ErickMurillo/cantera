@@ -37,7 +37,6 @@ def detail_guias(request,slug,template='detail_publicacion.html'):
 	return render(request,template,locals())
 
 def filtro_tags(request,template='list_publicacion.html',tag=None):
-	print(tag)
 	list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True,tags__slug = tag).order_by('-id')
 	tags_filter = Publicacion.objects.exclude(tags__slug = tag).annotate(num_times=Count('tags', distinct=True)).order_by('-num_times').values_list('tags__name','tags__slug')[:24]
 	hoy = datetime.date.today()

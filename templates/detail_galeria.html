@@ -127,8 +127,9 @@
 			<hr>
 		</div>
 		<div class="row flex-wrap">
+			{% for galeria in related_gal %}
 			<div class="col-md-4 col-sm-6">
-				{% for galeria in related_gal %}
+				
 				<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
 					<div class="item-media">
 						{% thumbnail galeria.portada "830x620" crop="center" as im %}
@@ -154,9 +155,9 @@
 						</span>
 					</div>
 				</article>
-				{% endfor %}
+				
 			</div>
-
+			{% endfor %}
 
 		</div>
 	</div>

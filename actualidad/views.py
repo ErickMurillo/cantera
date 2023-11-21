@@ -31,7 +31,8 @@ def filtro_pais(request,slug,category,template='list_actualidad.html'):
 	if request.GET.get('buscador'):
 		q = request.GET['buscador']
 		list_object = Actualidad.objects.filter(
-										Q(pais__icontains = q),
+										Q(pais__icontains = q) |
+										Q(tags__name__icontains = q),
 										category = category,aprobado = True,
 										created_on__lte = hoy).order_by('created_on')
 	else:

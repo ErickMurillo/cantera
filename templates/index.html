@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load solo_tags %}
+{% load custom_tags %}
 	
 {% block content %}
 <section class="intro_section page_mainslider ds all-scr-cover bottom-overlap-teasers">
@@ -9,10 +10,10 @@
 			{% for obj in slider %}
 			<li>
 				<div class="slide-image-wrap"> 
-					{% thumbnail obj.foto_1 "1350x500" crop="center" as im %}
+					{% thumbnail obj.foto_1 "1400x300" crop="center" as im %}
 					<img src="{{ im.url }}" alt="">
 					{% empty %}
-					<img src="http://via.placeholder.com/1350x810" alt="">
+					<img src="http://via.placeholder.com/1400x300" alt="">
 					{% endthumbnail %}
 				</div>
 				<div class="container">
@@ -47,10 +48,10 @@
 			{% if obj.foto_2 %}
 			<li>
 				<div class="slide-image-wrap"> 
-					{% thumbnail obj.foto_2 "1350x810" crop="center" as im %}
+					{% thumbnail obj.foto_2 "1400x300" crop="center" as im %}
 					<img src="{{ im.url }}" alt="">
 					{% empty %}
-					<img src="http://via.placeholder.com/1350x810" alt="">
+					<img src="http://via.placeholder.com/1400x300" alt="">
 					{% endthumbnail %}
 				</div>
 				<div class="container">
@@ -87,10 +88,10 @@
 			{% if obj.foto_3 %}
 			<li>
 				<div class="slide-image-wrap"> 
-					{% thumbnail obj.foto_3 "1350x810" crop="center" as im %}
+					{% thumbnail obj.foto_3 "1400x300" crop="center" as im %}
 					<img src="{{ im.url }}" alt="">
 					{% empty %}
-					<img src="http://via.placeholder.com/1350x810" alt="">
+					<img src="http://via.placeholder.com/1400x300" alt="">
 					{% endthumbnail %}
 				</div>
 				<div class="container">
@@ -137,7 +138,7 @@
 	<div class="menu_service">
 		<ul class="sf-menu menu-index">
 			<li id="actual_content" class='teaser main_bg_color transp with_padding big-padding margin_0 to_animate' data-animation="fadeInUp">				
-				<a  id="dropdownMenuButton" href="/actualidad">
+				<a id="dropdownMenuButton" >
 					<div class="media- media-middle text-center">
 						<div class="teaser_icon size_small round light_bg_color thick_border_icon big_wrapper"> <i class="icofont-news highlight" aria-hidden="true"></i> </div>
 					</div>

@@ -7,7 +7,16 @@ from django.db.models import Q, Count
 # Create your views here.
 
 def index_publicaciones(request,template='list_publicacion.html'):
-	list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True).order_by('-id')
+	if request.GET.get('buscador'):
+		q = request.GET['buscador']
+		list_pub = Publicacion.objects.filter(
+										Q(titulo__icontains = q) |
+										Q(resumen__icontains = q) |
+										Q(tematica__nombre__icontains = q) |
+										Q(tags__name__icontains = q),
+										aprobado = True).order_by('-id')
+	else:
+		list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True).order_by('-id')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
 	ids = list_pub.values_list('id',flat=True)

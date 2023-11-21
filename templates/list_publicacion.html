@@ -28,7 +28,7 @@
 						Inicio
 					</a> </li>
 					<li> <a class="white-color">Recursos Metodológicos</a> </li>
-					<li class="white-color">
+					<li class="active" class="white-color active">
 						{% if '/recursos-metodologicos/publicaciones/' in request.path  %}
 						<a href="/recursos-metodologicos/publicaciones">Publicaciones</a>
 						
@@ -36,7 +36,6 @@
 						<a href="/recursos-metodologicos/guias-metodologicas">Guías metodológicas</a>
 						{% endif %}
 					</li>
-					<li class="active">Detalle</li>
 				</ol>
 			</div>
 		</div>
@@ -140,11 +139,10 @@
 				<aside class="col-sm-5 col-md-4 col-lg-4">
 					<div class="widget widget_search">
 
-						<form class="" action="{% url 'search-publicacion' %}" method='GET'>
+						<form class="" action='.' method='GET'>
 							<div class="form-group margin_0"> 
-								<label class="sr-only" for="widget-search">Search for:</label> 
-								<!--<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar...">-->
-								{{search.q}}
+								<label class="sr-only" for="widget-search">Buscar:</label> 
+								<input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="buscador" class="form-control" placeholder="Buscar..."> 
 							</div> 
 							<button type="submit" class="theme_button color1">Search</button>	
 						</form>

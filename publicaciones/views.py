@@ -14,9 +14,9 @@ def index_publicaciones(request,template='list_publicacion.html'):
 										Q(resumen__icontains = q) |
 										Q(tematica__nombre__icontains = q) |
 										Q(tags__name__icontains = q),
-										aprobado = True).order_by('-id')
+										aprobado = True).distinct('id').order_by('-id')
 	else:
-		list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True).order_by('-id')
+		list_pub = Publicacion.objects.filter(tipo = 1,aprobado = True).distinct('id').order_by('-id')
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
 	ids = list_pub.values_list('id',flat=True)

@@ -6,6 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from embed_video.fields import EmbedVideoField
 from taggit_autosuggest.managers import TaggableManager
+from django.urls import reverse
 
 # Create your models here.
 TIPO_CHOICES = ((1,'Publicaciones'),(2,'Guías metodológicas'))
@@ -23,6 +24,9 @@ class Publicacion(models.Model):
 
 	def __str__(self):
 		return u'%s' % self.titulo
+	
+	def get_absolute_url(self):
+		return reverse('detail_publicacion',kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.titulo)

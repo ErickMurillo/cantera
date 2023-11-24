@@ -3,7 +3,7 @@ from sorl.thumbnail import ImageField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from users.models import User
-
+from django.urls import reverse
 
 # Create your models here.
 class Puntos(models.Model):
@@ -24,6 +24,9 @@ class Puntos(models.Model):
 	def save(self,*args,**kwargs):
 		self.slug = slugify(self.tittle)
 		return super(Puntos,self).save(*args,*kwargs)
+	
+	def get_absolute_url(self):
+		return reverse('point_details',kwargs={'slug': self.slug})
 
 class GaleriaPuntos(models.Model):
 	punto = models.ForeignKey(Puntos,on_delete=models.CASCADE)

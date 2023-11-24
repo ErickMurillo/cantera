@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 from sorl.thumbnail import ImageField
 from users.models import User
 from actualidad.models import *
+from django.urls import reverse
 
 from embed_video.fields import EmbedVideoField
 
@@ -31,6 +32,9 @@ class Foros(models.Model):
 
 	def __str__(self):
 		return self.nombre
+	
+	def get_absolute_url(self):
+		return reverse('detalle-foro',kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.nombre)

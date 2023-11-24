@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load el_pagination_tags %}
+
+{% block content %}
+<section class="page_breadcrumbs ds background_cover section_padding_top_65 section_padding_bottom_65">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="white-color">Buscador</h2>
+				<ol class="breadcrumb white-color">
+					<li> <a href="/">
+						Inicio
+					</a> </li>
+					<li class="active">Buscador</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_30">
+	<div class="container">
+		<div class="row">
+            {% paginate 12 list_object %}
+            {% for obj in list_object %}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<article class="post side-item side-md content-padding with_border bottom_color_border left loop-color">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="item-content">
+								<header class="entry-header">
+									<h3 class="entry-title small"><a href="{{obj.2}}">{{obj.0}}</a> </h3>								
+								</header>
+								<p>{{obj.1|safe|striptags|truncatechars:350}} <a href="{{obj.2}}" class="more-link">Ver más</a></p>
+							</div>
+						</div>
+					</div>
+				</article>
+            </div>
+            {% endfor %}
+            <div class="row topmargin_60">
+                <div class="col-sm-12 text-center">
+                    <ul class="pagination">
+                        {% show_pages %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  $(".endless_page_current").addClass("active");
+  $('.endless_page_link').wrap('<li></li>');
+  $('.endless_page_current').wrap('<li class="active"></li>');
+</script>
+{% endblock extra_js %}

@@ -17,6 +17,10 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from compromisos.models import *
 from configuracion.models import InformacionDestacada
+from django.db.models import Q
+from puntosvista.models import *
+import random
+from publicaciones.models import *
 
 def index(request,template='index.html'):
 	# actualidad = Actualidad.objects.order_by('-created_on')[:6]
@@ -122,3 +126,48 @@ class CustomPasswordChangeView(PasswordChangeView):
 
 class LocaLSignupView(SignupView):
     success_url = '/'
+
+def buscador_general(request,template='buscador_general.html'):
+	hoy = datetime.date.today()
+	if request.GET.get('q'):
+		q = request.GET['q']
+		list_object = []
+		#actualidad
+		actualidad = Actualidad.objects.filter(
+										Q(tittle__icontains = q) |
+										Q(tematica__nombre__icontains = q) |
+										Q(tags__name__icontains = q),
+										aprobado = True,
+										created_on__lte = hoy).order_by('-created_on')
+		for obj in actualidad:
+			list_object.append((obj.tittle,obj.content,obj.get_absolute_url()))
+		
+		#puntos vista
+		puntos_vista = Puntos.objects.filter(
+										Q(tittle__icontains = q) |
+										Q(contenido__icontains = q),aprobado = True,fecha_creacion__lte = hoy).order_by('tittle')
+		for obj in puntos_vista:
+			list_object.append((obj.tittle,obj.contenido,obj.get_absolute_url()))
+
+		#foros
+		foros = Foros.objects.filter(
+										Q(nombre__icontains = q) |
+										Q(tematica__nombre__icontains = q) |
+										Q(contenido__icontains = q),aprobado = True).order_by('-creacion')
+		for obj in foros:
+			list_object.append((obj.nombre,obj.contenido,obj.get_absolute_url()))
+		
+		#publicaciones
+		publicaciones = Publicacion.objects.filter(
+										Q(titulo__icontains = q) |
+										Q(resumen__icontains = q) |
+										Q(tematica__nombre__icontains = q) |
+										Q(tags__name__icontains = q),
+										aprobado = True).distinct('id').order_by('-id')
+		for obj in publicaciones:
+			list_object.append((obj.titulo,obj.resumen,obj.get_absolute_url()))
+
+		#random list
+		random.shuffle(list_object)
+		
+	return render(request,template,locals())

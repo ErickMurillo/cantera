@@ -52,6 +52,7 @@ urlpatterns = [
     path('nested_admin/', include('nested_admin.urls')),
     path('search/', include('haystack.urls')),
     path('compromisos/', include('compromisos.urls')),
+    path('buscador/', buscador_general, name='buscador-general'),
     path('sitemap.xml', views.index, {'sitemaps': sitemaps}),
     path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps,'template_name': 'custom_sitemap.html'},
         name='django.contrib.sitemaps.views.sitemap'),

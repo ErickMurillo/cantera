@@ -164,6 +164,21 @@
                             <div class="col-lg-6 text-center text-lg-right">
                                 <div id="topline-animation-wrap">
                                     <div id="topline-hide" class="inline-content big-spacing"> 
+                                        <div class="widget widget_search">
+                                            <form class="" action="{% url 'buscador-general' %}"" method='GET'>
+                                                <div class="form-group margin_0"> 
+                                                    <label class="sr-only" for="widget-search">Buscar:</label> 
+                                                    <input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="q" class="form-control" placeholder="Buscar..."> 
+                                                </div> 
+                                                <button type="submit" class="theme_button color1">Search</button>	
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 text-center text-lg-right">
+                                <div id="topline-animation-wrap">
+                                    <div id="topline-hide" class="inline-content big-spacing"> 
 
                                     
                                         <ul class="inline-list menu">

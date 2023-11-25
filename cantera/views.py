@@ -21,6 +21,8 @@ from django.db.models import Q
 from puntosvista.models import *
 import random
 from publicaciones.models import *
+from galerias.models import *
+from evento.models import *
 
 def index(request,template='index.html'):
 	# actualidad = Actualidad.objects.order_by('-created_on')[:6]
@@ -167,7 +169,41 @@ def buscador_general(request,template='buscador_general.html'):
 		for obj in publicaciones:
 			list_object.append((obj.titulo,obj.resumen,obj.get_absolute_url()))
 
+		#galerias-img
+		galerias_img = GaleriaImagenes.objects.filter(
+												Q(titulo__icontains = q) |
+												Q(descripcion__icontains = q) |
+												Q(tematica__nombre__icontains = q),aprobado = True).distinct('id').order_by('-id')
+		for obj in galerias_img:
+			list_object.append((obj.titulo,obj.descripcion,obj.get_absolute_url()))
+		
+		#galerias-videos
+		galerias_videos = GaleriaVideos.objects.filter(
+												Q(titulo__icontains = q) |
+												Q(descripcion__icontains = q) |
+												Q(tematica__nombre__icontains = q),aprobado = True).distinct('id').order_by('-id')
+		for obj in galerias_videos:
+			list_object.append((obj.titulo,obj.descripcion,obj.get_absolute_url()))
+		
+		#audios
+		audios = Audios.objects.filter(
+										Q(titulo__icontains = q) |
+										Q(descripcion__icontains = q) |
+										Q(tematica__nombre__icontains = q),aprobado = True).distinct('id').order_by('-id')
+		for obj in audios:
+			list_object.append((obj.titulo,obj.descripcion,obj.get_absolute_url()))
+		
+		#eventos
+		evento = Evento.objects.filter(
+										Q(tittle__icontains = q) |
+										Q(descripcion__icontains = q) |
+										Q(tags__name__icontains = q),aprobado = True).distinct('id').order_by('-id')
+		for obj in evento:
+			list_object.append((obj.tittle,obj.descripcion,obj.get_absolute_url()))
+
 		#random list
 		random.shuffle(list_object)
+	else:
+		list_object = []
 		
 	return render(request,template,locals())

@@ -110,9 +110,7 @@
                 background: Transparent !important;
                 border: none;                
             }
-            .goog-te-gadget-simple::after{
-                content: "\ea67";
-                font-family: IcoFont!important;
+            .goog-te-gadget-simple span {   
                 font-weight: 400;
                 font-size: 16px;
                 color: white !important;
@@ -142,6 +140,13 @@
             .response{
                 color:white;
             }
+            .general {
+                height: 50px !important;
+                line-height: 50px !important;
+            }
+            .general::placeholder {
+                color: white !important;
+            }
         </style>
         <div id="canvas">
             <div id="box_wrapper">
@@ -168,9 +173,9 @@
                                             <form class="" action="{% url 'buscador-general' %}"" method='GET'>
                                                 <div class="form-group margin_0"> 
                                                     <label class="sr-only" for="widget-search">Buscar:</label> 
-                                                    <input id="widget-search" type="text" {% if q %}value="{{q}}"{% endif %} name="q" class="form-control" placeholder="Buscar..."> 
+                                                    <input id="widget-search" class="general" type="text" {% if q %}value="{{q}}"{% endif %} name="q" class="form-control" placeholder="Buscar..."> 
                                                 </div> 
-                                                <button type="submit" class="theme_button color1">Search</button>	
+                                                <button type="submit" class="theme_button color1 general">Search</button>	
                                             </form>
                                         </div>
                                     </div>
@@ -179,8 +184,6 @@
                             <div class="col-lg-6 text-center text-lg-right">
                                 <div id="topline-animation-wrap">
                                     <div id="topline-hide" class="inline-content big-spacing"> 
-
-                                    
                                         <ul class="inline-list menu">
 
                                             <li><div id="google_translate_element"></div></li>

@@ -10,10 +10,10 @@
 			{% for obj in slider %}
 			<li>
 				<div class="slide-image-wrap"> 
-					{% thumbnail obj.foto_1 "1400x300" crop="center" as im %}
+					{% thumbnail obj.foto_1 "1905x550" crop="center" as im %}
 					<img src="{{ im.url }}" alt="">
 					{% empty %}
-					<img src="http://via.placeholder.com/1400x300" alt="">
+					<img src="http://via.placeholder.com/"1905x550"" alt="">
 					{% endthumbnail %}
 				</div>
 				<div class="container">
@@ -48,10 +48,10 @@
 			{% if obj.foto_2 %}
 			<li>
 				<div class="slide-image-wrap"> 
-					{% thumbnail obj.foto_2 "1400x300" crop="center" as im %}
+					{% thumbnail obj.foto_2 "1905x550" crop="center" as im %}
 					<img src="{{ im.url }}" alt="">
 					{% empty %}
-					<img src="http://via.placeholder.com/1400x300" alt="">
+					<img src="http://via.placeholder.com/1905x550" alt="">
 					{% endthumbnail %}
 				</div>
 				<div class="container">
@@ -88,10 +88,10 @@
 			{% if obj.foto_3 %}
 			<li>
 				<div class="slide-image-wrap"> 
-					{% thumbnail obj.foto_3 "1400x300" crop="center" as im %}
+					{% thumbnail obj.foto_3 "1905x550" crop="center" as im %}
 					<img src="{{ im.url }}" alt="">
 					{% empty %}
-					<img src="http://via.placeholder.com/1400x300" alt="">
+					<img src="http://via.placeholder.com/1905x550" alt="">
 					{% endthumbnail %}
 				</div>
 				<div class="container">

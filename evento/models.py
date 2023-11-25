@@ -5,6 +5,7 @@ from location_field.models.plain import PlainLocationField
 from sorl.thumbnail import ImageField
 from users.models import User
 from taggit_autosuggest.managers import TaggableManager
+from django.urls import reverse
 
 # Create your models here.
 
@@ -28,6 +29,9 @@ class Evento(models.Model):
 
 	def __str__(self):
 		return self.tittle
+	
+	def get_absolute_url(self):
+		return reverse('detailEventos',kwargs={'slug': self.slug})
 
 	def save(self,*args,**kwargs):
 		self.slug = slugify(self.tittle)

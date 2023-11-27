@@ -20,7 +20,7 @@ def index_publicaciones(request,template='list_publicacion.html'):
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
 	ids = list_pub.values_list('id',flat=True)
-	tags = Publicacion.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:118]
+	tags = Publicacion.tags.most_common(min_count=2,extra_filters={'id__in': ids})[:18]
 	return render(request, template, locals())
 
 def detail_publicacion(request,slug,template='detail_publicacion.html'):

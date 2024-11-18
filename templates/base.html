@@ -95,20 +95,7 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-144367316-1');
-        </script>
-        <script>
-            (function($){
-                setInterval(() => {
-                    $.each($('iframe'), (arr,x) => {
-                        let src = $(x).attr('src');
-                        if (src && src.match(/(ads-iframe)|(disqusads)/gi)) {
-                            $(x).remove();
-                        }
-                    });
-                }, 300);
-            })(jQuery);
-        </script>
-            
+        </script>            
     </head>
 
     <body>
@@ -502,6 +489,18 @@
     <script src="/static/js/mc-validate-messages.js"></script>
     {% block extra_js %}{% endblock extra_js %}
     {% endcompress %}
+    <script>
+        (function($){
+            setInterval(() => {
+                $.each($('iframe'), (arr,x) => {
+                    let src = $(x).attr('src');
+                    if (src && src.match(/(ads-iframe)|(disqusads)/gi)) {
+                        $(x).remove();
+                    }
+                });
+            }, 300);
+        })(jQuery);
+    </script>
 
     </body>
 </html>

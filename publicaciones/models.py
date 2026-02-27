@@ -7,6 +7,7 @@ from django.template.defaultfilters import slugify
 from embed_video.fields import EmbedVideoField
 from taggit_autosuggest.managers import TaggableManager
 from django.urls import reverse
+from simple_history.models import HistoricalRecords
 
 # Create your models here.
 TIPO_CHOICES = ((1,'Publicaciones'),(2,'Guías metodológicas'))
@@ -21,6 +22,7 @@ class Publicacion(models.Model):
 	slug = models.SlugField(max_length=250,editable=False)
 	aprobado = models.BooleanField()
 	tags = TaggableManager("Palabras claves",help_text='Separar elementos con "," ', blank=True)
+	history = HistoricalRecords()
 
 	def __str__(self):
 		return u'%s' % self.titulo
@@ -31,6 +33,11 @@ class Publicacion(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.titulo)
 		return super(Publicacion, self).save(*args, **kwargs)
+	
+	@property
+	def fecha_creacion(self):
+		return self.history.earliest().history_date
+
 
 	class Meta:
 		verbose_name_plural = 'Publicaciones'

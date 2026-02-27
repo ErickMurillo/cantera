@@ -16,10 +16,13 @@ class AudiosPublicacionInline(admin.TabularInline):
 class VideosPublicacionInline(admin.TabularInline):
 	model = VideosPublicacion
 	extra = 1
-
+	
 class PublicacionAdmin(admin.ModelAdmin):
 	inlines = [ArchivosPublicacionInline,]
-	
+	list_display = ('titulo','tipo','tematica','usuario','aprobado','fecha_creacion')
+	list_filter = ('tipo','tematica','aprobado',)
+	search_fields = ['titulo',]
+
 	def save_model(self,request,obj,form,change):
 		if obj.aprobado == True and obj.usuario != request.user:
 			try:

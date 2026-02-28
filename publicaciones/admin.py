@@ -3,6 +3,9 @@ from .models import *
 from users.models import *
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
+from rangefilter.filters import (
+    DateRangeFilterBuilder
+)
 
 # Register your models here.
 class ArchivosPublicacionInline(admin.TabularInline):
@@ -19,8 +22,8 @@ class VideosPublicacionInline(admin.TabularInline):
 	
 class PublicacionAdmin(admin.ModelAdmin):
 	inlines = [ArchivosPublicacionInline,]
-	list_display = ('titulo','tipo','tematica','usuario','aprobado','fecha_creacion')
-	list_filter = ('tipo','tematica','aprobado',)
+	list_display = ('titulo','tipo','tematica','usuario','aprobado','created_on')
+	list_filter = ('tipo','tematica','aprobado',('created_on', DateRangeFilterBuilder()),)
 	search_fields = ['titulo',]
 
 	def save_model(self,request,obj,form,change):

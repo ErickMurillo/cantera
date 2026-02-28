@@ -22,6 +22,7 @@ class Publicacion(models.Model):
 	slug = models.SlugField(max_length=250,editable=False)
 	aprobado = models.BooleanField()
 	tags = TaggableManager("Palabras claves",help_text='Separar elementos con "," ', blank=True)
+	created_on = models.DateField('Fecha de publicación',auto_now_add=True,null=True, blank=True)
 	history = HistoricalRecords()
 
 	def __str__(self):

@@ -21,8 +21,8 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from .sitemaps import *
 
-admin.site.site_header = 'Administración Cantera'
-admin.site.site_title = 'Cantera'
+admin.site.site_header = 'Plataforma Administrativa'
+admin.site.site_title = 'Administración'
 
 # def trigger_error(request):
 #     division_by_zero = 1 / 0

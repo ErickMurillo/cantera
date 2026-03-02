@@ -28,3 +28,9 @@ class VideosPublicacionForm(forms.ModelForm):
 		model = VideosPublicacion
 		fields = '__all__'
 		exclude = ['publicacion',]
+
+class PreguntasForm(forms.Form):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.fields['utilizara_material'] = forms.ChoiceField(choices=UTIL_CHOICES)
+		self.fields['perfil'] = forms.ChoiceField(choices=PERFIL_CHOICES)

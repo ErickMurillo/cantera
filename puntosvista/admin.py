@@ -3,6 +3,9 @@ from .models import *
 from users.models import *
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
+from rangefilter.filters import (
+	DateRangeFilterBuilder
+)
 
 # Register your models here.
 class GaleriaInline(admin.TabularInline):
@@ -11,6 +14,8 @@ class GaleriaInline(admin.TabularInline):
 
 class PuntosAdmin(admin.ModelAdmin):
 	inlines = [GaleriaInline,]
+	search_fields = ['tittle',]
+	list_filter = ('aprobado',('fecha_creacion', DateRangeFilterBuilder()),)
 	
 	def save_model(self, request, obj, form, change):
 		if obj.aprobado == True and obj.usuario != request.user:

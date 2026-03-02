@@ -75,3 +75,12 @@ class VideosPublicacion(models.Model):
 
 	class Meta:
 		verbose_name_plural = 'Videos'
+
+UTIL_CHOICES = ((1,''),)
+
+PERFIL_CHOICES = ((1,'Educador/a'),(2,'Multiplicador/a'),(3,'Estudiante'),(4,'Organización'),)
+
+class PreguntasPublicacion(models.Model):
+	publicacion = models.ForeignKey(Publicacion,on_delete=models.CASCADE)
+	utilizara_material = models.IntegerField(choices=UTIL_CHOICES,verbose_name='¿Para qué utilizará este material?')
+	perfil = models.IntegerField(choices=PERFIL_CHOICES,verbose_name='¿Para qué utilizará este material?')

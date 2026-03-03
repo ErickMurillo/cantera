@@ -35,10 +35,23 @@ class PublicacionDetailView(PermissionRequiredMixin, DetailView):
 	model = Publicacion
 
 	def get_context_data(self, **kwargs):
+		id = self.request.resolver_match.kwargs.get('pk')
+		preg = {}
+		for x in UTIL_CHOICES:
+			p = PreguntasPublicacion.objects.filter(utilizara_material = x[0],publicacion = id).count()
+			preg[x[1]] = p
+		
+		preg2 = {}
+		for x in PERFIL_CHOICES:
+			p = PreguntasPublicacion.objects.filter(perfil = x[0],publicacion = id).count()
+			preg2[x[1]] = p
+
 		return {
 			**super().get_context_data(**kwargs),
 			**admin.site.each_context(self.request),
 			"opts": self.model._meta,
+			"resp1": preg,
+			"resp2": preg2,
 		}
 
 class PublicacionAdmin(admin.ModelAdmin):

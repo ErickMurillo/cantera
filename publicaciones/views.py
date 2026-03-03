@@ -80,3 +80,9 @@ def submit_form_ajax(request, id=None):
 		preg = PreguntasPublicacion(utilizara_material = material, perfil = perfil, publicacion = obj)
 		preg.save()
 		return JsonResponse({'status': 'success'})
+
+def submit_tematica(request):
+	if request.method == 'POST':
+		tema = request.POST.get('tematica')
+		print(tema,'---------------------')
+	return JsonResponse({'status': 'success'})

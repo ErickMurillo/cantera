@@ -9,4 +9,5 @@ urlpatterns = [
 	path('guias-metodologicas/', views.index_guias, name ='index_guias'),
 	path('guias-metodologicas/<slug>/', views.detail_guias, name = 'detail_guias'),
     path('submit-form/<id>/', views.submit_form_ajax, name='submit_form_ajax'),
+    path('submit-tematica/', views.submit_tematica, name='submit_tematica'),
 ]

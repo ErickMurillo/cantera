@@ -177,6 +177,18 @@
 						</div>
 					</div>
 
+					<div class="widget widget_search">
+						<p class="widget-title">¿No encontraste lo que buscabas?</p> 
+						<form id="my-form" method="post">{% csrf_token %}
+							<div class="form-group margin_0"> 
+								<input id="tematica" type="text" name="tematica" class="form-control" placeholder="Escribe la temática que te interesa"> 
+							</div> 
+							<button type="submit" class="theme_button color1">Enviar</button>	
+						</form>
+						<br>
+						<div class="alert alert-success" role="alert" id="msg" style="display:none">Enviado</div>
+					</div>
+
 					<div class="widget widget_slider widget_recent_posts">
 						<h4 class="widget-title"> Próximos Eventos </h4>
 						<div class="owl-carousel loop-colors" data-nav="true" data-loop="true" data-autoplay="true" data-items="1" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1">
@@ -235,4 +247,24 @@ var style = document.createElement('style');
 	  'height: '+height+'px !important;'+
 	'}');
 </script> -->
+<script>
+$('#my-form').on('submit', function(event) {
+  event.preventDefault();
+  $.ajax({
+    url: '{% url 'submit_tematica' %}',
+    type: 'POST',
+    data: $(this).serialize(),
+    success: function(data) {
+      if (data.status === 'success') {
+		$('#msg').show();
+      } else {
+        alert('There was an error submitting the form.');
+      }
+    },
+    error: function() {
+      alert('There was an error submitting the form.');
+    }
+  });
+});
+</script>
 {% endblock extra_js %}

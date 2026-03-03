@@ -12,5 +12,17 @@
 {% endblock %}
 
 {% block content %}
+<h3>¿Para qué utilizará este material?</h3>
+<br>
+{% for k,v in resp1.items %}
+    <p>{{k}}: {{v}}</p>
+{% endfor %}
+<hr>
 
+<h3>¿Cuál es su perfil?</h3>
+<br>
+{% for k,v in resp2.items %}
+    <p>{{k}}: {{v}}</p>
+{% endfor %}
+<hr>
 {% endblock %}

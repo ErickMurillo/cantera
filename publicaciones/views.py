@@ -74,7 +74,7 @@ from django.http import JsonResponse
 
 def submit_form_ajax(request, id=None):
 	if request.method == 'POST':
-		material = request.POST.get('utilizara_material')
+		material = request.POST.getlist('utilizara_material')
 		perfil = request.POST.get('perfil')
 		obj = Publicacion.objects.get(id=id) 
 		preg = PreguntasPublicacion(utilizara_material = material, perfil = perfil, publicacion = obj)

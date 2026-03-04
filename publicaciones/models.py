@@ -76,11 +76,24 @@ class VideosPublicacion(models.Model):
 	class Meta:
 		verbose_name_plural = 'Videos'
 
-UTIL_CHOICES = ((1,''),)
+class RespMaterial(models.Model):
+	nombre = models.CharField(max_length=250)
 
-PERFIL_CHOICES = ((1,'Educador/a'),(2,'Multiplicador/a'),(3,'Estudiante'),(4,'Organización'),)
+	def __str__(self):
+		return u'%s' % self.nombre
+
+	class Meta:
+		verbose_name_plural = '¿Para qué utilizará este material?'
+
+# UTIL_CHOICES = ((1,'Uso educativo (clases, talleres, procesos formativos)'),(2,'Uso comunitario (trabajo con grupos o comunidades)'),
+# 				(3,'Uso académico (investigación, estudios o ensayos)'),(4,'Uso organizacional (trabajo dentro de una institución u organización)'),
+# 				(5,'Uso personal (interés o aprendizaje propio)'))
+
+PERFIL_CHOICES = ((1,'Educador/a o facilitador/a'),(2,'Multiplicador/a comunitario/a'),(3,'Estudiante'),(4,'Integrante de organización social'),
+				  (5,'Investigador/a o académico/a'),(6,'Funcionaria/o público'),(7,'Integrante de ONG o cooperación internacional'),
+				  (8,'Consultor/a o profesional independiente'),(9,'Persona interesada en temas de género'),(10,'Otro'))
 
 class PreguntasPublicacion(models.Model):
 	publicacion = models.ForeignKey(Publicacion,on_delete=models.CASCADE)
-	utilizara_material = models.IntegerField(choices=UTIL_CHOICES,verbose_name='¿Para qué utilizará este material?')
+	utilizara_material = models.ManyToManyField(RespMaterial,verbose_name='¿Para qué utilizará este material? (Puede seleccionar una o más opciones)')
 	perfil = models.IntegerField(choices=PERFIL_CHOICES,verbose_name='¿Cuál es su perfil?')

@@ -37,9 +37,9 @@ class PublicacionDetailView(PermissionRequiredMixin, DetailView):
 	def get_context_data(self, **kwargs):
 		id = self.request.resolver_match.kwargs.get('pk')
 		preg = {}
-		for x in UTIL_CHOICES:
-			p = PreguntasPublicacion.objects.filter(utilizara_material = x[0],publicacion = id).count()
-			preg[x[1]] = p
+		for x in RespMaterial.objects.all():
+			p = PreguntasPublicacion.objects.filter(utilizara_material = x,publicacion = id).count()
+			preg[x] = p
 		
 		preg2 = {}
 		for x in PERFIL_CHOICES:
@@ -93,3 +93,5 @@ class PublicacionAdmin(admin.ModelAdmin):
 		return format_html(f'<a href="{url}">Detalle</a>')
 
 admin.site.register(Publicacion,PublicacionAdmin)
+
+admin.site.register(RespMaterial)

@@ -181,12 +181,12 @@
 						<p class="widget-title">¿No encontraste lo que buscabas?</p> 
 						<form id="my-form" method="post">{% csrf_token %}
 							<div class="form-group margin_0"> 
-								<input id="tematica" type="text" name="tematica" class="form-control" placeholder="Escribe la temática que te gustaría encontrar en la Plataforma."> 
+								<input id="tematica" type="text" name="tematica" class="form-control" placeholder="Escribe la temática que te gustaría encontrar en la Plataforma." required> 
 							</div> 
 							<button type="submit" class="theme_button color1">Enviar</button>	
 						</form>
 						<br>
-						<div class="alert alert-success" role="alert" id="msg" style="display:none">Gracias!!!</div>
+						<div class="alert alert-success" role="alert" id="msg" style="display:none">Gracias por enviar tus comentarios!!!</div>
 					</div>
 
 					<div class="widget widget_slider widget_recent_posts">
@@ -257,6 +257,7 @@ $('#my-form').on('submit', function(event) {
     success: function(data) {
       if (data.status === 'success') {
 		$('#msg').show();
+		$('#tematica').val('');
       } else {
         alert('There was an error submitting the form.');
       }

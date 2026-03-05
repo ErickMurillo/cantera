@@ -84,8 +84,11 @@ def submit_form_ajax(request, id=None):
 		preg.save()
 		return JsonResponse({'status': 'success'})
 
+from feedback.models import *
+
 def submit_tematica(request):
 	if request.method == 'POST':
 		tema = request.POST.get('tematica')
-		print(tema,'---------------------')
+		feedback = TematicasFeedback(feedback = tema)
+		feedback.save()
 	return JsonResponse({'status': 'success'})

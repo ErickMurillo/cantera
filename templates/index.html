@@ -2,7 +2,11 @@
 {% load thumbnail %}
 {% load solo_tags %}
 {% load custom_tags %}
-	
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/leaflet.1.0.3.css">
+{% endblock extra_css %}
+
 {% block content %}
 <section class="intro_section page_mainslider ds all-scr-cover bottom-overlap-teasers">
 	<div class="flexslider" data-dots="true" data-nav="true">
@@ -356,12 +360,27 @@
 {% endblock content %}
 
 {% block extra_js %}
+<script src="/static/js/leaflet.1.0.3.js"></script>
+{% comment %} <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> {% endcomment %}
+<script>
+var map = L.map("container").setView([48.85, 2.35], 2);
 
-<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+$.getJSON('/compromisos/get-json/', function (geoJSONdata) {
+	var geoJSONgroup = L.geoJSON(geoJSONdata).addTo(map);
+	
+});	
+</script>
+
+
+{% comment %} <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 <script src="https://code.highcharts.com/maps/modules/data.js"></script>
 <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
-<script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+<script src="https://code.highcharts.com/mapdata/custom/world.js"></script> {% endcomment %}
 <script>
 	$('.owl-map').owlCarousel({
 		loop:true,
@@ -381,7 +400,7 @@
 	});
 
 </script>
-<script>
+{% comment %} <script>
 	Highcharts.getJSON('/compromisos/get-json/', function (data) {
 
 		// Prevent logarithmic errors in color calulcation
@@ -460,7 +479,7 @@
 			}]
 		});
 	});
-</script>
+</script> {% endcomment %}
 <script>
 	const counters = document.querySelectorAll('.value');
 	const speed = 800;

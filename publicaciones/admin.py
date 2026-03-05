@@ -55,7 +55,7 @@ class PublicacionDetailView(PermissionRequiredMixin, DetailView):
 		}
 
 class PublicacionAdmin(admin.ModelAdmin):
-	inlines = [ArchivosPublicacionInline,PreguntasPublicacionInline]
+	inlines = [ArchivosPublicacionInline]
 	list_display = ('titulo','tipo','tematica','usuario','aprobado','created_on','preguntas')
 	list_filter = ('tipo','tematica','aprobado',('created_on', DateRangeFilterBuilder()),)
 	search_fields = ['titulo',]

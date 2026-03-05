@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'configuracion',
     'solicitudes',
     'compromisos',
+    'feedback',
 
     #aplicaciones de terceros
     'sorl.thumbnail',

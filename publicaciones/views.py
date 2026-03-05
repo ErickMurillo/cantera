@@ -77,7 +77,10 @@ def submit_form_ajax(request, id=None):
 		material = request.POST.getlist('utilizara_material')
 		perfil = request.POST.get('perfil')
 		obj = Publicacion.objects.get(id=id) 
-		preg = PreguntasPublicacion(utilizara_material = material, perfil = perfil, publicacion = obj)
+		preg = PreguntasPublicacion.objects.create(perfil = perfil, publicacion = obj)
+		int_list = [int(item) for item in material]
+		for x in int_list:
+			preg.utilizara_material.add(x)
 		preg.save()
 		return JsonResponse({'status': 'success'})
 

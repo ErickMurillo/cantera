@@ -371,7 +371,12 @@ attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contri
 
 $.getJSON('/compromisos/get-json/', function (geoJSONdata) {
 	var geoJSONgroup = L.geoJSON(geoJSONdata).addTo(map);
-	
+	console.log(geoJSONdata);
+	geoJSONgroup.eachLayer(function (layer) {
+			$.getJSON('/compromisos/get-json/detalle/',{name: layer.feature.properties.name}, function (data) {
+				layer.bindPopup(""+data[0][0]+"<br> Total: " + data[0][1] +"<br> Hombres: " + data[0][2] + "<br> Mujeres: " + data[0][3]);
+			});
+      });
 });	
 </script>
 

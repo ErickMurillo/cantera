@@ -1,8 +1,9 @@
 <div class="widget widget_search">
-    <p class="widget-title">¿No encontraste lo que buscabas?</p> 
+    <h4 class="widget-title">¿No encontraste lo que buscabas?</h4>
+    <p>Escribe la temática que te gustaría encontrar en la Plataforma.</p>
     <form id="my-form" method="post">{% csrf_token %}
         <div class="form-group margin_0"> 
-            <input id="tematica" type="text" name="tematica" class="form-control" placeholder="Escribe la temática que te gustaría encontrar en la Plataforma." required> 
+            <input id="tematica" type="text" name="tematica" class="form-control" placeholder="Temática" required> 
         </div> 
         <button type="submit" class="theme_button color1">Enviar</button>	
     </form>

@@ -5,6 +5,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.db.models import Avg, Sum, F, Count, Q
 from . import dataCountries as data
+from sorl.thumbnail import get_thumbnail
 
 # Create your views here.
 def get_compromisos(request):
@@ -30,5 +31,5 @@ def get_compromisos_detalle(request):
 	stored_value = country_display_to_value.get(display_name)
 
 	comp = Compromiso.objects.get(pais = stored_value)
-	lista.append((name,comp.total,comp.conteo_hombres,comp.conteo_mujeres))
+	lista.append((name,comp.total,comp.conteo_hombres,comp.conteo_mujeres,str(comp.foto)))
 	return HttpResponse(simplejson.dumps(list(lista)), content_type = 'application/json')

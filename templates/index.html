@@ -374,7 +374,7 @@ $.getJSON('/compromisos/get-json/', function (geoJSONdata) {
 	console.log(geoJSONdata);
 	geoJSONgroup.eachLayer(function (layer) {
 			$.getJSON('/compromisos/get-json/detalle/',{name: layer.feature.properties.name}, function (data) {
-				layer.bindPopup(""+data[0][0]+"<br> Total: " + data[0][1] +"<br> Hombres: " + data[0][2] + "<br> Mujeres: " + data[0][3]);
+				layer.bindPopup('<div class="vertical-item content-padding big-padding with_border bottom_color_border tooltip_map" style="width: 250px;"><h5 class="">'+data[0][0]+'</h5><div class=""><div class="item-media"><img src=/media/'+data[0][4]+' alt="" style="height:224px;width:300px;object-fit: cover;object-position: center;"></div></div><div class="item-content"><div class="value main_value" akhi="200">'+data[0][1]+'</div><h5 class="">Compromisos</h5><ul class="sex_value"><li>Mujeres: <span class="value" akhi="200">'+data[0][2]+'</span></li><li>Hombres: <span class="value" akhi="200">'+data[0][3]+'</span></li></ul></div></div>')
 			});
       });
 });	

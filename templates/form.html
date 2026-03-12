@@ -2,8 +2,12 @@
 .widget_search .form-group + .send_icon:before, .widget_product_search [type="submit"]:before, .widget_mailchimp .form-group + .send_icon:before, .widget_mc4wp_form_widget .form-group + .send_icon:before {
     content: "\f1d9" !important;
 }
+
+#tema_margin {
+    margin-top: 80px;
+}
 </style>
-<div class="widget widget_search">
+<div class="widget widget_search" id="tema_margin">
     <h4 class="widget-title">¿No encontraste lo que buscabas?</h4>
     <p>Escribe la temática que te gustaría encontrar en la Plataforma.</p>
     <form id="my-form" method="post">{% csrf_token %}

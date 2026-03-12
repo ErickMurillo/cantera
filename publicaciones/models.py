@@ -7,6 +7,7 @@ from django.template.defaultfilters import slugify
 from embed_video.fields import EmbedVideoField
 from taggit_autosuggest.managers import TaggableManager
 from django.urls import reverse
+from simple_history.models import HistoricalRecords
 
 # Create your models here.
 TIPO_CHOICES = ((1,'Publicaciones'),(2,'Guías metodológicas'))
@@ -21,6 +22,8 @@ class Publicacion(models.Model):
 	slug = models.SlugField(max_length=250,editable=False)
 	aprobado = models.BooleanField()
 	tags = TaggableManager("Palabras claves",help_text='Separar elementos con "," ', blank=True)
+	created_on = models.DateField('Fecha de publicación',auto_now_add=True,null=True, blank=True)
+	history = HistoricalRecords()
 
 	def __str__(self):
 		return u'%s' % self.titulo
@@ -31,6 +34,11 @@ class Publicacion(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.titulo)
 		return super(Publicacion, self).save(*args, **kwargs)
+	
+	@property
+	def fecha_creacion(self):
+		return self.history.earliest().history_date
+
 
 	class Meta:
 		verbose_name_plural = 'Publicaciones'
@@ -67,3 +75,25 @@ class VideosPublicacion(models.Model):
 
 	class Meta:
 		verbose_name_plural = 'Videos'
+
+class RespMaterial(models.Model):
+	nombre = models.CharField(max_length=250)
+
+	def __str__(self):
+		return u'%s' % self.nombre
+
+	class Meta:
+		verbose_name_plural = '¿Para qué utilizará este material?'
+
+# UTIL_CHOICES = ((1,'Uso educativo (clases, talleres, procesos formativos)'),(2,'Uso comunitario (trabajo con grupos o comunidades)'),
+# 				(3,'Uso académico (investigación, estudios o ensayos)'),(4,'Uso organizacional (trabajo dentro de una institución u organización)'),
+# 				(5,'Uso personal (interés o aprendizaje propio)'))
+
+PERFIL_CHOICES = ((1,'Educador/a o facilitador/a'),(2,'Multiplicador/a comunitario/a'),(3,'Estudiante'),(4,'Integrante de organización social'),
+				  (5,'Investigador/a o académico/a'),(6,'Funcionaria/o público'),(7,'Integrante de ONG o cooperación internacional'),
+				  (8,'Consultor/a o profesional independiente'),(9,'Persona interesada en temas de género'),(10,'Otro'))
+
+class PreguntasPublicacion(models.Model):
+	publicacion = models.ForeignKey(Publicacion,on_delete=models.CASCADE)
+	utilizara_material = models.ManyToManyField(RespMaterial,verbose_name='¿Para qué utilizará este material? (Puede seleccionar una o más opciones)')
+	perfil = models.IntegerField(choices=PERFIL_CHOICES,verbose_name='¿Cuál es su perfil?')

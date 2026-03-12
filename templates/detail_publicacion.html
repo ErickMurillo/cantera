@@ -38,6 +38,10 @@
 	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{im.url}});
 	{% endthumbnail %}
 }
+
+#pdfs {
+	display: none
+}
 </style>
 {% endblock extra_css %}
 
@@ -105,29 +109,57 @@
 				</article>
 				
 				<div class="vertical-item content-padding big-padding text-center descargas_archivos margin_bottom_30">
-					
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Descargar Documento </button>
 					{% if object.archivospublicacion_set.count == 1 %}
-					<ul style="list-style-type:none;">
+					<ul style="list-style-type:none;" id="pdfs">
 						{% for pdf in object.archivospublicacion_set.all %}
 						<li>
-							<a class="theme_button color4" href="/media/{{pdf.archivo_pdf}}" target="_blank">Descargar Documento <span class="fa fa-download"></span></a>
+							<a class="theme_button color4" href="/media/{{pdf.archivo_pdf}}" target="_blank"><span class="fa fa-download"></span></a>
 						</li>
 						{% endfor %}
 					</ul>
 					{% else %}
-					<div class="btn-group">
+					<div class="btn-group" id="pdfs">
 						<button type="button" class="theme_button color4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Descargar Documento <span class="fa fa-download"></span>
+						 <span class="fa fa-download"></span>
 						</button>
 						<ul class="dropdown-menu">
 							{% for pdf in object.archivospublicacion_set.all %}
 							<li>
-								<a href="/media/{{pdf.archivo_pdf}}" target="_blank">Descargar Documento {{ forloop.counter }}</a>
+								<a href="/media/{{pdf.archivo_pdf}}" target="_blank"> Documento {{ forloop.counter }}</a>
 							</li>
 							{% endfor %}
 						</ul>
 					</div>
 					{% endif %}
+				</div>
+
+				
+
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+					<form id="my-form" method="post">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="exampleModalLabel">Preguntas</h4>
+						</div>
+						<div class="modal-body">
+							{% csrf_token %}
+							<style>
+								ul {
+									list-style-type: none;
+								}
+							</style>
+							{{form.as_p}}
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Enviar</button>
+						</div>
+						</div>
+					</div>
+					</form>
 				</div>
 
 				<div class="vertical-item content-padding big-padding text-center descargas_archivos margin_bottom_30">
@@ -222,6 +254,27 @@ $('.fancybox').fancybox({
 			window.parent.$.fancybox.close();
 		}); 
 	}
+});
+</script>
+<script>
+$('#my-form').on('submit', function(event) {
+  event.preventDefault();
+  $.ajax({
+    url: '{% url 'submit_form_ajax' object.id %}',
+    type: 'POST',
+    data: $(this).serialize(),
+    success: function(data) {
+      if (data.status === 'success') {
+		$('#exampleModal').modal('hide');
+		$('#pdfs').show();
+      } else {
+        alert('There was an error submitting the form.');
+      }
+    },
+    error: function() {
+      alert('There was an error submitting the form.');
+    }
+  });
 });
 </script>
 {% endblock extra_js %}

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'configuracion',
     'solicitudes',
     'compromisos',
+    'feedback',
 
     #aplicaciones de terceros
     'sorl.thumbnail',
@@ -66,6 +67,8 @@ INSTALLED_APPS = [
     'nested_admin',
     'colorfield', 
     'django_crontab',
+    'simple_history',
+    'rangefilter',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -90,6 +93,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'cantera.urls'

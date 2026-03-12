@@ -170,6 +170,8 @@
 						{% endfor %}
 					</div>
 				</div>
+				
+				{% include "form.html" %}
 
 				<div class="widget widget_slider widget_recent_posts">
 					<h4 class="widget-title"> Próximos Eventos </h4>
@@ -214,4 +216,5 @@
   $('.endless_page_link').wrap('<li></li>');
   $('.endless_page_current').wrap('<li class="active"></li>');
 </script>
+{% include "form_script.html" %}
 {% endblock extra_js %}

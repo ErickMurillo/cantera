@@ -199,6 +199,8 @@
 
 					</div>
 				</div>
+
+				{% include "form.html" %}
 			</aside>
 
 		</section>
@@ -223,4 +225,5 @@ $('.fancybox').fancybox({
 	$('.endless_page_link').wrap('<li></li>');
 	$('.endless_page_current').wrap('<li class="active"></li>');
   </script>
+  {% include "form_script.html" %}
 {% endblock extra_js %}

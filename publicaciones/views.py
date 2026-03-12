@@ -4,6 +4,7 @@ from evento.models import *
 import datetime
 from taggit.models import *
 from django.db.models import Q, Count
+from .forms import PreguntasForm
 # Create your views here.
 
 def index_publicaciones(request,template='list_publicacion.html'):
@@ -28,6 +29,7 @@ def detail_publicacion(request,slug,template='detail_publicacion.html'):
 	object = get_object_or_404(Publicacion, slug=slug)
 	hoy = datetime.date.today()
 	prox_eventos = Evento.objects.filter(inicio__gte = hoy,aprobado = True).order_by('-inicio')[:3]
+	form = PreguntasForm()
 	
 	return render(request,template, locals())
 
@@ -67,3 +69,26 @@ def search_publicacion(request):
 		results_per_page=10
 		)
 	return view(request)
+
+from django.http import JsonResponse
+
+def submit_form_ajax(request, id=None):
+	if request.method == 'POST':
+		material = request.POST.getlist('utilizara_material')
+		perfil = request.POST.get('perfil')
+		obj = Publicacion.objects.get(id=id) 
+		preg = PreguntasPublicacion.objects.create(perfil = perfil, publicacion = obj)
+		int_list = [int(item) for item in material]
+		for x in int_list:
+			preg.utilizara_material.add(x)
+		preg.save()
+		return JsonResponse({'status': 'success'})
+
+from feedback.models import *
+
+def submit_tematica(request):
+	if request.method == 'POST':
+		tema = request.POST.get('tematica')
+		feedback = TematicasFeedback(feedback = tema)
+		feedback.save()
+	return JsonResponse({'status': 'success'})

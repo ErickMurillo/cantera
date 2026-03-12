@@ -1,0 +1,21 @@
+<script>
+$('#my-form').on('submit', function(event) {
+  event.preventDefault();
+  $.ajax({
+    url: '{% url 'submit_tematica' %}',
+    type: 'POST',
+    data: $(this).serialize(),
+    success: function(data) {
+      if (data.status === 'success') {
+		$('#msg').show();
+		$('#tematica').val('');
+      } else {
+        alert('There was an error submitting the form.');
+      }
+    },
+    error: function() {
+      alert('There was an error submitting the form.');
+    }
+  });
+});
+</script>

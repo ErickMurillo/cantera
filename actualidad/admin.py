@@ -3,6 +3,9 @@ from .models import *
 from users.models import *
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
+from rangefilter.filters import (
+    DateRangeFilterBuilder
+)
 
 # Register your models here.
 class GaleriaInline(admin.TabularInline):
@@ -11,6 +14,9 @@ class GaleriaInline(admin.TabularInline):
 
 class ActualidadAdmin(admin.ModelAdmin):
 	inlines = [GaleriaInline,]
+	list_filter = ('category','pais','tematica','aprobado',
+				('created_on', DateRangeFilterBuilder()),)
+	search_fields = ['tittle',]
 
 	def save_model(self, request, obj, form, change):
 		if obj.aprobado == True and obj.category != 'situacion-regional-genero':

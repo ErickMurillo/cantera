@@ -106,7 +106,7 @@ venv.bak/
 #media
 
 media/
-static/CACHE/*
+static/
 .vscode/
 whoosh/
 

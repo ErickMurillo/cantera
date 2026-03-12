@@ -3,9 +3,7 @@ from .models import *
 from users.models import *
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
-from rangefilter.filters import (
-	DateRangeFilterBuilder
-)
+from rangefilter.filter import DateRangeFilter
 from django.utils.html import format_html
 
 # Register your models here.
@@ -57,7 +55,7 @@ class PublicacionDetailView(PermissionRequiredMixin, DetailView):
 class PublicacionAdmin(admin.ModelAdmin):
 	inlines = [ArchivosPublicacionInline]
 	list_display = ('titulo','tipo','tematica','usuario','aprobado','created_on','preguntas')
-	list_filter = ('tipo','tematica','aprobado',('created_on', DateRangeFilterBuilder()),)
+	list_filter = ('tipo','tematica','aprobado',('created_on', DateRangeFilter),)
 	search_fields = ['titulo',]
 
 	def save_model(self,request,obj,form,change):

@@ -3,9 +3,8 @@ from .models import *
 from users.models import *
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
-from rangefilter.filters import (
-    DateRangeFilterBuilder
-)
+from rangefilter.filter import DateRangeFilter
+
 
 # Register your models here.
 class GaleriaInline(admin.TabularInline):
@@ -15,7 +14,7 @@ class GaleriaInline(admin.TabularInline):
 class ActualidadAdmin(admin.ModelAdmin):
 	inlines = [GaleriaInline,]
 	list_filter = ('category','pais','tematica','aprobado',
-				('created_on', DateRangeFilterBuilder()),)
+				('created_on', DateRangeFilter),)
 	search_fields = ['tittle',]
 
 	def save_model(self, request, obj, form, change):

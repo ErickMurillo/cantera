@@ -16,6 +16,7 @@ class ActualidadAdmin(admin.ModelAdmin):
 	list_filter = ('category','pais','tematica','aprobado',
 				('created_on', DateRangeFilter),)
 	search_fields = ['tittle',]
+	list_display = ('tittle','pais','aprobado','created_on')
 
 	def save_model(self, request, obj, form, change):
 		if obj.aprobado == True and obj.category != 'situacion-regional-genero':

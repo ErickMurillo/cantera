@@ -14,6 +14,7 @@ class PuntosAdmin(admin.ModelAdmin):
 	inlines = [GaleriaInline,]
 	search_fields = ['tittle',]
 	list_filter = ('aprobado',('fecha_creacion', DateRangeFilter),)
+	list_display = ('tittle','aprobado','fecha_creacion')
 	
 	def save_model(self, request, obj, form, change):
 		if obj.aprobado == True and obj.usuario != request.user:

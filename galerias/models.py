@@ -15,6 +15,7 @@ class GaleriaImagenes(models.Model):
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
 	slug = models.SlugField(max_length=200,editable=False)
 	aprobado = models.BooleanField()
+	created_on = models.DateField('Fecha de publicación')
 
 	def __str__(self):
 		return self.titulo
@@ -46,6 +47,7 @@ class GaleriaVideos(models.Model):
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
 	slug = models.SlugField(max_length=200,editable=False)
 	aprobado = models.BooleanField()
+	created_on = models.DateField('Fecha de publicación')
 
 	def __str__(self):
 		return self.titulo
@@ -78,6 +80,7 @@ class Audios(models.Model):
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='Autor')
 	slug = models.SlugField(max_length=200,editable=False)
 	aprobado = models.BooleanField()
+	created_on = models.DateField('Fecha de publicación')
 
 	def __str__(self):
 		return self.titulo

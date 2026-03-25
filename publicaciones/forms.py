@@ -36,5 +36,5 @@ PERFIL_CHOICES_FORM = (('','---'),(1,'Educador/a o facilitador/a'),(2,'Multiplic
 class PreguntasForm(forms.Form):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-		self.fields['utilizara_material'] = forms.ModelMultipleChoiceField(queryset=RespMaterial.objects.all(),widget=forms.CheckboxSelectMultiple,label="¿Para qué utilizará este material? (Puede seleccionar una o más opciones)'")
+		self.fields['utilizara_material'] = forms.ModelMultipleChoiceField(queryset=RespMaterial.objects.all(),widget=forms.CheckboxSelectMultiple,label="¿Para qué utilizará este material? (Puede seleccionar una o más opciones)")
 		self.fields['perfil'] = forms.ChoiceField(choices=PERFIL_CHOICES_FORM,label='¿Cuál es su perfil?')

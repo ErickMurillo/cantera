@@ -89,9 +89,9 @@ class RespMaterial(models.Model):
 # 				(3,'Uso académico (investigación, estudios o ensayos)'),(4,'Uso organizacional (trabajo dentro de una institución u organización)'),
 # 				(5,'Uso personal (interés o aprendizaje propio)'))
 
-PERFIL_CHOICES = ((1,'Educador/a o facilitador/a'),(2,'Multiplicador/a comunitario/a'),(3,'Estudiante'),(4,'Integrante de organización social'),
+PERFIL_CHOICES = ((1,'Educador/a o facilitador/a'),(2,'Público en general'),(3,'Estudiante'),(4,'Integrante de organización social o comunitaria'),
 				  (5,'Investigador/a o académico/a'),(6,'Funcionaria/o público'),(7,'Integrante de ONG o cooperación internacional'),
-				  (8,'Consultor/a o profesional independiente'),(9,'Persona interesada en temas de género'))
+				  (8,'Consultor/a o profesional independiente'))
 
 class PreguntasPublicacion(models.Model):
 	publicacion = models.ForeignKey(Publicacion,on_delete=models.CASCADE)

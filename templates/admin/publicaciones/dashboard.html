@@ -1,0 +1,121 @@
+{% extends 'admin/base_site.html' %}
+
+{% load i18n %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">Inicio</a>
+        &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+        &rsaquo; <a href="{% url 'admin:publicaciones_publicacion_changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        &rsaquo; Dashboard de encuestas
+    </div>
+{% endblock %}
+
+{% block content %}
+<style>
+    .dashboard-preguntas .filtros{margin-bottom:20px;display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+    .dashboard-preguntas .filtros label{display:block;font-size:12px;font-weight:bold;margin-bottom:4px}
+    .dashboard-preguntas .total{margin-bottom:20px;color:#666}
+    .dashboard-preguntas .grafica-box{background:#fff;border:1px solid #e1e0d9;border-radius:4px;padding:20px;margin-bottom:30px}
+    .dashboard-preguntas .grafica-box h2{margin-top:0}
+    .dashboard-preguntas table{margin-top:15px;width:100%;border-collapse:collapse}
+    .dashboard-preguntas table th,.dashboard-preguntas table td{text-align:left;padding:6px 10px;border-bottom:1px solid #e1e0d9;font-size:15px}
+    .dashboard-preguntas .chart-wrap{height:420px;position:relative}
+</style>
+
+<div class="dashboard-preguntas">
+    <form class="filtros" method="get">
+        <div>
+            <label for="id_fecha_inicio">Fecha de publicación desde</label>
+            <input type="date" id="id_fecha_inicio" name="fecha_inicio" value="{{ fecha_inicio }}">
+        </div>
+        <div>
+            <label for="id_fecha_fin">Fecha de publicación hasta</label>
+            <input type="date" id="id_fecha_fin" name="fecha_fin" value="{{ fecha_fin }}">
+        </div>
+        <div>
+            <input type="submit" class="button" value="Filtrar">
+            <a href="{% url 'admin:preguntas_dashboard' %}" class="button">Limpiar</a>
+        </div>
+    </form>
+
+    <p class="total">Total de respuestas: <strong>{{ total_respuestas }}</strong></p>
+
+    <div class="grafica-box">
+        <h2>¿Para qué utilizará este material?</h2>
+        <div class="chart-wrap"><canvas id="grafica-material"></canvas></div>
+        <table>
+            <thead><tr><th>Opción</th><th>Respuestas</th></tr></thead>
+            <tbody>
+                {% for label, count in material_pairs %}
+                <tr><td>{{ label }}</td><td>{{ count }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grafica-box">
+        <h2>¿Cuál es su perfil?</h2>
+        <div class="chart-wrap"><canvas id="grafica-perfil"></canvas></div>
+        <table>
+            <thead><tr><th>Perfil</th><th>Respuestas</th></tr></thead>
+            <tbody>
+                {% for label, count in perfil_pairs %}
+                <tr><td>{{ label }}</td><td>{{ count }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{ material_labels|json_script:"material-labels-data" }}
+{{ material_data|json_script:"material-data-data" }}
+{{ perfil_labels|json_script:"perfil-labels-data" }}
+{{ perfil_data|json_script:"perfil-data-data" }}
+
+<script src="/static/js/vendor/Chart.bundle.min.js"></script>
+<script>
+(function(){
+    function readJson(id){
+        return JSON.parse(document.getElementById(id).textContent);
+    }
+    var accent = '#2a78d6';
+    var accentBorder = '#184f95';
+    var gridColor = '#e1e0d9';
+    var textColor = '#52514e';
+
+    function barChart(canvasId, labels, data){
+        var ctx = document.getElementById(canvasId).getContext('2d');
+        return new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: accent,
+                    borderColor: accentBorder,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: { display: false },
+                scales: {
+                    xAxes: [{
+                        ticks: { beginAtZero: true, precision: 0, fontColor: textColor, fontSize: 15 },
+                        gridLines: { color: gridColor }
+                    }],
+                    yAxes: [{
+                        ticks: { fontColor: textColor, fontSize: 15 },
+                        gridLines: { display: false }
+                    }]
+                }
+            }
+        });
+    }
+
+    barChart('grafica-material', readJson('material-labels-data'), readJson('material-data-data'));
+    barChart('grafica-perfil', readJson('perfil-labels-data'), readJson('perfil-data-data'));
+})();
+</script>
+{% endblock content %}

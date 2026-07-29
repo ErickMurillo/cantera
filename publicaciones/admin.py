@@ -25,6 +25,7 @@ class PreguntasPublicacionInline(admin.TabularInline):
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic.detail import DetailView
+from django.views.generic import TemplateView
 from django.urls import path, reverse
 
 class PublicacionDetailView(PermissionRequiredMixin, DetailView):
@@ -38,7 +39,7 @@ class PublicacionDetailView(PermissionRequiredMixin, DetailView):
 		for x in RespMaterial.objects.all():
 			p = PreguntasPublicacion.objects.filter(utilizara_material = x,publicacion = id).count()
 			preg[x] = p
-		
+
 		preg2 = {}
 		for x in PERFIL_CHOICES:
 			p = PreguntasPublicacion.objects.filter(perfil = x[0],publicacion = id).count()
@@ -52,11 +53,54 @@ class PublicacionDetailView(PermissionRequiredMixin, DetailView):
 			"resp2": preg2,
 		}
 
+class PreguntasDashboardView(PermissionRequiredMixin, TemplateView):
+	permission_required = "publicacion.view_order"
+	template_name = "admin/publicaciones/dashboard.html"
+
+	def get_context_data(self, **kwargs):
+		fecha_inicio = self.request.GET.get('fecha_inicio') or ''
+		fecha_fin = self.request.GET.get('fecha_fin') or ''
+
+		qs = PreguntasPublicacion.objects.all()
+		if fecha_inicio:
+			qs = qs.filter(publicacion__created_on__gte = fecha_inicio)
+		if fecha_fin:
+			qs = qs.filter(publicacion__created_on__lte = fecha_fin)
+
+		material_labels = []
+		material_data = []
+		for x in RespMaterial.objects.all():
+			material_labels.append(x.nombre)
+			material_data.append(qs.filter(utilizara_material = x).count())
+
+		perfil_labels = []
+		perfil_data = []
+		for value, label in PERFIL_CHOICES:
+			perfil_labels.append(label)
+			perfil_data.append(qs.filter(perfil = value).count())
+
+		return {
+			**super().get_context_data(**kwargs),
+			**admin.site.each_context(self.request),
+			"opts": Publicacion._meta,
+			"title": "Dashboard de encuestas",
+			"fecha_inicio": fecha_inicio,
+			"fecha_fin": fecha_fin,
+			"material_labels": material_labels,
+			"material_data": material_data,
+			"material_pairs": list(zip(material_labels, material_data)),
+			"perfil_labels": perfil_labels,
+			"perfil_data": perfil_data,
+			"perfil_pairs": list(zip(perfil_labels, perfil_data)),
+			"total_respuestas": qs.count(),
+		}
+
 class PublicacionAdmin(admin.ModelAdmin):
 	inlines = [ArchivosPublicacionInline]
 	list_display = ('titulo','tipo','tematica','usuario','aprobado','created_on','preguntas')
 	list_filter = ('tipo','tematica','aprobado',('created_on', DateRangeFilter),)
 	search_fields = ['titulo',]
+	change_list_template = "admin/publicaciones/publicacion_change_list.html"
 
 	def save_model(self,request,obj,form,change):
 		if obj.aprobado == True and obj.usuario != request.user:
@@ -78,6 +122,11 @@ class PublicacionAdmin(admin.ModelAdmin):
 	
 	def get_urls(self):
 		return [
+			path(
+				"dashboard-preguntas/",
+				self.admin_site.admin_view(PreguntasDashboardView.as_view()),
+				name="preguntas_dashboard",
+			),
 			path(
 				"<pk>/detail",
 				self.admin_site.admin_view(PublicacionDetailView.as_view()),
